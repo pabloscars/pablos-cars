@@ -37,6 +37,21 @@ function renderCustomerMap() {
         maxZoom: 20
       }).addTo(map);
 
+      fetch("data/us-states-southeast.geojson")
+        .then(r => r.json())
+        .then(statesGeoJson => {
+          L.geoJSON(statesGeoJson, {
+            style: {
+              color: "#B8B6AE",
+              weight: 1.6,
+              opacity: 0.45,
+              fill: false
+            },
+            interactive: false
+          }).addTo(map);
+        })
+        .catch(err => console.error("Failed to load state outlines:", err));
+
       locations.forEach(loc => {
         if (typeof loc.lat !== "number" || typeof loc.lng !== "number") return;
         const marker = L.circleMarker([loc.lat, loc.lng], {
