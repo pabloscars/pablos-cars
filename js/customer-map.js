@@ -85,10 +85,19 @@ function renderCustomerMap() {
 
       document.getElementById("customerMapEmpty").style.display = locations.length ? "none" : "block";
 
-      // Smooth ease-in: settle from a wider view into the default center/zoom.
+      // Mobile browsers resize the visible viewport as the address bar
+      // hides/shows while scrolling, which leaves Leaflet's cached
+      // container size stale and the map badly mis-centered/zoomed
+      // until it's told to recalculate.
+      window.addEventListener("resize", () => map.invalidateSize());
+      window.addEventListener("orientationchange", () => map.invalidateSize());
+
+      // Quick, subtle ease-in from a wider view into the default center/zoom.
+      map.invalidateSize();
       setTimeout(() => {
-        map.flyTo(CUSTOMER_MAP_CENTER, CUSTOMER_MAP_ZOOM, { duration: 2.4, easeLinearity: 0.12 });
-      }, 200);
+        map.invalidateSize();
+        map.flyTo(CUSTOMER_MAP_CENTER, CUSTOMER_MAP_ZOOM, { duration: 0.9, easeLinearity: 0.25 });
+      }, 100);
     })
     .catch(err => {
       console.error("Failed to load customer locations:", err);
