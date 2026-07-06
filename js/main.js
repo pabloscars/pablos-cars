@@ -284,9 +284,11 @@ function renderVehicleDetail() {
 
   const chipHTML = sections.map(([key, label]) => `<a href="#sec-${key}" class="chip-btn">${label}</a>`).join("");
   const sectionsHTML = sections.map(([key, label]) => `
-    <div class="photo-section ${key === "auctionPhotos" ? "photo-section--scrollable" : ""}" id="sec-${key}">
+    <div class="photo-section" id="sec-${key}">
       <h3>${label}</h3>
-      <div class="photo-section__grid">${car.photoSections[key].map(src => `<img src="${src}" loading="lazy">`).join("")}</div>
+      ${key === "auctionPhotos"
+        ? photoSliderHTML(car.photoSections[key])
+        : `<div class="photo-section__grid">${car.photoSections[key].map(src => `<img src="${src}" loading="lazy">`).join("")}</div>`}
     </div>`).join("");
 
   let videoHTML = `<div class="video-placeholder">Walkaround video coming soon — message ${BUSINESS.ownerName} to request one.</div>`;
@@ -413,6 +415,59 @@ function renderVehicleDetail() {
     const srcs = imgs.map(i => i.src);
     imgs.forEach((img, i) => img.addEventListener("click", () => openLightbox(srcs, i)));
   });
+
+  root.querySelectorAll(".photo-slider").forEach(initPhotoSlider);
+}
+
+/* ---------------- Auction Photos slider (3 per page, glass thumb strip) ---------------- */
+
+const SLIDER_PAGE_SIZE = 3;
+
+function photoSliderHTML(images) {
+  const pages = [];
+  for (let i = 0; i < images.length; i += SLIDER_PAGE_SIZE) pages.push(images.slice(i, i + SLIDER_PAGE_SIZE));
+
+  const pagesHTML = pages.map(page => `
+    <div class="photo-slider__page">${page.map(src => `<div class="photo-slider__frame"><img src="${src}" loading="lazy"></div>`).join("")}</div>`
+  ).join("");
+
+  const thumbsHTML = images.map((src, i) => `<img src="${src}" data-i="${i}" class="${i < SLIDER_PAGE_SIZE ? "is-active" : ""}" loading="lazy">`).join("");
+
+  return `
+    <div class="photo-slider" data-page-count="${pages.length}">
+      <div class="photo-slider__viewport">
+        <div class="photo-slider__track">${pagesHTML}</div>
+        ${pages.length > 1 ? `
+          <button class="photo-slider__arrow photo-slider__arrow--prev is-disabled" aria-label="Previous photos">&#8249;</button>
+          <button class="photo-slider__arrow photo-slider__arrow--next" aria-label="Next photos">&#8250;</button>
+        ` : ""}
+      </div>
+      ${images.length > 1 ? `<div class="photo-slider__thumbs">${thumbsHTML}</div>` : ""}
+    </div>`;
+}
+
+function initPhotoSlider(slider) {
+  const track = slider.querySelector(".photo-slider__track");
+  const pageCount = Number(slider.dataset.pageCount);
+  const prevBtn = slider.querySelector(".photo-slider__arrow--prev");
+  const nextBtn = slider.querySelector(".photo-slider__arrow--next");
+  const thumbs = [...slider.querySelectorAll(".photo-slider__thumbs img")];
+  const frameImgs = [...slider.querySelectorAll(".photo-slider__frame img")];
+  const allSrcs = frameImgs.map(img => img.src);
+  let page = 0;
+
+  function goToPage(p) {
+    page = Math.max(0, Math.min(pageCount - 1, p));
+    track.style.transform = `translateX(-${page * 100}%)`;
+    thumbs.forEach((t, i) => t.classList.toggle("is-active", Math.floor(i / SLIDER_PAGE_SIZE) === page));
+    if (prevBtn) prevBtn.classList.toggle("is-disabled", page === 0);
+    if (nextBtn) nextBtn.classList.toggle("is-disabled", page === pageCount - 1);
+  }
+
+  if (prevBtn) prevBtn.addEventListener("click", () => goToPage(page - 1));
+  if (nextBtn) nextBtn.addEventListener("click", () => goToPage(page + 1));
+  thumbs.forEach((thumb, i) => thumb.addEventListener("click", () => goToPage(Math.floor(i / SLIDER_PAGE_SIZE))));
+  frameImgs.forEach((img, i) => img.addEventListener("click", () => openLightbox(allSrcs, i)));
 }
 
 /* ---------------- Lightbox (click a photo to enlarge, arrow keys to move
