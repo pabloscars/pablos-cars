@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pablo's Cars — Admin</title>
   <meta name="robots" content="noindex, nofollow" />
+  <style>
+    /* Decap CMS renders its own boolean toggle field ("Remote Start",
+       "Heated Seats", etc.) inside a full-width bordered box, leaving
+       a lot of empty space next to the small switch. Shrink that box
+       to fit just the toggle instead. Scoped to containers that hold
+       a Toggle-labeled element so no other field type is affected. */
+    [class*="ControlContainer"]:has([class*="Toggle"]) {
+      display: inline-block;
+      width: auto;
+      min-width: 0;
+      padding: 10px 14px;
+    }
+  </style>
 </head>
 <body>
   <!-- This loads the Decap CMS admin dashboard. Log in with your
