@@ -37,7 +37,7 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 @media (prefers-reduced-motion:reduce){.blob{animation:none;}}
 
 /* ---- Nav ---- */
-.nav{position:sticky; top:0; z-index:50; backdrop-filter:blur(16px); background:rgba(20,19,16,0.78); border-bottom:1px solid var(--glass-border);}
+.nav{position:sticky; top:0; z-index:500; backdrop-filter:blur(16px); background:rgba(20,19,16,0.78); border-bottom:1px solid var(--glass-border);}
 .nav__row{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
 .brand{display:flex; align-items:center; gap:9px; font-family:var(--font-d); font-size:clamp(1.3rem,2.6vw,1.8rem); font-weight:600; letter-spacing:-0.03em; color:var(--text);}
 .nav__links{display:none; gap:24px; font-size:1.05rem; font-weight:500; max-width:1180px; width:100%; margin:0 auto; padding:0 24px; box-sizing:border-box; justify-content:space-between;}
@@ -199,7 +199,7 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 /* ---- Customer map ---- */
 .map-caption{font-size:1.05rem; color:var(--text-dim); margin:0 0 14px;}
 .map-footnote{font-size:0.72rem; color:var(--text-faint); margin:12px 0 0; font-style:italic;}
-.customer-map{height:560px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--glass-border); background:var(--bg-3);}
+.customer-map{height:560px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--glass-border); background:var(--bg-3); position:relative; isolation:isolate; z-index:0;}
 .leaflet-control-attribution{background:rgba(20,19,16,0.7) !important; color:var(--text-faint) !important;}
 .leaflet-control-attribution a{color:var(--text-dim) !important;}
 .leaflet-control-zoom a{background:var(--bg-2) !important; color:var(--text) !important; border-color:var(--glass-border) !important;}
