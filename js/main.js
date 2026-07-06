@@ -117,6 +117,11 @@ function renderVehicleDetail() {
     }
   }
 
+  const repairedItems = (car.whatWasRepaired || "")
+    .split("\n")
+    .map(line => line.replace(/^[\s.\-•]+/, "").trim())
+    .filter(Boolean);
+
   const messageHref = car.facebookUrl || BUSINESS.facebookUrl;
 
   root.innerHTML = `
@@ -133,7 +138,7 @@ function renderVehicleDetail() {
             </div>` : ""}
           </div>
 
-          <div class="video-wrap" style="margin-top:20px;">${videoHTML}</div>
+          <div class="video-wrap ${car.videoUrl ? "" : "video-wrap--placeholder"}" style="margin-top:20px;">${videoHTML}</div>
 
           <div class="divider"></div>
           <h2>About This ${car.make} ${car.model}</h2>
@@ -141,8 +146,11 @@ function renderVehicleDetail() {
 
           <div class="feature-grid" style="margin-top:16px;">
             <div class="feature-card"><h3>Why It Has A ${car.titleStatus}</h3><p>${car.whySalvage || ""}</p></div>
-            <div class="feature-card"><h3>What Was Repaired</h3><p>${car.whatWasRepaired || ""}</p></div>
             <div class="feature-card"><h3>Known Issues</h3><p>${car.knownIssues || ""}</p></div>
+            <div class="feature-card feature-card--wide">
+              <h3>What Was Repaired</h3>
+              <ul class="highlights-list">${repairedItems.map(item => `<li>${item}</li>`).join("")}</ul>
+            </div>
             <div class="feature-card feature-card--wide">
               <h3>Highlights &amp; Features</h3>
               <ul class="highlights-list">${allHighlights.map(h => `<li>${h}</li>`).join("")}</ul>
