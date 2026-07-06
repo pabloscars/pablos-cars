@@ -95,3 +95,20 @@ collections:
           - { label: "Appointment Note", name: "appointmentNote", widget: "string" }
           - { label: "Bio", name: "bio", widget: "text" }
           - { label: "Policy Note (no holds, no trades, etc.)", name: "policyNote", widget: "text" }
+
+  - name: "customerMap"
+    label: "Customer Map"
+    files:
+      - file: "data/customer-locations.json"
+        label: "Customer Locations"
+        name: "customerLocations"
+        fields:
+          - label: "Locations (city-level only — never a customer's name or exact address)"
+            name: "locations"
+            widget: "list"
+            summary: "{{fields.city}}, {{fields.state}}"
+            fields:
+              - { label: "City", name: "city", widget: "string" }
+              - { label: "State (2-letter abbreviation, e.g. TN)", name: "state", widget: "string" }
+              - { label: "Latitude (search '[city] [state] latitude longitude' to find it)", name: "lat", widget: "number", value_type: "float" }
+              - { label: "Longitude", name: "lng", widget: "number", value_type: "float" }

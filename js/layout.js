@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { href: "index.html", label: "Cars" },
   { href: "titles.html", label: "Salvage & Rebuilt Titles" },
   { href: "sourcing.html", label: "How I Source Cars" },
+  { href: "customer-map.html", label: "Customer Map" },
   { href: "about.html", label: "About" },
   { href: "contact.html", label: "Contact" }
 ];
