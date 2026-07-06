@@ -123,7 +123,7 @@ function renderVehicleDetail() {
     <div class="blob blob--chrome" style="width:400px; height:400px; top:0; right:-120px;"></div>
     <div class="container section">
       <div class="vdp">
-        <div>
+        <div class="vdp-main-col">
           <div class="gallery">
             <div class="gallery__main">
               <img id="mainPhoto" src="${allPhotos[0] || ""}" alt="${car.year} ${car.make} ${car.model}">
@@ -196,8 +196,12 @@ function renderVehicleDetail() {
     </div>
   `;
 
+  const mainPhoto = document.getElementById("mainPhoto");
+  if (mainPhoto) {
+    mainPhoto.addEventListener("click", () => openLightbox(mainPhoto.src));
+  }
+
   if (allPhotos.length > 1) {
-    const mainPhoto = document.getElementById("mainPhoto");
     document.getElementById("thumbRow").addEventListener("click", (e) => {
       const img = e.target.closest("img");
       if (!img) return;
