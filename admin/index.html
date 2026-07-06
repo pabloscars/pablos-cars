@@ -10,6 +10,18 @@
   <!-- This loads the Decap CMS admin dashboard. Log in with your
        Netlify Identity account (see README.md for one-time setup)
        to add, edit, or remove listings and upload photos. -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.reload();
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
