@@ -45,7 +45,13 @@ function renderFeed(targetId, cars) {
 
 /* Available first, then sold — one continuous feed, no headers */
 function renderHomeFeed() {
-  const available = CARS.filter(c => c.status === "available").sort((a,b) => new Date(b.dateAdded||0) - new Date(a.dateAdded||0));
+  const hasOrder = c => c.sortOrder !== undefined && c.sortOrder !== null && c.sortOrder !== "";
+  const available = CARS.filter(c => c.status === "available").sort((a, b) => {
+    if (hasOrder(a) && hasOrder(b)) return a.sortOrder - b.sortOrder;
+    if (hasOrder(a)) return -1;
+    if (hasOrder(b)) return 1;
+    return new Date(b.dateAdded||0) - new Date(a.dateAdded||0);
+  });
   const sold = CARS.filter(c => c.status === "sold").sort((a,b) => new Date(b.dateSold||0) - new Date(a.dateSold||0));
   renderFeed("carFeed", [...available, ...sold]);
 }

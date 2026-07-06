@@ -19,6 +19,7 @@ collections:
     fields:
       - { label: "Unique ID (no spaces, e.g. 2016-civic-02)", name: "id", widget: "string" }
       - { label: "Status", name: "status", widget: "select", options: ["available", "sold"] }
+      - { label: "Display Order (lower numbers show first on the homepage; leave blank to just sort by date added)", name: "sortOrder", widget: "number", value_type: "int", required: false }
       - { label: "Year", name: "year", widget: "number", value_type: "int" }
       - { label: "Make", name: "make", widget: "string" }
       - { label: "Model", name: "model", widget: "string" }
@@ -56,21 +57,23 @@ collections:
         required: false
         field: { label: "Highlight", name: "item", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
-      - label: "Photos (first one is the cover photo)"
+      - label: "Photos (first one is the cover photo — select multiple at once in the picker)"
         name: "photos"
-        widget: "list"
-        field: { label: "Photo", name: "photo", widget: "image" }
+        widget: "image"
+        multiple: true
+        media_library: { config: { multiple: true } }
       - label: "Photo Sections"
         name: "photoSections"
         widget: "object"
         required: false
         collapsed: true
         fields:
-          - label: "Auction Photos (from the original auction listing)"
+          - label: "Auction Photos (from the original auction listing — select multiple at once)"
             name: "auctionPhotos"
-            widget: "list"
+            widget: "image"
+            multiple: true
             required: false
-            field: { label: "Photo", name: "photo", widget: "image" }
+            media_library: { config: { multiple: true } }
       - { label: "Video URL (YouTube/Facebook link, or leave blank)", name: "videoUrl", widget: "string", required: false }
       - { label: "Facebook Listing Link (optional, leave blank to use your profile)", name: "facebookUrl", widget: "string", required: false }
       - { label: "Date Added", name: "dateAdded", widget: "datetime", format: "YYYY-MM-DD", required: false }
