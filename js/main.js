@@ -181,18 +181,19 @@ function carCardHTML(car) {
   </a>`;
 }
 
-function renderFeed(targetId, cars) {
-  const el = document.getElementById(targetId);
-  if (!el) return;
-  if (!cars.length) {
-    el.innerHTML = `<div class="empty-state">No vehicles listed right now — check back soon.</div>`;
-    return;
-  }
-  el.innerHTML = cars.map(carCardHTML).join("");
+function cardsOrEmptyState(cars) {
+  if (!cars.length) return `<div class="empty-state">No vehicles listed right now — check back soon.</div>`;
+  return `<div class="grid">${cars.map(carCardHTML).join("")}</div>`;
 }
 
-/* Available first, then sold — one continuous feed, no headers */
+/* Just Arrived (available) first, with a "Sold" divider before the sold
+   archive — unless ?view=available is set (from the "View Available
+   Cars" link on a sold car's page), in which case sold cars are omitted
+   entirely. */
 function renderHomeFeed() {
+  const root = document.getElementById("carFeedRoot");
+  if (!root) return;
+
   const hasOrder = c => c.sortOrder !== undefined && c.sortOrder !== null && c.sortOrder !== "";
   const available = CARS.filter(c => c.status === "available").sort((a, b) => {
     if (hasOrder(a) && hasOrder(b)) return a.sortOrder - b.sortOrder;
@@ -201,7 +202,22 @@ function renderHomeFeed() {
     return new Date(b.dateAdded||0) - new Date(a.dateAdded||0);
   });
   const sold = CARS.filter(c => c.status === "sold").sort((a,b) => new Date(b.dateSold||0) - new Date(a.dateSold||0));
-  renderFeed("carFeed", [...available, ...sold]);
+
+  const availableOnly = new URLSearchParams(window.location.search).get("view") === "available";
+
+  let html = `
+    <div class="feed-heading"><h2>Just Arrived</h2></div>
+    ${cardsOrEmptyState(available)}
+  `;
+
+  if (!availableOnly && sold.length) {
+    html += `
+      <div class="feed-divider">Sold</div>
+      ${cardsOrEmptyState(sold)}
+    `;
+  }
+
+  root.innerHTML = html;
 }
 
 /* ---------------- Vehicle detail page ---------------- */
@@ -348,7 +364,7 @@ function renderVehicleDetail() {
             ` : `
             <div class="info-block">
               <p>This vehicle has already sold.</p>
-              <a href="index.html" class="btn btn--orange btn--block">View Available Cars</a>
+              <a href="index.html?view=available" class="btn btn--orange btn--block">View Available Cars</a>
             </div>`}
           </aside>
 
