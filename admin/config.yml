@@ -45,12 +45,187 @@ collections:
       - { label: "Known Issues", name: "knownIssues", widget: "text", required: false }
       - { label: "What Was Repaired", name: "whatWasRepaired", widget: "text", required: false }
       - { label: "Why This Title Status", name: "whySalvage", widget: "text", required: false }
-      - { label: "Remote Start", name: "remoteStart", widget: "boolean", default: false, required: false }
-      - { label: "Heated Seats", name: "heatedSeats", widget: "boolean", default: false, required: false }
-      - { label: "Apple CarPlay", name: "appleCarPlay", widget: "boolean", default: false, required: false }
-      - { label: "Backup / Reverse Camera", name: "backupCamera", widget: "boolean", default: false, required: false }
-      - { label: "Touchscreen Radio", name: "touchscreenRadio", widget: "boolean", default: false, required: false }
-      - { label: "Bluetooth", name: "bluetooth", widget: "boolean", default: false, required: false }
+      - label: "Comfort & Convenience"
+        name: "comfortFeatures"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Remote Start", name: "remoteStart", widget: "boolean", default: false, required: false }
+          - { label: "Push Button Start", name: "pushButtonStart", widget: "boolean", default: false, required: false }
+          - { label: "Keyless Entry", name: "keylessEntry", widget: "boolean", default: false, required: false }
+          - { label: "Heated Seats", name: "heatedSeats", widget: "boolean", default: false, required: false }
+          - { label: "Heated Steering Wheel", name: "heatedSteeringWheel", widget: "boolean", default: false, required: false }
+          - { label: "Ventilated Seats", name: "ventilatedSeats", widget: "boolean", default: false, required: false }
+          - { label: "Power Seats", name: "powerSeats", widget: "boolean", default: false, required: false }
+          - { label: "Memory Seats", name: "memorySeats", widget: "boolean", default: false, required: false }
+          - { label: "Dual Climate Control", name: "dualClimateControl", widget: "boolean", default: false, required: false }
+          - { label: "Rear A/C Vents", name: "rearACVents", widget: "boolean", default: false, required: false }
+          - { label: "Ambient Lighting", name: "ambientLighting", widget: "boolean", default: false, required: false }
+          - { label: "Wireless Phone Charger", name: "wirelessPhoneCharger", widget: "boolean", default: false, required: false }
+          - { label: "Auto-Dimming Mirrors", name: "autoDimmingMirrors", widget: "boolean", default: false, required: false }
+          - { label: "Rain-Sensing Wipers", name: "rainSensingWipers", widget: "boolean", default: false, required: false }
+          - { label: "Power Liftgate", name: "powerLiftgate", widget: "boolean", default: false, required: false }
+          - { label: "Hands-Free Liftgate", name: "handsFreeLiftgate", widget: "boolean", default: false, required: false }
+          - { label: "Remote Trunk Release", name: "remoteTrunkRelease", widget: "boolean", default: false, required: false }
+          - { label: "Garage Door Opener", name: "garageDoorOpener", widget: "boolean", default: false, required: false }
+          - { label: "Rear Sunshade", name: "rearSunshade", widget: "boolean", default: false, required: false }
+          - { label: "Panoramic Sunroof", name: "panoramicSunroof", widget: "boolean", default: false, required: false }
+          - { label: "Sunroof / Moonroof", name: "sunroofMoonroof", widget: "boolean", default: false, required: false }
+      - label: "Tech"
+        name: "techFeatures"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Apple CarPlay", name: "appleCarPlay", widget: "boolean", default: false, required: false }
+          - { label: "Android Auto", name: "androidAuto", widget: "boolean", default: false, required: false }
+          - { label: "Bluetooth", name: "bluetooth", widget: "boolean", default: false, required: false }
+          - { label: "Navigation", name: "navigation", widget: "boolean", default: false, required: false }
+          - { label: "Backup Camera", name: "backupCamera", widget: "boolean", default: false, required: false }
+          - { label: "360 Camera", name: "camera360", widget: "boolean", default: false, required: false }
+          - { label: "Front Parking Sensors", name: "frontParkingSensors", widget: "boolean", default: false, required: false }
+          - { label: "Rear Parking Sensors", name: "rearParkingSensors", widget: "boolean", default: false, required: false }
+          - { label: "Heads-Up Display", name: "headsUpDisplay", widget: "boolean", default: false, required: false }
+          - { label: "Digital Gauge Cluster", name: "digitalGaugeCluster", widget: "boolean", default: false, required: false }
+          - { label: "Premium Sound System", name: "premiumSoundSystem", widget: "boolean", default: false, required: false }
+          - { label: "Bose Audio", name: "boseAudio", widget: "boolean", default: false, required: false }
+          - { label: "Harman Kardon Audio", name: "harmanKardonAudio", widget: "boolean", default: false, required: false }
+          - { label: "Touchscreen Radio", name: "touchscreenRadio", widget: "boolean", default: false, required: false }
+          - { label: "USB-C Ports", name: "usbCPorts", widget: "boolean", default: false, required: false }
+          - { label: "Rear USB Ports", name: "rearUsbPorts", widget: "boolean", default: false, required: false }
+          - { label: "WiFi Hotspot", name: "wifiHotspot", widget: "boolean", default: false, required: false }
+          - { label: "Satellite Radio", name: "satelliteRadio", widget: "boolean", default: false, required: false }
+          - { label: "Wireless CarPlay", name: "wirelessCarPlay", widget: "boolean", default: false, required: false }
+      - label: "Driver Assist & Safety"
+        name: "driverAssistFeatures"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Blind Spot Monitoring", name: "blindSpotMonitoring", widget: "boolean", default: false, required: false }
+          - { label: "Lane Keep Assist", name: "laneKeepAssist", widget: "boolean", default: false, required: false }
+          - { label: "Lane Departure Warning", name: "laneDepartureWarning", widget: "boolean", default: false, required: false }
+          - { label: "Adaptive Cruise Control", name: "adaptiveCruiseControl", widget: "boolean", default: false, required: false }
+          - { label: "Forward Collision Alert", name: "forwardCollisionAlert", widget: "boolean", default: false, required: false }
+          - { label: "Automatic Emergency Braking", name: "automaticEmergencyBraking", widget: "boolean", default: false, required: false }
+          - { label: "Rear Cross Traffic Alert", name: "rearCrossTrafficAlert", widget: "boolean", default: false, required: false }
+          - { label: "Parking Assist", name: "parkingAssist", widget: "boolean", default: false, required: false }
+          - { label: "Collision Avoidance", name: "collisionAvoidance", widget: "boolean", default: false, required: false }
+          - { label: "Pedestrian Detection", name: "pedestrianDetection", widget: "boolean", default: false, required: false }
+          - { label: "Traffic Sign Recognition", name: "trafficSignRecognition", widget: "boolean", default: false, required: false }
+          - { label: "Automatic High Beams", name: "automaticHighBeams", widget: "boolean", default: false, required: false }
+          - { label: "Tire Pressure Monitoring", name: "tirePressureMonitoring", widget: "boolean", default: false, required: false }
+          - { label: "Stability Control", name: "stabilityControl", widget: "boolean", default: false, required: false }
+          - { label: "ABS Brakes", name: "absBrakes", widget: "boolean", default: false, required: false }
+      - label: "Performance & Driving"
+        name: "performanceFeatures"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "AWD", name: "awd", widget: "boolean", default: false, required: false }
+          - { label: "4WD", name: "fourWD", widget: "boolean", default: false, required: false }
+          - { label: "RWD", name: "rwd", widget: "boolean", default: false, required: false }
+          - { label: "Sport Mode", name: "sportMode", widget: "boolean", default: false, required: false }
+          - { label: "Paddle Shifters", name: "paddleShifters", widget: "boolean", default: false, required: false }
+          - { label: "Turbocharged", name: "turbocharged", widget: "boolean", default: false, required: false }
+          - { label: "Supercharged", name: "supercharged", widget: "boolean", default: false, required: false }
+          - { label: "Brembo Brakes", name: "bremboBrakes", widget: "boolean", default: false, required: false }
+          - { label: "Performance Exhaust", name: "performanceExhaust", widget: "boolean", default: false, required: false }
+          - { label: "Air Suspension", name: "airSuspension", widget: "boolean", default: false, required: false }
+          - { label: "Tow Package", name: "towPackage", widget: "boolean", default: false, required: false }
+          - { label: "Limited Slip Differential", name: "limitedSlipDifferential", widget: "boolean", default: false, required: false }
+          - { label: "Off-Road Package", name: "offRoadPackage", widget: "boolean", default: false, required: false }
+          - { label: "Drive Modes", name: "driveModes", widget: "boolean", default: false, required: false }
+          - { label: "Launch Control", name: "launchControl", widget: "boolean", default: false, required: false }
+      - label: "Exterior"
+        name: "exteriorFeatures"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "LED Headlights", name: "ledHeadlights", widget: "boolean", default: false, required: false }
+          - { label: "HID Headlights", name: "hidHeadlights", widget: "boolean", default: false, required: false }
+          - { label: "Fog Lights", name: "fogLights", widget: "boolean", default: false, required: false }
+          - { label: "Daytime Running Lights", name: "daytimeRunningLights", widget: "boolean", default: false, required: false }
+          - { label: "Tinted Windows", name: "tintedWindows", widget: "boolean", default: false, required: false }
+          - { label: "Roof Rails", name: "roofRails", widget: "boolean", default: false, required: false }
+          - { label: "Running Boards", name: "runningBoards", widget: "boolean", default: false, required: false }
+          - { label: "Bed Liner", name: "bedLiner", widget: "boolean", default: false, required: false }
+          - { label: "Tow Hitch", name: "towHitch", widget: "boolean", default: false, required: false }
+          - { label: "Heated Mirrors", name: "heatedMirrors", widget: "boolean", default: false, required: false }
+          - { label: "Power Folding Mirrors", name: "powerFoldingMirrors", widget: "boolean", default: false, required: false }
+          - { label: "Privacy Glass", name: "privacyGlass", widget: "boolean", default: false, required: false }
+      - label: "Interior"
+        name: "interiorFeatures"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Third Row Seating", name: "thirdRowSeating", widget: "boolean", default: false, required: false }
+          - { label: "Folding Rear Seats", name: "foldingRearSeats", widget: "boolean", default: false, required: false }
+          - { label: "Split Folding Rear Seats", name: "splitFoldingRearSeats", widget: "boolean", default: false, required: false }
+          - { label: "Heated Rear Seats", name: "heatedRearSeats", widget: "boolean", default: false, required: false }
+          - { label: "Rear Entertainment", name: "rearEntertainment", widget: "boolean", default: false, required: false }
+          - { label: "Large Cargo Space", name: "largeCargoSpace", widget: "boolean", default: false, required: false }
+          - { label: "Flat Folding Seats", name: "flatFoldingSeats", widget: "boolean", default: false, required: false }
+          - { label: "Adjustable Lumbar Support", name: "adjustableLumbarSupport", widget: "boolean", default: false, required: false }
+      - label: "Condition & Ownership"
+        name: "conditionFeatures"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Runs & Drives", name: "runsAndDrives", widget: "boolean", default: false, required: false }
+          - { label: "Highway Tested", name: "highwayTested", widget: "boolean", default: false, required: false }
+          - { label: "Cold A/C", name: "coldAC", widget: "boolean", default: false, required: false }
+          - { label: "No Warning Lights", name: "noWarningLights", widget: "boolean", default: false, required: false }
+          - { label: "No Airbags Deployed", name: "noAirbagsDeployed", widget: "boolean", default: false, required: false }
+          - { label: "No Frame Damage", name: "noFrameDamage", widget: "boolean", default: false, required: false }
+          - { label: "No Flood Damage", name: "noFloodDamage", widget: "boolean", default: false, required: false }
+          - { label: "NC State Inspected", name: "ncStateInspected", widget: "boolean", default: false, required: false }
+          - { label: "Fresh Oil Change", name: "freshOilChange", widget: "boolean", default: false, required: false }
+          - { label: "Fresh Alignment", name: "freshAlignment", widget: "boolean", default: false, required: false }
+          - { label: "Fresh Tires", name: "freshTires", widget: "boolean", default: false, required: false }
+          - { label: "Single Key", name: "singleKey", widget: "boolean", default: false, required: false }
+          - { label: "Two Keys", name: "twoKeys", widget: "boolean", default: false, required: false }
+      - label: "Salvage / Rebuild Specific"
+        name: "salvageFeatures"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Theft Recovery", name: "theftRecovery", widget: "boolean", default: false, required: false }
+          - { label: "Cosmetic Damage", name: "cosmeticDamage", widget: "boolean", default: false, required: false }
+          - { label: "Hail Damage", name: "hailDamage", widget: "boolean", default: false, required: false }
+          - { label: "Side Swipe Damage", name: "sideSwipeDamage", widget: "boolean", default: false, required: false }
+          - { label: "Front End Damage", name: "frontEndDamage", widget: "boolean", default: false, required: false }
+          - { label: "Rear End Damage", name: "rearEndDamage", widget: "boolean", default: false, required: false }
+          - { label: "Minor Collision", name: "minorCollision", widget: "boolean", default: false, required: false }
+          - { label: "Rebuilt Title", name: "rebuiltTitle", widget: "boolean", default: false, required: false }
+          - { label: "Salvage History", name: "salvageHistory", widget: "boolean", default: false, required: false }
+          - { label: "Structural Damage Repaired", name: "structuralDamageRepaired", widget: "boolean", default: false, required: false }
+          - { label: "Airbags Replaced", name: "airbagsReplaced", widget: "boolean", default: false, required: false }
+          - { label: "Professionally Repaired", name: "professionallyRepaired", widget: "boolean", default: false, required: false }
+          - { label: "State Rebuilt Inspection Passed", name: "stateRebuiltInspectionPassed", widget: "boolean", default: false, required: false }
+      - label: "Vehicle History & Service"
+        name: "historyFeatures"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Service Records Available", name: "serviceRecordsAvailable", widget: "boolean", default: false, required: false }
+          - { label: "CarFax Available", name: "carfaxAvailable", widget: "boolean", default: false, required: false }
+          - { label: "One Owner", name: "oneOwner", widget: "boolean", default: false, required: false }
+          - { label: "Two Owner", name: "twoOwner", widget: "boolean", default: false, required: false }
+          - { label: "Fleet Maintained", name: "fleetMaintained", widget: "boolean", default: false, required: false }
+          - { label: "Dealer Serviced", name: "dealerServiced", widget: "boolean", default: false, required: false }
+          - { label: "New Brakes", name: "newBrakes", widget: "boolean", default: false, required: false }
+          - { label: "New Tires", name: "newTires", widget: "boolean", default: false, required: false }
+          - { label: "New Battery", name: "newBattery", widget: "boolean", default: false, required: false }
+          - { label: "New Suspension Parts", name: "newSuspensionParts", widget: "boolean", default: false, required: false }
+          - { label: "Transmission Serviced", name: "transmissionServiced", widget: "boolean", default: false, required: false }
       - label: "Other Highlights"
         name: "highlights"
         widget: "list"

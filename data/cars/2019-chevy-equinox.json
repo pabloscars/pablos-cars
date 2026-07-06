@@ -35,18 +35,14 @@
   "transmission": "5 Speed Automatic Transmission",
   "mpg": "15 City / 25hwy",
   "exteriorColor": "Black",
-  "backupCamera": true,
   "facebookUrl": "",
   "price": 12100,
   "model": "Challenger",
   "titleStatus": "Salvage Title",
   "mileage": 81000,
-  "appleCarPlay": true,
   "make": "Dodge",
-  "bluetooth": true,
   "sortOrder": 100,
   "fuelType": "Gasoline",
-  "touchscreenRadio": true,
   "whatWasRepaired": "New badges installed\nFront Rotors and Pads\nRear Rotors and Pads\nOil Service\nCabin and Air Filters\nNew Windshield Wipers",
   "dateAdded": "2024-06-02",
   "status": "sold",
@@ -59,14 +55,12 @@
     "Theft Vehicle"
   ],
   "id": "2014-Charger-30",
-  "remoteStart": true,
   "description": "Super clean Charger with low miles! Drives and handles with no issues at all! A/C & Heat work perfectly! Just did a complete oil service along with replacing the Air and Cabin filters. Installed new rotors and pads all the way around for both front and rear axles. Vehicle does have multiple scratches here and there which I tried to depict, the best i could in the photos. Basically has all the extra features you could ask for! Also has a Corsa Performance Exhaust System installed, which sounds nasty",
   "bodyType": "sedan",
   "year": 2014,
   "knownIssues": "Scratches in the badge areas from theft",
   "showVin": false,
   "whySalvage": "Vehicle was stolen and reported as a theft recovery",
-  "heatedSeats": true,
   "highlights": [
     "Corsa Performance Exhaust",
     "Power Adjustable Pedals",
@@ -75,5 +69,15 @@
     "Heated Rear Seats",
     "Heated Steering Wheel"
   ],
-  "image": "/images/uploads/396710632_6636185499784415_5863468159248758998_n.jpg"
+  "image": "/images/uploads/396710632_6636185499784415_5863468159248758998_n.jpg",
+  "comfortFeatures": {
+    "remoteStart": true,
+    "heatedSeats": true
+  },
+  "techFeatures": {
+    "appleCarPlay": true,
+    "backupCamera": true,
+    "touchscreenRadio": true,
+    "bluetooth": true
+  }
 }

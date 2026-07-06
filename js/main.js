@@ -2,6 +2,154 @@
    RENDERING LOGIC
    ============================================================ */
 
+const FEATURE_CATEGORIES = [
+  { key: "comfortFeatures", label: "Comfort & Convenience", items: [
+    ["remoteStart", "Remote Start"],
+    ["pushButtonStart", "Push Button Start"],
+    ["keylessEntry", "Keyless Entry"],
+    ["heatedSeats", "Heated Seats"],
+    ["heatedSteeringWheel", "Heated Steering Wheel"],
+    ["ventilatedSeats", "Ventilated Seats"],
+    ["powerSeats", "Power Seats"],
+    ["memorySeats", "Memory Seats"],
+    ["dualClimateControl", "Dual Climate Control"],
+    ["rearACVents", "Rear A/C Vents"],
+    ["ambientLighting", "Ambient Lighting"],
+    ["wirelessPhoneCharger", "Wireless Phone Charger"],
+    ["autoDimmingMirrors", "Auto-Dimming Mirrors"],
+    ["rainSensingWipers", "Rain-Sensing Wipers"],
+    ["powerLiftgate", "Power Liftgate"],
+    ["handsFreeLiftgate", "Hands-Free Liftgate"],
+    ["remoteTrunkRelease", "Remote Trunk Release"],
+    ["garageDoorOpener", "Garage Door Opener"],
+    ["rearSunshade", "Rear Sunshade"],
+    ["panoramicSunroof", "Panoramic Sunroof"],
+    ["sunroofMoonroof", "Sunroof / Moonroof"],
+  ] },
+  { key: "techFeatures", label: "Tech", items: [
+    ["appleCarPlay", "Apple CarPlay"],
+    ["androidAuto", "Android Auto"],
+    ["bluetooth", "Bluetooth"],
+    ["navigation", "Navigation"],
+    ["backupCamera", "Backup Camera"],
+    ["camera360", "360 Camera"],
+    ["frontParkingSensors", "Front Parking Sensors"],
+    ["rearParkingSensors", "Rear Parking Sensors"],
+    ["headsUpDisplay", "Heads-Up Display"],
+    ["digitalGaugeCluster", "Digital Gauge Cluster"],
+    ["premiumSoundSystem", "Premium Sound System"],
+    ["boseAudio", "Bose Audio"],
+    ["harmanKardonAudio", "Harman Kardon Audio"],
+    ["touchscreenRadio", "Touchscreen Radio"],
+    ["usbCPorts", "USB-C Ports"],
+    ["rearUsbPorts", "Rear USB Ports"],
+    ["wifiHotspot", "WiFi Hotspot"],
+    ["satelliteRadio", "Satellite Radio"],
+    ["wirelessCarPlay", "Wireless CarPlay"],
+  ] },
+  { key: "driverAssistFeatures", label: "Driver Assist & Safety", items: [
+    ["blindSpotMonitoring", "Blind Spot Monitoring"],
+    ["laneKeepAssist", "Lane Keep Assist"],
+    ["laneDepartureWarning", "Lane Departure Warning"],
+    ["adaptiveCruiseControl", "Adaptive Cruise Control"],
+    ["forwardCollisionAlert", "Forward Collision Alert"],
+    ["automaticEmergencyBraking", "Automatic Emergency Braking"],
+    ["rearCrossTrafficAlert", "Rear Cross Traffic Alert"],
+    ["parkingAssist", "Parking Assist"],
+    ["collisionAvoidance", "Collision Avoidance"],
+    ["pedestrianDetection", "Pedestrian Detection"],
+    ["trafficSignRecognition", "Traffic Sign Recognition"],
+    ["automaticHighBeams", "Automatic High Beams"],
+    ["tirePressureMonitoring", "Tire Pressure Monitoring"],
+    ["stabilityControl", "Stability Control"],
+    ["absBrakes", "ABS Brakes"],
+  ] },
+  { key: "performanceFeatures", label: "Performance & Driving", items: [
+    ["awd", "AWD"],
+    ["fourWD", "4WD"],
+    ["rwd", "RWD"],
+    ["sportMode", "Sport Mode"],
+    ["paddleShifters", "Paddle Shifters"],
+    ["turbocharged", "Turbocharged"],
+    ["supercharged", "Supercharged"],
+    ["bremboBrakes", "Brembo Brakes"],
+    ["performanceExhaust", "Performance Exhaust"],
+    ["airSuspension", "Air Suspension"],
+    ["towPackage", "Tow Package"],
+    ["limitedSlipDifferential", "Limited Slip Differential"],
+    ["offRoadPackage", "Off-Road Package"],
+    ["driveModes", "Drive Modes"],
+    ["launchControl", "Launch Control"],
+  ] },
+  { key: "exteriorFeatures", label: "Exterior", items: [
+    ["ledHeadlights", "LED Headlights"],
+    ["hidHeadlights", "HID Headlights"],
+    ["fogLights", "Fog Lights"],
+    ["daytimeRunningLights", "Daytime Running Lights"],
+    ["tintedWindows", "Tinted Windows"],
+    ["roofRails", "Roof Rails"],
+    ["runningBoards", "Running Boards"],
+    ["bedLiner", "Bed Liner"],
+    ["towHitch", "Tow Hitch"],
+    ["heatedMirrors", "Heated Mirrors"],
+    ["powerFoldingMirrors", "Power Folding Mirrors"],
+    ["privacyGlass", "Privacy Glass"],
+  ] },
+  { key: "interiorFeatures", label: "Interior", items: [
+    ["thirdRowSeating", "Third Row Seating"],
+    ["foldingRearSeats", "Folding Rear Seats"],
+    ["splitFoldingRearSeats", "Split Folding Rear Seats"],
+    ["heatedRearSeats", "Heated Rear Seats"],
+    ["rearEntertainment", "Rear Entertainment"],
+    ["largeCargoSpace", "Large Cargo Space"],
+    ["flatFoldingSeats", "Flat Folding Seats"],
+    ["adjustableLumbarSupport", "Adjustable Lumbar Support"],
+  ] },
+  { key: "conditionFeatures", label: "Condition & Ownership", items: [
+    ["runsAndDrives", "Runs & Drives"],
+    ["highwayTested", "Highway Tested"],
+    ["coldAC", "Cold A/C"],
+    ["noWarningLights", "No Warning Lights"],
+    ["noAirbagsDeployed", "No Airbags Deployed"],
+    ["noFrameDamage", "No Frame Damage"],
+    ["noFloodDamage", "No Flood Damage"],
+    ["ncStateInspected", "NC State Inspected"],
+    ["freshOilChange", "Fresh Oil Change"],
+    ["freshAlignment", "Fresh Alignment"],
+    ["freshTires", "Fresh Tires"],
+    ["singleKey", "Single Key"],
+    ["twoKeys", "Two Keys"],
+  ] },
+  { key: "salvageFeatures", label: "Salvage / Rebuild Specific", items: [
+    ["theftRecovery", "Theft Recovery"],
+    ["cosmeticDamage", "Cosmetic Damage"],
+    ["hailDamage", "Hail Damage"],
+    ["sideSwipeDamage", "Side Swipe Damage"],
+    ["frontEndDamage", "Front End Damage"],
+    ["rearEndDamage", "Rear End Damage"],
+    ["minorCollision", "Minor Collision"],
+    ["rebuiltTitle", "Rebuilt Title"],
+    ["salvageHistory", "Salvage History"],
+    ["structuralDamageRepaired", "Structural Damage Repaired"],
+    ["airbagsReplaced", "Airbags Replaced"],
+    ["professionallyRepaired", "Professionally Repaired"],
+    ["stateRebuiltInspectionPassed", "State Rebuilt Inspection Passed"],
+  ] },
+  { key: "historyFeatures", label: "Vehicle History & Service", items: [
+    ["serviceRecordsAvailable", "Service Records Available"],
+    ["carfaxAvailable", "CarFax Available"],
+    ["oneOwner", "One Owner"],
+    ["twoOwner", "Two Owner"],
+    ["fleetMaintained", "Fleet Maintained"],
+    ["dealerServiced", "Dealer Serviced"],
+    ["newBrakes", "New Brakes"],
+    ["newTires", "New Tires"],
+    ["newBattery", "New Battery"],
+    ["newSuspensionParts", "New Suspension Parts"],
+    ["transmissionServiced", "Transmission Serviced"],
+  ] }
+];
+
 function money(n) { return "$" + Number(n).toLocaleString("en-US"); }
 function miles(n) { return Number(n).toLocaleString("en-US") + " mi"; }
 
@@ -81,18 +229,19 @@ function renderVehicleDetail() {
   const allPhotos = [car.image, ...(car.photos || [])].filter(Boolean);
   const tagsHTML = car.tags.map(t => `<span class="chip">${t}</span>`).join("");
 
-  const FEATURE_FLAGS = [
-    ["remoteStart", "Remote Start"],
-    ["heatedSeats", "Heated Seats"],
-    ["appleCarPlay", "Apple CarPlay"],
-    ["backupCamera", "Backup / Reverse Camera"],
-    ["touchscreenRadio", "Touchscreen Radio"],
-    ["bluetooth", "Bluetooth"]
-  ];
-  const allHighlights = [
-    ...FEATURE_FLAGS.filter(([key]) => car[key]).map(([, label]) => label),
-    ...(car.highlights || [])
-  ];
+  const allHighlights = car.highlights || [];
+
+  const featureCategoriesHTML = FEATURE_CATEGORIES
+    .map(cat => {
+      const checked = cat.items.filter(([key]) => car[cat.key] && car[cat.key][key]);
+      if (!checked.length) return "";
+      return `
+        <div class="feature-category">
+          <h4>${cat.label}</h4>
+          <ul class="highlights-list">${checked.map(([, label]) => `<li>${label}</li>`).join("")}</ul>
+        </div>`;
+    })
+    .join("");
 
   const sections = [
     ["auctionPhotos", "Auction Photos"],
@@ -151,10 +300,16 @@ function renderVehicleDetail() {
               <h3>What Was Repaired</h3>
               <ul class="highlights-list">${repairedItems.map(item => `<li>${item}</li>`).join("")}</ul>
             </div>
+            ${allHighlights.length ? `
             <div class="feature-card feature-card--wide">
               <h3>Highlights &amp; Features</h3>
               <ul class="highlights-list">${allHighlights.map(h => `<li>${h}</li>`).join("")}</ul>
-            </div>
+            </div>` : ""}
+            ${featureCategoriesHTML ? `
+            <div class="feature-card feature-card--wide">
+              <h3>Vehicle Features</h3>
+              ${featureCategoriesHTML}
+            </div>` : ""}
           </div>
         </div>
 
