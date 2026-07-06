@@ -1,29 +1,47 @@
 {
   "cars": [
     {
-      "id": "2025-nissan-versa-sr",
-      "status": "available",
-      "year": 2025,
-      "make": "Nissan",
-      "model": "Versa",
+      "photoSections": {
+        "exterior": [],
+        "interior": [],
+        "engineBay": [],
+        "damageBefore": [],
+        "repairDocs": [],
+        "tires": [],
+        "undercarriage": [],
+        "titleDocs": []
+      },
+      "photos": [
+        "images/cars/2025-nissan-versa-sr/cover.jpg",
+        "images/cars/2025-nissan-versa-sr/gallery-2.jpg"
+      ],
       "trim": "SR",
-      "bodyType": "sedan",
+      "engine": "1.6L 4-Cylinder, DOHC, VVT",
+      "color": "Gun Metallic Grey / Black cloth w/ red stitching",
+      "transmission": "Xtronic CVT, FWD",
+      "mpg": "32 city / 40 hwy",
+      "facebookUrl": "",
       "price": 13800,
-      "mileage": 17200,
-      "location": "Asheville, NC",
+      "model": "Versa",
       "titleStatus": "Rebuilt Title",
+      "mileage": 17200,
+      "make": "Nissan",
+      "whatWasRepaired": "Cosmetic hail repair. Recent maintenance: oil change at 16k miles, front wipers, air & cabin air filters, NC state inspection completed.",
+      "dateAdded": "2026-07-05",
+      "status": "available",
+      "videoUrl": "",
+      "location": "Asheville, NC",
       "tags": [
         "Rebuilt Title",
         "Hail Damage"
       ],
-      "engine": "1.6L 4-Cylinder, DOHC, VVT",
-      "transmission": "Xtronic CVT, FWD",
-      "color": "Gun Metallic Grey / Black cloth w/ red stitching",
-      "mpg": "32 city / 40 hwy",
+      "id": "2025-nissan-versa-sr",
+      "description": "Genuinely save thousands on this highest-trim Versa SR, simply due to minor hail damage. Fresh maintenance just completed and a professional deep clean performed. Runs and drives excellent.",
+      "bodyType": "sedan",
+      "year": 2025,
+      "knownIssues": "Cosmetic hail damage only — see photos and video. No frame or structural damage, no airbags deployed, no glass broken.",
       "showVin": false,
-      "knownIssues": "Cosmetic hail damage only \u2014 see photos and video. No frame or structural damage, no airbags deployed, no glass broken.",
-      "whatWasRepaired": "Cosmetic hail repair. Recent maintenance: oil change at 16k miles, front wipers, air & cabin air filters, NC state inspection completed.",
-      "whySalvage": "Hail damage. Comparable clean-title Versa SR models run $17k+ \u2014 this one is priced well below that purely because of cosmetic hail damage, not mechanical condition.",
+      "whySalvage": "Hail damage. Comparable clean-title Versa SR models run $17k+ — this one is priced well below that purely because of cosmetic hail damage, not mechanical condition.",
       "highlights": [
         "Remote start, keyless entry, push-button start",
         "Heated front seats",
@@ -35,12 +53,9 @@
         "17\" aluminum wheels",
         "Wireless charging",
         "Rear seats fold down for trunk access"
-      ],
-      "description": "Genuinely save thousands on this highest-trim Versa SR, simply due to minor hail damage. Fresh maintenance just completed and a professional deep clean performed. Runs and drives excellent.",
-      "photos": [
-        "images/cars/2025-nissan-versa-sr/cover.jpg",
-        "images/cars/2025-nissan-versa-sr/gallery-2.jpg"
-      ],
+      ]
+    },
+    {
       "photoSections": {
         "exterior": [],
         "interior": [],
@@ -51,41 +66,41 @@
         "undercarriage": [],
         "titleDocs": []
       },
-      "videoUrl": "",
-      "facebookUrl": "",
-      "dateAdded": "2026-07-05"
-    },
-    {
-      "id": "2018-jeep-cherokee",
-      "status": "available",
-      "year": 2018,
-      "make": "Jeep",
-      "model": "Cherokee",
+      "photos": [
+        "https://picsum.photos/seed/cherokee1/1200/900"
+      ],
       "trim": "Latitude",
-      "bodyType": "suv",
+      "engine": "2.4L 4-Cylinder",
+      "transmission": "Automatic (9-Speed)",
+      "facebookUrl": "",
       "price": 11500,
-      "mileage": 78300,
-      "location": "Asheville, NC",
+      "model": "Cherokee",
       "titleStatus": "Salvage Title",
+      "mileage": 78300,
+      "make": "Jeep",
+      "whatWasRepaired": "No structural repair needed. Branded for hail damage only; full mechanical inspection performed.",
+      "dateAdded": "2026-06-02",
+      "status": "available",
+      "videoUrl": "",
+      "location": "Asheville, NC",
       "tags": [
         "Salvage Title",
         "Hail Damage"
       ],
-      "engine": "2.4L 4-Cylinder",
-      "transmission": "Automatic (9-Speed)",
+      "id": "2018-jeep-cherokee",
+      "description": "Textbook example of a salvage car that's a genuinely good deal — hail damage is cosmetic, not mechanical.",
+      "bodyType": "suv",
+      "year": 2018,
+      "knownIssues": "Cosmetic hail dents on hood and roof — does not affect function, paint is not broken.",
       "showVin": false,
-      "knownIssues": "Cosmetic hail dents on hood and roof \u2014 does not affect function, paint is not broken.",
-      "whatWasRepaired": "No structural repair needed. Branded for hail damage only; full mechanical inspection performed.",
       "whySalvage": "A hailstorm caused cosmetic dents across the hood and roof. Insurance payout math on hail claims almost always totals the car even when it still runs perfectly.",
       "highlights": [
         "4WD, tested and engages properly",
         "New brakes front and rear",
         "No mechanical issues found"
-      ],
-      "description": "Textbook example of a salvage car that's a genuinely good deal \u2014 hail damage is cosmetic, not mechanical.",
-      "photos": [
-        "https://picsum.photos/seed/cherokee1/1200/900"
-      ],
+      ]
+    },
+    {
       "photoSections": {
         "exterior": [],
         "interior": [],
@@ -96,41 +111,41 @@
         "undercarriage": [],
         "titleDocs": []
       },
-      "videoUrl": "",
-      "facebookUrl": "",
-      "dateAdded": "2026-06-02"
-    },
-    {
-      "id": "2013-ford-f150",
-      "status": "available",
-      "year": 2013,
-      "make": "Ford",
-      "model": "F-150",
+      "photos": [
+        "https://picsum.photos/seed/f150-1/1200/900"
+      ],
       "trim": "XLT",
-      "bodyType": "truck",
+      "engine": "5.0L V8",
+      "transmission": "Automatic",
+      "facebookUrl": "",
       "price": 12900,
-      "mileage": 134500,
-      "location": "Candler, NC",
+      "model": "F-150",
       "titleStatus": "Salvage Title",
+      "mileage": 134500,
+      "make": "Ford",
+      "whatWasRepaired": "Full mechanical inspection performed — engine, transmission, and electrical all tested.",
+      "dateAdded": "2026-06-20",
+      "status": "available",
+      "videoUrl": "",
+      "location": "Candler, NC",
       "tags": [
         "Salvage Title",
         "Hail Damage"
       ],
-      "engine": "5.0L V8",
-      "transmission": "Automatic",
-      "showVin": false,
+      "id": "2013-ford-f150",
+      "description": "Handles like a truck that's never missed a day of work.",
+      "bodyType": "truck",
+      "year": 2013,
       "knownIssues": "Minor scuffs on tailgate.",
-      "whatWasRepaired": "Full mechanical inspection performed \u2014 engine, transmission, and electrical all tested.",
+      "showVin": false,
       "whySalvage": "Hail damage, cosmetic only.",
       "highlights": [
         "V8 power, strong towing capacity",
         "New battery and starter",
         "Clean frame, no rust issues"
-      ],
-      "description": "Handles like a truck that's never missed a day of work.",
-      "photos": [
-        "https://picsum.photos/seed/f150-1/1200/900"
-      ],
+      ]
+    },
+    {
       "photoSections": {
         "exterior": [],
         "interior": [],
@@ -141,81 +156,39 @@
         "undercarriage": [],
         "titleDocs": []
       },
-      "videoUrl": "",
-      "facebookUrl": "",
-      "dateAdded": "2026-06-20"
-    },
-    {
-      "id": "2019-chevy-equinox",
-      "status": "sold",
-      "year": 2019,
-      "make": "Chevrolet",
-      "model": "Equinox",
-      "trim": "LT",
-      "bodyType": "suv",
-      "price": 10200,
-      "mileage": 68400,
-      "location": "Asheville, NC",
-      "titleStatus": "Salvage Title",
-      "tags": [
-        "Salvage Title"
-      ],
-      "engine": "1.5L Turbo",
-      "transmission": "Automatic",
-      "showVin": false,
-      "knownIssues": "Sold as-is.",
-      "whatWasRepaired": "Front bumper and headlight after a minor collision.",
-      "whySalvage": "Low-speed front-end collision, cosmetic damage only.",
-      "highlights": [
-        "Sold to a local family"
-      ],
-      "description": "This one found a great home with a family here in Asheville.",
       "photos": [
         "https://picsum.photos/seed/equinox1/1200/900"
       ],
-      "photoSections": {
-        "exterior": [],
-        "interior": [],
-        "engineBay": [],
-        "damageBefore": [],
-        "repairDocs": [],
-        "tires": [],
-        "undercarriage": [],
-        "titleDocs": []
-      },
-      "videoUrl": "",
+      "trim": "LT",
+      "dateSold": "2026-04-19",
+      "engine": "1.5L Turbo",
+      "transmission": "Automatic",
       "facebookUrl": "",
-      "dateAdded": "2026-04-02",
-      "dateSold": "2026-04-19"
-    },
-    {
-      "id": "2014-hyundai-sonata",
-      "status": "sold",
-      "year": 2014,
-      "make": "Hyundai",
-      "model": "Sonata",
-      "trim": "GLS",
-      "bodyType": "sedan",
-      "price": 6200,
-      "mileage": 118900,
-      "location": "Asheville, NC",
+      "price": 10200,
+      "model": "Equinox",
       "titleStatus": "Salvage Title",
+      "mileage": 68400,
+      "make": "Chevrolet",
+      "whatWasRepaired": "Front bumper and headlight after a minor collision.",
+      "dateAdded": "2026-04-02",
+      "status": "sold",
+      "videoUrl": "",
+      "location": "Asheville, NC",
       "tags": [
         "Salvage Title"
       ],
-      "engine": "2.4L 4-Cylinder",
-      "transmission": "Automatic",
-      "showVin": false,
+      "id": "2019-chevy-equinox",
+      "description": "This one found a great home with a family here in Asheville.",
+      "bodyType": "suv",
+      "year": 2019,
       "knownIssues": "Sold as-is.",
-      "whatWasRepaired": "Ignition and lock cylinder replaced after theft recovery.",
-      "whySalvage": "Reported stolen, recovered within a week undamaged.",
+      "showVin": false,
+      "whySalvage": "Low-speed front-end collision, cosmetic damage only.",
       "highlights": [
-        "Sold to a first-time buyer"
-      ],
-      "description": "A no-drama theft recovery that made a perfect first car.",
-      "photos": [
-        "https://picsum.photos/seed/sonata1/1200/900"
-      ],
+        "Sold to a local family"
+      ]
+    },
+    {
       "photoSections": {
         "exterior": [],
         "interior": [],
@@ -226,10 +199,61 @@
         "undercarriage": [],
         "titleDocs": []
       },
-      "videoUrl": "",
+      "photos": [
+        "https://picsum.photos/seed/sonata1/1200/900"
+      ],
+      "trim": "GLS",
+      "dateSold": "2026-03-22",
+      "engine": "2.4L 4-Cylinder",
+      "transmission": "Automatic",
       "facebookUrl": "",
+      "price": 6200,
+      "model": "Sonata",
+      "titleStatus": "Salvage Title",
+      "mileage": 118900,
+      "make": "Hyundai",
+      "whatWasRepaired": "Ignition and lock cylinder replaced after theft recovery.",
       "dateAdded": "2026-03-10",
-      "dateSold": "2026-03-22"
+      "status": "sold",
+      "videoUrl": "",
+      "location": "Asheville, NC",
+      "tags": [
+        "Salvage Title"
+      ],
+      "id": "2014-hyundai-sonata",
+      "description": "A no-drama theft recovery that made a perfect first car.",
+      "bodyType": "sedan",
+      "year": 2014,
+      "knownIssues": "Sold as-is.",
+      "showVin": false,
+      "whySalvage": "Reported stolen, recovered within a week undamaged.",
+      "highlights": [
+        "Sold to a first-time buyer"
+      ]
+    },
+    {
+      "photos": [
+        "/images/uploads/735134116_1045485894797077_3715674558786598311_n.jpg"
+      ],
+      "trim": "Luxury",
+      "engine": "2.0 Liter 4 Cylinder Turbo",
+      "color": "White",
+      "transmission": "Automatic 8 Speed",
+      "mpg": " 32 city / 40 hwy",
+      "price": 9000,
+      "model": "CTS",
+      "titleStatus": "Rebuilt Title",
+      "mileage": 82299,
+      "make": "Cadillac",
+      "dateAdded": "2026-07-06",
+      "status": "available",
+      "location": "Asheville, NC",
+      "tags": [
+        "Side Swipe",
+        "Pearl White"
+      ],
+      "bodyType": "sedan",
+      "year": 2018
     }
   ]
 }
