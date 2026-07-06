@@ -116,9 +116,6 @@ function renderVehicleDetail() {
 
           <div class="video-wrap" style="margin-top:20px;">${videoHTML}</div>
 
-          ${chipHTML ? `<div class="section-nav-chips">${chipHTML}</div>` : ""}
-          ${sectionsHTML}
-
           <div class="divider"></div>
           <h2>About This ${car.make} ${car.model}</h2>
           <p class="lede">${car.description}</p>
@@ -133,41 +130,46 @@ function renderVehicleDetail() {
           </div>
         </div>
 
-        <aside class="vdp-sidebar">
-          <div class="tag-top ${car.status === "sold" ? "tag-top--sold" : "tag-top--available"}" style="position:static; display:inline-flex; margin-bottom:12px;">
-            <span class="tag-top__dot"></span>${car.status === "sold" ? "sold" : car.titleStatus.toLowerCase()}
-          </div>
-          <h1 style="font-size:1.6rem;">${car.year} ${car.make} ${car.model}${car.trim ? " " + car.trim : ""}</h1>
-          <div class="vdp-price">${money(car.price)}</div>
-          <div class="chip-row" style="margin-top:10px;">${tagsHTML}</div>
-
-          <dl class="vdp-specs">
-            <div><dt>Mileage</dt><dd>${miles(car.mileage)}</dd></div>
-            <div><dt>Engine</dt><dd>${car.engine}</dd></div>
-            <div><dt>Transmission</dt><dd>${car.transmission}</dd></div>
-            <div><dt>Location</dt><dd>${car.location}</dd></div>
-            ${car.showVin && car.vin ? `<div style="grid-column:1/-1;"><dt>VIN</dt><dd>${car.vin}</dd></div>` : ""}
-            ${car.color ? `<div style="grid-column:1/-1;"><dt>Color</dt><dd>${car.color}</dd></div>` : ""}
-            ${car.mpg ? `<div style="grid-column:1/-1;"><dt>Fuel Economy</dt><dd>${car.mpg}</dd></div>` : ""}
-          </dl>
-
-          ${car.status !== "sold" ? `
-          <div class="info-block" style="border-top:none; padding-top:0; margin-top:0;">
-            <div class="btn-row" style="flex-direction:column;">
-              <a href="${messageHref}" target="_blank" rel="noopener" class="btn btn--orange btn--block">
-                <svg class="msg-icon" viewBox="0 0 24 24" fill="none" stroke="#241000" stroke-width="2"><path d="M4 4h16v12H8l-4 4V4z"/></svg>
-                Message about this car
-              </a>
+        <div class="vdp-sidebar-col">
+          <aside class="vdp-sidebar">
+            <div class="tag-top ${car.status === "sold" ? "tag-top--sold" : "tag-top--available"}" style="position:static; display:inline-flex; margin-bottom:12px;">
+              <span class="tag-top__dot"></span>${car.status === "sold" ? "sold" : car.titleStatus.toLowerCase()}
             </div>
-            <p class="contact-note">${BUSINESS.appointmentNote}</p>
-          </div>
-          <div class="callout" style="margin-top:16px;"><strong>Good to know:</strong> ${BUSINESS.policyNote}</div>
-          ` : `
-          <div class="info-block">
-            <p>This vehicle has already sold.</p>
-            <a href="index.html" class="btn btn--orange btn--block">View Available Cars</a>
-          </div>`}
-        </aside>
+            <h1 style="font-size:1.6rem;">${car.year} ${car.make} ${car.model}${car.trim ? " " + car.trim : ""}</h1>
+            <div class="vdp-price">${money(car.price)}</div>
+            <div class="chip-row" style="margin-top:10px;">${tagsHTML}</div>
+
+            <dl class="vdp-specs">
+              <div><dt>Mileage</dt><dd>${miles(car.mileage)}</dd></div>
+              <div><dt>Engine</dt><dd>${car.engine}</dd></div>
+              <div><dt>Transmission</dt><dd>${car.transmission}</dd></div>
+              <div><dt>Location</dt><dd>${car.location}</dd></div>
+              ${car.showVin && car.vin ? `<div style="grid-column:1/-1;"><dt>VIN</dt><dd>${car.vin}</dd></div>` : ""}
+              ${car.color ? `<div style="grid-column:1/-1;"><dt>Color</dt><dd>${car.color}</dd></div>` : ""}
+              ${car.mpg ? `<div style="grid-column:1/-1;"><dt>Fuel Economy</dt><dd>${car.mpg}</dd></div>` : ""}
+            </dl>
+
+            ${car.status !== "sold" ? `
+            <div class="info-block" style="border-top:none; padding-top:0; margin-top:0;">
+              <div class="btn-row" style="flex-direction:column;">
+                <a href="${messageHref}" target="_blank" rel="noopener" class="btn btn--orange btn--block">
+                  <svg class="msg-icon" viewBox="0 0 24 24" fill="none" stroke="#241000" stroke-width="2"><path d="M4 4h16v12H8l-4 4V4z"/></svg>
+                  Message about this car
+                </a>
+              </div>
+              <p class="contact-note">${BUSINESS.appointmentNote}</p>
+            </div>
+            <div class="callout" style="margin-top:16px;"><strong>Good to know:</strong> ${BUSINESS.policyNote}</div>
+            ` : `
+            <div class="info-block">
+              <p>This vehicle has already sold.</p>
+              <a href="index.html" class="btn btn--orange btn--block">View Available Cars</a>
+            </div>`}
+          </aside>
+
+          ${chipHTML ? `<div class="section-nav-chips">${chipHTML}</div>` : ""}
+          ${sectionsHTML}
+        </div>
       </div>
     </div>
   `;
@@ -182,4 +184,30 @@ function renderVehicleDetail() {
       img.classList.add("is-active");
     });
   }
+
+  root.querySelectorAll(".photo-section__grid img").forEach(img => {
+    img.addEventListener("click", () => openLightbox(img.src));
+  });
+}
+
+/* ---------------- Lightbox (click a photo-section image to enlarge) ---------------- */
+
+function openLightbox(src) {
+  let overlay = document.getElementById("lightboxOverlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.id = "lightboxOverlay";
+    overlay.className = "lightbox-overlay";
+    overlay.innerHTML = `<img id="lightboxImg" alt="">`;
+    overlay.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
+    document.body.appendChild(overlay);
+  }
+  document.getElementById("lightboxImg").src = src;
+  overlay.classList.add("is-open");
+}
+
+function closeLightbox() {
+  const overlay = document.getElementById("lightboxOverlay");
+  if (overlay) overlay.classList.remove("is-open");
 }
