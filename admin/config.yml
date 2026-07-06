@@ -26,6 +26,8 @@ collections:
       - { label: "Body Type", name: "bodyType", widget: "select", options: ["sedan", "suv", "truck", "coupe", "van", "other"] }
       - { label: "Price (USD)", name: "price", widget: "number", value_type: "int" }
       - { label: "Mileage", name: "mileage", widget: "number", value_type: "int" }
+      - { label: "VIN", name: "vin", widget: "string", required: false }
+      - { label: "Show VIN Publicly On Listing", name: "showVin", widget: "boolean", default: false, required: false }
       - { label: "Location", name: "location", widget: "string", default: "Asheville, NC" }
       - { label: "Title Status", name: "titleStatus", widget: "select", options: ["Salvage Title", "Rebuilt Title"] }
       - label: "Badges"
@@ -48,6 +50,17 @@ collections:
         name: "photos"
         widget: "list"
         field: { label: "Photo", name: "photo", widget: "image" }
+      - label: "Photo Sections"
+        name: "photoSections"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - label: "Auction Photos (from the original auction listing)"
+            name: "auctionPhotos"
+            widget: "list"
+            required: false
+            field: { label: "Photo", name: "photo", widget: "image" }
       - { label: "Video URL (YouTube/Facebook link, or leave blank)", name: "videoUrl", widget: "string", required: false }
       - { label: "Facebook Listing Link (optional, leave blank to use your profile)", name: "facebookUrl", widget: "string", required: false }
       - { label: "Date Added", name: "dateAdded", widget: "datetime", format: "YYYY-MM-DD", required: false }

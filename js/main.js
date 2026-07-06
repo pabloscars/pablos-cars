@@ -76,6 +76,7 @@ function renderVehicleDetail() {
   const tagsHTML = car.tags.map(t => `<span class="chip">${t}</span>`).join("");
 
   const sections = [
+    ["auctionPhotos", "Auction Photos"],
     ["exterior", "Exterior"], ["interior", "Interior"], ["engineBay", "Engine Bay"],
     ["damageBefore", "Damage Before Repair"], ["repairDocs", "Repair Documentation"],
     ["tires", "Tires"], ["undercarriage", "Undercarriage"], ["titleDocs", "Title Documents"]
@@ -145,6 +146,7 @@ function renderVehicleDetail() {
             <div><dt>Engine</dt><dd>${car.engine}</dd></div>
             <div><dt>Transmission</dt><dd>${car.transmission}</dd></div>
             <div><dt>Location</dt><dd>${car.location}</dd></div>
+            ${car.showVin && car.vin ? `<div style="grid-column:1/-1;"><dt>VIN</dt><dd>${car.vin}</dd></div>` : ""}
             ${car.color ? `<div style="grid-column:1/-1;"><dt>Color</dt><dd>${car.color}</dd></div>` : ""}
             ${car.mpg ? `<div style="grid-column:1/-1;"><dt>Fuel Economy</dt><dd>${car.mpg}</dd></div>` : ""}
           </dl>
