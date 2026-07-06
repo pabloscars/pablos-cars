@@ -2,6 +2,6 @@
   "name": "pablos-cars",
   "private": true,
   "scripts": {
-    "build": "node build/build-cars-json.js"
+    "build": "node build/build-cars-json.js && node build/build-customer-map.js"
   }
 }

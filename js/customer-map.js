@@ -12,7 +12,7 @@ function renderCustomerMap() {
   const mapEl = document.getElementById("customerMap");
   if (!mapEl) return;
 
-  fetch("data/customer-locations.json")
+  fetch("data/customer-locations.built.json")
     .then(r => r.json())
     .then(data => {
       const locations = (data && data.locations) || [];
