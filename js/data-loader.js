@@ -19,8 +19,8 @@ function loadSiteData() {
   return Promise.all([
     fetch("data/cars.json").then(r => r.json()),
     fetch("data/business.json").then(r => r.json())
-  ]).then(([cars, business]) => {
-    CARS = cars;
+  ]).then(([carsData, business]) => {
+    CARS = carsData.cars || [];
     BUSINESS = business;
     return { CARS, BUSINESS };
   }).catch(err => {
