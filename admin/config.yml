@@ -11,6 +11,8 @@ collections:
     label: "Cars"
     folder: "data/cars"
     create: true
+    extension: "json"
+    format: "json"
     slug: "{{fields.id}}"
     identifier_field: "id"
     summary: "{{fields.year}} {{fields.make}} {{fields.model}} — {{fields.status}}"
