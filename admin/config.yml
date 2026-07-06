@@ -1,0 +1,73 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Where uploaded photos land, and the path used to reference them on the site.
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "cars"
+    label: "Cars"
+    files:
+      - file: "data/cars.json"
+        label: "All Cars"
+        name: "cars"
+        fields:
+          - label: "Cars"
+            name: "cars"
+            widget: "list"
+            summary: "{{fields.year}} {{fields.make}} {{fields.model}} — {{fields.status}}"
+            fields:
+              - { label: "Unique ID (no spaces, e.g. 2016-civic-02)", name: "id", widget: "string" }
+              - { label: "Status", name: "status", widget: "select", options: ["available", "sold"] }
+              - { label: "Year", name: "year", widget: "number", value_type: "int" }
+              - { label: "Make", name: "make", widget: "string" }
+              - { label: "Model", name: "model", widget: "string" }
+              - { label: "Trim", name: "trim", widget: "string", required: false }
+              - { label: "Body Type", name: "bodyType", widget: "select", options: ["sedan", "suv", "truck", "coupe", "van", "other"] }
+              - { label: "Price (USD)", name: "price", widget: "number", value_type: "int" }
+              - { label: "Mileage", name: "mileage", widget: "number", value_type: "int" }
+              - { label: "Location", name: "location", widget: "string", default: "Asheville, NC" }
+              - { label: "Title Status", name: "titleStatus", widget: "select", options: ["Salvage Title", "Rebuilt Title"] }
+              - label: "Badges"
+                name: "tags"
+                widget: "list"
+                field: { label: "Badge", name: "tag", widget: "string" }
+              - { label: "Engine", name: "engine", widget: "string", required: false }
+              - { label: "Transmission", name: "transmission", widget: "string", required: false }
+              - { label: "Color", name: "color", widget: "string", required: false }
+              - { label: "Fuel Economy (e.g. 32 city / 40 hwy)", name: "mpg", widget: "string", required: false }
+              - { label: "Known Issues", name: "knownIssues", widget: "text", required: false }
+              - { label: "What Was Repaired", name: "whatWasRepaired", widget: "text", required: false }
+              - { label: "Why This Title Status", name: "whySalvage", widget: "text", required: false }
+              - label: "Highlights"
+                name: "highlights"
+                widget: "list"
+                field: { label: "Highlight", name: "item", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Photos (first one is the cover photo)"
+                name: "photos"
+                widget: "list"
+                field: { label: "Photo", name: "photo", widget: "image" }
+              - { label: "Video URL (YouTube/Facebook link, or leave blank)", name: "videoUrl", widget: "string", required: false }
+              - { label: "Facebook Listing Link (optional, leave blank to use your profile)", name: "facebookUrl", widget: "string", required: false }
+              - { label: "Date Added", name: "dateAdded", widget: "datetime", format: "YYYY-MM-DD", required: false }
+              - { label: "Date Sold (only if sold)", name: "dateSold", widget: "datetime", format: "YYYY-MM-DD", required: false }
+
+  - name: "business"
+    label: "Business Info"
+    files:
+      - file: "data/business.json"
+        label: "Business Info"
+        name: "business"
+        fields:
+          - { label: "Business Name", name: "name", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Owner Name", name: "ownerName", widget: "string" }
+          - { label: "Facebook Profile URL", name: "facebookUrl", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Location", name: "location", widget: "string" }
+          - { label: "Appointment Note", name: "appointmentNote", widget: "string" }
+          - { label: "Bio", name: "bio", widget: "text" }
+          - { label: "Policy Note (no holds, no trades, etc.)", name: "policyNote", widget: "text" }

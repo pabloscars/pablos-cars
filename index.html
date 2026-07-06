@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pablo's Cars — Salvage-Title Vehicles in Asheville, NC</title>
+<meta name="description" content="Salvage and rebuilt-title vehicles in Asheville, NC. See full photos and honest title history — message on Facebook if you're serious.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="nav"></header>
+
+<div class="blob blob--chrome" style="width:440px; height:440px; top:-140px; right:-100px; position:fixed;"></div>
+<div class="blob blob--orange" style="width:320px; height:320px; top:40%; left:-140px; opacity:0.14; position:fixed;"></div>
+
+<section class="section" style="padding-top:28px;">
+  <div class="container">
+    <div id="carFeed" class="grid"></div>
+  </div>
+</section>
+
+<section class="section text-center">
+  <div class="container max-w-prose" style="margin:0 auto;">
+    <div class="label" style="margin-bottom:10px; color:var(--orange-bright);">Asheville, North Carolina</div>
+    <h1 style="font-size:clamp(1.8rem,3.6vw,2.4rem);">Salvage-title vehicles, shown in full.</h1>
+    <div class="btn-row" style="justify-content:center; margin-top:14px;">
+      <a href="contact.html" class="btn btn--orange">
+        <svg class="msg-icon" viewBox="0 0 24 24" fill="none" stroke="#241000" stroke-width="2"><path d="M4 4h16v12H8l-4 4V4z"/></svg>
+        Message on Facebook
+      </a>
+    </div>
+    <p class="contact-note" style="margin:10px auto 0;">Reviews and background checked before we meet.</p>
+  </div>
+</section>
+
+<footer id="site-footer" class="footer"></footer>
+
+<script src="js/data-loader.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script>
+  loadSiteData().then(() => {
+    renderHeader();
+    renderFooter();
+    renderHomeFeed();
+  });
+</script>
+</body>
+</html>

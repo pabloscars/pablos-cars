@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How I Source Cars — Pablo's Cars</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="nav"></header>
+
+<section class="section" style="padding-top:28px;">
+  <div class="container">
+    <div class="label" style="margin-bottom:10px; color:var(--orange-bright);">Behind the inventory</div>
+    <h1>How I Get My Cars</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="feature-grid">
+      <div class="feature-card"><h3>Where they come from</h3><p>Vehicles with cosmetic damage, hail damage, accident history, or theft-recovery history — mostly from salvage auctions and insurance channels.</p></div>
+      <div class="feature-card"><h3>What I look for</h3><p>Solid mechanicals and a final price meaningfully below a clean-title version of the same car.</p></div>
+      <div class="feature-card"><h3>What I avoid</h3><p>Cars needing major hidden mechanical work — frame damage repaired poorly, flood cars, anything where the story doesn't add up.</p></div>
+      <div class="feature-card"><h3>What you get</h3><p>By the time it's listed, I know its story — and I'd rather tell you upfront than have you find it after you've paid.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="callout"><strong>Rule of thumb:</strong> if I wouldn't feel comfortable explaining a car's history to a friend, I don't buy it to resell.</div>
+  </div>
+</section>
+
+<footer id="site-footer" class="footer"></footer>
+
+<script src="js/data-loader.js"></script>
+<script src="js/layout.js"></script>
+<script>
+  loadSiteData().then(() => {
+    renderHeader();
+    renderFooter();
+  });
+</script></body>
+</html>

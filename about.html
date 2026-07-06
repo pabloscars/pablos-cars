@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me — Pablo's Cars</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="nav"></header>
+
+<section class="section" style="padding-top:28px;">
+  <div class="container">
+    <div class="label" style="margin-bottom:10px; color:var(--orange-bright);">The person, not a dealership</div>
+    <h1>About Me</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="feature-grid" style="align-items:center;">
+      <div class="about-photo">
+        <img src="images/pablo-full.png" alt="Pablo" style="max-height:280px; width:auto; object-fit:contain;">
+      </div>
+      <div>
+        <h2 id="aboutName">Hey, I'm Pablo.</h2>
+        <p class="lede" id="aboutBio"></p>
+        <p>Based in <strong>Asheville, North Carolina</strong> — no big lot, no finance office, just me and the cars.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer" class="footer"></footer>
+
+<script src="js/data-loader.js"></script>
+<script src="js/layout.js"></script>
+<script>
+  loadSiteData().then(() => {
+    renderHeader();
+    renderFooter();
+    document.getElementById("aboutName").textContent = "Hey, I'm " + BUSINESS.ownerName + ".";
+    document.getElementById("aboutBio").textContent = BUSINESS.bio;
+  });
+</script>
+</body>
+</html>

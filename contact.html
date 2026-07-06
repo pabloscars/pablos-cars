@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Pablo's Cars</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="nav"></header>
+
+<section class="section" style="padding-top:28px;">
+  <div class="container">
+    <div class="label" style="margin-bottom:10px; color:var(--orange-bright);">Let's talk cars</div>
+    <h1>Contact</h1>
+    <p class="max-w-prose" id="contactNote"></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Message on Facebook</h3>
+        <p>I only take serious inquiries through Facebook — it lets me see reviews and background before we set up a time to meet.</p>
+        <div class="btn-row">
+          <a href="#" id="fbLink" target="_blank" rel="noopener" class="btn btn--orange">
+            <svg class="msg-icon" viewBox="0 0 24 24" fill="none" stroke="#241000" stroke-width="2"><path d="M4 4h16v12H8l-4 4V4z"/></svg>
+            Message Pablo
+          </a>
+        </div>
+        <div class="divider"></div>
+        <ul class="contact-list">
+          <li><span class="label">Email</span><br><a href="#" id="emailLink"></a></li>
+          <li><span class="label">Area</span><br><span id="locationText"></span></li>
+        </ul>
+      </div>
+      <div class="contact-card">
+        <h3>Good to know</h3>
+        <p id="policyNote"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer" class="footer"></footer>
+
+<script src="js/data-loader.js"></script>
+<script src="js/layout.js"></script>
+<script>
+  loadSiteData().then(() => {
+    renderHeader();
+    renderFooter();
+    document.getElementById("contactNote").textContent = BUSINESS.appointmentNote;
+    document.getElementById("fbLink").href = BUSINESS.facebookUrl;
+    document.getElementById("emailLink").href = "mailto:" + BUSINESS.email;
+    document.getElementById("emailLink").textContent = BUSINESS.email;
+    document.getElementById("locationText").textContent = BUSINESS.location;
+    document.getElementById("policyNote").textContent = BUSINESS.policyNote;
+  });
+</script>
+</body>
+</html>
