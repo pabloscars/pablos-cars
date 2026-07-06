@@ -65,7 +65,7 @@
       "description": "Super clean Charger with low miles! Drives and handles with no issues at all! A/C & Heat work perfectly! Just did a complete oil service along with replacing the Air and Cabin filters. Installed new rotors and pads all the way around for both front and rear axles. Vehicle does have multiple scratches here and there which I tried to depict, the best i could in the photos. Basically has all the extra features you could ask for! Also has a Corsa Performance Exhaust System installed, which sounds nasty",
       "bodyType": "sedan",
       "year": 2014,
-      "knownIssues": "Scratches from theft in the badge areas",
+      "knownIssues": "Scratches in the badge areas from theft",
       "showVin": false,
       "whySalvage": "Vehicle was stolen and reported as a theft recovery",
       "heatedSeats": true,
@@ -76,7 +76,8 @@
         "Ventilated Front Seats",
         "Heated Rear Seats",
         "Heated Steering Wheel"
-      ]
+      ],
+      "image": "/images/uploads/396710632_6636185499784415_5863468159248758998_n.jpg"
     },
     {
       "photoSections": {
@@ -119,7 +120,8 @@
       "whySalvage": "Reported stolen, recovered within a week undamaged.",
       "highlights": [
         "Sold to a first-time buyer"
-      ]
+      ],
+      "image": "https://picsum.photos/seed/sonata1/1200/900"
     },
     {
       "photoSections": {
@@ -173,7 +175,8 @@
       "highlights": [
         "Heated Steering Wheel",
         "Ventilated Seats"
-      ]
+      ],
+      "image": "/images/uploads/735134116_1045485894797077_3715674558786598311_n.jpg"
     },
     {
       "photoSections": {
@@ -218,7 +221,8 @@
         "4WD, tested and engages properly",
         "New brakes front and rear",
         "No mechanical issues found"
-      ]
+      ],
+      "image": "https://picsum.photos/seed/cherokee1/1200/900"
     },
     {
       "photoSections": {
@@ -274,7 +278,8 @@
         "17\" aluminum wheels",
         "Wireless charging",
         "Rear seats fold down for trunk access"
-      ]
+      ],
+      "image": "images/cars/2025-nissan-versa-sr/cover.jpg"
     }
   ]
 }
