@@ -17,6 +17,10 @@
       min-width: 0;
       padding: 10px 14px;
     }
+    label:has(+ [class*="ControlContainer"]:has([class*="Toggle"])) {
+      display: inline-block;
+      width: auto;
+    }
   </style>
 </head>
 <body>
