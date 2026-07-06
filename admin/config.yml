@@ -249,6 +249,12 @@ collections:
             widget: "list"
             required: false
             field: { label: "Photo", name: "photo", widget: "image" }
+          - label: "Deep Cleaning (max 3 photos)"
+            name: "deepCleaning"
+            widget: "list"
+            required: false
+            max: 3
+            field: { label: "Photo", name: "photo", widget: "image" }
       - { label: "Video URL (YouTube/Facebook link, or leave blank)", name: "videoUrl", widget: "string", required: false }
       - { label: "Facebook Listing Link (optional, leave blank to use your profile)", name: "facebookUrl", widget: "string", required: false }
       - { label: "Date Added", name: "dateAdded", widget: "datetime", format: "YYYY-MM-DD", required: false }

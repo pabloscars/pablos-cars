@@ -275,8 +275,10 @@ function renderVehicleDetail() {
     })
     .join("");
 
+  const SLIDER_SECTIONS = new Set(["auctionPhotos", "deepCleaning"]);
   const sections = [
     ["auctionPhotos", "Auction Photos"],
+    ["deepCleaning", "Deep Cleaning"],
     ["exterior", "Exterior"], ["interior", "Interior"], ["engineBay", "Engine Bay"],
     ["damageBefore", "Damage Before Repair"], ["repairDocs", "Repair Documentation"],
     ["tires", "Tires"], ["undercarriage", "Undercarriage"], ["titleDocs", "Title Documents"]
@@ -286,7 +288,7 @@ function renderVehicleDetail() {
   const sectionsHTML = sections.map(([key, label]) => `
     <div class="photo-section" id="sec-${key}">
       <h3>${label}</h3>
-      ${key === "auctionPhotos"
+      ${SLIDER_SECTIONS.has(key)
         ? photoSliderHTML(car.photoSections[key])
         : `<div class="photo-section__grid">${car.photoSections[key].map(src => `<img src="${src}" loading="lazy">`).join("")}</div>`}
     </div>`).join("");
