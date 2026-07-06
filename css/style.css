@@ -132,7 +132,7 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 
 /* Auction Photos: show ~3 at a time, scroll horizontally for the rest */
 .photo-section--scrollable .photo-section__grid{display:flex; overflow-x:auto; gap:10px; scroll-snap-type:x proximity; padding-bottom:4px;}
-.photo-section--scrollable .photo-section__grid img{flex:0 0 calc((100% - 20px) / 3); scroll-snap-align:start;}
+.photo-section--scrollable .photo-section__grid img{flex:0 0 auto; width:calc((100% - 20px) / 3); max-width:calc((100% - 20px) / 3); scroll-snap-align:start;}
 
 .lightbox-overlay{position:fixed; inset:0; background:rgba(10,9,7,0.92); display:flex; align-items:center; justify-content:center; padding:40px; z-index:999; cursor:zoom-out; opacity:0; pointer-events:none; transition:opacity .18s ease;}
 .lightbox-overlay.is-open{opacity:1; pointer-events:auto;}
