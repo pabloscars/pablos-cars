@@ -36,14 +36,24 @@ collections:
         field: { label: "Badge", name: "tag", widget: "string" }
       - { label: "Engine", name: "engine", widget: "string", required: false }
       - { label: "Transmission", name: "transmission", widget: "string", required: false }
-      - { label: "Color", name: "color", widget: "string", required: false }
+      - { label: "Fuel Type", name: "fuelType", widget: "select", options: ["Gasoline", "Diesel", "Hybrid", "Electric", "Flex Fuel"], required: false }
+      - { label: "Exterior Color", name: "exteriorColor", widget: "string", required: false }
+      - { label: "Interior Color", name: "interiorColor", widget: "string", required: false }
+      - { label: "Interior Material", name: "interiorMaterial", widget: "string", required: false }
       - { label: "Fuel Economy (e.g. 32 city / 40 hwy)", name: "mpg", widget: "string", required: false }
       - { label: "Known Issues", name: "knownIssues", widget: "text", required: false }
       - { label: "What Was Repaired", name: "whatWasRepaired", widget: "text", required: false }
       - { label: "Why This Title Status", name: "whySalvage", widget: "text", required: false }
-      - label: "Highlights"
+      - { label: "Remote Start", name: "remoteStart", widget: "boolean", default: false, required: false }
+      - { label: "Heated Seats", name: "heatedSeats", widget: "boolean", default: false, required: false }
+      - { label: "Apple CarPlay", name: "appleCarPlay", widget: "boolean", default: false, required: false }
+      - { label: "Backup / Reverse Camera", name: "backupCamera", widget: "boolean", default: false, required: false }
+      - { label: "Touchscreen Radio", name: "touchscreenRadio", widget: "boolean", default: false, required: false }
+      - { label: "Bluetooth", name: "bluetooth", widget: "boolean", default: false, required: false }
+      - label: "Other Highlights"
         name: "highlights"
         widget: "list"
+        required: false
         field: { label: "Highlight", name: "item", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
       - label: "Photos (first one is the cover photo)"

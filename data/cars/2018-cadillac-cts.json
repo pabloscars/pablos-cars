@@ -13,7 +13,6 @@
   ],
   "trim": "Luxury",
   "engine": "2.0 Liter 4 Cylinder Turbo",
-  "color": "White",
   "transmission": "Automatic 8 Speed",
   "mpg": "22mpg city / 30mpg hwy",
   "facebookUrl": "https://www.facebook.com/share/14m2KguXfk1/",
@@ -39,5 +38,6 @@
   "bodyType": "sedan",
   "year": 2018,
   "showVin": true,
-  "whySalvage": "Side swipe accident to the driver side of the vehicle, mainly impacting the rear quarter panel /  fender area"
+  "whySalvage": "Side swipe accident to the driver side of the vehicle, mainly impacting the rear quarter panel /  fender area",
+  "exteriorColor": "White"
 }

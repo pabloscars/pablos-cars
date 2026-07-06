@@ -58,7 +58,6 @@
       ],
       "trim": "Luxury",
       "engine": "2.0 Liter 4 Cylinder Turbo",
-      "color": "White",
       "transmission": "Automatic 8 Speed",
       "mpg": "22mpg city / 30mpg hwy",
       "facebookUrl": "https://www.facebook.com/share/14m2KguXfk1/",
@@ -84,7 +83,8 @@
       "bodyType": "sedan",
       "year": 2018,
       "showVin": true,
-      "whySalvage": "Side swipe accident to the driver side of the vehicle, mainly impacting the rear quarter panel /  fender area"
+      "whySalvage": "Side swipe accident to the driver side of the vehicle, mainly impacting the rear quarter panel /  fender area",
+      "exteriorColor": "White"
     },
     {
       "photoSections": {
@@ -191,7 +191,6 @@
       ],
       "trim": "SR",
       "engine": "1.6L 4-Cylinder, DOHC, VVT",
-      "color": "Gun Metallic Grey / Black cloth w/ red stitching",
       "transmission": "Xtronic CVT, FWD",
       "mpg": "32 city / 40 hwy",
       "facebookUrl": "",
@@ -227,7 +226,8 @@
         "17\" aluminum wheels",
         "Wireless charging",
         "Rear seats fold down for trunk access"
-      ]
+      ],
+      "exteriorColor": "Gun Metallic Grey / Black cloth w/ red stitching"
     }
   ]
 }

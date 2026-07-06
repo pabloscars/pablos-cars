@@ -15,7 +15,6 @@
   ],
   "trim": "SR",
   "engine": "1.6L 4-Cylinder, DOHC, VVT",
-  "color": "Gun Metallic Grey / Black cloth w/ red stitching",
   "transmission": "Xtronic CVT, FWD",
   "mpg": "32 city / 40 hwy",
   "facebookUrl": "",
@@ -51,5 +50,6 @@
     "17\" aluminum wheels",
     "Wireless charging",
     "Rear seats fold down for trunk access"
-  ]
+  ],
+  "exteriorColor": "Gun Metallic Grey / Black cloth w/ red stitching"
 }

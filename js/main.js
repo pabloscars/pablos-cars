@@ -75,6 +75,19 @@ function renderVehicleDetail() {
   const allPhotos = car.photos || [];
   const tagsHTML = car.tags.map(t => `<span class="chip">${t}</span>`).join("");
 
+  const FEATURE_FLAGS = [
+    ["remoteStart", "Remote Start"],
+    ["heatedSeats", "Heated Seats"],
+    ["appleCarPlay", "Apple CarPlay"],
+    ["backupCamera", "Backup / Reverse Camera"],
+    ["touchscreenRadio", "Touchscreen Radio"],
+    ["bluetooth", "Bluetooth"]
+  ];
+  const allHighlights = [
+    ...FEATURE_FLAGS.filter(([key]) => car[key]).map(([, label]) => label),
+    ...(car.highlights || [])
+  ];
+
   const sections = [
     ["auctionPhotos", "Auction Photos"],
     ["exterior", "Exterior"], ["interior", "Interior"], ["engineBay", "Engine Bay"],
@@ -121,11 +134,12 @@ function renderVehicleDetail() {
           <p class="lede">${car.description}</p>
 
           <div class="feature-grid" style="margin-top:16px;">
-            <div class="feature-card"><h3>Why It Has A ${car.titleStatus}</h3><p>${car.whySalvage}</p></div>
-            <div class="feature-card"><h3>What Was Repaired</h3><p>${car.whatWasRepaired}</p></div>
-            <div class="feature-card"><h3>Known Issues</h3><p>${car.knownIssues}</p></div>
-            <div class="feature-card"><h3>Highlights</h3>
-              <div class="chip-row">${(car.highlights||[]).map(h => `<span class="chip">${h}</span>`).join("")}</div>
+            <div class="feature-card"><h3>Why It Has A ${car.titleStatus}</h3><p>${car.whySalvage || ""}</p></div>
+            <div class="feature-card"><h3>What Was Repaired</h3><p>${car.whatWasRepaired || ""}</p></div>
+            <div class="feature-card"><h3>Known Issues</h3><p>${car.knownIssues || ""}</p></div>
+            <div class="feature-card feature-card--wide">
+              <h3>Highlights &amp; Features</h3>
+              <ul class="highlights-list">${allHighlights.map(h => `<li>${h}</li>`).join("")}</ul>
             </div>
           </div>
         </div>
@@ -145,7 +159,10 @@ function renderVehicleDetail() {
               <div><dt>Transmission</dt><dd>${car.transmission}</dd></div>
               <div><dt>Location</dt><dd>${car.location}</dd></div>
               ${car.showVin && car.vin ? `<div style="grid-column:1/-1;"><dt>VIN</dt><dd>${car.vin}</dd></div>` : ""}
-              ${car.color ? `<div style="grid-column:1/-1;"><dt>Color</dt><dd>${car.color}</dd></div>` : ""}
+              ${car.fuelType ? `<div style="grid-column:1/-1;"><dt>Fuel Type</dt><dd>${car.fuelType}</dd></div>` : ""}
+              ${car.exteriorColor ? `<div style="grid-column:1/-1;"><dt>Exterior Color</dt><dd>${car.exteriorColor}</dd></div>` : ""}
+              ${car.interiorColor ? `<div style="grid-column:1/-1;"><dt>Interior Color</dt><dd>${car.interiorColor}</dd></div>` : ""}
+              ${car.interiorMaterial ? `<div style="grid-column:1/-1;"><dt>Interior Material</dt><dd>${car.interiorMaterial}</dd></div>` : ""}
               ${car.mpg ? `<div style="grid-column:1/-1;"><dt>Fuel Economy</dt><dd>${car.mpg}</dd></div>` : ""}
             </dl>
 
@@ -157,7 +174,6 @@ function renderVehicleDetail() {
                   Message about this car
                 </a>
               </div>
-              <p class="contact-note">${BUSINESS.appointmentNote}</p>
             </div>
             <div class="callout" style="margin-top:16px;"><strong>Good to know:</strong> ${BUSINESS.policyNote}</div>
             ` : `
