@@ -1,5 +1,13 @@
 {
-  "id": "2018-cadillac-cts",
+  "photoSections": {
+    "auctionPhotos": [
+      "/images/uploads/whatsapp-image-2026-07-06-at-12.58.43-am.jpeg",
+      "/images/uploads/whatsapp-image-2026-07-06-at-1.00.04-am.jpeg",
+      "/images/uploads/whatsapp-image-2026-07-06-at-12.59.37-am.jpeg",
+      "/images/uploads/whatsapp-image-2026-07-06-at-12.59.19-am.jpeg",
+      "/images/uploads/whatsapp-image-2026-07-06-at-12.59.00-am.jpeg"
+    ]
+  },
   "photos": [
     "/images/uploads/735134116_1045485894797077_3715674558786598311_n.jpg"
   ],
@@ -7,19 +15,29 @@
   "engine": "2.0 Liter 4 Cylinder Turbo",
   "color": "White",
   "transmission": "Automatic 8 Speed",
-  "mpg": " 32 city / 40 hwy",
+  "mpg": "22mpg city / 30mpg hwy",
+  "facebookUrl": "https://www.facebook.com/share/14m2KguXfk1/",
   "price": 9000,
   "model": "CTS",
   "titleStatus": "Rebuilt Title",
-  "mileage": 82299,
+  "mileage": 82400,
   "make": "Cadillac",
+  "whatWasRepaired": "- 4 Wheel Alignment & W. Balance\n- 4 New TPMS Sensors\n- New Complete CUE Headunit\n- New Spark Plugs\n- New Rear Rotors & Pads\n- Oil Change @78k and @81k\n- New Valve Cover Gasket\n- Front Wipers\n- Air & Cabin Air Filters\n- NC State Inspection\n.",
   "dateAdded": "2026-07-06",
   "status": "available",
   "location": "Asheville, NC",
   "tags": [
-    "Side Swipe",
-    "Pearl White"
+    "Side Swipe Damage",
+    "Sunshade issue",
+    "No airbags deployed",
+    "no frame damage",
+    "no windows broken"
   ],
+  "vin": "1G6AR5SX5J0105445",
+  "id": "2018-cadillac-cts",
+  "description": "𝐅𝐚𝐜𝐭𝐨𝐫𝐲 𝐮𝐩𝐠𝐫𝐚𝐝𝐞𝐝 𝐨𝐩𝐭𝐢𝐨𝐧𝐬➕️:\n- Remote Start, Keyless Entry & Push Button Start\n- Backup Reverse Camera\n- Brembo Front Brake Calipers\n- Panoramic Sunroof\n- Heated Steering Wheel\n- Heated & Vented Front Seats\n- Park Assist\n- Lane Change Alert\n.\n.\n𝐂𝐨𝐨𝐥 𝐒𝐭𝐮𝐟𝐟👀:\n- Glovebox is Electronically Controlled\n- Hidden Center Console Compartment\n- Rear Seats Fold Flat Down\n- LED Headlamps (actually bright)\n- Seat vibrates with proximity system\n- Sound systems loud loud",
   "bodyType": "sedan",
-  "year": 2018
+  "year": 2018,
+  "showVin": true,
+  "whySalvage": "Side swipe accident to the driver side of the vehicle, mainly impacting the rear quarter panel /  fender area"
 }
