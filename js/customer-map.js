@@ -73,12 +73,13 @@ function renderCustomerMap() {
         });
       });
 
-      // Home base marker — the shop's own location, styled as the map's focal point.
+      // Home base marker — the shop's own location, styled as the map's focal point
+      // (a plain garage outline, no background bubble).
       const homeIcon = L.divIcon({
-        className: "map-home-marker",
-        html: `<div class="map-home-marker__badge"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></div>`,
-        iconSize: [36, 36],
-        iconAnchor: [18, 18]
+        className: "map-home-icon",
+        html: `<svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21V10L12 3l10 7v11"/><rect x="5" y="12" width="14" height="9"/><line x1="5" y1="15.5" x2="19" y2="15.5"/><line x1="5" y1="18" x2="19" y2="18"/></svg>`,
+        iconSize: [38, 38],
+        iconAnchor: [19, 19]
       });
       L.marker(CUSTOMER_MAP_CENTER, { icon: homeIcon, interactive: false, zIndexOffset: 1000 }).addTo(map);
 
