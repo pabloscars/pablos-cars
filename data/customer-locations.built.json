@@ -1,3 +1,106 @@
 {
-  "locations": []
+  "locations": [
+    {
+      "city": "Swannanoa",
+      "state": "NC",
+      "lat": 35.5998286,
+      "lng": -82.36649768278205
+    },
+    {
+      "city": "Swannanoa",
+      "state": "NC",
+      "lat": 35.5998286,
+      "lng": -82.44028911721794
+    },
+    {
+      "city": "Gatlinburg",
+      "state": "TN",
+      "lat": 35.714259,
+      "lng": -83.5101638
+    },
+    {
+      "city": "Fairview",
+      "state": "NC",
+      "lat": 35.5221896,
+      "lng": -82.3926828
+    },
+    {
+      "city": "Mars Hill",
+      "state": "NC",
+      "lat": 35.8263793,
+      "lng": -82.51168405179962
+    },
+    {
+      "city": "Mars Hill",
+      "state": "NC",
+      "lat": 35.8263793,
+      "lng": -82.58568554820039
+    },
+    {
+      "city": "Canton",
+      "state": "NC",
+      "lat": 35.5328838,
+      "lng": -82.8373558
+    },
+    {
+      "city": "Arden",
+      "state": "NC",
+      "lat": 35.4661821,
+      "lng": -82.5164242
+    },
+    {
+      "city": "Leicester",
+      "state": "NC",
+      "lat": 35.6551074,
+      "lng": -82.6593225632736
+    },
+    {
+      "city": "Leicester",
+      "state": "NC",
+      "lat": 35.68108816211353,
+      "lng": -82.71470441836321
+    },
+    {
+      "city": "Leicester",
+      "state": "NC",
+      "lat": 35.629126637886465,
+      "lng": -82.71470441836321
+    },
+    {
+      "city": "Kingsport",
+      "state": "TN",
+      "lat": 36.550238,
+      "lng": -82.5594293
+    },
+    {
+      "city": "Hayesville",
+      "state": "NC",
+      "lat": 35.0462818,
+      "lng": -83.8179427
+    },
+    {
+      "city": "Clyde",
+      "state": "NC",
+      "lat": 35.5334379,
+      "lng": -82.910691
+    },
+    {
+      "city": "Skyland",
+      "state": "NC",
+      "lat": 35.4892809,
+      "lng": -82.524288
+    },
+    {
+      "city": "Weaverville",
+      "state": "NC",
+      "lat": 35.6967238,
+      "lng": -82.5603625
+    },
+    {
+      "city": "Morristown",
+      "state": "TN",
+      "lat": 36.2139814,
+      "lng": -83.2948923
+    }
+  ]
 }
