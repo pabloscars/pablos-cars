@@ -315,6 +315,10 @@ function renderVehicleDetail() {
           <div class="gallery">
             <div class="gallery__main">
               <img id="mainPhoto" src="${allPhotos[0] || ""}" alt="${car.year} ${car.make} ${car.model}">
+              ${allPhotos.length > 1 ? `
+                <button class="photo-slider__arrow photo-slider__arrow--prev is-disabled" id="mainPrevBtn" aria-label="Previous photo">&#8249;</button>
+                <button class="photo-slider__arrow photo-slider__arrow--next" id="mainNextBtn" aria-label="Next photo">&#8250;</button>
+              ` : ""}
             </div>
             ${allPhotos.length > 1 ? `<div class="gallery__thumbs" id="thumbRow">
               ${allPhotos.map((src, i) => `<img src="${src}" data-i="${i}" class="${i === 0 ? "is-active" : ""}">`).join("")}
@@ -332,7 +336,7 @@ function renderVehicleDetail() {
             <div class="feature-card"><h3>Known Issues</h3><p>${car.knownIssues || ""}</p></div>
             <div class="feature-card feature-card--wide">
               <h3>What Was Repaired</h3>
-              <ul class="highlights-list">${repairedItems.map(item => `<li>${item}</li>`).join("")}</ul>
+              <ul class="highlights-list highlights-list--repaired">${repairedItems.map(item => `<li>${item}</li>`).join("")}</ul>
             </div>
             ${allHighlights.length ? `
             <div class="feature-card feature-card--wide">
@@ -400,14 +404,25 @@ function renderVehicleDetail() {
   }
 
   if (allPhotos.length > 1) {
+    const mainPrevBtn = document.getElementById("mainPrevBtn");
+    const mainNextBtn = document.getElementById("mainNextBtn");
+
+    function goToMainPhoto(i) {
+      currentMainIndex = Math.max(0, Math.min(allPhotos.length - 1, i));
+      mainPhoto.src = allPhotos[currentMainIndex];
+      document.querySelectorAll("#thumbRow img").forEach((t, idx) => t.classList.toggle("is-active", idx === currentMainIndex));
+      if (mainPrevBtn) mainPrevBtn.classList.toggle("is-disabled", currentMainIndex === 0);
+      if (mainNextBtn) mainNextBtn.classList.toggle("is-disabled", currentMainIndex === allPhotos.length - 1);
+    }
+
     document.getElementById("thumbRow").addEventListener("click", (e) => {
       const img = e.target.closest("img");
       if (!img) return;
-      currentMainIndex = Number(img.dataset.i);
-      mainPhoto.src = img.src;
-      document.querySelectorAll("#thumbRow img").forEach(t => t.classList.remove("is-active"));
-      img.classList.add("is-active");
+      goToMainPhoto(Number(img.dataset.i));
     });
+
+    if (mainPrevBtn) mainPrevBtn.addEventListener("click", () => goToMainPhoto(currentMainIndex - 1));
+    if (mainNextBtn) mainNextBtn.addEventListener("click", () => goToMainPhoto(currentMainIndex + 1));
   }
 
   root.querySelectorAll(".photo-section__grid").forEach(grid => {
