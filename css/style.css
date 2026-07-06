@@ -151,6 +151,7 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .about-photo{aspect-ratio:4/3; background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; color:var(--text-faint); font-family:var(--font-m); font-size:0.85rem; overflow:hidden;}
 
 /* ---- Customer map ---- */
+.map-caption{font-size:0.85rem; color:var(--text-faint); margin:0 0 14px;}
 .customer-map{height:560px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--glass-border); background:var(--bg-3);}
 .leaflet-control-attribution{background:rgba(20,19,16,0.7) !important; color:var(--text-faint) !important;}
 .leaflet-control-attribution a{color:var(--text-dim) !important;}
@@ -160,6 +161,19 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .leaflet-popup-content{font-family:var(--font-b); font-size:0.9rem; margin:10px 14px;}
 .leaflet-popup-tip{background:var(--bg-2);}
 .leaflet-popup-close-button{color:var(--text-dim) !important;}
+
+.customer-pin{transition:filter .25s ease, opacity .25s ease; filter:drop-shadow(0 0 3px rgba(255,107,31,0.5));}
+.customer-pin:hover{filter:drop-shadow(0 0 9px rgba(255,143,77,0.9));}
+@keyframes pin-pulse{
+  0%{filter:drop-shadow(0 0 3px rgba(255,107,31,0.5));}
+  50%{filter:drop-shadow(0 0 11px rgba(255,143,77,0.95));}
+  100%{filter:drop-shadow(0 0 3px rgba(255,107,31,0.5));}
+}
+.customer-pin.is-tapped{animation:pin-pulse .6s ease;}
+@media (prefers-reduced-motion:reduce){
+  .customer-pin{transition:none;}
+  .customer-pin.is-tapped{animation:none;}
+}
 
 /* ---- Contact ---- */
 .contact-grid{display:grid; gap:20px; grid-template-columns:1fr;}
