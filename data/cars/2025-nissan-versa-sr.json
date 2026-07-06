@@ -17,12 +17,14 @@
   "engine": "1.6L 4-Cylinder, DOHC, VVT",
   "transmission": "Xtronic CVT, FWD",
   "mpg": "32 city / 40 hwy",
+  "exteriorColor": "Gun Metallic Grey / Black cloth w/ red stitching",
   "facebookUrl": "",
   "price": 13800,
   "model": "Versa",
   "titleStatus": "Rebuilt Title",
   "mileage": 17200,
   "make": "Nissan",
+  "sortOrder": 2,
   "whatWasRepaired": "Cosmetic hail repair. Recent maintenance: oil change at 16k miles, front wipers, air & cabin air filters, NC state inspection completed.",
   "dateAdded": "2026-07-05",
   "status": "available",
@@ -50,6 +52,5 @@
     "17\" aluminum wheels",
     "Wireless charging",
     "Rear seats fold down for trunk access"
-  ],
-  "exteriorColor": "Gun Metallic Grey / Black cloth w/ red stitching"
+  ]
 }
