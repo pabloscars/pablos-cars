@@ -7,7 +7,7 @@ function miles(n) { return Number(n).toLocaleString("en-US") + " mi"; }
 
 function carCardHTML(car) {
   const soldClass = car.status === "sold" ? "is-sold" : "";
-  const cover = car.photos && car.photos[0] ? car.photos[0] : "";
+  const cover = car.image || (car.photos && car.photos[0]) || "";
   const primaryTag = car.status === "sold"
     ? `Sold${car.dateSold ? " · " + new Date(car.dateSold).toLocaleDateString("en-US",{month:"short",year:"numeric"}) : ""}`
     : car.titleStatus;
@@ -78,7 +78,7 @@ function renderVehicleDetail() {
 
   document.title = `${car.year} ${car.make} ${car.model} — ${money(car.price)} — ${BUSINESS.name}`;
 
-  const allPhotos = car.photos || [];
+  const allPhotos = [car.image, ...(car.photos || [])].filter(Boolean);
   const tagsHTML = car.tags.map(t => `<span class="chip">${t}</span>`).join("");
 
   const FEATURE_FLAGS = [

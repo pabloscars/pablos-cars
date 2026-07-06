@@ -57,23 +57,23 @@ collections:
         required: false
         field: { label: "Highlight", name: "item", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
-      - label: "Photos (first one is the cover photo — select multiple at once in the picker)"
+      - { label: "Cover Photo (main photo — shown on the homepage card, this admin list, and first in the gallery)", name: "image", widget: "image", required: false }
+      - label: "Additional Photos (add one at a time — see note below on speeding this up)"
         name: "photos"
-        widget: "image"
-        multiple: true
-        media_library: { config: { multiple: true } }
+        widget: "list"
+        required: false
+        field: { label: "Photo", name: "photo", widget: "image" }
       - label: "Photo Sections"
         name: "photoSections"
         widget: "object"
         required: false
         collapsed: true
         fields:
-          - label: "Auction Photos (from the original auction listing — select multiple at once)"
+          - label: "Auction Photos (from the original auction listing — add one at a time)"
             name: "auctionPhotos"
-            widget: "image"
-            multiple: true
+            widget: "list"
             required: false
-            media_library: { config: { multiple: true } }
+            field: { label: "Photo", name: "photo", widget: "image" }
       - { label: "Video URL (YouTube/Facebook link, or leave blank)", name: "videoUrl", widget: "string", required: false }
       - { label: "Facebook Listing Link (optional, leave blank to use your profile)", name: "facebookUrl", widget: "string", required: false }
       - { label: "Date Added", name: "dateAdded", widget: "datetime", format: "YYYY-MM-DD", required: false }
