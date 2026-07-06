@@ -20,7 +20,7 @@ function renderCustomerMap() {
 
       const map = L.map(mapEl, {
         center: CUSTOMER_MAP_CENTER,
-        zoom: CUSTOMER_MAP_ZOOM - 2,
+        zoom: CUSTOMER_MAP_ZOOM - 1.5,
         minZoom: 4,
         maxZoom: 12,
         scrollWheelZoom: true,
@@ -63,7 +63,7 @@ function renderCustomerMap() {
           fillColor: "#FF6B1F",
           fillOpacity: 0.55
         }).addTo(map);
-        marker.bindPopup(`<strong>${loc.city}, ${loc.state}</strong>`);
+        marker.bindTooltip(`${loc.city}, ${loc.state}`, { direction: "top", offset: [0, -8], className: "map-tooltip" });
         marker.on("click", () => {
           const el = marker.getElement();
           if (!el) return;
@@ -73,11 +73,20 @@ function renderCustomerMap() {
         });
       });
 
+      // Home base marker — the shop's own location, styled as the map's focal point.
+      const homeIcon = L.divIcon({
+        className: "map-home-marker",
+        html: `<div class="map-home-marker__badge"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></div>`,
+        iconSize: [36, 36],
+        iconAnchor: [18, 18]
+      });
+      L.marker(CUSTOMER_MAP_CENTER, { icon: homeIcon, interactive: false, zIndexOffset: 1000 }).addTo(map);
+
       document.getElementById("customerMapEmpty").style.display = locations.length ? "none" : "block";
 
-      // Subtle ease-in: settle from a wider view into the default center/zoom.
+      // Smooth ease-in: settle from a wider view into the default center/zoom.
       setTimeout(() => {
-        map.flyTo(CUSTOMER_MAP_CENTER, CUSTOMER_MAP_ZOOM, { duration: 1.6, easeLinearity: 0.25 });
+        map.flyTo(CUSTOMER_MAP_CENTER, CUSTOMER_MAP_ZOOM, { duration: 2.4, easeLinearity: 0.12 });
       }, 200);
     })
     .catch(err => {
