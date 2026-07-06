@@ -1,0 +1,25 @@
+{
+  "id": "2018-cadillac-cts",
+  "photos": [
+    "/images/uploads/735134116_1045485894797077_3715674558786598311_n.jpg"
+  ],
+  "trim": "Luxury",
+  "engine": "2.0 Liter 4 Cylinder Turbo",
+  "color": "White",
+  "transmission": "Automatic 8 Speed",
+  "mpg": " 32 city / 40 hwy",
+  "price": 9000,
+  "model": "CTS",
+  "titleStatus": "Rebuilt Title",
+  "mileage": 82299,
+  "make": "Cadillac",
+  "dateAdded": "2026-07-06",
+  "status": "available",
+  "location": "Asheville, NC",
+  "tags": [
+    "Side Swipe",
+    "Pearl White"
+  ],
+  "bodyType": "sedan",
+  "year": 2018
+}

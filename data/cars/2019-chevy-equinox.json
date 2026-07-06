@@ -1,0 +1,43 @@
+{
+  "photoSections": {
+    "exterior": [],
+    "interior": [],
+    "engineBay": [],
+    "damageBefore": [],
+    "repairDocs": [],
+    "tires": [],
+    "undercarriage": [],
+    "titleDocs": []
+  },
+  "photos": [
+    "https://picsum.photos/seed/equinox1/1200/900"
+  ],
+  "trim": "LT",
+  "dateSold": "2026-04-19",
+  "engine": "1.5L Turbo",
+  "transmission": "Automatic",
+  "facebookUrl": "",
+  "price": 10200,
+  "model": "Equinox",
+  "titleStatus": "Salvage Title",
+  "mileage": 68400,
+  "make": "Chevrolet",
+  "whatWasRepaired": "Front bumper and headlight after a minor collision.",
+  "dateAdded": "2026-04-02",
+  "status": "sold",
+  "videoUrl": "",
+  "location": "Asheville, NC",
+  "tags": [
+    "Salvage Title"
+  ],
+  "id": "2019-chevy-equinox",
+  "description": "This one found a great home with a family here in Asheville.",
+  "bodyType": "suv",
+  "year": 2019,
+  "knownIssues": "Sold as-is.",
+  "showVin": false,
+  "whySalvage": "Low-speed front-end collision, cosmetic damage only.",
+  "highlights": [
+    "Sold to a local family"
+  ]
+}

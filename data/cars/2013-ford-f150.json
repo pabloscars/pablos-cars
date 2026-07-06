@@ -1,0 +1,45 @@
+{
+  "photoSections": {
+    "exterior": [],
+    "interior": [],
+    "engineBay": [],
+    "damageBefore": [],
+    "repairDocs": [],
+    "tires": [],
+    "undercarriage": [],
+    "titleDocs": []
+  },
+  "photos": [
+    "https://picsum.photos/seed/f150-1/1200/900"
+  ],
+  "trim": "XLT",
+  "engine": "5.0L V8",
+  "transmission": "Automatic",
+  "facebookUrl": "",
+  "price": 12900,
+  "model": "F-150",
+  "titleStatus": "Salvage Title",
+  "mileage": 134500,
+  "make": "Ford",
+  "whatWasRepaired": "Full mechanical inspection performed — engine, transmission, and electrical all tested.",
+  "dateAdded": "2026-06-20",
+  "status": "available",
+  "videoUrl": "",
+  "location": "Candler, NC",
+  "tags": [
+    "Salvage Title",
+    "Hail Damage"
+  ],
+  "id": "2013-ford-f150",
+  "description": "Handles like a truck that's never missed a day of work.",
+  "bodyType": "truck",
+  "year": 2013,
+  "knownIssues": "Minor scuffs on tailgate.",
+  "showVin": false,
+  "whySalvage": "Hail damage, cosmetic only.",
+  "highlights": [
+    "V8 power, strong towing capacity",
+    "New battery and starter",
+    "Clean frame, no rust issues"
+  ]
+}

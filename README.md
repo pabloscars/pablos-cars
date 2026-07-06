@@ -91,12 +91,24 @@ sourcing.html        How I get my cars
 about.html           About Pablo
 contact.html         Contact page
 admin/               The Decap CMS login + config — this is your editing dashboard
-data/cars.json       Your actual car listings (the CMS edits this for you)
+data/cars/*.json     Your actual car listings, one file per car (the CMS edits these for you)
+data/cars.json       Auto-generated on every deploy by combining data/cars/*.json — the site's JS fetches this. Don't edit by hand, it gets overwritten.
 data/business.json   Your business info (the CMS edits this for you)
+build/build-cars-json.js  Combines data/cars/*.json into data/cars.json — runs automatically on every Netlify deploy (see netlify.toml)
 css/style.css        All styling
 js/                  Site logic — rendering, data loading, nav/footer
 images/              Uploaded photos land in images/uploads/ automatically
 ```
+
+Cars used to live in one big `data/cars.json` file, but Decap CMS's list
+editor had a bug editing lists nested inside other lists (e.g. reordering
+photos within a specific car reordered the wrong car). Splitting each car
+into its own file under `data/cars/` fixed that. A small build step
+(`build/build-cars-json.js`) recombines them into `data/cars.json` on every
+deploy, since that's the single file the site's JS actually fetches. If
+you're previewing locally with `npx serve` and just pulled new car changes,
+run `npm run build` once first to regenerate `data/cars.json` (Netlify does
+this for you automatically on every deploy).
 
 ## What's intentionally left out (for now)
 

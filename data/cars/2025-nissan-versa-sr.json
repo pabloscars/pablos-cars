@@ -1,0 +1,55 @@
+{
+  "photoSections": {
+    "exterior": [],
+    "interior": [],
+    "engineBay": [],
+    "damageBefore": [],
+    "repairDocs": [],
+    "tires": [],
+    "undercarriage": [],
+    "titleDocs": []
+  },
+  "photos": [
+    "images/cars/2025-nissan-versa-sr/cover.jpg",
+    "images/cars/2025-nissan-versa-sr/gallery-2.jpg"
+  ],
+  "trim": "SR",
+  "engine": "1.6L 4-Cylinder, DOHC, VVT",
+  "color": "Gun Metallic Grey / Black cloth w/ red stitching",
+  "transmission": "Xtronic CVT, FWD",
+  "mpg": "32 city / 40 hwy",
+  "facebookUrl": "",
+  "price": 13800,
+  "model": "Versa",
+  "titleStatus": "Rebuilt Title",
+  "mileage": 17200,
+  "make": "Nissan",
+  "whatWasRepaired": "Cosmetic hail repair. Recent maintenance: oil change at 16k miles, front wipers, air & cabin air filters, NC state inspection completed.",
+  "dateAdded": "2026-07-05",
+  "status": "available",
+  "videoUrl": "",
+  "location": "Asheville, NC",
+  "tags": [
+    "Rebuilt Title",
+    "Hail Damage"
+  ],
+  "id": "2025-nissan-versa-sr",
+  "description": "Genuinely save thousands on this highest-trim Versa SR, simply due to minor hail damage. Fresh maintenance just completed and a professional deep clean performed. Runs and drives excellent.",
+  "bodyType": "sedan",
+  "year": 2025,
+  "knownIssues": "Cosmetic hail damage only — see photos and video. No frame or structural damage, no airbags deployed, no glass broken.",
+  "showVin": false,
+  "whySalvage": "Hail damage. Comparable clean-title Versa SR models run $17k+ — this one is priced well below that purely because of cosmetic hail damage, not mechanical condition.",
+  "highlights": [
+    "Remote start, keyless entry, push-button start",
+    "Heated front seats",
+    "Leather steering wheel",
+    "Intelligent cruise control",
+    "Rear parking sensors, lane departure & blind spot warning",
+    "Apple CarPlay & Bluetooth",
+    "Backup camera",
+    "17\" aluminum wheels",
+    "Wireless charging",
+    "Rear seats fold down for trunk access"
+  ]
+}
