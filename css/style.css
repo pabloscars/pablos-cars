@@ -40,8 +40,9 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .nav{position:sticky; top:0; z-index:50; backdrop-filter:blur(16px); background:rgba(20,19,16,0.78); border-bottom:1px solid var(--glass-border);}
 .nav__row{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
 .brand{display:flex; align-items:center; gap:9px; font-family:var(--font-d); font-size:clamp(1.3rem,2.6vw,1.8rem); font-weight:600; letter-spacing:-0.03em; color:var(--text);}
-.nav__links{display:none; gap:24px; font-size:1.05rem; font-weight:500; color:var(--text-dim);}
-.nav__links a:hover, .nav__links a.is-active{color:var(--orange-bright);}
+.nav__links{display:none; gap:24px; font-size:1.05rem; font-weight:500; max-width:1180px; width:100%; margin:0 auto; padding:0 24px; box-sizing:border-box; justify-content:space-between;}
+.nav__links a{background-image:linear-gradient(120deg, var(--chrome-a) 0%, var(--chrome-b) 55%, var(--chrome-c) 100%); -webkit-background-clip:text; background-clip:text; color:transparent; transition:background-image .25s ease;}
+.nav__links a:hover, .nav__links a.is-active{background-image:linear-gradient(120deg, var(--orange-bright) 0%, var(--orange) 60%, var(--orange-deep) 100%); -webkit-background-clip:text; background-clip:text; color:transparent;}
 .nav-toggle{display:inline-flex; background:none; border:1px solid var(--glass-border); color:var(--text); border-radius:8px; padding:8px 12px; font-family:var(--font-m); font-size:0.78rem; cursor:pointer;}
 @media (min-width:860px){
   .nav-toggle{display:none;}
