@@ -211,13 +211,29 @@ function renderHomeFeed() {
   `;
 
   if (!availableOnly && sold.length) {
+    const SOLD_PREVIEW_COUNT = 3;
     html += `
       <div class="feed-divider">Sold</div>
-      ${cardsOrEmptyState(sold)}
+      ${cardsOrEmptyState(sold.slice(0, SOLD_PREVIEW_COUNT))}
+      ${sold.length > SOLD_PREVIEW_COUNT ? `
+        <div class="text-center" style="margin-top:24px;">
+          <a href="sold.html" class="btn btn--glass">View All Sold Vehicles</a>
+        </div>` : ""}
     `;
   }
 
   root.innerHTML = html;
+}
+
+/* Full list of every sold car, for sold.html */
+function renderSoldFeed() {
+  const root = document.getElementById("carFeedRoot");
+  if (!root) return;
+  const sold = CARS.filter(c => c.status === "sold").sort((a,b) => new Date(b.dateSold||0) - new Date(a.dateSold||0));
+  root.innerHTML = `
+    <div class="feed-heading"><h2>All Sold Vehicles</h2></div>
+    ${cardsOrEmptyState(sold)}
+  `;
 }
 
 /* ---------------- Vehicle detail page ---------------- */
@@ -268,7 +284,7 @@ function renderVehicleDetail() {
 
   const chipHTML = sections.map(([key, label]) => `<a href="#sec-${key}" class="chip-btn">${label}</a>`).join("");
   const sectionsHTML = sections.map(([key, label]) => `
-    <div class="photo-section" id="sec-${key}">
+    <div class="photo-section ${key === "auctionPhotos" ? "photo-section--scrollable" : ""}" id="sec-${key}">
       <h3>${label}</h3>
       <div class="photo-section__grid">${car.photoSections[key].map(src => `<img src="${src}" loading="lazy">`).join("")}</div>
     </div>`).join("");
@@ -376,28 +392,38 @@ function renderVehicleDetail() {
   `;
 
   const mainPhoto = document.getElementById("mainPhoto");
+  let currentMainIndex = 0;
   if (mainPhoto) {
-    mainPhoto.addEventListener("click", () => openLightbox(mainPhoto.src));
+    mainPhoto.addEventListener("click", () => openLightbox(allPhotos, currentMainIndex));
   }
 
   if (allPhotos.length > 1) {
     document.getElementById("thumbRow").addEventListener("click", (e) => {
       const img = e.target.closest("img");
       if (!img) return;
+      currentMainIndex = Number(img.dataset.i);
       mainPhoto.src = img.src;
       document.querySelectorAll("#thumbRow img").forEach(t => t.classList.remove("is-active"));
       img.classList.add("is-active");
     });
   }
 
-  root.querySelectorAll(".photo-section__grid img").forEach(img => {
-    img.addEventListener("click", () => openLightbox(img.src));
+  root.querySelectorAll(".photo-section__grid").forEach(grid => {
+    const imgs = [...grid.querySelectorAll("img")];
+    const srcs = imgs.map(i => i.src);
+    imgs.forEach((img, i) => img.addEventListener("click", () => openLightbox(srcs, i)));
   });
 }
 
-/* ---------------- Lightbox (click a photo-section image to enlarge) ---------------- */
+/* ---------------- Lightbox (click a photo to enlarge, arrow keys to move
+   between the photos in that same gallery/section, Escape to close) ---------------- */
 
-function openLightbox(src) {
+let lightboxImages = [];
+let lightboxIndex = 0;
+
+function openLightbox(images, index) {
+  lightboxImages = images;
+  lightboxIndex = index;
   let overlay = document.getElementById("lightboxOverlay");
   if (!overlay) {
     overlay = document.createElement("div");
@@ -405,11 +431,24 @@ function openLightbox(src) {
     overlay.className = "lightbox-overlay";
     overlay.innerHTML = `<img id="lightboxImg" alt="">`;
     overlay.addEventListener("click", closeLightbox);
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
+    document.addEventListener("keydown", handleLightboxKeydown);
     document.body.appendChild(overlay);
   }
-  document.getElementById("lightboxImg").src = src;
+  showLightboxImage();
   overlay.classList.add("is-open");
+}
+
+function showLightboxImage() {
+  document.getElementById("lightboxImg").src = lightboxImages[lightboxIndex];
+}
+
+function handleLightboxKeydown(e) {
+  const overlay = document.getElementById("lightboxOverlay");
+  if (!overlay || !overlay.classList.contains("is-open")) return;
+  if (e.key === "Escape") { closeLightbox(); return; }
+  if (!lightboxImages.length) return;
+  if (e.key === "ArrowRight") { lightboxIndex = (lightboxIndex + 1) % lightboxImages.length; showLightboxImage(); }
+  if (e.key === "ArrowLeft") { lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length; showLightboxImage(); }
 }
 
 function closeLightbox() {

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Sold Vehicles — Pablo's Cars</title>
+<meta name="description" content="Previously sold salvage and rebuilt-title vehicles from Pablo's Cars in Asheville, NC.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="nav"></header>
+
+<div class="blob blob--chrome" style="width:440px; height:440px; top:-140px; right:-100px; position:fixed;"></div>
+
+<section class="section" style="padding-top:28px;">
+  <div class="container">
+    <div id="carFeedRoot"></div>
+  </div>
+</section>
+
+<footer id="site-footer" class="footer"></footer>
+
+<script src="js/data-loader.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script>
+  loadSiteData().then(() => {
+    renderHeader();
+    renderFooter();
+    renderSoldFeed();
+  });
+</script>
+</body>
+</html>
