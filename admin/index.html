@@ -11,14 +11,20 @@
        a lot of empty space next to the small switch. Shrink that box
        to fit just the toggle instead. Scoped to containers that hold
        a Toggle-labeled element so no other field type is affected. */
-    [class*="ControlContainer"]:has([class*="Toggle"]) {
+    [class*="ControlContainer"]:has([class*="ToggleContainer"]) {
       display: inline-block;
       width: auto;
       min-width: 0;
       padding: 10px 14px;
     }
-    label:has(+ [class*="ControlContainer"]:has([class*="Toggle"])) {
-      display: inline-block;
+    /* The whole field (label text + toggle box) is wrapped in one
+       outer <label>, with the label text and control box as sibling
+       divs inside it — shrink the whole label to a compact column
+       instead of letting it stretch full width. */
+    label:has([class*="ToggleContainer"]) {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
       width: auto;
     }
   </style>
