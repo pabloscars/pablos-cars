@@ -1,3 +1,72 @@
 {
-  "locations": []
+  "locations": [
+    {
+      "city": "Swannanoa",
+      "state": "NC"
+    },
+    {
+      "city": "Gatlinburg",
+      "state": "TN"
+    },
+    {
+      "city": "Fairview",
+      "state": "NC"
+    },
+    {
+      "city": "Mars Hill",
+      "state": "NC"
+    },
+    {
+      "city": "Mars Hill",
+      "state": "NC"
+    },
+    {
+      "city": "Canton",
+      "state": "NC"
+    },
+    {
+      "city": "Arden",
+      "state": "NC"
+    },
+    {
+      "city": "Leicester",
+      "state": "NC"
+    },
+    {
+      "city": "Leicester",
+      "state": "NC"
+    },
+    {
+      "city": "Leicester",
+      "state": "NC"
+    },
+    {
+      "city": "Kingsport",
+      "state": "TN"
+    },
+    {
+      "city": "Hayesville",
+      "state": "NC"
+    },
+    {
+      "city": "Clyde",
+      "state": "NC"
+    },
+    {
+      "city": "Skyland",
+      "state": "NC"
+    },
+    {
+      "city": "Clyde",
+      "state": "NC"
+    },
+    {
+      "city": "Weaverville",
+      "state": "NC"
+    },
+    {
+      "city": "Morristown",
+      "state": "TN"
+    }
+  ]
 }
