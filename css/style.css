@@ -121,6 +121,12 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .vdp-specs{display:grid; grid-template-columns:1fr 1fr; gap:10px 16px; margin:16px 0; font-family:var(--font-m); font-size:0.85rem;}
 .vdp-specs dt{color:var(--text-faint); font-size:0.68rem; text-transform:uppercase;}
 .vdp-specs dd{margin:2px 0 0; color:var(--text); font-weight:600;}
+
+.trust-badges{display:flex; flex-wrap:wrap; gap:16px; margin:18px 0; padding-top:16px; border-top:1px solid var(--glass-border);}
+.trust-badge{display:flex; flex-direction:column; align-items:center; gap:8px; width:88px; text-align:center;}
+.trust-badge__icon{width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 35% 30%, rgba(111,219,142,0.22), rgba(111,219,142,0.04)); border:1.5px solid var(--go); color:var(--go); box-shadow:0 0 14px rgba(111,219,142,0.25);}
+.trust-badge__icon svg{width:22px; height:22px;}
+.trust-badge__label{font-family:var(--font-m); font-size:0.66rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-dim); line-height:1.3;}
 .info-block{border-top:1px solid var(--glass-border); padding-top:14px; margin-top:14px;}
 
 .photo-section{margin-top:0;}

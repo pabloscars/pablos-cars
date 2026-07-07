@@ -150,6 +150,15 @@ const FEATURE_CATEGORIES = [
   ] }
 ];
 
+/* Reassurance badges shown on the vehicle detail page when the
+   matching Condition & Ownership toggle is checked "yes". */
+const TRUST_BADGES = [
+  ["conditionFeatures", "noAirbagsDeployed", "No Airbags Deployed"],
+  ["conditionFeatures", "noFrameDamage", "No Frame Damage"],
+  ["conditionFeatures", "noGlassBroken", "No Glass Broken"]
+];
+const TRUST_BADGE_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>`;
+
 function money(n) { return "$" + Number(n).toLocaleString("en-US"); }
 function miles(n) { return Number(n).toLocaleString("en-US") + " mi"; }
 
@@ -275,6 +284,15 @@ function renderVehicleDetail() {
     })
     .join("");
 
+  const trustBadgesHTML = TRUST_BADGES
+    .filter(([catKey, itemKey]) => car[catKey] && car[catKey][itemKey])
+    .map(([, , label]) => `
+      <div class="trust-badge">
+        <div class="trust-badge__icon">${TRUST_BADGE_ICON}</div>
+        <div class="trust-badge__label">${label}</div>
+      </div>`)
+    .join("");
+
   const SLIDER_SECTIONS = new Set(["auctionPhotos", "deepCleaning"]);
   const sections = [
     ["auctionPhotos", "Auction Photos"],
@@ -373,6 +391,8 @@ function renderVehicleDetail() {
               ${car.interiorMaterial ? `<div style="grid-column:1/-1;"><dt>Interior Material</dt><dd>${car.interiorMaterial}</dd></div>` : ""}
               ${car.mpg ? `<div style="grid-column:1/-1;"><dt>Fuel Economy</dt><dd>${car.mpg}</dd></div>` : ""}
             </dl>
+
+            ${trustBadgesHTML ? `<div class="trust-badges">${trustBadgesHTML}</div>` : ""}
 
             ${car.status !== "sold" ? `
             <div class="info-block" style="border-top:none; padding-top:0; margin-top:0;">

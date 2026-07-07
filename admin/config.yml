@@ -183,6 +183,7 @@ collections:
           - { label: "No Warning Lights", name: "noWarningLights", widget: "boolean", default: false, required: false }
           - { label: "No Airbags Deployed", name: "noAirbagsDeployed", widget: "boolean", default: false, required: false }
           - { label: "No Frame Damage", name: "noFrameDamage", widget: "boolean", default: false, required: false }
+          - { label: "No Glass Broken", name: "noGlassBroken", widget: "boolean", default: false, required: false }
           - { label: "No Flood Damage", name: "noFloodDamage", widget: "boolean", default: false, required: false }
           - { label: "NC State Inspected", name: "ncStateInspected", widget: "boolean", default: false, required: false }
           - { label: "Fresh Oil Change", name: "freshOilChange", widget: "boolean", default: false, required: false }
