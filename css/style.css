@@ -265,9 +265,10 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .buy-step{position:relative; display:grid; grid-template-columns:56px 1fr; gap:8px 20px; padding-bottom:52px;}
 .buy-step:last-child{padding-bottom:0;}
 .buy-step__num{grid-row:1/3; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--chrome-a) 0%, var(--orange-bright) 45%, var(--orange-deep) 100%); color:#241000; font-family:var(--font-d); font-weight:700; font-size:1.1rem; z-index:2; box-shadow:0 6px 18px rgba(255,107,31,0.35);}
-.buy-step__figure{grid-column:2; width:100%; max-width:220px; aspect-ratio:1/1.1; margin:0 auto 6px;}
-.buy-step__figure svg{width:100%; height:100%; color:var(--chrome-b); transition:color .4s ease;}
+.buy-step__figure{grid-column:2; width:100%; max-width:220px; aspect-ratio:1/1.1; margin:0 auto 6px; cursor:pointer;}
+.buy-step__figure svg{width:100%; height:100%; color:var(--chrome-b); transition:color .4s ease, transform .3s ease;}
 .buy-step.is-visible .buy-step__figure svg{color:var(--orange-bright);}
+.buy-step__figure:hover svg{transform:translateY(-3px) scale(1.03);}
 .buy-step__text{grid-column:2;}
 .buy-step__text h3{margin-bottom:6px;}
 .buy-step__text p{margin-bottom:0;}
@@ -286,28 +287,31 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 
 /* Stick-figure "flipbook" limb crossfades — two overlapping frames per
    moving part, swapped via opacity so it reads as a couple frames of
-   motion once the step scrolls into view (see renderHeader/IntersectionObserver
-   in how-to-buy.html). Runs a few loops, then settles like a short clip. */
+   motion. Driven by ".is-playing", which is toggled independently of
+   ".is-visible" (the scroll entrance) so the clip can be replayed on
+   hover without re-triggering the fade/slide-in — see the IntersectionObserver
+   + mouseenter handler in how-to-buy.html. Runs a few loops, then settles
+   like a short clip. */
 .fig-frame-b{opacity:0;}
-.buy-step.is-visible .fig-frame-a{animation:figFlipA 1.3s steps(1) 3;}
-.buy-step.is-visible .fig-frame-b{animation:figFlipB 1.3s steps(1) 3;}
+.buy-step.is-playing .fig-frame-a{animation:figFlipA 1.3s steps(1) 3;}
+.buy-step.is-playing .fig-frame-b{animation:figFlipB 1.3s steps(1) 3;}
 @keyframes figFlipA{0%,100%{opacity:1;}50%{opacity:0;}}
 @keyframes figFlipB{0%,100%{opacity:0;}50%{opacity:1;}}
 
 .fig-wheel{transform-box:fill-box; transform-origin:center;}
-.buy-step.is-visible .fig-wheel{animation:figSpin 1.1s linear 3;}
+.buy-step.is-playing .fig-wheel{animation:figSpin 1.1s linear 3;}
 @keyframes figSpin{to{transform:rotate(360deg);}}
 
 .fig-draw{stroke-dasharray:60; stroke-dashoffset:60;}
-.buy-step.is-visible .fig-draw{animation:figDraw 0.9s ease forwards 0.3s;}
+.buy-step.is-playing .fig-draw{animation:figDraw 0.9s ease forwards 0.3s;}
 @keyframes figDraw{to{stroke-dashoffset:0;}}
 
 .fig-clock-hand{transform-box:fill-box; transform-origin:center;}
-.buy-step.is-visible .fig-clock-hand{animation:figTick 1.2s ease-in-out 3;}
+.buy-step.is-playing .fig-clock-hand{animation:figTick 1.2s ease-in-out 3;}
 @keyframes figTick{0%,100%{transform:rotate(0deg);}50%{transform:rotate(70deg);}}
 
 .fig-speed-line{stroke-dasharray:10 8; stroke-dashoffset:0;}
-.buy-step.is-visible .fig-speed-line{animation:figSpeed 0.7s linear 4;}
+.buy-step.is-playing .fig-speed-line{animation:figSpeed 0.7s linear 4;}
 @keyframes figSpeed{to{stroke-dashoffset:-18;}}
 
 .buy-final{text-align:center; padding-top:8px;}

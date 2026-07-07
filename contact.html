@@ -22,12 +22,16 @@
   <div class="container">
     <div class="contact-grid">
       <div class="contact-card">
-        <h3>Message on Facebook</h3>
-        <p>I only take serious inquiries through Facebook — it lets me see reviews and background before we set up a time to meet.</p>
+        <h3>Message on Facebook or email me</h3>
+        <p>Facebook lets me see reviews and background before we set up a time to meet — but if you don't have it, email works just as well.</p>
         <div class="btn-row">
           <a href="#" id="fbLink" target="_blank" rel="noopener" class="btn btn--orange">
             <svg class="msg-icon" viewBox="0 0 24 24" fill="none" stroke="#241000" stroke-width="2"><path d="M4 4h16v12H8l-4 4V4z"/></svg>
             Message Pablo
+          </a>
+          <a href="#" id="emailCta" class="btn btn--glass">
+            <svg class="msg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            Email Me
           </a>
         </div>
         <div class="divider"></div>
@@ -54,6 +58,7 @@
     renderFooter();
     document.getElementById("contactNote").textContent = BUSINESS.appointmentNote;
     document.getElementById("fbLink").href = BUSINESS.facebookUrl;
+    document.getElementById("emailCta").href = "mailto:" + BUSINESS.email;
     document.getElementById("emailLink").href = "mailto:" + BUSINESS.email;
     document.getElementById("emailLink").textContent = BUSINESS.email;
     document.getElementById("locationText").textContent = BUSINESS.location;
