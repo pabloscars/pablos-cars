@@ -36,6 +36,9 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .blob{animation:drift 17s ease-in-out infinite;}
 @media (prefers-reduced-motion:reduce){.blob{animation:none;}}
 
+/* ---- Faint background map (homepage decoration only) ---- */
+.home-bg-map{position:fixed; inset:0; z-index:0; opacity:0.14; pointer-events:none; filter:saturate(0.7);}
+
 /* ---- Nav ---- */
 .nav{position:sticky; top:0; z-index:500; backdrop-filter:blur(16px); background:rgba(20,19,16,0.78); border-bottom:1px solid var(--glass-border);}
 .nav__row{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
@@ -201,8 +204,6 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .divider{height:1px; background:var(--glass-border); border:0; margin:28px 0;}
 
 .feed-heading{margin:0 0 18px;}
-.feed-divider{display:flex; align-items:center; gap:16px; margin:52px 0 24px; color:var(--text-faint); font-family:var(--font-m); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.14em;}
-.feed-divider::before, .feed-divider::after{content:""; flex:1; height:1px; background:var(--glass-border);}
 .about-photo{aspect-ratio:4/3; background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; color:var(--text-faint); font-family:var(--font-m); font-size:0.85rem; overflow:hidden;}
 
 /* ---- Customer map ---- */

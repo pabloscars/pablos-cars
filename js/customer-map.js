@@ -103,3 +103,54 @@ function renderCustomerMap() {
       console.error("Failed to load customer locations:", err);
     });
 }
+
+/* ---------------- Faint background map (homepage decoration) ----------------
+   A non-interactive, very low-opacity version of the customer map, used
+   purely as a subtle backdrop texture behind the homepage content. */
+function renderHomeBackgroundMap() {
+  const el = document.getElementById("homeBgMap");
+  if (!el || typeof L === "undefined") return;
+
+  fetch("data/customer-locations.built.json")
+    .then(r => r.json())
+    .then(data => {
+      const locations = (data && data.locations) || [];
+
+      const map = L.map(el, {
+        center: CUSTOMER_MAP_CENTER,
+        zoom: CUSTOMER_MAP_ZOOM,
+        zoomControl: false,
+        attributionControl: true,
+        dragging: false,
+        touchZoom: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        keyboard: false,
+        tap: false,
+        fadeAnimation: false
+      });
+
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+        subdomains: "abcd",
+        maxZoom: 20
+      }).addTo(map);
+
+      locations.forEach(loc => {
+        if (typeof loc.lat !== "number" || typeof loc.lng !== "number") return;
+        L.circleMarker([loc.lat, loc.lng], {
+          radius: 5,
+          weight: 1,
+          color: "#FF8F4D",
+          fillColor: "#FF6B1F",
+          fillOpacity: 0.7,
+          interactive: false
+        }).addTo(map);
+      });
+
+      window.addEventListener("resize", () => map.invalidateSize());
+      setTimeout(() => map.invalidateSize(), 200);
+    })
+    .catch(err => console.error("Failed to load background map data:", err));
+}
