@@ -445,7 +445,7 @@ function photoSliderHTML(images) {
   for (let i = 0; i < images.length; i += SLIDER_PAGE_SIZE) pages.push(images.slice(i, i + SLIDER_PAGE_SIZE));
 
   const pagesHTML = pages.map(page => `
-    <div class="photo-slider__page">${page.map(src => `<div class="photo-slider__frame"><img src="${src}" loading="lazy"></div>`).join("")}</div>`
+    <div class="photo-slider__page" style="grid-template-columns:repeat(${page.length}, 1fr);">${page.map(src => `<div class="photo-slider__frame"><img src="${src}" loading="lazy"></div>`).join("")}</div>`
   ).join("");
 
   const thumbsHTML = images.map((src, i) => `<img src="${src}" data-i="${i}" class="${i < SLIDER_PAGE_SIZE ? "is-active" : ""}" loading="lazy">`).join("");
