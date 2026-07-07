@@ -9,6 +9,16 @@
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute;" aria-hidden="true">
+  <defs>
+    <linearGradient id="figChrome" x1="15%" y1="10%" x2="85%" y2="90%">
+      <stop offset="0%" stop-color="var(--chrome-a)"/>
+      <stop offset="55%" stop-color="var(--chrome-b)"/>
+      <stop offset="100%" stop-color="var(--chrome-c)"/>
+    </linearGradient>
+  </defs>
+</svg>
+
 <header id="site-header" class="nav"></header>
 
 <div class="blob blob--chrome" style="width:400px; height:400px; top:-120px; right:-100px; position:fixed;"></div>
@@ -18,7 +28,7 @@
   <div class="container text-center max-w-prose" style="margin:0 auto;">
     <div class="label" style="margin-bottom:10px; color:var(--orange-bright);">Buying from Pablo's Cars</div>
     <h1>how to buy a car from me.</h1>
-    <p>Simple, transparent, straightforward — scroll down (or hover the icons) to see how it works.</p>
+    <p>Simple, transparent, straightforward.</p>
   </div>
 </section>
 
@@ -31,10 +41,11 @@
         <div class="buy-step__figure">
           <svg viewBox="0 0 100 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
             <rect x="37" y="38" width="18" height="44" rx="9" fill="currentColor" fill-opacity="0.12" stroke="none"/>
-            <circle cx="46" cy="18" r="11" fill="var(--bg-2)"/>
-            <circle cx="42" cy="16" r="1.3" fill="currentColor" stroke="none"/>
-            <circle cx="50" cy="16" r="1.3" fill="currentColor" stroke="none"/>
-            <path d="M42 21q4 3 8 0" stroke-width="1.6"/>
+            <circle cx="46" cy="18" r="11" fill="url(#figChrome)"/>
+            <ellipse cx="42" cy="13" rx="3.5" ry="2" fill="white" fill-opacity="0.4" stroke="none"/>
+            <circle cx="42" cy="16" r="1.3" fill="#241000" stroke="none"/>
+            <circle cx="50" cy="16" r="1.3" fill="#241000" stroke="none"/>
+            <path d="M42 21q4 3 8 0" stroke-width="1.6" stroke="#241000"/>
             <line x1="46" y1="29" x2="46" y2="82"/>
             <line x1="46" y1="82" x2="30" y2="128"/>
             <line x1="46" y1="82" x2="62" y2="128"/>
@@ -44,7 +55,8 @@
             <circle cx="64" cy="50" r="2.6" fill="currentColor" stroke="none"/>
             <ellipse cx="30" cy="128" rx="6" ry="3.2" fill="currentColor" stroke="none"/>
             <ellipse cx="62" cy="128" rx="6" ry="3.2" fill="currentColor" stroke="none"/>
-            <rect x="60" y="28" width="13" height="20" rx="2" fill="var(--bg-2)"/>
+            <rect x="60" y="28" width="13" height="20" rx="2" fill="url(#figChrome)"/>
+            <rect class="fig-frame-b" x="62.5" y="31" width="8" height="6" rx="1" fill="var(--go)" fill-opacity="0.85" stroke="none"/>
             <path class="fig-frame-b" d="M76 18c-1.5-3-6.5-3-6.5 1 0 3 6.5 6.5 6.5 6.5s6.5-3.5 6.5-6.5c0-4-5-4-6.5-1z" fill="var(--orange-bright)" stroke="var(--orange-bright)" stroke-width="1"/>
           </svg>
         </div>
@@ -58,11 +70,14 @@
         <div class="buy-step__num">2</div>
         <div class="buy-step__figure">
           <svg viewBox="0 0 100 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M-5 50L12 24L26 42L40 15L55 40L70 22L86 44L105 50" fill="none" stroke="var(--chrome-c)" stroke-width="2.2" opacity="0.55"/>
+
             <rect x="13" y="64" width="14" height="31" rx="7" fill="currentColor" fill-opacity="0.12" stroke="none"/>
-            <circle cx="20" cy="55" r="9" fill="var(--bg-2)"/>
-            <circle cx="17" cy="53" r="1.1" fill="currentColor" stroke="none"/>
-            <circle cx="23" cy="53" r="1.1" fill="currentColor" stroke="none"/>
-            <path d="M17 58q3 2.5 6 0" stroke-width="1.4"/>
+            <circle cx="20" cy="55" r="9" fill="url(#figChrome)"/>
+            <ellipse cx="17" cy="51.5" rx="3" ry="1.6" fill="white" fill-opacity="0.4" stroke="none"/>
+            <circle cx="17" cy="53" r="1.1" fill="#241000" stroke="none"/>
+            <circle cx="23" cy="53" r="1.1" fill="#241000" stroke="none"/>
+            <path d="M17 58q3 2.5 6 0" stroke-width="1.4" stroke="#241000"/>
             <line x1="20" y1="64" x2="20" y2="95"/>
             <line x1="20" y1="95" x2="10" y2="120"/>
             <line x1="20" y1="95" x2="28" y2="120"/>
@@ -72,12 +87,28 @@
             <circle cx="10" cy="82" r="2.8" fill="currentColor" stroke="none"/>
             <ellipse cx="10" cy="120" rx="5" ry="2.8" fill="currentColor" stroke="none"/>
             <ellipse cx="28" cy="120" rx="5" ry="2.8" fill="currentColor" stroke="none"/>
-            <path d="M38 92q0-14 14-14h26q12 0 16 12l4 10"/>
-            <rect x="38" y="90" width="56" height="20" rx="6" fill="var(--bg-2)"/>
-            <circle cx="52" cy="102" r="2" fill="currentColor" stroke="none"/>
-            <circle cx="70" cy="102" r="2" fill="currentColor" stroke="none"/>
-            <g class="fig-wheel"><circle cx="52" cy="112" r="8" fill="var(--bg-2)"/><line x1="52" y1="104" x2="52" y2="120"/><line x1="44" y1="112" x2="60" y2="112"/></g>
-            <g class="fig-wheel"><circle cx="84" cy="112" r="8" fill="var(--bg-2)"/><line x1="84" y1="104" x2="84" y2="120"/><line x1="76" y1="112" x2="92" y2="112"/></g>
+
+            <rect x="40" y="96" width="56" height="18" rx="8" fill="url(#figChrome)"/>
+            <ellipse cx="55" cy="100" rx="8" ry="2.6" fill="white" fill-opacity="0.3" stroke="none"/>
+            <path d="M54 96L60 80Q62 78 66 78L82 78Q86 78 88 80L92 96Z" fill="url(#figChrome)"/>
+            <path d="M59 94L63 82L71 82L71 94Z" fill="var(--bg-3)" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M73 94L73 82L81 82L87 94Z" fill="var(--bg-3)" stroke="currentColor" stroke-width="1.3"/>
+            <line x1="68" y1="96" x2="68" y2="114" stroke-width="1.6"/>
+            <line x1="76" y1="100" x2="80" y2="100" stroke-width="2"/>
+            <circle cx="93" cy="104" r="2.4" fill="var(--orange-bright)" stroke="none"/>
+            <circle cx="43" cy="104" r="2" fill="var(--sold)" stroke="none"/>
+            <g class="fig-wheel">
+              <circle cx="52" cy="114" r="9" fill="url(#figChrome)" stroke="currentColor"/>
+              <circle cx="52" cy="114" r="4" fill="var(--bg-3)" stroke="currentColor" stroke-width="1.4"/>
+              <line x1="52" y1="110" x2="52" y2="118"/>
+              <line x1="48" y1="114" x2="56" y2="114"/>
+            </g>
+            <g class="fig-wheel">
+              <circle cx="84" cy="114" r="9" fill="url(#figChrome)" stroke="currentColor"/>
+              <circle cx="84" cy="114" r="4" fill="var(--bg-3)" stroke="currentColor" stroke-width="1.4"/>
+              <line x1="84" y1="110" x2="84" y2="118"/>
+              <line x1="80" y1="114" x2="88" y2="114"/>
+            </g>
           </svg>
         </div>
         <div class="buy-step__text">
@@ -91,12 +122,11 @@
         <div class="buy-step__figure">
           <svg viewBox="0 0 100 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
             <rect x="21" y="40" width="18" height="30" rx="9" fill="currentColor" fill-opacity="0.12" stroke="none"/>
-            <circle cx="30" cy="30" r="10" fill="var(--bg-2)"/>
-            <circle cx="26" cy="28" r="1.2" fill="currentColor" stroke="none"/>
-            <circle cx="34" cy="28" r="1.2" fill="currentColor" stroke="none"/>
-            <path d="M26 33q4 3 8 0" stroke-width="1.5"/>
-            <path d="M19 27Q30 8 41 27Z" fill="var(--orange-bright)" fill-opacity="0.92" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M39 24q9-2 11 3q-2 4-11 2Z" fill="var(--orange-bright)" stroke="currentColor" stroke-width="1.2"/>
+            <circle cx="30" cy="30" r="10" fill="url(#figChrome)"/>
+            <ellipse cx="27" cy="26" rx="3" ry="1.7" fill="white" fill-opacity="0.4" stroke="none"/>
+            <circle cx="26" cy="28" r="1.2" fill="#241000" stroke="none"/>
+            <circle cx="34" cy="28" r="1.2" fill="#241000" stroke="none"/>
+            <path d="M26 33q4 3 8 0" stroke-width="1.5" stroke="#241000"/>
             <line x1="30" y1="40" x2="30" y2="70"/>
             <line x1="30" y1="70" x2="18" y2="70"/>
             <line x1="30" y1="70" x2="42" y2="70"/>
@@ -105,8 +135,8 @@
             <circle cx="45" cy="58" r="3" fill="currentColor" stroke="none"/>
             <circle cx="18" cy="60" r="3" fill="currentColor" stroke="none"/>
             <line x1="10" y1="82" x2="70" y2="82"/>
-            <rect x="26" y="70" width="34" height="22" rx="2" fill="var(--bg-2)"/>
-            <path class="fig-draw" d="M32 82l6 6 12-13"/>
+            <rect x="26" y="70" width="34" height="22" rx="2" fill="url(#figChrome)"/>
+            <path class="fig-draw" d="M32 82l6 6 12-13" stroke="var(--go)"/>
             <rect x="66" y="95" width="26" height="17" rx="2"/>
             <line x1="66" y1="102" x2="92" y2="102"/>
             <line x1="64" y1="93" x2="94" y2="114" stroke="var(--sold)"/>
@@ -118,7 +148,7 @@
         </div>
         <div class="buy-step__text">
           <h3>Simple paperwork — no games</h3>
-          <p>We sign the title and bill of sale. That's it.</p>
+          <p>We fill out and sign our required dealer forms. That's it.</p>
           <ul>
             <li>No credit check</li>
             <li>No background check</li>
@@ -130,15 +160,17 @@
         <div class="buy-step__num">4</div>
         <div class="buy-step__figure">
           <svg viewBox="0 0 100 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="50" cy="20" r="12" fill="var(--bg-2)"/>
+            <circle cx="50" cy="20" r="12" fill="url(#figChrome)"/>
+            <ellipse cx="46" cy="15" rx="3.4" ry="1.8" fill="white" fill-opacity="0.35" stroke="none"/>
             <g class="fig-clock-hand" style="transform-origin:50px 20px;"><line x1="50" y1="20" x2="50" y2="12"/></g>
             <line x1="50" y1="20" x2="56" y2="20"/>
 
             <rect x="17" y="53" width="14" height="33" rx="7" fill="currentColor" fill-opacity="0.12" stroke="none"/>
-            <circle cx="24" cy="44" r="9" fill="var(--bg-2)"/>
-            <circle cx="21" cy="42" r="1.1" fill="currentColor" stroke="none"/>
-            <circle cx="27" cy="42" r="1.1" fill="currentColor" stroke="none"/>
-            <path d="M21 47q3 2.5 6 0" stroke-width="1.4"/>
+            <circle cx="24" cy="44" r="9" fill="url(#figChrome)"/>
+            <ellipse cx="21" cy="40.5" rx="2.8" ry="1.5" fill="white" fill-opacity="0.4" stroke="none"/>
+            <circle cx="21" cy="42" r="1.1" fill="#241000" stroke="none"/>
+            <circle cx="27" cy="42" r="1.1" fill="#241000" stroke="none"/>
+            <path d="M21 47q3 2.5 6 0" stroke-width="1.4" stroke="#241000"/>
             <line x1="24" y1="53" x2="24" y2="86"/>
             <line x1="24" y1="86" x2="14" y2="122"/>
             <line x1="24" y1="86" x2="32" y2="122"/>
@@ -150,12 +182,11 @@
             <ellipse cx="32" cy="122" rx="5" ry="2.8" fill="currentColor" stroke="none"/>
 
             <rect x="69" y="53" width="14" height="33" rx="7" fill="currentColor" fill-opacity="0.12" stroke="none"/>
-            <circle cx="76" cy="44" r="9" fill="var(--bg-2)"/>
-            <circle cx="73" cy="42" r="1.1" fill="currentColor" stroke="none"/>
-            <circle cx="79" cy="42" r="1.1" fill="currentColor" stroke="none"/>
-            <path d="M73 47q3 2.5 6 0" stroke-width="1.4"/>
-            <path d="M67 41Q76 22 85 41Z" fill="var(--orange-bright)" fill-opacity="0.92" stroke="currentColor" stroke-width="1.4"/>
-            <path d="M83 38q8-2 10 3q-2 4-10 2Z" fill="var(--orange-bright)" stroke="currentColor" stroke-width="1.1"/>
+            <circle cx="76" cy="44" r="9" fill="url(#figChrome)"/>
+            <ellipse cx="73" cy="40.5" rx="2.8" ry="1.5" fill="white" fill-opacity="0.4" stroke="none"/>
+            <circle cx="73" cy="42" r="1.1" fill="#241000" stroke="none"/>
+            <circle cx="79" cy="42" r="1.1" fill="#241000" stroke="none"/>
+            <path d="M73 47q3 2.5 6 0" stroke-width="1.4" stroke="#241000"/>
             <line x1="76" y1="53" x2="76" y2="86"/>
             <line x1="76" y1="86" x2="66" y2="122"/>
             <line x1="76" y1="86" x2="84" y2="122"/>
@@ -166,13 +197,13 @@
             <ellipse cx="66" cy="122" rx="5" ry="2.8" fill="currentColor" stroke="none"/>
             <ellipse cx="84" cy="122" rx="5" ry="2.8" fill="currentColor" stroke="none"/>
 
-            <g class="fig-frame-a"><rect x="40" y="64" width="20" height="13" rx="2" fill="var(--bg-2)"/><line x1="46" y1="70.5" x2="54" y2="70.5"/></g>
-            <g class="fig-frame-b"><circle cx="46" cy="70" r="5" fill="var(--bg-2)"/><line x1="51" y1="70" x2="60" y2="70"/><line x1="57" y1="70" x2="57" y2="75"/></g>
+            <g class="fig-frame-a"><rect x="40" y="64" width="20" height="13" rx="2" fill="var(--go)" fill-opacity="0.85"/><line x1="46" y1="70.5" x2="54" y2="70.5" stroke="var(--bg-2)"/></g>
+            <g class="fig-frame-b"><circle cx="46" cy="70" r="5" fill="url(#figChrome)"/><line x1="51" y1="70" x2="60" y2="70"/><line x1="57" y1="70" x2="57" y2="75"/></g>
           </svg>
         </div>
         <div class="buy-step__text">
           <h3>You pay, I hand over the keys</h3>
-          <p>Cash or verified payment — no dealer add-ons tacked on at the end. This can all happen the <strong style="color:var(--text);">same day</strong> you first message me.</p>
+          <p>Cash — no dealer add-ons tacked on at the end. This can all happen the <strong style="color:var(--text);">same day</strong> you first message me.</p>
         </div>
       </div>
 
@@ -181,12 +212,11 @@
         <div class="buy-step__figure">
           <svg viewBox="0 0 100 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
             <rect x="11" y="50" width="18" height="35" rx="9" fill="currentColor" fill-opacity="0.12" stroke="none"/>
-            <circle cx="20" cy="40" r="10" fill="var(--bg-2)"/>
-            <circle cx="17" cy="38" r="1.2" fill="currentColor" stroke="none"/>
-            <circle cx="23" cy="38" r="1.2" fill="currentColor" stroke="none"/>
-            <path d="M17 43q3 3 6 0" stroke-width="1.5"/>
-            <path d="M9 37Q20 18 31 37Z" fill="var(--orange-bright)" fill-opacity="0.92" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M29 34q9-2 11 3q-2 4-11 2Z" fill="var(--orange-bright)" stroke="currentColor" stroke-width="1.2"/>
+            <circle cx="20" cy="40" r="10" fill="url(#figChrome)"/>
+            <ellipse cx="16.5" cy="35.5" rx="3.2" ry="1.7" fill="white" fill-opacity="0.4" stroke="none"/>
+            <circle cx="17" cy="38" r="1.2" fill="#241000" stroke="none"/>
+            <circle cx="23" cy="38" r="1.2" fill="#241000" stroke="none"/>
+            <path d="M17 43q3 3 6 0" stroke-width="1.5" stroke="#241000"/>
             <line x1="20" y1="50" x2="20" y2="85"/>
             <line x1="20" y1="85" x2="10" y2="122"/>
             <line x1="20" y1="85" x2="28" y2="122"/>
@@ -197,18 +227,28 @@
             <ellipse cx="10" cy="122" rx="6" ry="3.2" fill="currentColor" stroke="none"/>
             <ellipse cx="28" cy="122" rx="6" ry="3.2" fill="currentColor" stroke="none"/>
             <path class="fig-frame-b" d="M38 34q6-4 6 4"/>
-            <path d="M58 90q2-10 12-10h10q8 0 10 8"/>
-            <rect x="52" y="90" width="40" height="16" rx="5" fill="var(--bg-2)"/>
-            <circle cx="62" cy="106" r="6" fill="var(--bg-2)"/>
-            <circle cx="84" cy="106" r="6" fill="var(--bg-2)"/>
-            <line class="fig-speed-line" x1="30" y1="88" x2="46" y2="88"/>
-            <line class="fig-speed-line" x1="26" y1="98" x2="46" y2="98"/>
-            <line class="fig-speed-line" x1="30" y1="108" x2="46" y2="108"/>
+
+            <rect x="54" y="94" width="38" height="13" rx="6" fill="url(#figChrome)"/>
+            <path d="M64 94L68 84Q70 82 72 82L82 82Q84 82 86 84L90 94Z" fill="url(#figChrome)"/>
+            <path d="M67 93L70 85L76 85L76 93Z" fill="var(--bg-3)" stroke="currentColor" stroke-width="1.1"/>
+            <path d="M78 93L78 85L84 85L87 93Z" fill="var(--bg-3)" stroke="currentColor" stroke-width="1.1"/>
+            <circle cx="89" cy="99" r="1.8" fill="var(--orange-bright)" stroke="none"/>
+            <g class="fig-wheel">
+              <circle cx="62" cy="107" r="6" fill="url(#figChrome)" stroke="currentColor"/>
+              <circle cx="62" cy="107" r="2.6" fill="var(--bg-3)" stroke="currentColor" stroke-width="1.1"/>
+            </g>
+            <g class="fig-wheel">
+              <circle cx="84" cy="107" r="6" fill="url(#figChrome)" stroke="currentColor"/>
+              <circle cx="84" cy="107" r="2.6" fill="var(--bg-3)" stroke="currentColor" stroke-width="1.1"/>
+            </g>
+            <line class="fig-speed-line" x1="30" y1="88" x2="50" y2="88"/>
+            <line class="fig-speed-line" x1="26" y1="99" x2="50" y2="99"/>
+            <line class="fig-speed-line" x1="30" y1="110" x2="50" y2="110"/>
           </svg>
         </div>
         <div class="buy-step__text">
           <h3>You drive off happy</h3>
-          <p>That's the whole process. Thanks again — and if anything comes up, I'm just a message away.</p>
+          <p>That's the whole process. Thanks again.</p>
         </div>
       </div>
 
@@ -244,7 +284,7 @@
 <section class="section text-center buy-final">
   <div class="container max-w-prose" style="margin:0 auto;">
     <h2>Ready to find your next car?</h2>
-    <p>Message me on Facebook — or email if that's easier — and let's get you into something good.</p>
+    <p>Message me on Facebook or email me for any questions.</p>
     <div class="btn-row" style="justify-content:center; margin-top:14px;">
       <a href="index.html" class="btn btn--glass">See What's Available</a>
       <a href="contact.html" class="btn btn--orange">
