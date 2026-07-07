@@ -27,6 +27,15 @@
       align-items: flex-start;
       width: auto;
     }
+    /* The feature-category objects (Comfort & Convenience, Tech, etc.)
+       hold 8-25 toggles each, stacked one per line by default — that's
+       most of the "scroll forever" problem. Wrap their direct container
+       into a flowing grid instead so a category fits in a few rows. */
+    :has(> label:has([class*="ToggleContainer"])) {
+      display: flex !important;
+      flex-flow: row wrap;
+      gap: 2px 14px;
+    }
   </style>
 </head>
 <body>
@@ -45,6 +54,154 @@
         }
       });
     }
+  </script>
+  <script>
+    /* ============================================================
+       LIVE CAR LISTING PREVIEW
+       Replaces Decap's default "dump every field as plain text"
+       preview with something that actually looks like the listing
+       you're about to publish — same fonts/colors as the real site
+       (loaded via registerPreviewStyle below), updating as you type.
+       ============================================================ */
+    var TRUST_BADGE_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>';
+    var TRUST_BADGES = [
+      ["conditionFeatures", "noAirbagsDeployed", "No Airbags Deployed"],
+      ["conditionFeatures", "noFrameDamage", "No Frame Damage"],
+      ["conditionFeatures", "noGlassBroken", "No Glass Broken"]
+    ];
+
+    var CarPreview = createClass({
+      render: function () {
+        var entry = this.props.entry;
+        var getAsset = this.props.getAsset;
+
+        function field(name) {
+          var v = entry.getIn(["data", name]);
+          return v === undefined || v === null ? "" : v;
+        }
+
+        var year = field("year");
+        var make = field("make");
+        var model = field("model");
+        var trim = field("trim");
+        var title = [year, make, model, trim].filter(Boolean).join(" ");
+        var status = field("status") || "available";
+        var titleStatus = field("titleStatus");
+        var price = field("price");
+        var mileage = field("mileage");
+
+        var coverImagePath = entry.getIn(["data", "image"]);
+        var coverImageUrl = coverImagePath ? getAsset(coverImagePath).toString() : null;
+
+        var tagsList = entry.getIn(["data", "tags"]);
+        var tags = tagsList
+          ? tagsList.toJS().map(function (t) { return t && t.tag; }).filter(Boolean)
+          : [];
+
+        var badges = TRUST_BADGES.filter(function (b) {
+          return entry.getIn(["data", b[0], b[1]]) === true;
+        });
+
+        var specRows = [
+          ["Mileage", mileage ? Number(mileage).toLocaleString() + " mi" : ""],
+          ["Engine", field("engine")],
+          ["Transmission", field("transmission")],
+          ["Fuel Type", field("fuelType")],
+          ["Exterior", field("exteriorColor")],
+          ["Interior", field("interiorColor")],
+          ["MPG", field("mpg")]
+        ].filter(function (s) { return s[1]; });
+
+        var description = field("description");
+        var knownIssues = field("knownIssues");
+
+        var photosList = entry.getIn(["data", "photos"]);
+        var photoUrls = photosList
+          ? photosList.toJS()
+              .map(function (p) { return p && p.photo ? getAsset(p.photo).toString() : null; })
+              .filter(Boolean)
+          : [];
+
+        return h(
+          "div",
+          { className: "admin-car-preview" },
+          h(
+            "div",
+            { className: "container" },
+            h(
+              "div",
+              { className: "label", style: { color: "var(--orange-bright)", marginBottom: "8px" } },
+              (status === "sold" ? "SOLD" : "AVAILABLE") + (titleStatus ? " · " + titleStatus : "")
+            ),
+            h("h1", {}, title || "New vehicle"),
+            coverImageUrl
+              ? h("img", { src: coverImageUrl, className: "admin-car-preview__cover" })
+              : h("div", { className: "admin-car-preview__cover admin-car-preview__cover--empty" }, "No cover photo yet"),
+            h(
+              "div",
+              { className: "vdp-sidebar", style: { margin: "20px 0" } },
+              h("div", { className: "vdp-price" }, price ? "$" + Number(price).toLocaleString() : "Price TBD"),
+              h(
+                "div",
+                { className: "vdp-specs" },
+                specRows.map(function (s, i) {
+                  return h("div", { key: i }, [
+                    h("dt", { key: "dt" }, s[0]),
+                    h("dd", { key: "dd" }, s[1])
+                  ]);
+                })
+              ),
+              badges.length
+                ? h(
+                    "div",
+                    { className: "trust-badges" },
+                    badges.map(function (b, i) {
+                      return h("div", { className: "trust-badge", key: i }, [
+                        h("div", { className: "trust-badge__icon", key: "icon", dangerouslySetInnerHTML: { __html: TRUST_BADGE_ICON } }),
+                        h("div", { className: "trust-badge__label", key: "label" }, b[2])
+                      ]);
+                    })
+                  )
+                : null
+            ),
+            tags.length
+              ? h(
+                  "div",
+                  { className: "chip-row", style: { marginBottom: "16px" } },
+                  tags.map(function (t, i) { return h("span", { className: "chip", key: i }, t); })
+                )
+              : null,
+            description ? h("p", {}, description) : null,
+            knownIssues ? h("p", {}, [h("strong", { key: "s" }, "Known Issues: "), knownIssues]) : null,
+            photoUrls.length
+              ? h(
+                  "div",
+                  { className: "admin-car-preview__grid" },
+                  photoUrls.map(function (url, i) {
+                    return h("img", { src: url, key: i, className: "admin-car-preview__thumb" });
+                  })
+                )
+              : null
+          )
+        );
+      }
+    });
+
+    CMS.registerPreviewTemplate("cars", CarPreview);
+
+    // The real site stylesheet — same fonts, colors, price/spec/badge
+    // styling as the live vehicle page — so the preview isn't just
+    // accurate in content, it looks like the actual listing.
+    CMS.registerPreviewStyle("/css/style.css");
+    CMS.registerPreviewStyle(
+      "body{background:var(--bg); margin:0;}" +
+      ".admin-car-preview{padding:24px 0 40px;}" +
+      ".admin-car-preview__cover{width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; margin:14px 0;}" +
+      ".admin-car-preview__cover--empty{display:flex; align-items:center; justify-content:center; aspect-ratio:4/3; background:var(--glass); border:1px dashed var(--glass-border); color:var(--text-faint); font-family:var(--font-m); font-size:0.85rem; border-radius:16px; margin:14px 0;}" +
+      ".admin-car-preview__grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(90px,1fr)); gap:8px; margin-top:18px;}" +
+      ".admin-car-preview__thumb{width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:8px;}",
+      { raw: true }
+    );
   </script>
 </body>
 </html>
