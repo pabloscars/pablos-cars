@@ -103,9 +103,15 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 
 /* ---- Vehicle detail ---- */
 .vdp{display:grid; gap:28px; grid-template-columns:1fr;}
-@media(min-width:960px){.vdp{grid-template-columns:1.35fr 1fr; align-items:start;}}
-.vdp-main-col{min-width:0;}
+@media(min-width:960px){
+  .vdp{grid-template-columns:1.35fr 1fr; grid-template-areas:"photos sidebar" "details sidebar"; align-items:start;}
+  .vdp-photos-col{grid-area:photos;}
+  .vdp-sidebar-col{grid-area:sidebar;}
+  .vdp-details-col{grid-area:details;}
+}
+.vdp-photos-col{min-width:0;}
 .vdp-sidebar-col{min-width:0;}
+.vdp-details-col{min-width:0;}
 
 .gallery{border-radius:var(--radius); overflow:hidden; background:var(--glass); border:1px solid var(--glass-border);}
 .gallery__main{position:relative; aspect-ratio:4/3; overflow:hidden;}

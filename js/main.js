@@ -327,10 +327,10 @@ function renderVehicleDetail() {
   const messageHref = car.facebookUrl || BUSINESS.facebookUrl;
 
   root.innerHTML = `
-    <div class="blob blob--chrome" style="width:400px; height:400px; top:0; right:-120px;"></div>
+    <div class="blob blob--chrome" style="width:400px; height:400px; top:0; right:-120px; position:fixed;"></div>
     <div class="container section">
       <div class="vdp">
-        <div class="vdp-main-col">
+        <div class="vdp-photos-col">
           <div class="gallery">
             <div class="gallery__main">
               <img id="mainPhoto" src="${allPhotos[0] || ""}" alt="${car.year} ${car.make} ${car.model}">
@@ -345,29 +345,6 @@ function renderVehicleDetail() {
           </div>
 
           <div class="video-wrap ${car.videoUrl ? "" : "video-wrap--placeholder"}" style="margin-top:20px;">${videoHTML}</div>
-
-          <div class="divider"></div>
-          <h2>About This ${car.make} ${car.model}</h2>
-          <p class="lede">${car.description}</p>
-
-          <div class="feature-grid" style="margin-top:16px;">
-            <div class="feature-card"><h3>Why It Has A ${car.titleStatus}</h3><p>${car.whySalvage || ""}</p></div>
-            <div class="feature-card"><h3>Known Issues</h3><p>${car.knownIssues || ""}</p></div>
-            <div class="feature-card feature-card--wide">
-              <h3>What Was Repaired</h3>
-              <ul class="highlights-list highlights-list--repaired">${repairedItems.map(item => `<li>${item}</li>`).join("")}</ul>
-            </div>
-            ${allHighlights.length ? `
-            <div class="feature-card feature-card--wide">
-              <h3>Highlights &amp; Features</h3>
-              <ul class="highlights-list">${allHighlights.map(h => `<li>${h}</li>`).join("")}</ul>
-            </div>` : ""}
-            ${featureCategoriesHTML ? `
-            <div class="feature-card feature-card--wide">
-              <h3>Vehicle Features</h3>
-              ${featureCategoriesHTML}
-            </div>` : ""}
-          </div>
         </div>
 
         <div class="vdp-sidebar-col">
@@ -412,6 +389,31 @@ function renderVehicleDetail() {
           </aside>
 
           ${sectionsHTML}
+        </div>
+
+        <div class="vdp-details-col">
+          <div class="divider"></div>
+          <h2>About This ${car.make} ${car.model}</h2>
+          <p class="lede">${car.description}</p>
+
+          <div class="feature-grid" style="margin-top:16px;">
+            <div class="feature-card"><h3>Why It Has A ${car.titleStatus}</h3><p>${car.whySalvage || ""}</p></div>
+            <div class="feature-card"><h3>Known Issues</h3><p>${car.knownIssues || ""}</p></div>
+            <div class="feature-card feature-card--wide">
+              <h3>What Was Repaired</h3>
+              <ul class="highlights-list highlights-list--repaired">${repairedItems.map(item => `<li>${item}</li>`).join("")}</ul>
+            </div>
+            ${allHighlights.length ? `
+            <div class="feature-card feature-card--wide">
+              <h3>Highlights &amp; Features</h3>
+              <ul class="highlights-list">${allHighlights.map(h => `<li>${h}</li>`).join("")}</ul>
+            </div>` : ""}
+            ${featureCategoriesHTML ? `
+            <div class="feature-card feature-card--wide">
+              <h3>Vehicle Features</h3>
+              ${featureCategoriesHTML}
+            </div>` : ""}
+          </div>
         </div>
       </div>
     </div>
