@@ -118,7 +118,7 @@ function renderHomeBackgroundMap() {
 
       const map = L.map(el, {
         center: CUSTOMER_MAP_CENTER,
-        zoom: CUSTOMER_MAP_ZOOM,
+        zoom: CUSTOMER_MAP_ZOOM + 3,
         zoomControl: false,
         attributionControl: true,
         dragging: false,
