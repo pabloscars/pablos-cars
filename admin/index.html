@@ -30,11 +30,40 @@
     /* The feature-category objects (Comfort & Convenience, Tech, etc.)
        hold 8-25 toggles each, stacked one per line by default — that's
        most of the "scroll forever" problem. Wrap their direct container
-       into a flowing grid instead so a category fits in a few rows. */
-    :has(> label:has([class*="ToggleContainer"])) {
+       into a flowing grid instead so a category fits in a few rows.
+       Note: :has() cannot contain another :has() per spec, so this has
+       to be written as a single :has() with a plain descendant selector
+       inside it rather than nesting — a bare ":has(> label:has(...))"
+       silently matches nothing in any browser. */
+    :has(> label [class*="ToggleContainer"]) {
       display: flex !important;
       flex-flow: row wrap;
       gap: 2px 14px;
+    }
+    /* Plain text/number/select fields (Year, Make, Model, Trim, Body
+       Type, VIN, ...) each got their own full-width row with room to
+       spare — the same "one bubble per line" problem as the toggles,
+       just for short fields like "2018" or "Cadillac". Every native
+       <input>/<select> in Decap's editor is wrapped in a <label>, same
+       structural pattern the toggle fix above relies on, so this packs
+       them into a flowing row too instead of stacking every field on
+       its own line. Free-text <textarea> fields (Description, Known
+       Issues, etc.) are untouched and stay full width. */
+    label:has(input),
+    label:has(select) {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: auto;
+      min-width: 190px;
+      max-width: 320px;
+    }
+    :has(> label input),
+    :has(> label select) {
+      display: flex !important;
+      flex-flow: row wrap;
+      align-items: flex-end;
+      gap: 4px 16px;
     }
   </style>
 </head>
@@ -114,13 +143,42 @@
 
         var description = field("description");
         var knownIssues = field("knownIssues");
+        var whatWasRepaired = field("whatWasRepaired");
+        var whySalvage = field("whySalvage");
+        var videoUrl = field("videoUrl");
 
-        var photosList = entry.getIn(["data", "photos"]);
-        var photoUrls = photosList
-          ? photosList.toJS()
-              .map(function (p) { return p && p.photo ? getAsset(p.photo).toString() : null; })
-              .filter(Boolean)
+        var highlightsList = entry.getIn(["data", "highlights"]);
+        var highlights = highlightsList
+          ? highlightsList.toJS().map(function (item) { return item && item.item; }).filter(Boolean)
           : [];
+
+        function photoGroup(path) {
+          var list = entry.getIn(["data"].concat(path));
+          return list
+            ? list.toJS()
+                .map(function (p) { return p && p.photo ? getAsset(p.photo).toString() : null; })
+                .filter(Boolean)
+            : [];
+        }
+
+        var photoUrls = photoGroup(["photos"]);
+        var auctionPhotoUrls = photoGroup(["photoSections", "auctionPhotos"]);
+        var deepCleaningUrls = photoGroup(["photoSections", "deepCleaning"]);
+
+        function photoGrid(label, urls) {
+          return urls.length
+            ? h("div", { key: label }, [
+                h("h3", { key: "h", style: { marginTop: "22px" } }, label),
+                h(
+                  "div",
+                  { className: "admin-car-preview__grid", key: "grid" },
+                  urls.map(function (url, i) {
+                    return h("img", { src: url, key: i, className: "admin-car-preview__thumb" });
+                  })
+                )
+              ])
+            : null;
+        }
 
         return h(
           "div",
@@ -171,17 +229,21 @@
                   tags.map(function (t, i) { return h("span", { className: "chip", key: i }, t); })
                 )
               : null,
-            description ? h("p", {}, description) : null,
-            knownIssues ? h("p", {}, [h("strong", { key: "s" }, "Known Issues: "), knownIssues]) : null,
-            photoUrls.length
+            description ? h("p", { key: "desc" }, description) : null,
+            highlights.length
               ? h(
-                  "div",
-                  { className: "admin-car-preview__grid" },
-                  photoUrls.map(function (url, i) {
-                    return h("img", { src: url, key: i, className: "admin-car-preview__thumb" });
-                  })
+                  "ul",
+                  { className: "highlights-list", key: "highlights" },
+                  highlights.map(function (item, i) { return h("li", { key: i }, item); })
                 )
-              : null
+              : null,
+            knownIssues ? h("p", { key: "known" }, [h("strong", { key: "s" }, "Known Issues: "), knownIssues]) : null,
+            whatWasRepaired ? h("p", { key: "repaired" }, [h("strong", { key: "s" }, "What Was Repaired: "), whatWasRepaired]) : null,
+            whySalvage ? h("p", { key: "why" }, [h("strong", { key: "s" }, "Why This Title Status: "), whySalvage]) : null,
+            videoUrl ? h("p", { key: "video" }, [h("strong", { key: "s" }, "Video: "), h("a", { key: "a", href: videoUrl, target: "_blank", rel: "noopener" }, videoUrl)]) : null,
+            photoGrid("additional photos", photoUrls),
+            photoGrid("auction photos", auctionPhotoUrls),
+            photoGrid("deep cleaning", deepCleaningUrls)
           )
         );
       }
