@@ -284,7 +284,6 @@ function renderVehicleDetail() {
     ["tires", "Tires"], ["undercarriage", "Undercarriage"], ["titleDocs", "Title Documents"]
   ].filter(([key]) => car.photoSections && car.photoSections[key] && car.photoSections[key].length);
 
-  const chipHTML = sections.map(([key, label]) => `<a href="#sec-${key}" class="chip-btn">${label}</a>`).join("");
   const sectionsHTML = sections.map(([key, label]) => `
     <div class="photo-section ${SLIDER_SECTIONS.has(key) ? "photo-section--slider" : ""}" id="sec-${key}">
       <h3>${label}</h3>
@@ -392,7 +391,6 @@ function renderVehicleDetail() {
             </div>`}
           </aside>
 
-          ${chipHTML ? `<div class="section-nav-chips">${chipHTML}</div>` : ""}
           ${sectionsHTML}
         </div>
       </div>

@@ -123,10 +123,6 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .vdp-specs dd{margin:2px 0 0; color:var(--text); font-weight:600;}
 .info-block{border-top:1px solid var(--glass-border); padding-top:14px; margin-top:14px;}
 
-.section-nav-chips{display:flex; gap:8px; flex-wrap:wrap;}
-.chip-btn{font-family:var(--font-m); font-size:0.74rem; padding:8px 12px; border:1px solid var(--glass-border); border-radius:20px; background:var(--glass); color:var(--text-dim); cursor:pointer;}
-.chip-btn:hover{border-color:var(--orange); color:var(--orange-bright);}
-
 .photo-section{margin-top:0;}
 .photo-section--slider h3{text-align:center; text-transform:lowercase;}
 .photo-section__grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:10px;}
