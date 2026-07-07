@@ -48,20 +48,20 @@ function renderHeader() {
   renderBuyCTA();
 }
 
-/* Always-present floating "I Want To Buy This Car" sticker — links to the
-   How to Buy walkthrough. Injected once per page load; hidden on the
-   walkthrough page itself since it'd just link to the page you're on. */
+/* Always-present floating "Contact Me" sticker — links to the Contact
+   page. Injected once per page load; hidden on the Contact page itself
+   since it'd just link to the page you're on. */
 function renderBuyCTA() {
   if (document.getElementById("buyCta")) return;
-  if (stripHtml(currentPage()) === "how-to-buy") return;
+  if (stripHtml(currentPage()) === "contact") return;
 
   const a = document.createElement("a");
   a.id = "buyCta";
-  a.href = "how-to-buy.html";
+  a.href = "contact.html";
   a.className = "buy-cta";
   a.innerHTML = `
     <svg class="buy-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-    <span>I Want To Buy This Car</span>
+    <span>Contact Me</span>
   `;
   document.body.appendChild(a);
 }
