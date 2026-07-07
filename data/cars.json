@@ -135,6 +135,10 @@
           "/images/uploads/whatsapp-image-2026-07-06-at-12.59.37-am.jpeg",
           "/images/uploads/whatsapp-image-2026-07-06-at-12.59.19-am.jpeg",
           "/images/uploads/whatsapp-image-2026-07-06-at-1.00.04-am.jpeg"
+        ],
+        "deepCleaning": [
+          "/images/uploads/whatsapp-image-2026-02-17-at-3.10.23-pm.jpeg",
+          "/images/uploads/mytee-new.jpeg"
         ]
       },
       "photos": [
@@ -147,6 +151,10 @@
       "exteriorColor": "White",
       "facebookUrl": "https://www.facebook.com/share/14m2KguXfk1/",
       "price": 9000,
+      "comfortFeatures": {
+        "remoteStart": true,
+        "heatedSeats": true
+      },
       "model": "CTS",
       "titleStatus": "Rebuilt Title",
       "mileage": 82400,
@@ -155,6 +163,12 @@
       "whatWasRepaired": "- 4 Wheel Alignment & W. Balance\n- 4 New TPMS Sensors\n- New Complete CUE Headunit\n- New Spark Plugs\n- New Rear Rotors & Pads\n- Oil Change @78k and @81k\n- New Valve Cover Gasket\n- Front Wipers\n- Air & Cabin Air Filters\n- NC State Inspection\n.",
       "dateAdded": "2026-07-06",
       "status": "available",
+      "techFeatures": {
+        "appleCarPlay": true,
+        "backupCamera": true,
+        "touchscreenRadio": true,
+        "bluetooth": true
+      },
       "location": "Asheville, NC",
       "tags": [
         "Side Swipe Damage",
@@ -165,6 +179,7 @@
       ],
       "vin": "1G6AR5SX5J0105445",
       "id": "2018-cadillac-cts",
+      "image": "/images/uploads/735134116_1045485894797077_3715674558786598311_n.jpg",
       "description": "𝐅𝐚𝐜𝐭𝐨𝐫𝐲 𝐮𝐩𝐠𝐫𝐚𝐝𝐞𝐝 𝐨𝐩𝐭𝐢𝐨𝐧𝐬➕️:\n- Remote Start, Keyless Entry & Push Button Start\n- Brembo Front Brake Calipers\n- Panoramic Sunroof\n- Heated Steering Wheel\n- Heated & Vented Front Seats\n- Park Assist\n- Lane Change Alert\n.\n.\n𝐂𝐨𝐨𝐥 𝐒𝐭𝐮𝐟𝐟👀:\n- Glovebox is Electronically Controlled\n- Hidden Center Console Compartment\n- Rear Seats Fold Flat Down\n- LED Headlamps (actually bright)\n- Seat vibrates with proximity system\n- Sound systems loud loud",
       "bodyType": "sedan",
       "year": 2018,
@@ -173,18 +188,7 @@
       "highlights": [
         "Heated Steering Wheel",
         "Ventilated Seats"
-      ],
-      "image": "/images/uploads/735134116_1045485894797077_3715674558786598311_n.jpg",
-      "comfortFeatures": {
-        "remoteStart": true,
-        "heatedSeats": true
-      },
-      "techFeatures": {
-        "appleCarPlay": true,
-        "backupCamera": true,
-        "touchscreenRadio": true,
-        "bluetooth": true
-      }
+      ]
     },
     {
       "photoSections": {

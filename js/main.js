@@ -286,7 +286,7 @@ function renderVehicleDetail() {
 
   const chipHTML = sections.map(([key, label]) => `<a href="#sec-${key}" class="chip-btn">${label}</a>`).join("");
   const sectionsHTML = sections.map(([key, label]) => `
-    <div class="photo-section" id="sec-${key}">
+    <div class="photo-section ${SLIDER_SECTIONS.has(key) ? "photo-section--slider" : ""}" id="sec-${key}">
       <h3>${label}</h3>
       ${SLIDER_SECTIONS.has(key)
         ? photoSliderHTML(car.photoSections[key])
@@ -438,7 +438,7 @@ function renderVehicleDetail() {
 
 /* ---------------- Auction Photos slider (3 per page, glass thumb strip) ---------------- */
 
-const SLIDER_PAGE_SIZE = 3;
+const SLIDER_PAGE_SIZE = 2;
 
 function photoSliderHTML(images) {
   const pages = [];
