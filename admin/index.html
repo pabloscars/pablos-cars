@@ -76,6 +76,23 @@
       align-items: flex-end;
       gap: 4px 16px;
     }
+    /* That flex-wrap parent holds EVERY top-level field, not just the
+       compact ones — Description, Known Issues, the feature-category
+       objects, the cover photo, and the photo lists are direct siblings
+       of Year/Make/Model in the same container. Without an explicit
+       width they became flex items with no sizing to go on and got
+       squeezed to arbitrary widths, scattering the form. Force these
+       wide field types to always claim a full row for themselves —
+       flex-basis:100% inside a wrapping flex row pushes everything
+       after it onto a fresh line, same effect as them being block-level
+       again, just resilient to sitting inside the flex parent above. */
+    [aria-label="text field"],
+    [aria-label="list field"],
+    [aria-label="object field"],
+    [aria-label="image field"] {
+      flex: 1 0 100%;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
