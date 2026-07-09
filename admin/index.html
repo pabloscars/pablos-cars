@@ -93,6 +93,19 @@
       flex: 1 0 100%;
       width: 100%;
     }
+    /* Collapsed rows in an image list (Additional Photos, Auction
+       Photos, Deep Cleaning) just show the raw file path as text —
+       swapped for an actual thumbnail by the script below. Only
+       touching the image we inject, not the row's own show/hide
+       logic (Decap toggles that per-item via its own collapsed prop),
+       so the expand/collapse behavior is untouched. */
+    .admin-photo-thumb {
+      display: block;
+      max-height: 64px;
+      width: auto;
+      max-width: 100%;
+      border-radius: 6px;
+    }
   </style>
 </head>
 <body>
@@ -292,6 +305,52 @@
       ".admin-car-preview__thumb{width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:8px;}",
       { raw: true }
     );
+  </script>
+  <script>
+    /* ============================================================
+       PHOTO LIST THUMBNAILS
+       Collapsed rows in an image list (Additional Photos, Auction
+       Photos, Deep Cleaning) show the item's raw file path as plain
+       text — Decap's "summary" option is text-only, there's no
+       built-in way to render an actual thumbnail there. This finds
+       those rows (each is a "NestedObjectLabel" per Decap's own
+       ListControl.js source) whose text looks like an image path and
+       swaps it for a small <img>, keeping the full path as a hover
+       tooltip. Runs on a MutationObserver since Decap re-renders the
+       form constantly (every keystroke, every collapse toggle).
+       ============================================================ */
+    var IMAGE_PATH_RE = /\.(jpe?g|png|gif|webp|avif)$/i;
+
+    function upgradePhotoSummaries() {
+      var labels = document.querySelectorAll('[class*="NestedObjectLabel"]');
+      labels.forEach(function (el) {
+        var text = el.textContent.trim();
+        if (el.dataset.thumbSrc === text) return;
+        if (!IMAGE_PATH_RE.test(text)) {
+          if (el.dataset.thumbSrc) {
+            el.textContent = text;
+            delete el.dataset.thumbSrc;
+          }
+          return;
+        }
+        el.dataset.thumbSrc = text;
+        el.textContent = "";
+        var img = document.createElement("img");
+        img.src = text;
+        img.alt = "";
+        img.title = text;
+        img.className = "admin-photo-thumb";
+        el.appendChild(img);
+      });
+    }
+
+    var photoThumbTimer = null;
+    var photoThumbObserver = new MutationObserver(function () {
+      clearTimeout(photoThumbTimer);
+      photoThumbTimer = setTimeout(upgradePhotoSummaries, 60);
+    });
+    photoThumbObserver.observe(document.body, { childList: true, subtree: true });
+    upgradePhotoSummaries();
   </script>
 </body>
 </html>
