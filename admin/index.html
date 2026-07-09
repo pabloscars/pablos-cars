@@ -40,26 +40,37 @@
       flex-flow: row wrap;
       gap: 2px 14px;
     }
-    /* Plain text/number/select fields (Year, Make, Model, Trim, Body
-       Type, VIN, ...) each got their own full-width row with room to
-       spare — the same "one bubble per line" problem as the toggles,
-       just for short fields like "2018" or "Cadillac". Every native
-       <input>/<select> in Decap's editor is wrapped in a <label>, same
-       structural pattern the toggle fix above relies on, so this packs
-       them into a flowing row too instead of stacking every field on
-       its own line. Free-text <textarea> fields (Description, Known
-       Issues, etc.) are untouched and stay full width. */
-    label:has(input),
-    label:has(select) {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: flex-start;
+    /* Plain text/number/select/date fields (Year, Make, Model, Trim,
+       Body Type, VIN, ...) each got their own full-width row with room
+       to spare — the same "one bubble per line" problem as the toggles,
+       just for short fields like "2018" or "Cadillac".
+
+       The earlier attempt here targeted "label:has(input)", assuming
+       every field's label wraps its control the way the boolean toggle
+       does. It doesn't — per Decap's own source (EditorControl.js),
+       every field's outer wrapper is ControlContainer > (ControlTopbar
+       containing the <label>, plus the actual widget as a SIBLING, not
+       a child, linked only by label[for]/input[id]). That's also why
+       label:has(input) silently matched nothing.
+
+       What IS reliable, straight from that same source: ControlContainer
+       always carries aria-label="{widget-type} field" (e.g. "string
+       field", "select field") — driven by the widget name in this
+       config, not by guessed DOM nesting or hashed class names. */
+    [aria-label="string field"],
+    [aria-label="number field"],
+    [aria-label="select field"],
+    [aria-label="datetime field"] {
+      display: inline-block;
       width: auto;
       min-width: 190px;
       max-width: 320px;
+      vertical-align: top;
     }
-    :has(> label input),
-    :has(> label select) {
+    :has(> [aria-label="string field"]),
+    :has(> [aria-label="number field"]),
+    :has(> [aria-label="select field"]),
+    :has(> [aria-label="datetime field"]) {
       display: flex !important;
       flex-flow: row wrap;
       align-items: flex-end;
