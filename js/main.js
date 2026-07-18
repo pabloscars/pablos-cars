@@ -335,8 +335,8 @@ function renderVehicleDetail() {
             <div class="gallery__main">
               <img id="mainPhoto" src="${allPhotos[0] || ""}" alt="${car.year} ${car.make} ${car.model}">
               ${allPhotos.length > 1 ? `
-                <button class="photo-slider__arrow photo-slider__arrow--prev is-disabled" id="mainPrevBtn" aria-label="Previous photo">&#8249;</button>
-                <button class="photo-slider__arrow photo-slider__arrow--next" id="mainNextBtn" aria-label="Next photo">&#8250;</button>
+                <button class="gallery__arrow gallery__arrow--prev is-disabled" id="mainPrevBtn" aria-label="Previous photo">&#8249;</button>
+                <button class="gallery__arrow gallery__arrow--next" id="mainNextBtn" aria-label="Next photo">&#8250;</button>
               ` : ""}
             </div>
             ${allPhotos.length > 1 ? `<div class="gallery__thumbs" id="thumbRow">
