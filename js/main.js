@@ -357,16 +357,16 @@ function renderVehicleDetail() {
             <div class="chip-row" style="margin-top:10px;">${tagsHTML}</div>
 
             <dl class="vdp-specs">
-              <div><dt>Mileage</dt><dd>${miles(car.mileage)}</dd></div>
+              <div class="vdp-spec--featured"><dt>Mileage</dt><dd>${miles(car.mileage)}</dd></div>
               <div><dt>Engine</dt><dd>${car.engine}</dd></div>
               <div><dt>Transmission</dt><dd>${car.transmission}</dd></div>
               <div><dt>Location</dt><dd>${car.location}</dd></div>
+              ${car.fuelType ? `<div><dt>Fuel Type</dt><dd>${car.fuelType}</dd></div>` : ""}
+              ${car.exteriorColor ? `<div><dt>Exterior Color</dt><dd>${car.exteriorColor}</dd></div>` : ""}
+              ${car.interiorColor ? `<div><dt>Interior Color</dt><dd>${car.interiorColor}</dd></div>` : ""}
+              ${car.interiorMaterial ? `<div><dt>Interior Material</dt><dd>${car.interiorMaterial}</dd></div>` : ""}
+              ${car.mpg ? `<div><dt>Fuel Economy</dt><dd>${car.mpg}</dd></div>` : ""}
               ${car.showVin && car.vin ? `<div style="grid-column:1/-1;"><dt>VIN</dt><dd>${car.vin}</dd></div>` : ""}
-              ${car.fuelType ? `<div style="grid-column:1/-1;"><dt>Fuel Type</dt><dd>${car.fuelType}</dd></div>` : ""}
-              ${car.exteriorColor ? `<div style="grid-column:1/-1;"><dt>Exterior Color</dt><dd>${car.exteriorColor}</dd></div>` : ""}
-              ${car.interiorColor ? `<div style="grid-column:1/-1;"><dt>Interior Color</dt><dd>${car.interiorColor}</dd></div>` : ""}
-              ${car.interiorMaterial ? `<div style="grid-column:1/-1;"><dt>Interior Material</dt><dd>${car.interiorMaterial}</dd></div>` : ""}
-              ${car.mpg ? `<div style="grid-column:1/-1;"><dt>Fuel Economy</dt><dd>${car.mpg}</dd></div>` : ""}
             </dl>
 
             ${trustBadgesHTML ? `<div class="trust-badges">${trustBadgesHTML}</div>` : ""}
