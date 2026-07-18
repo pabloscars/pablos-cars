@@ -17,13 +17,6 @@ collections:
     identifier_field: "id"
     summary: "{{fields.year}} {{fields.make}} {{fields.model}} — {{fields.status}}"
     sortable_fields: ["status", "dateAdded", "sortOrder", "year"]
-    view_groups:
-      - label: "Available"
-        field: "status"
-        pattern: "available"
-      - label: "Sold"
-        field: "status"
-        pattern: "sold"
     fields:
       - { label: "Unique ID (no spaces, e.g. 2016-civic-02)", name: "id", widget: "string" }
       - { label: "Status", name: "status", widget: "select", options: ["available", "sold"] }
