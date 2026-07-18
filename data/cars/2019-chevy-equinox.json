@@ -10,20 +10,20 @@
     "titleDocs": []
   },
   "photos": [
-    "/images/uploads/396710632_6636185499784415_5863468159248758998_n.jpg",
     "/images/uploads/396662294_6455714764555718_712966793998892878_n.jpg",
     "/images/uploads/396779631_5152988291491462_1700745069772353483_n.jpg",
     "/images/uploads/396773641_24962449733354103_127503999090994868_n.jpg",
     "/images/uploads/396767436_7180559491968409_1947999455551340883_n.jpg",
     "/images/uploads/396603392_6723953067652451_8533951425338102125_n.jpg",
     "/images/uploads/396702516_24458413280410652_4603972819776378061_n.jpg",
+    "/images/uploads/396710934_24042557125359930_1860176582961632505_n.jpg",
     "/images/uploads/396733617_7326096294089941_8292656874789226944_n.jpg",
     "/images/uploads/396637520_25010092038589698_160685750533137199_n.jpg",
     "/images/uploads/396626147_24241414642168507_1272744835297646647_n.jpg",
-    "/images/uploads/396867021_24145188085129961_6531883726389265470_n.jpg",
     "/images/uploads/400353461_6540545629401816_2542553744530739890_n.jpg",
-    "/images/uploads/395233896_6839718399427899_4950336285079863724_n.jpg",
+    "/images/uploads/396867021_24145188085129961_6531883726389265470_n.jpg",
     "/images/uploads/396605998_6779127668831928_6081789738865914858_n.jpg",
+    "/images/uploads/395233896_6839718399427899_4950336285079863724_n.jpg",
     "/images/uploads/396758443_6723037661113480_501430847990054253_n.jpg",
     "/images/uploads/396622656_7217464234942207_4654618979509580941_n.jpg",
     "/images/uploads/394012243_6660426354068716_1881389549621996825_n.jpg",
@@ -37,6 +37,10 @@
   "exteriorColor": "Black",
   "facebookUrl": "",
   "price": 12100,
+  "comfortFeatures": {
+    "remoteStart": true,
+    "heatedSeats": true
+  },
   "model": "Challenger",
   "titleStatus": "Salvage Title",
   "mileage": 81000,
@@ -46,6 +50,12 @@
   "whatWasRepaired": "New badges installed\nFront Rotors and Pads\nRear Rotors and Pads\nOil Service\nCabin and Air Filters\nNew Windshield Wipers",
   "dateAdded": "2024-06-02",
   "status": "sold",
+  "techFeatures": {
+    "appleCarPlay": true,
+    "backupCamera": true,
+    "touchscreenRadio": true,
+    "bluetooth": true
+  },
   "interiorColor": "Black",
   "videoUrl": "",
   "location": "Asheville, NC",
@@ -55,6 +65,7 @@
     "Theft Vehicle"
   ],
   "id": "2014-Charger-30",
+  "image": "/images/uploads/396710632_6636185499784415_5863468159248758998_n.jpg",
   "description": "Super clean Charger with low miles! Drives and handles with no issues at all! A/C & Heat work perfectly! Just did a complete oil service along with replacing the Air and Cabin filters. Installed new rotors and pads all the way around for both front and rear axles. Vehicle does have multiple scratches here and there which I tried to depict, the best i could in the photos. Basically has all the extra features you could ask for! Also has a Corsa Performance Exhaust System installed, which sounds nasty",
   "bodyType": "sedan",
   "year": 2014,
@@ -68,16 +79,5 @@
     "Ventilated Front Seats",
     "Heated Rear Seats",
     "Heated Steering Wheel"
-  ],
-  "image": "/images/uploads/396710632_6636185499784415_5863468159248758998_n.jpg",
-  "comfortFeatures": {
-    "remoteStart": true,
-    "heatedSeats": true
-  },
-  "techFeatures": {
-    "appleCarPlay": true,
-    "backupCamera": true,
-    "touchscreenRadio": true,
-    "bluetooth": true
-  }
+  ]
 }
