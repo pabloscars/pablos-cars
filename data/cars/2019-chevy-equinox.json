@@ -33,6 +33,9 @@
   "dateSold": "2024-06-19",
   "engine": "5.7L V8 HEMI (MDS VVT) Engine",
   "transmission": "5 Speed Automatic Transmission",
+  "salvageFeatures": {
+    "theftRecovery": true
+  },
   "mpg": "15 City / 25hwy",
   "exteriorColor": "Black",
   "facebookUrl": "",
@@ -44,6 +47,16 @@
   "model": "Challenger",
   "titleStatus": "Salvage Title",
   "mileage": 81000,
+  "performanceFeatures": {
+    "rwd": true,
+    "performanceExhaust": true,
+    "driveModes": true
+  },
+  "interiorFeatures": {
+    "foldingRearSeats": true,
+    "largeCargoSpace": true,
+    "flatFoldingSeats": true
+  },
   "make": "Dodge",
   "sortOrder": 100,
   "fuelType": "Gasoline",
@@ -60,11 +73,19 @@
   "videoUrl": "",
   "location": "Asheville, NC",
   "interiorMaterial": "Leather",
+  "conditionFeatures": {
+    "ncStateInspected": true,
+    "noGlassBroken": true,
+    "singleKey": true
+  },
   "tags": [
     "Salvage Title",
     "Theft Vehicle"
   ],
   "id": "2014-Charger-30",
+  "exteriorFeatures": {
+    "tintedWindows": true
+  },
   "image": "/images/uploads/396710632_6636185499784415_5863468159248758998_n.jpg",
   "description": "Super clean Charger with low miles! Drives and handles with no issues at all! A/C & Heat work perfectly! Just did a complete oil service along with replacing the Air and Cabin filters. Installed new rotors and pads all the way around for both front and rear axles. Vehicle does have multiple scratches here and there which I tried to depict, the best i could in the photos. Basically has all the extra features you could ask for! Also has a Corsa Performance Exhaust System installed, which sounds nasty",
   "bodyType": "sedan",
