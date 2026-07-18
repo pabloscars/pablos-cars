@@ -20,7 +20,7 @@ collections:
     fields:
       - { label: "Unique ID (no spaces, e.g. 2016-civic-02)", name: "id", widget: "string" }
       - { label: "Status", name: "status", widget: "select", options: ["available", "sold"] }
-      - { label: "Display Order (lower numbers show first on the homepage; leave blank to just sort by date added)", name: "sortOrder", widget: "number", value_type: "int", required: false }
+      - { label: "Display Order (a running count — 1 is your oldest car, each new one gets the next number up; higher numbers show first; leave blank to just sort by date)", name: "sortOrder", widget: "number", value_type: "int", required: false }
       - { label: "Year", name: "year", widget: "number", value_type: "int" }
       - { label: "Make", name: "make", widget: "string" }
       - { label: "Model", name: "model", widget: "string" }

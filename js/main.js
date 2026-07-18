@@ -239,6 +239,22 @@ function cardsOrEmptyState(cars, extraClass) {
   return `<div class="grid ${extraClass || ""}">${cars.map(carCardHTML).join("")}</div>`;
 }
 
+/* Display Order is a simple running count Pablo assigns by hand — 1 is
+   the oldest car he's ever listed/sold, and each new one just gets the
+   next number up. Higher number = more recent = shows first, matching
+   "Just Arrived" / "Recently Sold". Cars without a number fall back to
+   sorting by date (still newest first); a numbered car always outranks
+   an unnumbered one. */
+const hasOrder = c => c.sortOrder !== undefined && c.sortOrder !== null && c.sortOrder !== "";
+function sortByDisplayOrder(cars, dateField) {
+  return cars.slice().sort((a, b) => {
+    if (hasOrder(a) && hasOrder(b)) return b.sortOrder - a.sortOrder;
+    if (hasOrder(a)) return -1;
+    if (hasOrder(b)) return 1;
+    return new Date(b[dateField] || 0) - new Date(a[dateField] || 0);
+  });
+}
+
 /* Just Arrived (available) first, with a "Sold" divider before the sold
    archive — unless ?view=available is set (from the "View Available
    Cars" link on a sold car's page), in which case sold cars are omitted
@@ -247,14 +263,8 @@ function renderHomeFeed() {
   const root = document.getElementById("carFeedRoot");
   if (!root) return;
 
-  const hasOrder = c => c.sortOrder !== undefined && c.sortOrder !== null && c.sortOrder !== "";
-  const available = CARS.filter(c => c.status === "available").sort((a, b) => {
-    if (hasOrder(a) && hasOrder(b)) return a.sortOrder - b.sortOrder;
-    if (hasOrder(a)) return -1;
-    if (hasOrder(b)) return 1;
-    return new Date(b.dateAdded||0) - new Date(a.dateAdded||0);
-  });
-  const sold = CARS.filter(c => c.status === "sold").sort((a,b) => new Date(b.dateSold||0) - new Date(a.dateSold||0));
+  const available = sortByDisplayOrder(CARS.filter(c => c.status === "available"), "dateAdded");
+  const sold = sortByDisplayOrder(CARS.filter(c => c.status === "sold"), "dateSold");
 
   const availableOnly = new URLSearchParams(window.location.search).get("view") === "available";
 
@@ -282,7 +292,7 @@ function renderHomeFeed() {
 function renderSoldFeed() {
   const root = document.getElementById("carFeedRoot");
   if (!root) return;
-  const sold = CARS.filter(c => c.status === "sold").sort((a,b) => new Date(b.dateSold||0) - new Date(a.dateSold||0));
+  const sold = sortByDisplayOrder(CARS.filter(c => c.status === "sold"), "dateSold");
   root.innerHTML = `
     <div class="feed-heading"><h2>All Sold Vehicles</h2></div>
     ${cardsOrEmptyState(sold, "grid--wide")}
