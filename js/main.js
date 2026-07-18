@@ -162,6 +162,50 @@ const TRUST_BADGE_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentCo
 function money(n) { return "$" + Number(n).toLocaleString("en-US"); }
 function miles(n) { return Number(n).toLocaleString("en-US") + " mi"; }
 
+/* Click-and-drag to scroll a horizontal thumbnail strip with a mouse —
+   touch/pen already scroll it natively, so this only kicks in for
+   pointerType "mouse". A real drag (moved past a few px) suppresses
+   the click that would otherwise select a thumbnail underneath the
+   cursor, so dragging never accidentally jumps to the wrong photo. */
+function enableDragScroll(el) {
+  if (!el) return;
+  let isDown = false, dragged = false, startX = 0, startScroll = 0;
+
+  el.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse") return;
+    isDown = true;
+    dragged = false;
+    startX = e.pageX;
+    startScroll = el.scrollLeft;
+    el.classList.add("is-dragging");
+  });
+
+  el.addEventListener("pointermove", (e) => {
+    if (!isDown) return;
+    const dx = e.pageX - startX;
+    if (Math.abs(dx) > 4) dragged = true;
+    if (dragged) {
+      el.scrollLeft = startScroll - dx;
+      e.preventDefault();
+    }
+  });
+
+  function endDrag() {
+    isDown = false;
+    el.classList.remove("is-dragging");
+  }
+  el.addEventListener("pointerup", endDrag);
+  el.addEventListener("pointerleave", endDrag);
+
+  el.addEventListener("click", (e) => {
+    if (dragged) {
+      e.preventDefault();
+      e.stopPropagation();
+      dragged = false;
+    }
+  }, true);
+}
+
 function carCardHTML(car) {
   const soldClass = car.status === "sold" ? "is-sold" : "";
   const cover = car.image || (car.photos && car.photos[0]) || "";
@@ -437,6 +481,8 @@ function renderVehicleDetail() {
       if (mainNextBtn) mainNextBtn.classList.toggle("is-disabled", currentMainIndex === allPhotos.length - 1);
     }
 
+    enableDragScroll(document.getElementById("thumbRow"));
+
     document.getElementById("thumbRow").addEventListener("click", (e) => {
       const img = e.target.closest("img");
       if (!img) return;
@@ -503,6 +549,7 @@ function initPhotoSlider(slider) {
 
   if (prevBtn) prevBtn.addEventListener("click", () => goToPage(page - 1));
   if (nextBtn) nextBtn.addEventListener("click", () => goToPage(page + 1));
+  enableDragScroll(slider.querySelector(".photo-slider__thumbs"));
   thumbs.forEach((thumb, i) => thumb.addEventListener("click", () => goToPage(Math.floor(i / SLIDER_PAGE_SIZE))));
   frameImgs.forEach((img, i) => img.addEventListener("click", () => openLightbox(allSrcs, i)));
 }
