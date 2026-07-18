@@ -2,30 +2,36 @@
   "cars": [
     {
       "photoSections": {
-        "exterior": [],
-        "interior": [],
-        "engineBay": [],
-        "damageBefore": [],
+        "auctionPhotos": [
+          "/images/uploads/deec9f1a-1f17-462e-93d3-523eede2334f.jpg",
+          "/images/uploads/dea5578e-a74e-4a5b-ac0c-551041062c3f.jpg",
+          "/images/uploads/0b7c0a3c-adab-4837-9d46-f6158630b6be.jpg",
+          "/images/uploads/7dbf6225-99fb-4b00-baae-36262a847a2e.jpg"
+        ],
         "repairDocs": [],
         "tires": [],
         "undercarriage": [],
-        "titleDocs": []
+        "damageBefore": [],
+        "interior": [],
+        "titleDocs": [],
+        "engineBay": [],
+        "exterior": []
       },
       "photos": [
-        "/images/uploads/396710632_6636185499784415_5863468159248758998_n.jpg",
         "/images/uploads/396662294_6455714764555718_712966793998892878_n.jpg",
         "/images/uploads/396779631_5152988291491462_1700745069772353483_n.jpg",
         "/images/uploads/396773641_24962449733354103_127503999090994868_n.jpg",
         "/images/uploads/396767436_7180559491968409_1947999455551340883_n.jpg",
         "/images/uploads/396603392_6723953067652451_8533951425338102125_n.jpg",
         "/images/uploads/396702516_24458413280410652_4603972819776378061_n.jpg",
+        "/images/uploads/396710934_24042557125359930_1860176582961632505_n.jpg",
         "/images/uploads/396733617_7326096294089941_8292656874789226944_n.jpg",
         "/images/uploads/396637520_25010092038589698_160685750533137199_n.jpg",
         "/images/uploads/396626147_24241414642168507_1272744835297646647_n.jpg",
-        "/images/uploads/396867021_24145188085129961_6531883726389265470_n.jpg",
         "/images/uploads/400353461_6540545629401816_2542553744530739890_n.jpg",
-        "/images/uploads/395233896_6839718399427899_4950336285079863724_n.jpg",
+        "/images/uploads/396867021_24145188085129961_6531883726389265470_n.jpg",
         "/images/uploads/396605998_6779127668831928_6081789738865914858_n.jpg",
+        "/images/uploads/395233896_6839718399427899_4950336285079863724_n.jpg",
         "/images/uploads/396758443_6723037661113480_501430847990054253_n.jpg",
         "/images/uploads/396622656_7217464234942207_4654618979509580941_n.jpg",
         "/images/uploads/394012243_6660426354068716_1881389549621996825_n.jpg",
@@ -35,28 +41,60 @@
       "dateSold": "2024-06-19",
       "engine": "5.7L V8 HEMI (MDS VVT) Engine",
       "transmission": "5 Speed Automatic Transmission",
+      "salvageFeatures": {
+        "theftRecovery": true
+      },
       "mpg": "15 City / 25hwy",
       "exteriorColor": "Black",
       "facebookUrl": "",
       "price": 12100,
-      "model": "Challenger",
+      "comfortFeatures": {
+        "remoteStart": true,
+        "heatedSeats": true
+      },
+      "model": "Charger",
       "titleStatus": "Salvage Title",
       "mileage": 81000,
+      "performanceFeatures": {
+        "rwd": true,
+        "performanceExhaust": true,
+        "driveModes": true
+      },
+      "interiorFeatures": {
+        "foldingRearSeats": true,
+        "largeCargoSpace": true,
+        "flatFoldingSeats": true
+      },
       "make": "Dodge",
       "sortOrder": 100,
       "fuelType": "Gasoline",
       "whatWasRepaired": "New badges installed\nFront Rotors and Pads\nRear Rotors and Pads\nOil Service\nCabin and Air Filters\nNew Windshield Wipers",
       "dateAdded": "2024-06-02",
       "status": "sold",
+      "techFeatures": {
+        "appleCarPlay": true,
+        "backupCamera": true,
+        "touchscreenRadio": true,
+        "bluetooth": true
+      },
       "interiorColor": "Black",
       "videoUrl": "",
       "location": "Asheville, NC",
       "interiorMaterial": "Leather",
+      "conditionFeatures": {
+        "ncStateInspected": true,
+        "noGlassBroken": true,
+        "singleKey": true
+      },
       "tags": [
         "Salvage Title",
         "Theft Vehicle"
       ],
       "id": "2014-Charger-30",
+      "exteriorFeatures": {
+        "tintedWindows": true
+      },
+      "image": "/images/uploads/396710632_6636185499784415_5863468159248758998_n.jpg",
       "description": "Super clean Charger with low miles! Drives and handles with no issues at all! A/C & Heat work perfectly! Just did a complete oil service along with replacing the Air and Cabin filters. Installed new rotors and pads all the way around for both front and rear axles. Vehicle does have multiple scratches here and there which I tried to depict, the best i could in the photos. Basically has all the extra features you could ask for! Also has a Corsa Performance Exhaust System installed, which sounds nasty",
       "bodyType": "sedan",
       "year": 2014,
@@ -70,62 +108,207 @@
         "Ventilated Front Seats",
         "Heated Rear Seats",
         "Heated Steering Wheel"
-      ],
-      "image": "/images/uploads/396710632_6636185499784415_5863468159248758998_n.jpg",
-      "comfortFeatures": {
-        "remoteStart": true,
-        "heatedSeats": true
-      },
-      "techFeatures": {
-        "appleCarPlay": true,
-        "backupCamera": true,
-        "touchscreenRadio": true,
-        "bluetooth": true
-      }
+      ]
     },
     {
       "photoSections": {
-        "exterior": [],
-        "interior": [],
-        "engineBay": [],
-        "damageBefore": [],
-        "repairDocs": [],
-        "tires": [],
-        "undercarriage": [],
-        "titleDocs": []
+        "auctionPhotos": [
+          "/images/uploads/d5342930-2ffd-47d0-a044-3d522d9af004.jpg",
+          "/images/uploads/ec0705da-b994-40ba-b0f1-b874d242a3b9.jpg",
+          "/images/uploads/27956f94-61c4-42cd-a422-6bebf32f8357.jpg",
+          "/images/uploads/d6a87f5e-1891-47f7-856b-e1fb6672bc96.jpg"
+        ]
       },
       "photos": [
-        "https://picsum.photos/seed/sonata1/1200/900"
+        "/images/uploads/434845326_7306775102763715_5870340592907397190_n.jpg",
+        "/images/uploads/434778222_922299366258968_4867797386450120599_n.jpg",
+        "/images/uploads/434817757_1122466052211831_6320793885804693291_n.jpg",
+        "/images/uploads/434815609_789142579380192_3921893130614242540_n.jpg",
+        "/images/uploads/434781985_327256036663927_4185190420669496927_n.jpg",
+        "/images/uploads/434795584_418075310831199_1912990871764058845_n.jpg",
+        "/images/uploads/434781985_1349904019004879_1186588277848399707_n.jpg",
+        "/images/uploads/445355820_2858488760958760_1859959463529447936_n.jpg",
+        "/images/uploads/423956171_7580491882036508_7375921473479400902_n.jpg",
+        "/images/uploads/445326033_983435453018755_3844743433570071178_n.jpg",
+        "/images/uploads/434866309_391264907040841_9150759045511440455_n.jpg",
+        "/images/uploads/434689876_384207257815190_1806336376886666594_n.jpg",
+        "/images/uploads/431223061_1111715003395916_5564994561264752148_n.jpg",
+        "/images/uploads/431167316_742432758013329_7335849084858366855_n.jpg",
+        "/images/uploads/434849545_409721275126736_9140696053623684199_n.jpg",
+        "/images/uploads/433720965_1229268268458854_8234213159374696650_n.jpg",
+        "/images/uploads/431223061_451183240814487_2122925195193452407_n.jpg",
+        "/images/uploads/434866309_398322276287088_5454909108661788046_n.jpg",
+        "/images/uploads/435932781_3700598920217298_4343923973940356291_n.jpg"
       ],
-      "trim": "GLS",
-      "dateSold": "2026-03-22",
-      "engine": "2.4L 4-Cylinder",
-      "transmission": "Automatic",
-      "facebookUrl": "",
-      "price": 6200,
-      "model": "Sonata",
+      "dateSold": "2024-04-01",
+      "engine": "2.3L 4Cyl Ecoboost Engine w/ Twin Scroll Turbo",
+      "transmission": "6 Speed Automatic Transmission",
+      "salvageFeatures": {
+        "professionallyRepaired": false,
+        "frontEndDamage": false,
+        "airbagsReplaced": false,
+        "rearEndDamage": false,
+        "hailDamage": false,
+        "salvageHistory": false,
+        "rebuiltTitle": false,
+        "sideSwipeDamage": false,
+        "theftRecovery": false,
+        "structuralDamageRepaired": false,
+        "minorCollision": false,
+        "stateRebuiltInspectionPassed": false,
+        "cosmeticDamage": false
+      },
+      "mpg": "19mpg city / 27mpg hwy",
+      "exteriorColor": "Ruby Red Metallic",
+      "price": 13700,
+      "comfortFeatures": {
+        "ventilatedSeats": false,
+        "ambientLighting": false,
+        "rearSunshade": false,
+        "autoDimmingMirrors": false,
+        "handsFreeLiftgate": false,
+        "powerSeats": false,
+        "garageDoorOpener": false,
+        "memorySeats": false,
+        "wirelessPhoneCharger": false,
+        "dualClimateControl": false,
+        "sunroofMoonroof": false,
+        "pushButtonStart": false,
+        "rearACVents": false,
+        "remoteTrunkRelease": false,
+        "panoramicSunroof": false,
+        "keylessEntry": false,
+        "powerLiftgate": false,
+        "heatedSteeringWheel": false,
+        "remoteStart": false,
+        "heatedSeats": false,
+        "rainSensingWipers": false
+      },
+      "model": "Explorer",
       "titleStatus": "Salvage Title",
-      "mileage": 118900,
-      "make": "Hyundai",
-      "whatWasRepaired": "Ignition and lock cylinder replaced after theft recovery.",
-      "dateAdded": "2026-03-10",
+      "mileage": 76000,
+      "performanceFeatures": {
+        "driveModes": false,
+        "airSuspension": false,
+        "launchControl": false,
+        "towPackage": false,
+        "bremboBrakes": false,
+        "awd": false,
+        "paddleShifters": false,
+        "turbocharged": false,
+        "fourWD": false,
+        "supercharged": false,
+        "limitedSlipDifferential": false,
+        "offRoadPackage": false,
+        "sportMode": false,
+        "performanceExhaust": false,
+        "rwd": false
+      },
+      "interiorFeatures": {
+        "thirdRowSeating": false,
+        "foldingRearSeats": false,
+        "splitFoldingRearSeats": false,
+        "heatedRearSeats": false,
+        "rearEntertainment": false,
+        "largeCargoSpace": false,
+        "flatFoldingSeats": false,
+        "adjustableLumbarSupport": false
+      },
+      "driverAssistFeatures": {
+        "parkingAssist": false,
+        "automaticEmergencyBraking": false,
+        "pedestrianDetection": false,
+        "forwardCollisionAlert": false,
+        "collisionAvoidance": false,
+        "adaptiveCruiseControl": false,
+        "stabilityControl": false,
+        "laneDepartureWarning": false,
+        "tirePressureMonitoring": false,
+        "automaticHighBeams": false,
+        "laneKeepAssist": false,
+        "absBrakes": false,
+        "rearCrossTrafficAlert": false,
+        "trafficSignRecognition": false,
+        "blindSpotMonitoring": false
+      },
+      "make": "Ford",
+      "fuelType": "Gasoline",
+      "historyFeatures": {
+        "carfaxAvailable": false,
+        "newSuspensionParts": false,
+        "twoOwner": false,
+        "newBrakes": false,
+        "dealerServiced": false,
+        "newTires": false,
+        "newBattery": false,
+        "oneOwner": false,
+        "transmissionServiced": false,
+        "fleetMaintained": false,
+        "serviceRecordsAvailable": false
+      },
       "status": "sold",
-      "videoUrl": "",
+      "techFeatures": {
+        "satelliteRadio": false,
+        "rearParkingSensors": false,
+        "premiumSoundSystem": false,
+        "backupCamera": false,
+        "camera360": false,
+        "frontParkingSensors": false,
+        "wirelessCarPlay": false,
+        "appleCarPlay": false,
+        "bluetooth": false,
+        "harmanKardonAudio": false,
+        "touchscreenRadio": false,
+        "rearUsbPorts": false,
+        "usbCPorts": false,
+        "headsUpDisplay": false,
+        "navigation": false,
+        "boseAudio": false,
+        "digitalGaugeCluster": false,
+        "wifiHotspot": false,
+        "androidAuto": false
+      },
+      "interiorColor": "Ebony Black",
       "location": "Asheville, NC",
-      "tags": [
-        "Salvage Title"
-      ],
-      "id": "2014-hyundai-sonata",
-      "description": "A no-drama theft recovery that made a perfect first car.",
-      "bodyType": "sedan",
-      "year": 2014,
-      "knownIssues": "Sold as-is.",
+      "interiorMaterial": "Leather",
+      "conditionFeatures": {
+        "twoKeys": false,
+        "coldAC": false,
+        "noFloodDamage": false,
+        "noGlassBroken": false,
+        "freshOilChange": false,
+        "freshAlignment": false,
+        "singleKey": false,
+        "ncStateInspected": false,
+        "noWarningLights": false,
+        "runsAndDrives": false,
+        "noAirbagsDeployed": false,
+        "noFrameDamage": false,
+        "freshTires": false,
+        "highwayTested": false
+      },
+      "id": "2017--ford-explorer",
+      "exteriorFeatures": {
+        "hidHeadlights": false,
+        "heatedMirrors": false,
+        "ledHeadlights": false,
+        "tintedWindows": false,
+        "runningBoards": false,
+        "roofRails": false,
+        "daytimeRunningLights": false,
+        "privacyGlass": false,
+        "powerFoldingMirrors": false,
+        "fogLights": false,
+        "towHitch": false,
+        "bedLiner": false
+      },
+      "image": "/images/uploads/434851776_1120955575724213_6000582875261998931_n.jpg",
+      "description": "Really clean and surprisingly spacious Explorer with low miles! Drives & handles with no issues at alllll! A/C & Heat work perfectly. Vehicle does have a few cosmetic imperfections here and there which I tried to depict, the best i could in the photos.",
+      "bodyType": "suv",
+      "year": 2017,
+      "knownIssues": "touchscreen hud has scratches",
       "showVin": false,
-      "whySalvage": "Reported stolen, recovered within a week undamaged.",
-      "highlights": [
-        "Sold to a first-time buyer"
-      ],
-      "image": "https://picsum.photos/seed/sonata1/1200/900"
+      "whySalvage": "Vandalized"
     },
     {
       "photoSections": {
@@ -142,7 +325,8 @@
         ]
       },
       "photos": [
-        "/images/uploads/735134116_1045485894797077_3715674558786598311_n.jpg"
+        "/images/uploads/735134116_1045485894797077_3715674558786598311_n.jpg",
+        "/images/uploads/hwc_droppage_image_02_d_hgw15_hondas2000_ra.webp"
       ],
       "trim": "Luxury",
       "engine": "2.0 Liter 4 Cylinder Turbo",
@@ -160,7 +344,8 @@
       "mileage": 82400,
       "make": "Cadillac",
       "sortOrder": 1,
-      "whatWasRepaired": "- 4 Wheel Alignment & W. Balance\n- 4 New TPMS Sensors\n- New Complete CUE Headunit\n- New Spark Plugs\n- New Rear Rotors & Pads\n- Oil Change @78k and @81k\n- New Valve Cover Gasket\n- Front Wipers\n- Air & Cabin Air Filters\n- NC State Inspection\n.",
+      "fuelType": "Gasoline",
+      "whatWasRepaired": "- 4 Wheel Alignment & W. Balance\n- 4 New TPMS Sensors\n- New Complete CUE Headunit\n- New Spark Plugs\n- New Rear Rotors & Pads\n- Oil Change @78k and @81k\n- New Valve Cover Gasket\n- Front Wipers\n- Air & Cabin Air Filters\n- NC State Inspection",
       "dateAdded": "2026-07-06",
       "status": "available",
       "techFeatures": {
@@ -169,7 +354,15 @@
         "touchscreenRadio": true,
         "bluetooth": true
       },
+      "interiorColor": "Tan",
       "location": "Asheville, NC",
+      "interiorMaterial": "Leather",
+      "conditionFeatures": {
+        "noFrameDamage": true,
+        "noAirbagsDeployed": true,
+        "noGlassBroken": true,
+        "noWarningLights": true
+      },
       "tags": [
         "Side Swipe Damage",
         "Sunshade issue",
@@ -183,6 +376,7 @@
       "description": "𝐅𝐚𝐜𝐭𝐨𝐫𝐲 𝐮𝐩𝐠𝐫𝐚𝐝𝐞𝐝 𝐨𝐩𝐭𝐢𝐨𝐧𝐬➕️:\n- Remote Start, Keyless Entry & Push Button Start\n- Brembo Front Brake Calipers\n- Panoramic Sunroof\n- Heated Steering Wheel\n- Heated & Vented Front Seats\n- Park Assist\n- Lane Change Alert\n.\n.\n𝐂𝐨𝐨𝐥 𝐒𝐭𝐮𝐟𝐟👀:\n- Glovebox is Electronically Controlled\n- Hidden Center Console Compartment\n- Rear Seats Fold Flat Down\n- LED Headlamps (actually bright)\n- Seat vibrates with proximity system\n- Sound systems loud loud",
       "bodyType": "sedan",
       "year": 2018,
+      "knownIssues": "Sunshade retraction issue",
       "showVin": true,
       "whySalvage": "Side swipe accident to the driver side of the vehicle, mainly impacting the rear quarter panel /  fender area",
       "highlights": [

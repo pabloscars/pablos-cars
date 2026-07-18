@@ -168,7 +168,7 @@ function carCardHTML(car) {
   const primaryTag = car.status === "sold"
     ? `Sold${car.dateSold ? " · " + new Date(car.dateSold).toLocaleDateString("en-US",{month:"short",year:"numeric"}) : ""}`
     : car.titleStatus;
-  const tagsHTML = car.tags.map(t => `<span class="chip">${t}</span>`).join("");
+  const tagsHTML = (car.tags || []).map(t => `<span class="chip">${t}</span>`).join("");
 
   return `
   <a href="vehicle.html?id=${encodeURIComponent(car.id)}" class="card ${soldClass}" data-id="${car.id}">
@@ -268,7 +268,7 @@ function renderVehicleDetail() {
   document.title = `${car.year} ${car.make} ${car.model} — ${money(car.price)} — ${BUSINESS.name}`;
 
   const allPhotos = [car.image, ...(car.photos || [])].filter(Boolean);
-  const tagsHTML = car.tags.map(t => `<span class="chip">${t}</span>`).join("");
+  const tagsHTML = (car.tags || []).map(t => `<span class="chip">${t}</span>`).join("");
 
   const allHighlights = car.highlights || [];
 
