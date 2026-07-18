@@ -1,13 +1,19 @@
 {
   "photoSections": {
-    "exterior": [],
-    "interior": [],
-    "engineBay": [],
-    "damageBefore": [],
+    "auctionPhotos": [
+      "/images/uploads/deec9f1a-1f17-462e-93d3-523eede2334f.jpg",
+      "/images/uploads/dea5578e-a74e-4a5b-ac0c-551041062c3f.jpg",
+      "/images/uploads/0b7c0a3c-adab-4837-9d46-f6158630b6be.jpg",
+      "/images/uploads/7dbf6225-99fb-4b00-baae-36262a847a2e.jpg"
+    ],
     "repairDocs": [],
     "tires": [],
     "undercarriage": [],
-    "titleDocs": []
+    "damageBefore": [],
+    "interior": [],
+    "titleDocs": [],
+    "engineBay": [],
+    "exterior": []
   },
   "photos": [
     "/images/uploads/396662294_6455714764555718_712966793998892878_n.jpg",
