@@ -190,9 +190,9 @@ function carCardHTML(car) {
   </a>`;
 }
 
-function cardsOrEmptyState(cars) {
+function cardsOrEmptyState(cars, extraClass) {
   if (!cars.length) return `<div class="empty-state">No vehicles listed right now — check back soon.</div>`;
-  return `<div class="grid">${cars.map(carCardHTML).join("")}</div>`;
+  return `<div class="grid ${extraClass || ""}">${cars.map(carCardHTML).join("")}</div>`;
 }
 
 /* Just Arrived (available) first, with a "Sold" divider before the sold
@@ -241,7 +241,7 @@ function renderSoldFeed() {
   const sold = CARS.filter(c => c.status === "sold").sort((a,b) => new Date(b.dateSold||0) - new Date(a.dateSold||0));
   root.innerHTML = `
     <div class="feed-heading"><h2>All Sold Vehicles</h2></div>
-    ${cardsOrEmptyState(sold)}
+    ${cardsOrEmptyState(sold, "grid--wide")}
   `;
 }
 
