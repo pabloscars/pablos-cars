@@ -120,6 +120,7 @@
     "blindSpotMonitoring": false
   },
   "make": "Ford",
+  "sortOrder": 2,
   "fuelType": "Gasoline",
   "historyFeatures": {
     "carfaxAvailable": false,
