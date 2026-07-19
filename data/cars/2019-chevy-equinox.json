@@ -97,6 +97,7 @@
   "bodyType": "sedan",
   "year": 2014,
   "knownIssues": "Scratches in the badge areas from theft",
+  "drivetrain": "RWD",
   "showVin": false,
   "whySalvage": "Vehicle was stolen and reported as a theft recovery",
   "highlights": [
