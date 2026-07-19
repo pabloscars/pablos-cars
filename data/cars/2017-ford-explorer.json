@@ -203,6 +203,7 @@
   "bodyType": "suv",
   "year": 2017,
   "knownIssues": "touchscreen hud has scratches",
+  "drivetrain": "FWD",
   "showVin": false,
   "whySalvage": "vandalized"
 }
