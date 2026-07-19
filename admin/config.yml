@@ -184,10 +184,6 @@ collections:
           - { label: "No Frame Damage", name: "noFrameDamage", widget: "boolean", default: false, required: false }
           - { label: "No Glass Broken", name: "noGlassBroken", widget: "boolean", default: false, required: false }
           - { label: "No Flood Damage", name: "noFloodDamage", widget: "boolean", default: false, required: false }
-          - { label: "NC State Inspected", name: "ncStateInspected", widget: "boolean", default: false, required: false }
-          - { label: "Fresh Oil Change", name: "freshOilChange", widget: "boolean", default: false, required: false }
-          - { label: "Fresh Alignment", name: "freshAlignment", widget: "boolean", default: false, required: false }
-          - { label: "Fresh Tires", name: "freshTires", widget: "boolean", default: false, required: false }
           - { label: "Single Key", name: "singleKey", widget: "boolean", default: false, required: false }
           - { label: "Two Keys", name: "twoKeys", widget: "boolean", default: false, required: false }
       - label: "Salvage / Rebuild Specific"
@@ -205,10 +201,6 @@ collections:
           - { label: "Minor Collision", name: "minorCollision", widget: "boolean", default: false, required: false }
           - { label: "Rebuilt Title", name: "rebuiltTitle", widget: "boolean", default: false, required: false }
           - { label: "Salvage History", name: "salvageHistory", widget: "boolean", default: false, required: false }
-          - { label: "Structural Damage Repaired", name: "structuralDamageRepaired", widget: "boolean", default: false, required: false }
-          - { label: "Airbags Replaced", name: "airbagsReplaced", widget: "boolean", default: false, required: false }
-          - { label: "Professionally Repaired", name: "professionallyRepaired", widget: "boolean", default: false, required: false }
-          - { label: "State Rebuilt Inspection Passed", name: "stateRebuiltInspectionPassed", widget: "boolean", default: false, required: false }
       - label: "Repairs Completed"
         name: "repairsCompleted"
         widget: "object"
@@ -219,6 +211,11 @@ collections:
           - { label: "New Battery", name: "newBattery", widget: "boolean", default: false, required: false }
           - { label: "New Tires", name: "newTires", widget: "boolean", default: false, required: false }
           - { label: "Alignment", name: "alignment", widget: "boolean", default: false, required: false }
+          - { label: "NC State Inspection", name: "ncStateInspected", widget: "boolean", default: false, required: false }
+          - { label: "State Rebuilt Inspection Passed", name: "stateRebuiltInspectionPassed", widget: "boolean", default: false, required: false }
+          - { label: "Structural Damage Repaired", name: "structuralDamageRepaired", widget: "boolean", default: false, required: false }
+          - { label: "Airbags Replaced", name: "airbagsReplaced", widget: "boolean", default: false, required: false }
+          - { label: "Professionally Repaired", name: "professionallyRepaired", widget: "boolean", default: false, required: false }
           - { label: "Cabin Air Filter", name: "cabinAirFilter", widget: "boolean", default: false, required: false }
           - { label: "Engine Air Filter", name: "engineAirFilter", widget: "boolean", default: false, required: false }
           - { label: "Front Wipers", name: "frontWipers", widget: "boolean", default: false, required: false }

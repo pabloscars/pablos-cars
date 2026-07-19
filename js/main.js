@@ -110,10 +110,6 @@ const FEATURE_CATEGORIES = [
     ["noAirbagsDeployed", "No Airbags Deployed"],
     ["noFrameDamage", "No Frame Damage"],
     ["noFloodDamage", "No Flood Damage"],
-    ["ncStateInspected", "NC State Inspected"],
-    ["freshOilChange", "Fresh Oil Change"],
-    ["freshAlignment", "Fresh Alignment"],
-    ["freshTires", "Fresh Tires"],
     ["singleKey", "Single Key"],
     ["twoKeys", "Two Keys"],
   ] },
@@ -127,10 +123,6 @@ const FEATURE_CATEGORIES = [
     ["minorCollision", "Minor Collision"],
     ["rebuiltTitle", "Rebuilt Title"],
     ["salvageHistory", "Salvage History"],
-    ["structuralDamageRepaired", "Structural Damage Repaired"],
-    ["airbagsReplaced", "Airbags Replaced"],
-    ["professionallyRepaired", "Professionally Repaired"],
-    ["stateRebuiltInspectionPassed", "State Rebuilt Inspection Passed"],
   ] }
 ];
 
@@ -143,6 +135,11 @@ const REPAIRS_COMPLETED_ITEMS = [
   ["newBattery", "New Battery"],
   ["newTires", "New Tires"],
   ["alignment", "Alignment"],
+  ["ncStateInspected", "NC State Inspection"],
+  ["stateRebuiltInspectionPassed", "State Rebuilt Inspection Passed"],
+  ["structuralDamageRepaired", "Structural Damage Repaired"],
+  ["airbagsReplaced", "Airbags Replaced"],
+  ["professionallyRepaired", "Professionally Repaired"],
   ["cabinAirFilter", "Cabin Air Filter"],
   ["engineAirFilter", "Engine Air Filter"],
   ["frontWipers", "Front Wipers"],

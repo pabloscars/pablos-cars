@@ -32,18 +32,14 @@
   "engine": "2.3L 4Cyl Ecoboost Engine w/ Twin Scroll Turbo",
   "transmission": "6 Speed Automatic Transmission",
   "salvageFeatures": {
-    "professionallyRepaired": false,
     "frontEndDamage": false,
-    "airbagsReplaced": false,
     "rearEndDamage": false,
     "hailDamage": false,
     "salvageHistory": false,
     "rebuiltTitle": false,
     "sideSwipeDamage": false,
     "theftRecovery": false,
-    "structuralDamageRepaired": false,
     "minorCollision": false,
-    "stateRebuiltInspectionPassed": false,
     "cosmeticDamage": true
   },
   "mpg": "19mpg city / 27mpg hwy",
@@ -51,7 +47,8 @@
     "cabinAirFilter": true,
     "engineAirFilter": true,
     "frontWipers": true,
-    "rearWiper": true
+    "rearWiper": true,
+    "ncStateInspected": true
   },
   "exteriorColor": "Ruby Red Metallic",
   "price": 13700,
@@ -87,16 +84,13 @@
     "launchControl": false,
     "towPackage": false,
     "bremboBrakes": false,
-    "awd": false,
     "paddleShifters": false,
     "turbocharged": false,
-    "fourWD": false,
     "supercharged": false,
     "limitedSlipDifferential": false,
     "offRoadPackage": false,
     "sportMode": false,
-    "performanceExhaust": false,
-    "rwd": false
+    "performanceExhaust": false
   },
   "interiorFeatures": {
     "thirdRowSeating": true,
@@ -128,19 +122,6 @@
   "make": "Ford",
   "sortOrder": 2,
   "fuelType": "Gasoline",
-  "historyFeatures": {
-    "carfaxAvailable": false,
-    "newSuspensionParts": false,
-    "twoOwner": false,
-    "newBrakes": false,
-    "dealerServiced": false,
-    "newTires": false,
-    "newBattery": false,
-    "oneOwner": false,
-    "transmissionServiced": false,
-    "fleetMaintained": false,
-    "serviceRecordsAvailable": false
-  },
   "status": "sold",
   "techFeatures": {
     "satelliteRadio": false,
@@ -171,15 +152,11 @@
     "coldAC": false,
     "noFloodDamage": true,
     "noGlassBroken": true,
-    "freshOilChange": false,
-    "freshAlignment": false,
     "singleKey": true,
-    "ncStateInspected": true,
     "noWarningLights": true,
     "runsAndDrives": false,
     "noAirbagsDeployed": true,
     "noFrameDamage": true,
-    "freshTires": false,
     "highwayTested": false
   },
   "tags": [],

@@ -54,7 +54,6 @@
   "titleStatus": "Salvage Title",
   "mileage": 81000,
   "performanceFeatures": {
-    "rwd": true,
     "performanceExhaust": true,
     "driveModes": true
   },
@@ -67,6 +66,9 @@
   "sortOrder": 1,
   "fuelType": "Gasoline",
   "whatWasRepaired": "New badges installed\nFront Rotors and Pads\nRear Rotors and Pads\nOil Service\nCabin and Air Filters\nNew Windshield Wipers",
+  "repairsCompleted": {
+    "ncStateInspected": true
+  },
   "dateAdded": "2024-06-02",
   "status": "sold",
   "techFeatures": {
@@ -80,7 +82,6 @@
   "location": "Asheville, NC",
   "interiorMaterial": "Leather",
   "conditionFeatures": {
-    "ncStateInspected": true,
     "noGlassBroken": true,
     "singleKey": true
   },
