@@ -99,6 +99,7 @@
       "bodyType": "sedan",
       "year": 2014,
       "knownIssues": "Scratches in the badge areas from theft",
+      "drivetrain": "RWD",
       "showVin": false,
       "whySalvage": "Vehicle was stolen and reported as a theft recovery",
       "highlights": [
@@ -159,6 +160,12 @@
         "cosmeticDamage": true
       },
       "mpg": "19mpg city / 27mpg hwy",
+      "repairsCompleted": {
+        "cabinAirFilter": true,
+        "engineAirFilter": true,
+        "frontWipers": true,
+        "rearWiper": true
+      },
       "exteriorColor": "Ruby Red Metallic",
       "price": 13700,
       "comfortFeatures": {
@@ -288,6 +295,7 @@
         "freshTires": false,
         "highwayTested": false
       },
+      "tags": [],
       "id": "2017--ford-explorer",
       "exteriorFeatures": {
         "hidHeadlights": false,
@@ -308,6 +316,7 @@
       "bodyType": "suv",
       "year": 2017,
       "knownIssues": "touchscreen hud has scratches",
+      "drivetrain": "FWD",
       "showVin": false,
       "whySalvage": "vandalized"
     },

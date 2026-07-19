@@ -131,36 +131,32 @@ const FEATURE_CATEGORIES = [
     ["airbagsReplaced", "Airbags Replaced"],
     ["professionallyRepaired", "Professionally Repaired"],
     ["stateRebuiltInspectionPassed", "State Rebuilt Inspection Passed"],
-  ] },
-  { key: "historyFeatures", label: "Vehicle History & Service", items: [
-    ["serviceRecordsAvailable", "Service Records Available"],
-    ["carfaxAvailable", "CarFax Available"],
-    ["oneOwner", "One Owner"],
-    ["twoOwner", "Two Owner"],
-    ["fleetMaintained", "Fleet Maintained"],
-    ["dealerServiced", "Dealer Serviced"],
-    ["newBrakes", "New Brakes"],
-    ["newTires", "New Tires"],
-    ["newBattery", "New Battery"],
-    ["newSuspensionParts", "New Suspension Parts"],
-    ["transmissionServiced", "Transmission Serviced"],
-  ] },
-  { key: "repairsCompleted", label: "Repairs Completed", items: [
-    ["cabinAirFilter", "Cabin Air Filter"],
-    ["engineAirFilter", "Engine Air Filter"],
-    ["frontWipers", "Front Wipers"],
-    ["rearWiper", "Rear Wiper"],
-    ["sparkPlugs", "Spark Plugs"],
-    ["frontRotorsPads", "Front Rotors & Pads"],
-    ["rearRotorsPads", "Rear Rotors & Pads"],
-    ["wheelBalance", "Wheel Balance"],
-    ["tpmsSensors", "TPMS Sensors"],
-    ["valveCoverGasket", "Valve Cover Gasket"],
-    ["serpentineBelt", "Serpentine Belt"],
-    ["coolantFlush", "Coolant Flush"],
-    ["brakeFluidFlush", "Brake Fluid Flush"],
-    ["fuelFilter", "Fuel Filter"],
   ] }
+];
+
+/* Rendered as wrench-icon bullets in the "What Was Repaired" section
+   (alongside Pablo's free-text notes) rather than buried in the
+   Vehicle Features toggle grid — this is specifically repair work,
+   not a feature. */
+const REPAIRS_COMPLETED_ITEMS = [
+  ["oilChange", "Oil Change"],
+  ["newBattery", "New Battery"],
+  ["newTires", "New Tires"],
+  ["alignment", "Alignment"],
+  ["cabinAirFilter", "Cabin Air Filter"],
+  ["engineAirFilter", "Engine Air Filter"],
+  ["frontWipers", "Front Wipers"],
+  ["rearWiper", "Rear Wiper"],
+  ["sparkPlugs", "Spark Plugs"],
+  ["frontRotorsPads", "Front Rotors & Pads"],
+  ["rearRotorsPads", "Rear Rotors & Pads"],
+  ["wheelBalance", "Wheel Balance"],
+  ["tpmsSensors", "TPMS Sensors"],
+  ["valveCoverGasket", "Valve Cover Gasket"],
+  ["serpentineBelt", "Serpentine Belt"],
+  ["coolantFlush", "Coolant Flush"],
+  ["brakeFluidFlush", "Brake Fluid Flush"],
+  ["fuelFilter", "Fuel Filter"],
 ];
 
 /* Reassurance badges shown on the vehicle detail page when the
@@ -386,10 +382,14 @@ function renderVehicleDetail() {
     }
   }
 
-  const repairedItems = (car.whatWasRepaired || "")
+  const repairsCompletedLabels = REPAIRS_COMPLETED_ITEMS
+    .filter(([key]) => car.repairsCompleted && car.repairsCompleted[key])
+    .map(([, label]) => label);
+  const repairedNotes = (car.whatWasRepaired || "")
     .split("\n")
     .map(line => line.replace(/^[\s.\-•]+/, "").trim())
     .filter(Boolean);
+  const repairedItems = [...repairsCompletedLabels, ...repairedNotes];
 
   const messageHref = car.facebookUrl || BUSINESS.facebookUrl;
 
@@ -467,10 +467,11 @@ function renderVehicleDetail() {
           <div class="feature-grid" style="margin-top:16px;">
             <div class="feature-card"><h3>Why It Has A ${car.titleStatus}</h3><p>${car.whySalvage || ""}</p></div>
             <div class="feature-card"><h3>Known Issues</h3><p>${car.knownIssues || ""}</p></div>
+            ${repairedItems.length ? `
             <div class="feature-card feature-card--wide">
               <h3>What Was Repaired</h3>
               <ul class="highlights-list highlights-list--repaired">${repairedItems.map(item => `<li>${item}</li>`).join("")}</ul>
-            </div>
+            </div>` : ""}
             ${allHighlights.length ? `
             <div class="feature-card feature-card--wide">
               <h3>Highlights &amp; Features</h3>

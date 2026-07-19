@@ -209,29 +209,16 @@ collections:
           - { label: "Airbags Replaced", name: "airbagsReplaced", widget: "boolean", default: false, required: false }
           - { label: "Professionally Repaired", name: "professionallyRepaired", widget: "boolean", default: false, required: false }
           - { label: "State Rebuilt Inspection Passed", name: "stateRebuiltInspectionPassed", widget: "boolean", default: false, required: false }
-      - label: "Vehicle History & Service"
-        name: "historyFeatures"
-        widget: "object"
-        required: false
-        collapsed: true
-        fields:
-          - { label: "Service Records Available", name: "serviceRecordsAvailable", widget: "boolean", default: false, required: false }
-          - { label: "CarFax Available", name: "carfaxAvailable", widget: "boolean", default: false, required: false }
-          - { label: "One Owner", name: "oneOwner", widget: "boolean", default: false, required: false }
-          - { label: "Two Owner", name: "twoOwner", widget: "boolean", default: false, required: false }
-          - { label: "Fleet Maintained", name: "fleetMaintained", widget: "boolean", default: false, required: false }
-          - { label: "Dealer Serviced", name: "dealerServiced", widget: "boolean", default: false, required: false }
-          - { label: "New Brakes", name: "newBrakes", widget: "boolean", default: false, required: false }
-          - { label: "New Tires", name: "newTires", widget: "boolean", default: false, required: false }
-          - { label: "New Battery", name: "newBattery", widget: "boolean", default: false, required: false }
-          - { label: "New Suspension Parts", name: "newSuspensionParts", widget: "boolean", default: false, required: false }
-          - { label: "Transmission Serviced", name: "transmissionServiced", widget: "boolean", default: false, required: false }
       - label: "Repairs Completed"
         name: "repairsCompleted"
         widget: "object"
         required: false
         collapsed: true
         fields:
+          - { label: "Oil Change", name: "oilChange", widget: "boolean", default: false, required: false }
+          - { label: "New Battery", name: "newBattery", widget: "boolean", default: false, required: false }
+          - { label: "New Tires", name: "newTires", widget: "boolean", default: false, required: false }
+          - { label: "Alignment", name: "alignment", widget: "boolean", default: false, required: false }
           - { label: "Cabin Air Filter", name: "cabinAirFilter", widget: "boolean", default: false, required: false }
           - { label: "Engine Air Filter", name: "engineAirFilter", widget: "boolean", default: false, required: false }
           - { label: "Front Wipers", name: "frontWipers", widget: "boolean", default: false, required: false }
