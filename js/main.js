@@ -65,9 +65,6 @@ const FEATURE_CATEGORIES = [
     ["absBrakes", "ABS Brakes"],
   ] },
   { key: "performanceFeatures", label: "Performance & Driving", items: [
-    ["awd", "AWD"],
-    ["fourWD", "4WD"],
-    ["rwd", "RWD"],
     ["sportMode", "Sport Mode"],
     ["paddleShifters", "Paddle Shifters"],
     ["turbocharged", "Turbocharged"],
@@ -147,6 +144,22 @@ const FEATURE_CATEGORIES = [
     ["newBattery", "New Battery"],
     ["newSuspensionParts", "New Suspension Parts"],
     ["transmissionServiced", "Transmission Serviced"],
+  ] },
+  { key: "repairsCompleted", label: "Repairs Completed", items: [
+    ["cabinAirFilter", "Cabin Air Filter"],
+    ["engineAirFilter", "Engine Air Filter"],
+    ["frontWipers", "Front Wipers"],
+    ["rearWiper", "Rear Wiper"],
+    ["sparkPlugs", "Spark Plugs"],
+    ["frontRotorsPads", "Front Rotors & Pads"],
+    ["rearRotorsPads", "Rear Rotors & Pads"],
+    ["wheelBalance", "Wheel Balance"],
+    ["tpmsSensors", "TPMS Sensors"],
+    ["valveCoverGasket", "Valve Cover Gasket"],
+    ["serpentineBelt", "Serpentine Belt"],
+    ["coolantFlush", "Coolant Flush"],
+    ["brakeFluidFlush", "Brake Fluid Flush"],
+    ["fuelFilter", "Fuel Filter"],
   ] }
 ];
 
@@ -414,6 +427,7 @@ function renderVehicleDetail() {
               <div class="vdp-spec--featured"><dt>Mileage</dt><dd>${miles(car.mileage)}</dd></div>
               <div><dt>Engine</dt><dd>${car.engine}</dd></div>
               <div><dt>Transmission</dt><dd>${car.transmission}</dd></div>
+              ${car.drivetrain ? `<div><dt>Drivetrain</dt><dd>${car.drivetrain}</dd></div>` : ""}
               <div><dt>Location</dt><dd>${car.location}</dd></div>
               ${car.fuelType ? `<div><dt>Fuel Type</dt><dd>${car.fuelType}</dd></div>` : ""}
               ${car.exteriorColor ? `<div><dt>Exterior Color</dt><dd>${car.exteriorColor}</dd></div>` : ""}

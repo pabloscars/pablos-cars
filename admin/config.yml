@@ -38,6 +38,7 @@ collections:
         field: { label: "Badge", name: "tag", widget: "string" }
       - { label: "Engine", name: "engine", widget: "string", required: false }
       - { label: "Transmission", name: "transmission", widget: "string", required: false }
+      - { label: "Drivetrain", name: "drivetrain", widget: "select", options: ["FWD", "RWD", "AWD", "4x4"], required: false }
       - { label: "Fuel Type", name: "fuelType", widget: "select", options: ["Gasoline", "Diesel", "Hybrid", "Electric", "Flex Fuel"], required: false }
       - { label: "Exterior Color", name: "exteriorColor", widget: "string", required: false }
       - { label: "Interior Color", name: "interiorColor", widget: "string", required: false }
@@ -125,9 +126,6 @@ collections:
         required: false
         collapsed: true
         fields:
-          - { label: "AWD", name: "awd", widget: "boolean", default: false, required: false }
-          - { label: "4WD", name: "fourWD", widget: "boolean", default: false, required: false }
-          - { label: "RWD", name: "rwd", widget: "boolean", default: false, required: false }
           - { label: "Sport Mode", name: "sportMode", widget: "boolean", default: false, required: false }
           - { label: "Paddle Shifters", name: "paddleShifters", widget: "boolean", default: false, required: false }
           - { label: "Turbocharged", name: "turbocharged", widget: "boolean", default: false, required: false }
@@ -228,6 +226,26 @@ collections:
           - { label: "New Battery", name: "newBattery", widget: "boolean", default: false, required: false }
           - { label: "New Suspension Parts", name: "newSuspensionParts", widget: "boolean", default: false, required: false }
           - { label: "Transmission Serviced", name: "transmissionServiced", widget: "boolean", default: false, required: false }
+      - label: "Repairs Completed"
+        name: "repairsCompleted"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Cabin Air Filter", name: "cabinAirFilter", widget: "boolean", default: false, required: false }
+          - { label: "Engine Air Filter", name: "engineAirFilter", widget: "boolean", default: false, required: false }
+          - { label: "Front Wipers", name: "frontWipers", widget: "boolean", default: false, required: false }
+          - { label: "Rear Wiper", name: "rearWiper", widget: "boolean", default: false, required: false }
+          - { label: "Spark Plugs", name: "sparkPlugs", widget: "boolean", default: false, required: false }
+          - { label: "Front Rotors & Pads", name: "frontRotorsPads", widget: "boolean", default: false, required: false }
+          - { label: "Rear Rotors & Pads", name: "rearRotorsPads", widget: "boolean", default: false, required: false }
+          - { label: "Wheel Balance", name: "wheelBalance", widget: "boolean", default: false, required: false }
+          - { label: "TPMS Sensors", name: "tpmsSensors", widget: "boolean", default: false, required: false }
+          - { label: "Valve Cover Gasket", name: "valveCoverGasket", widget: "boolean", default: false, required: false }
+          - { label: "Serpentine Belt", name: "serpentineBelt", widget: "boolean", default: false, required: false }
+          - { label: "Coolant Flush", name: "coolantFlush", widget: "boolean", default: false, required: false }
+          - { label: "Brake Fluid Flush", name: "brakeFluidFlush", widget: "boolean", default: false, required: false }
+          - { label: "Fuel Filter", name: "fuelFilter", widget: "boolean", default: false, required: false }
       - label: "Other Highlights"
         name: "highlights"
         widget: "list"
