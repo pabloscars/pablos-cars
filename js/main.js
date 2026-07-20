@@ -181,6 +181,7 @@ function enableDragScroll(el) {
     startX = e.pageX;
     startScroll = el.scrollLeft;
     el.classList.add("is-dragging");
+    el._isDragging = true;
   });
 
   el.addEventListener("pointermove", (e) => {
@@ -196,6 +197,7 @@ function enableDragScroll(el) {
   function endDrag() {
     isDown = false;
     el.classList.remove("is-dragging");
+    el._isDragging = false;
   }
   el.addEventListener("pointerup", endDrag);
   el.addEventListener("pointerleave", endDrag);
@@ -207,6 +209,45 @@ function enableDragScroll(el) {
       dragged = false;
     }
   }, true);
+}
+
+/* Hover near either edge of a horizontal thumbnail strip and it slowly
+   auto-scrolls that direction — no need to drag all the way to see
+   thumbnails further down the row. Speed ramps up the closer the
+   cursor gets to the edge. Paused while actively drag-scrolling
+   (enableDragScroll marks el._isDragging) so the two don't fight. */
+function enableEdgeAutoScroll(el) {
+  if (!el) return;
+  const EDGE_ZONE = 60;
+  const MAX_SPEED = 5;
+  let scrollSpeed = 0;
+  let rafId = null;
+
+  function tick() {
+    if (scrollSpeed !== 0 && !el._isDragging) {
+      el.scrollLeft += scrollSpeed;
+      rafId = requestAnimationFrame(tick);
+    } else {
+      rafId = null;
+    }
+  }
+
+  el.addEventListener("mousemove", (e) => {
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    if (x < EDGE_ZONE) {
+      scrollSpeed = -Math.max(1, Math.round(((EDGE_ZONE - x) / EDGE_ZONE) * MAX_SPEED));
+    } else if (x > rect.width - EDGE_ZONE) {
+      scrollSpeed = Math.max(1, Math.round(((x - (rect.width - EDGE_ZONE)) / EDGE_ZONE) * MAX_SPEED));
+    } else {
+      scrollSpeed = 0;
+    }
+    if (rafId === null && scrollSpeed !== 0) rafId = requestAnimationFrame(tick);
+  });
+
+  el.addEventListener("mouseleave", () => {
+    scrollSpeed = 0;
+  });
 }
 
 function carCardHTML(car) {
@@ -396,7 +437,7 @@ function renderVehicleDetail() {
             <div class="gallery__main">
               <img id="mainPhoto" src="${allPhotos[0] || ""}" alt="${car.year} ${car.make} ${car.model}">
               ${allPhotos.length > 1 ? `
-                <button class="gallery__arrow gallery__arrow--prev is-disabled" id="mainPrevBtn" aria-label="Previous photo">&#8249;</button>
+                <button class="gallery__arrow gallery__arrow--prev" id="mainPrevBtn" aria-label="Previous photo">&#8249;</button>
                 <button class="gallery__arrow gallery__arrow--next" id="mainNextBtn" aria-label="Next photo">&#8250;</button>
               ` : ""}
             </div>
@@ -493,14 +534,15 @@ function renderVehicleDetail() {
     const mainNextBtn = document.getElementById("mainNextBtn");
 
     function goToMainPhoto(i) {
-      currentMainIndex = Math.max(0, Math.min(allPhotos.length - 1, i));
+      // Wraps around in both directions — past the last photo goes back
+      // to the first, and back past the first goes to the last.
+      currentMainIndex = ((i % allPhotos.length) + allPhotos.length) % allPhotos.length;
       mainPhoto.src = allPhotos[currentMainIndex];
       document.querySelectorAll("#thumbRow img").forEach((t, idx) => t.classList.toggle("is-active", idx === currentMainIndex));
-      if (mainPrevBtn) mainPrevBtn.classList.toggle("is-disabled", currentMainIndex === 0);
-      if (mainNextBtn) mainNextBtn.classList.toggle("is-disabled", currentMainIndex === allPhotos.length - 1);
     }
 
     enableDragScroll(document.getElementById("thumbRow"));
+    enableEdgeAutoScroll(document.getElementById("thumbRow"));
 
     document.getElementById("thumbRow").addEventListener("click", (e) => {
       const img = e.target.closest("img");
@@ -569,6 +611,7 @@ function initPhotoSlider(slider) {
   if (prevBtn) prevBtn.addEventListener("click", () => goToPage(page - 1));
   if (nextBtn) nextBtn.addEventListener("click", () => goToPage(page + 1));
   enableDragScroll(slider.querySelector(".photo-slider__thumbs"));
+  enableEdgeAutoScroll(slider.querySelector(".photo-slider__thumbs"));
   thumbs.forEach((thumb, i) => thumb.addEventListener("click", () => goToPage(Math.floor(i / SLIDER_PAGE_SIZE))));
   frameImgs.forEach((img, i) => img.addEventListener("click", () => openLightbox(allSrcs, i)));
 }
