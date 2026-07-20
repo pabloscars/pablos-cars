@@ -133,11 +133,11 @@
        you're about to publish — same fonts/colors as the real site
        (loaded via registerPreviewStyle below), updating as you type.
        ============================================================ */
-    var TRUST_BADGE_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>';
     var TRUST_BADGES = [
-      ["conditionFeatures", "noAirbagsDeployed", "No Airbags Deployed"],
-      ["conditionFeatures", "noFrameDamage", "No Frame Damage"],
-      ["conditionFeatures", "noGlassBroken", "No Glass Broken"]
+      ["noAirbagsDeployed", "No Airbags Deployed", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5V4M9 13.5l-4.3 2.5M15 13.5l4.3 2.5"/></svg>'],
+      ["noFrameDamage", "No Frame Damage", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16l1.4-4.7A2 2 0 0 1 7.3 10h9.4a2 2 0 0 1 1.9 1.3L20 16"/><rect x="2.5" y="16" width="19" height="3" rx="1"/><circle cx="7" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg>'],
+      ["noGlassBroken", "No Glass Broken", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 4v16M4 12h16"/></svg>'],
+      ["noWarningLights", "No Warning Lights", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v4"/><circle cx="12" cy="17" r="0.6" fill="currentColor" stroke="none"/></svg>']
     ];
 
     var CarPreview = createClass({
@@ -169,7 +169,7 @@
           : [];
 
         var badges = TRUST_BADGES.filter(function (b) {
-          return entry.getIn(["data", b[0], b[1]]) === true;
+          return entry.getIn(["data", b[0]]) === true;
         });
 
         var specRows = [
@@ -257,8 +257,8 @@
                     { className: "trust-badges" },
                     badges.map(function (b, i) {
                       return h("div", { className: "trust-badge", key: i }, [
-                        h("div", { className: "trust-badge__icon", key: "icon", dangerouslySetInnerHTML: { __html: TRUST_BADGE_ICON } }),
-                        h("div", { className: "trust-badge__label", key: "label" }, b[2])
+                        h("div", { className: "trust-badge__icon", key: "icon", dangerouslySetInnerHTML: { __html: b[2] } }),
+                        h("div", { className: "trust-badge__label", key: "label" }, b[1])
                       ]);
                     })
                   )

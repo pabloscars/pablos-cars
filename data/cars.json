@@ -84,9 +84,9 @@
       "location": "Asheville, NC",
       "interiorMaterial": "Leather",
       "conditionFeatures": {
-        "noGlassBroken": true,
         "singleKey": true
       },
+      "noGlassBroken": true,
       "tags": [
         "Salvage Title",
         "Theft Vehicle"
@@ -265,14 +265,14 @@
         "twoKeys": false,
         "coldAC": false,
         "noFloodDamage": true,
-        "noGlassBroken": true,
         "singleKey": true,
-        "noWarningLights": true,
         "runsAndDrives": false,
-        "noAirbagsDeployed": true,
-        "noFrameDamage": true,
         "highwayTested": false
       },
+      "noAirbagsDeployed": true,
+      "noFrameDamage": true,
+      "noGlassBroken": true,
+      "noWarningLights": true,
       "tags": [],
       "id": "2017--ford-explorer",
       "exteriorFeatures": {
@@ -345,12 +345,10 @@
       "interiorColor": "Tan",
       "location": "Asheville, NC",
       "interiorMaterial": "Leather",
-      "conditionFeatures": {
-        "noFrameDamage": true,
-        "noAirbagsDeployed": true,
-        "noGlassBroken": true,
-        "noWarningLights": true
-      },
+      "noAirbagsDeployed": true,
+      "noFrameDamage": true,
+      "noGlassBroken": true,
+      "noWarningLights": true,
       "tags": [
         "Side Swipe Damage",
         "Sunshade issue",

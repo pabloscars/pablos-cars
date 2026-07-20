@@ -106,9 +106,6 @@ const FEATURE_CATEGORIES = [
     ["runsAndDrives", "Runs & Drives"],
     ["highwayTested", "Highway Tested"],
     ["coldAC", "Cold A/C"],
-    ["noWarningLights", "No Warning Lights"],
-    ["noAirbagsDeployed", "No Airbags Deployed"],
-    ["noFrameDamage", "No Frame Damage"],
     ["noFloodDamage", "No Flood Damage"],
     ["singleKey", "Single Key"],
     ["twoKeys", "Two Keys"],
@@ -156,14 +153,16 @@ const REPAIRS_COMPLETED_ITEMS = [
   ["fuelFilter", "Fuel Filter"],
 ];
 
-/* Reassurance badges shown on the vehicle detail page when the
-   matching Condition & Ownership toggle is checked "yes". */
+/* Reassurance badges shown on the vehicle detail page — each is now
+   its own standalone top-level field (not nested in Condition &
+   Ownership), with an icon matching what it's actually about instead
+   of a single generic shield for all four. */
 const TRUST_BADGES = [
-  ["conditionFeatures", "noAirbagsDeployed", "No Airbags Deployed"],
-  ["conditionFeatures", "noFrameDamage", "No Frame Damage"],
-  ["conditionFeatures", "noGlassBroken", "No Glass Broken"]
+  ["noAirbagsDeployed", "No Airbags Deployed", `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5V4M9 13.5l-4.3 2.5M15 13.5l4.3 2.5"/></svg>`],
+  ["noFrameDamage", "No Frame Damage", `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16l1.4-4.7A2 2 0 0 1 7.3 10h9.4a2 2 0 0 1 1.9 1.3L20 16"/><rect x="2.5" y="16" width="19" height="3" rx="1"/><circle cx="7" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg>`],
+  ["noGlassBroken", "No Glass Broken", `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 4v16M4 12h16"/></svg>`],
+  ["noWarningLights", "No Warning Lights", `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v4"/><circle cx="12" cy="17" r="0.6" fill="currentColor" stroke="none"/></svg>`],
 ];
-const TRUST_BADGE_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>`;
 
 function money(n) { return "$" + Number(n).toLocaleString("en-US"); }
 function miles(n) { return Number(n).toLocaleString("en-US") + " mi"; }
@@ -345,10 +344,10 @@ function renderVehicleDetail() {
     .join("");
 
   const trustBadgesHTML = TRUST_BADGES
-    .filter(([catKey, itemKey]) => car[catKey] && car[catKey][itemKey])
-    .map(([, , label]) => `
+    .filter(([key]) => car[key])
+    .map(([, label, icon]) => `
       <div class="trust-badge">
-        <div class="trust-badge__icon">${TRUST_BADGE_ICON}</div>
+        <div class="trust-badge__icon">${icon}</div>
         <div class="trust-badge__label">${label}</div>
       </div>`)
     .join("");

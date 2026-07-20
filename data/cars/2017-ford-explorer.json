@@ -151,14 +151,14 @@
     "twoKeys": false,
     "coldAC": false,
     "noFloodDamage": true,
-    "noGlassBroken": true,
     "singleKey": true,
-    "noWarningLights": true,
     "runsAndDrives": false,
-    "noAirbagsDeployed": true,
-    "noFrameDamage": true,
     "highwayTested": false
   },
+  "noAirbagsDeployed": true,
+  "noFrameDamage": true,
+  "noGlassBroken": true,
+  "noWarningLights": true,
   "tags": [],
   "id": "2017--ford-explorer",
   "exteriorFeatures": {

@@ -45,12 +45,10 @@
   "interiorColor": "Tan",
   "location": "Asheville, NC",
   "interiorMaterial": "Leather",
-  "conditionFeatures": {
-    "noFrameDamage": true,
-    "noAirbagsDeployed": true,
-    "noGlassBroken": true,
-    "noWarningLights": true
-  },
+  "noAirbagsDeployed": true,
+  "noFrameDamage": true,
+  "noGlassBroken": true,
+  "noWarningLights": true,
   "tags": [
     "Side Swipe Damage",
     "Sunshade issue",

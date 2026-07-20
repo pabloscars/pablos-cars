@@ -82,9 +82,9 @@
   "location": "Asheville, NC",
   "interiorMaterial": "Leather",
   "conditionFeatures": {
-    "noGlassBroken": true,
     "singleKey": true
   },
+  "noGlassBroken": true,
   "tags": [
     "Salvage Title",
     "Theft Vehicle"
