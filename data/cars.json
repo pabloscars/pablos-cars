@@ -81,9 +81,7 @@
       "videoUrl": "",
       "location": "Asheville, NC",
       "interiorMaterial": "Leather",
-      "conditionFeatures": {
-        "singleKey": true
-      },
+      "keyCount": "1 Key",
       "noGlassBroken": true,
       "tags": [
         "Salvage Title",
@@ -165,35 +163,35 @@
       "exteriorColor": "Ruby Red Metallic",
       "price": 13700,
       "comfortFeatures": {
+        "splitFoldingRearSeats": false,
+        "rearEntertainment": false,
         "ventilatedSeats": false,
         "ambientLighting": false,
+        "largeCargoSpace": false,
         "rearSunshade": false,
         "autoDimmingMirrors": false,
         "handsFreeLiftgate": false,
+        "flatFoldingSeats": false,
+        "foldingRearSeats": false,
         "powerSeats": true,
+        "thirdRowSeating": true,
         "garageDoorOpener": false,
         "memorySeats": false,
         "wirelessPhoneCharger": false,
         "dualClimateControl": true,
         "sunroofMoonroof": false,
         "pushButtonStart": true,
+        "adjustableLumbarSupport": false,
         "rearACVents": true,
         "remoteTrunkRelease": false,
         "panoramicSunroof": false,
         "keylessEntry": true,
+        "heatedRearSeats": false,
         "powerLiftgate": true,
         "heatedSteeringWheel": true,
         "remoteStart": true,
         "heatedSeats": true,
-        "rainSensingWipers": false,
-        "thirdRowSeating": true,
-        "foldingRearSeats": false,
-        "splitFoldingRearSeats": false,
-        "heatedRearSeats": false,
-        "rearEntertainment": false,
-        "largeCargoSpace": false,
-        "flatFoldingSeats": false,
-        "adjustableLumbarSupport": false
+        "rainSensingWipers": false
       },
       "model": "Explorer",
       "titleStatus": "Salvage Title",
@@ -257,14 +255,7 @@
       "interiorColor": "Ebony Black",
       "location": "Asheville, NC",
       "interiorMaterial": "Leather",
-      "conditionFeatures": {
-        "twoKeys": false,
-        "coldAC": false,
-        "noFloodDamage": true,
-        "singleKey": true,
-        "runsAndDrives": false,
-        "highwayTested": false
-      },
+      "keyCount": "1 Key",
       "noAirbagsDeployed": true,
       "noFrameDamage": true,
       "noGlassBroken": true,
@@ -292,7 +283,7 @@
       "knownIssues": "touchscreen hud has scratches",
       "drivetrain": "FWD",
       "showVin": false,
-      "whySalvage": "vandalized"
+      "whySalvage": "vandalism all around vehicle"
     },
     {
       "photoSections": {

@@ -119,7 +119,6 @@
   },
   "make": "Ford",
   "sortOrder": 2,
-  "noGlassBroken": true,
   "fuelType": "Gasoline",
   "status": "sold",
   "techFeatures": {
@@ -146,17 +145,12 @@
   "interiorColor": "Ebony Black",
   "location": "Asheville, NC",
   "interiorMaterial": "Leather",
-  "noWarningLights": true,
-  "conditionFeatures": {
-    "twoKeys": false,
-    "coldAC": false,
-    "noFloodDamage": true,
-    "singleKey": true,
-    "runsAndDrives": false,
-    "highwayTested": false
-  },
-  "tags": [],
+  "keyCount": "1 Key",
   "noAirbagsDeployed": true,
+  "noFrameDamage": true,
+  "noGlassBroken": true,
+  "noWarningLights": true,
+  "tags": [],
   "id": "2017--ford-explorer",
   "exteriorFeatures": {
     "hidHeadlights": false,
@@ -173,7 +167,6 @@
     "bedLiner": false
   },
   "image": "/images/uploads/434851776_1120955575724213_6000582875261998931_n.jpg",
-  "noFrameDamage": true,
   "description": "Really clean and surprisingly spacious Explorer with low miles! Drives & handles with no issues at alllll! A/C & Heat work perfectly. Vehicle does have a few cosmetic imperfections here and there which I tried to depict, the best i could in the photos.",
   "bodyType": "suv",
   "year": 2017,

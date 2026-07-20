@@ -79,9 +79,7 @@
   "videoUrl": "",
   "location": "Asheville, NC",
   "interiorMaterial": "Leather",
-  "conditionFeatures": {
-    "singleKey": true
-  },
+  "keyCount": "1 Key",
   "noGlassBroken": true,
   "tags": [
     "Salvage Title",

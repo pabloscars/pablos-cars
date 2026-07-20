@@ -100,14 +100,6 @@ const FEATURE_CATEGORIES = [
     ["powerFoldingMirrors", "Power Folding Mirrors"],
     ["privacyGlass", "Privacy Glass"],
   ] },
-  { key: "conditionFeatures", label: "Condition & Ownership", items: [
-    ["runsAndDrives", "Runs & Drives"],
-    ["highwayTested", "Highway Tested"],
-    ["coldAC", "Cold A/C"],
-    ["noFloodDamage", "No Flood Damage"],
-    ["singleKey", "Single Key"],
-    ["twoKeys", "Two Keys"],
-  ] },
   { key: "salvageFeatures", label: "Salvage / Rebuild Specific", items: [
     ["theftRecovery", "Theft Recovery"],
     ["cosmeticDamage", "Cosmetic Damage"],
@@ -463,6 +455,7 @@ function renderVehicleDetail() {
               <div><dt>Engine</dt><dd>${car.engine}</dd></div>
               <div><dt>Transmission</dt><dd>${car.transmission}</dd></div>
               ${car.drivetrain ? `<div><dt>Drivetrain</dt><dd>${car.drivetrain}</dd></div>` : ""}
+              ${car.keyCount ? `<div><dt>Keys</dt><dd>${car.keyCount}</dd></div>` : ""}
               <div><dt>Location</dt><dd>${car.location}</dd></div>
               ${car.fuelType ? `<div><dt>Fuel Type</dt><dd>${car.fuelType}</dd></div>` : ""}
               ${car.exteriorColor ? `<div><dt>Exterior Color</dt><dd>${car.exteriorColor}</dd></div>` : ""}

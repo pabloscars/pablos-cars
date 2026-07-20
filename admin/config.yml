@@ -36,6 +36,7 @@ collections:
       - { label: "No Frame Damage", name: "noFrameDamage", widget: "boolean", default: false, required: false, hint: "Shows as a trust badge on the listing" }
       - { label: "No Glass Broken", name: "noGlassBroken", widget: "boolean", default: false, required: false, hint: "Shows as a trust badge on the listing" }
       - { label: "No Warning Lights", name: "noWarningLights", widget: "boolean", default: false, required: false, hint: "Shows as a trust badge on the listing" }
+      - { label: "Keys", name: "keyCount", widget: "select", options: ["1 Key", "2 Keys"], required: false }
       - label: "Badges"
         name: "tags"
         widget: "list"
@@ -168,18 +169,6 @@ collections:
           - { label: "Heated Mirrors", name: "heatedMirrors", widget: "boolean", default: false, required: false }
           - { label: "Power Folding Mirrors", name: "powerFoldingMirrors", widget: "boolean", default: false, required: false }
           - { label: "Privacy Glass", name: "privacyGlass", widget: "boolean", default: false, required: false }
-      - label: "Condition & Ownership"
-        name: "conditionFeatures"
-        widget: "object"
-        required: false
-        collapsed: true
-        fields:
-          - { label: "Runs & Drives", name: "runsAndDrives", widget: "boolean", default: false, required: false }
-          - { label: "Highway Tested", name: "highwayTested", widget: "boolean", default: false, required: false }
-          - { label: "Cold A/C", name: "coldAC", widget: "boolean", default: false, required: false }
-          - { label: "No Flood Damage", name: "noFloodDamage", widget: "boolean", default: false, required: false }
-          - { label: "Single Key", name: "singleKey", widget: "boolean", default: false, required: false }
-          - { label: "Two Keys", name: "twoKeys", widget: "boolean", default: false, required: false }
       - label: "Salvage / Rebuild Specific"
         name: "salvageFeatures"
         widget: "object"
