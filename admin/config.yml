@@ -61,13 +61,18 @@ collections:
           - { label: "Push Button Start", name: "pushButtonStart", widget: "boolean", default: false, required: false }
           - { label: "Keyless Entry", name: "keylessEntry", widget: "boolean", default: false, required: false }
           - { label: "Heated Seats", name: "heatedSeats", widget: "boolean", default: false, required: false }
-          - { label: "Heated Steering Wheel", name: "heatedSteeringWheel", widget: "boolean", default: false, required: false }
           - { label: "Ventilated Seats", name: "ventilatedSeats", widget: "boolean", default: false, required: false }
           - { label: "Power Seats", name: "powerSeats", widget: "boolean", default: false, required: false }
           - { label: "Memory Seats", name: "memorySeats", widget: "boolean", default: false, required: false }
+          - { label: "Heated Rear Seats", name: "heatedRearSeats", widget: "boolean", default: false, required: false }
+          - { label: "Third Row Seating", name: "thirdRowSeating", widget: "boolean", default: false, required: false }
+          - { label: "Folding Rear Seats", name: "foldingRearSeats", widget: "boolean", default: false, required: false }
+          - { label: "Split Folding Rear Seats", name: "splitFoldingRearSeats", widget: "boolean", default: false, required: false }
+          - { label: "Flat Folding Seats", name: "flatFoldingSeats", widget: "boolean", default: false, required: false }
+          - { label: "Adjustable Lumbar Support", name: "adjustableLumbarSupport", widget: "boolean", default: false, required: false }
+          - { label: "Heated Steering Wheel", name: "heatedSteeringWheel", widget: "boolean", default: false, required: false }
           - { label: "Dual Climate Control", name: "dualClimateControl", widget: "boolean", default: false, required: false }
           - { label: "Rear A/C Vents", name: "rearACVents", widget: "boolean", default: false, required: false }
-          - { label: "Ambient Lighting", name: "ambientLighting", widget: "boolean", default: false, required: false }
           - { label: "Wireless Phone Charger", name: "wirelessPhoneCharger", widget: "boolean", default: false, required: false }
           - { label: "Auto-Dimming Mirrors", name: "autoDimmingMirrors", widget: "boolean", default: false, required: false }
           - { label: "Rain-Sensing Wipers", name: "rainSensingWipers", widget: "boolean", default: false, required: false }
@@ -75,9 +80,12 @@ collections:
           - { label: "Hands-Free Liftgate", name: "handsFreeLiftgate", widget: "boolean", default: false, required: false }
           - { label: "Remote Trunk Release", name: "remoteTrunkRelease", widget: "boolean", default: false, required: false }
           - { label: "Garage Door Opener", name: "garageDoorOpener", widget: "boolean", default: false, required: false }
+          - { label: "Ambient Lighting", name: "ambientLighting", widget: "boolean", default: false, required: false }
           - { label: "Rear Sunshade", name: "rearSunshade", widget: "boolean", default: false, required: false }
           - { label: "Panoramic Sunroof", name: "panoramicSunroof", widget: "boolean", default: false, required: false }
           - { label: "Sunroof / Moonroof", name: "sunroofMoonroof", widget: "boolean", default: false, required: false }
+          - { label: "Large Cargo Space", name: "largeCargoSpace", widget: "boolean", default: false, required: false }
+          - { label: "Rear Entertainment", name: "rearEntertainment", widget: "boolean", default: false, required: false }
       - label: "Tech"
         name: "techFeatures"
         widget: "object"
@@ -160,20 +168,6 @@ collections:
           - { label: "Heated Mirrors", name: "heatedMirrors", widget: "boolean", default: false, required: false }
           - { label: "Power Folding Mirrors", name: "powerFoldingMirrors", widget: "boolean", default: false, required: false }
           - { label: "Privacy Glass", name: "privacyGlass", widget: "boolean", default: false, required: false }
-      - label: "Interior"
-        name: "interiorFeatures"
-        widget: "object"
-        required: false
-        collapsed: true
-        fields:
-          - { label: "Third Row Seating", name: "thirdRowSeating", widget: "boolean", default: false, required: false }
-          - { label: "Folding Rear Seats", name: "foldingRearSeats", widget: "boolean", default: false, required: false }
-          - { label: "Split Folding Rear Seats", name: "splitFoldingRearSeats", widget: "boolean", default: false, required: false }
-          - { label: "Heated Rear Seats", name: "heatedRearSeats", widget: "boolean", default: false, required: false }
-          - { label: "Rear Entertainment", name: "rearEntertainment", widget: "boolean", default: false, required: false }
-          - { label: "Large Cargo Space", name: "largeCargoSpace", widget: "boolean", default: false, required: false }
-          - { label: "Flat Folding Seats", name: "flatFoldingSeats", widget: "boolean", default: false, required: false }
-          - { label: "Adjustable Lumbar Support", name: "adjustableLumbarSupport", widget: "boolean", default: false, required: false }
       - label: "Condition & Ownership"
         name: "conditionFeatures"
         widget: "object"

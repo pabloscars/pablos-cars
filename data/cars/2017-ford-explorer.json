@@ -73,7 +73,15 @@
     "heatedSteeringWheel": true,
     "remoteStart": true,
     "heatedSeats": true,
-    "rainSensingWipers": false
+    "rainSensingWipers": false,
+    "thirdRowSeating": true,
+    "foldingRearSeats": false,
+    "splitFoldingRearSeats": false,
+    "heatedRearSeats": false,
+    "rearEntertainment": false,
+    "largeCargoSpace": false,
+    "flatFoldingSeats": false,
+    "adjustableLumbarSupport": false
   },
   "model": "Explorer",
   "titleStatus": "Salvage Title",
@@ -91,16 +99,6 @@
     "offRoadPackage": false,
     "sportMode": false,
     "performanceExhaust": false
-  },
-  "interiorFeatures": {
-    "thirdRowSeating": true,
-    "foldingRearSeats": false,
-    "splitFoldingRearSeats": false,
-    "heatedRearSeats": false,
-    "rearEntertainment": false,
-    "largeCargoSpace": false,
-    "flatFoldingSeats": false,
-    "adjustableLumbarSupport": false
   },
   "driverAssistFeatures": {
     "parkingAssist": false,

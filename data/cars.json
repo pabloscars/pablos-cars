@@ -50,7 +50,10 @@
       "price": 12100,
       "comfortFeatures": {
         "remoteStart": true,
-        "heatedSeats": true
+        "heatedSeats": true,
+        "foldingRearSeats": true,
+        "largeCargoSpace": true,
+        "flatFoldingSeats": true
       },
       "model": "Charger",
       "titleStatus": "Salvage Title",
@@ -58,11 +61,6 @@
       "performanceFeatures": {
         "performanceExhaust": true,
         "driveModes": true
-      },
-      "interiorFeatures": {
-        "foldingRearSeats": true,
-        "largeCargoSpace": true,
-        "flatFoldingSeats": true
       },
       "make": "Dodge",
       "sortOrder": 1,
@@ -187,7 +185,15 @@
         "heatedSteeringWheel": true,
         "remoteStart": true,
         "heatedSeats": true,
-        "rainSensingWipers": false
+        "rainSensingWipers": false,
+        "thirdRowSeating": true,
+        "foldingRearSeats": false,
+        "splitFoldingRearSeats": false,
+        "heatedRearSeats": false,
+        "rearEntertainment": false,
+        "largeCargoSpace": false,
+        "flatFoldingSeats": false,
+        "adjustableLumbarSupport": false
       },
       "model": "Explorer",
       "titleStatus": "Salvage Title",
@@ -205,16 +211,6 @@
         "offRoadPackage": false,
         "sportMode": false,
         "performanceExhaust": false
-      },
-      "interiorFeatures": {
-        "thirdRowSeating": true,
-        "foldingRearSeats": false,
-        "splitFoldingRearSeats": false,
-        "heatedRearSeats": false,
-        "rearEntertainment": false,
-        "largeCargoSpace": false,
-        "flatFoldingSeats": false,
-        "adjustableLumbarSupport": false
       },
       "driverAssistFeatures": {
         "parkingAssist": false,

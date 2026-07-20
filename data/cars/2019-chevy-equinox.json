@@ -48,7 +48,10 @@
   "price": 12100,
   "comfortFeatures": {
     "remoteStart": true,
-    "heatedSeats": true
+    "heatedSeats": true,
+    "foldingRearSeats": true,
+    "largeCargoSpace": true,
+    "flatFoldingSeats": true
   },
   "model": "Charger",
   "titleStatus": "Salvage Title",
@@ -56,11 +59,6 @@
   "performanceFeatures": {
     "performanceExhaust": true,
     "driveModes": true
-  },
-  "interiorFeatures": {
-    "foldingRearSeats": true,
-    "largeCargoSpace": true,
-    "flatFoldingSeats": true
   },
   "make": "Dodge",
   "sortOrder": 1,
