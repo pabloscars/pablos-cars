@@ -123,10 +123,6 @@ const REPAIRS_COMPLETED_ITEMS = [
   ["newTires", "New Tires"],
   ["alignment", "Alignment"],
   ["ncStateInspected", "NC State Inspection"],
-  ["stateRebuiltInspectionPassed", "State Rebuilt Inspection Passed"],
-  ["structuralDamageRepaired", "Structural Damage Repaired"],
-  ["airbagsReplaced", "Airbags Replaced"],
-  ["professionallyRepaired", "Professionally Repaired"],
   ["cabinAirFilter", "Cabin Air Filter"],
   ["engineAirFilter", "Engine Air Filter"],
   ["frontWipers", "Front Wipers"],
@@ -362,14 +358,20 @@ function renderVehicleDetail() {
 
   const allHighlights = car.highlights || [];
 
+  // Each category's "Other" list lets Pablo add a one-off item specific
+  // to that car (e.g. a Tech feature the standard toggles don't cover)
+  // without needing a new checkbox added to the schema for it.
+  const customItemLabels = group => ((group && group.other) || []).map(o => o && o.item).filter(Boolean);
+
   const featureCategoriesHTML = FEATURE_CATEGORIES
     .map(cat => {
-      const checked = cat.items.filter(([key]) => car[cat.key] && car[cat.key][key]);
-      if (!checked.length) return "";
+      const checked = cat.items.filter(([key]) => car[cat.key] && car[cat.key][key]).map(([, label]) => label);
+      const allItems = [...checked, ...customItemLabels(car[cat.key])];
+      if (!allItems.length) return "";
       return `
         <div class="feature-category">
           <h4>${cat.label}</h4>
-          <ul class="highlights-list">${checked.map(([, label]) => `<li>${label}</li>`).join("")}</ul>
+          <ul class="highlights-list">${allItems.map(label => `<li>${label}</li>`).join("")}</ul>
         </div>`;
     })
     .join("");
@@ -409,9 +411,10 @@ function renderVehicleDetail() {
     }
   }
 
-  const repairsCompletedLabels = REPAIRS_COMPLETED_ITEMS
-    .filter(([key]) => car.repairsCompleted && car.repairsCompleted[key])
-    .map(([, label]) => label);
+  const repairsCompletedLabels = [
+    ...REPAIRS_COMPLETED_ITEMS.filter(([key]) => car.repairsCompleted && car.repairsCompleted[key]).map(([, label]) => label),
+    ...customItemLabels(car.repairsCompleted),
+  ];
   const repairedNotes = (car.whatWasRepaired || "")
     .split("\n")
     .map(line => line.replace(/^[\s.\-•]+/, "").trim())

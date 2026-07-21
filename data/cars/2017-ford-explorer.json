@@ -148,14 +148,7 @@
   "location": "Asheville, NC",
   "interiorMaterial": "Leather",
   "noWarningLights": true,
-  "conditionFeatures": {
-    "twoKeys": false,
-    "coldAC": false,
-    "noFloodDamage": true,
-    "singleKey": true,
-    "runsAndDrives": false,
-    "highwayTested": false
-  },
+  "keyCount": "1 Key",
   "tags": [],
   "noAirbagsDeployed": true,
   "id": "2017--ford-explorer",

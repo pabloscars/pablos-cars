@@ -87,6 +87,11 @@ collections:
           - { label: "Sunroof / Moonroof", name: "sunroofMoonroof", widget: "boolean", default: false, required: false }
           - { label: "Large Cargo Space", name: "largeCargoSpace", widget: "boolean", default: false, required: false }
           - { label: "Rear Entertainment", name: "rearEntertainment", widget: "boolean", default: false, required: false }
+          - label: "Other (add anything specific to this car)"
+            name: "other"
+            widget: "list"
+            required: false
+            field: { label: "Item", name: "item", widget: "string" }
       - label: "Tech"
         name: "techFeatures"
         widget: "object"
@@ -112,6 +117,11 @@ collections:
           - { label: "WiFi Hotspot", name: "wifiHotspot", widget: "boolean", default: false, required: false }
           - { label: "Satellite Radio", name: "satelliteRadio", widget: "boolean", default: false, required: false }
           - { label: "Wireless CarPlay", name: "wirelessCarPlay", widget: "boolean", default: false, required: false }
+          - label: "Other (add anything specific to this car)"
+            name: "other"
+            widget: "list"
+            required: false
+            field: { label: "Item", name: "item", widget: "string" }
       - label: "Driver Assist & Safety"
         name: "driverAssistFeatures"
         widget: "object"
@@ -133,6 +143,11 @@ collections:
           - { label: "Tire Pressure Monitoring", name: "tirePressureMonitoring", widget: "boolean", default: false, required: false }
           - { label: "Stability Control", name: "stabilityControl", widget: "boolean", default: false, required: false }
           - { label: "ABS Brakes", name: "absBrakes", widget: "boolean", default: false, required: false }
+          - label: "Other (add anything specific to this car)"
+            name: "other"
+            widget: "list"
+            required: false
+            field: { label: "Item", name: "item", widget: "string" }
       - label: "Performance & Driving"
         name: "performanceFeatures"
         widget: "object"
@@ -151,6 +166,11 @@ collections:
           - { label: "Off-Road Package", name: "offRoadPackage", widget: "boolean", default: false, required: false }
           - { label: "Drive Modes", name: "driveModes", widget: "boolean", default: false, required: false }
           - { label: "Launch Control", name: "launchControl", widget: "boolean", default: false, required: false }
+          - label: "Other (add anything specific to this car)"
+            name: "other"
+            widget: "list"
+            required: false
+            field: { label: "Item", name: "item", widget: "string" }
       - label: "Exterior"
         name: "exteriorFeatures"
         widget: "object"
@@ -169,6 +189,11 @@ collections:
           - { label: "Heated Mirrors", name: "heatedMirrors", widget: "boolean", default: false, required: false }
           - { label: "Power Folding Mirrors", name: "powerFoldingMirrors", widget: "boolean", default: false, required: false }
           - { label: "Privacy Glass", name: "privacyGlass", widget: "boolean", default: false, required: false }
+          - label: "Other (add anything specific to this car)"
+            name: "other"
+            widget: "list"
+            required: false
+            field: { label: "Item", name: "item", widget: "string" }
       - label: "Salvage / Rebuild Specific"
         name: "salvageFeatures"
         widget: "object"
@@ -184,6 +209,11 @@ collections:
           - { label: "Minor Collision", name: "minorCollision", widget: "boolean", default: false, required: false }
           - { label: "Rebuilt Title", name: "rebuiltTitle", widget: "boolean", default: false, required: false }
           - { label: "Salvage History", name: "salvageHistory", widget: "boolean", default: false, required: false }
+          - label: "Other (add anything specific to this car)"
+            name: "other"
+            widget: "list"
+            required: false
+            field: { label: "Item", name: "item", widget: "string" }
       - label: "Repairs Completed"
         name: "repairsCompleted"
         widget: "object"
@@ -195,10 +225,6 @@ collections:
           - { label: "New Tires", name: "newTires", widget: "boolean", default: false, required: false }
           - { label: "Alignment", name: "alignment", widget: "boolean", default: false, required: false }
           - { label: "NC State Inspection", name: "ncStateInspected", widget: "boolean", default: false, required: false }
-          - { label: "State Rebuilt Inspection Passed", name: "stateRebuiltInspectionPassed", widget: "boolean", default: false, required: false }
-          - { label: "Structural Damage Repaired", name: "structuralDamageRepaired", widget: "boolean", default: false, required: false }
-          - { label: "Airbags Replaced", name: "airbagsReplaced", widget: "boolean", default: false, required: false }
-          - { label: "Professionally Repaired", name: "professionallyRepaired", widget: "boolean", default: false, required: false }
           - { label: "Cabin Air Filter", name: "cabinAirFilter", widget: "boolean", default: false, required: false }
           - { label: "Engine Air Filter", name: "engineAirFilter", widget: "boolean", default: false, required: false }
           - { label: "Front Wipers", name: "frontWipers", widget: "boolean", default: false, required: false }
@@ -213,6 +239,11 @@ collections:
           - { label: "Coolant Flush", name: "coolantFlush", widget: "boolean", default: false, required: false }
           - { label: "Brake Fluid Flush", name: "brakeFluidFlush", widget: "boolean", default: false, required: false }
           - { label: "Fuel Filter", name: "fuelFilter", widget: "boolean", default: false, required: false }
+          - label: "Other (add anything specific to this car)"
+            name: "other"
+            widget: "list"
+            required: false
+            field: { label: "Item", name: "item", widget: "string" }
       - label: "Other Highlights"
         name: "highlights"
         widget: "list"
