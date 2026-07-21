@@ -449,7 +449,7 @@ function renderVehicleDetail() {
             <div class="tag-top ${car.status === "sold" ? "tag-top--sold" : "tag-top--available"}" style="position:static; display:inline-flex; margin-bottom:12px;">
               <span class="tag-top__dot"></span>${car.status === "sold" ? "sold" : car.titleStatus.toLowerCase()}
             </div>
-            <h1 style="font-size:1.6rem;">${car.year} ${car.make} ${car.model}${car.trim ? " " + car.trim : ""}</h1>
+            <h1 class="vdp-title" style="font-size:1.6rem;">${car.year} ${car.make} ${car.model}${car.trim ? " " + car.trim : ""}</h1>
             <div class="vdp-price">${money(car.price)}</div>
             <div class="chip-row" style="margin-top:10px;">${tagsHTML}</div>
 
