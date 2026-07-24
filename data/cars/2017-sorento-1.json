@@ -134,6 +134,7 @@
     "blindSpotMonitoring": false
   },
   "make": "Kia",
+  "sortOrder": 4,
   "noGlassBroken": true,
   "keyCount": "1 Key",
   "fuelType": "Gasoline",
