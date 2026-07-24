@@ -95,15 +95,17 @@
     }
     /* Collapsed rows in an image list (Additional Photos, Auction
        Photos, Deep Cleaning) just show the raw file path as text —
-       swapped for an actual thumbnail by the script below. Only
-       touching the image we inject, not the row's own show/hide
-       logic (Decap toggles that per-item via its own collapsed prop),
-       so the expand/collapse behavior is untouched. */
-    .admin-photo-thumb {
-      display: block;
-      max-height: 64px;
-      width: auto;
-      max-width: 100%;
+       shown as a background thumbnail by the script below instead.
+       This only sets style/class attributes, never touches child
+       nodes (see the script's comment for why that distinction
+       matters), so React's own ownership of this element's children
+       is undisturbed. */
+    .admin-photo-thumb-bg {
+      color: transparent !important;
+      min-height: 64px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       border-radius: 6px;
     }
   </style>
@@ -317,10 +319,20 @@
        built-in way to render an actual thumbnail there. This finds
        those rows (each is a "NestedObjectLabel" per Decap's own
        ListControl.js source) whose text looks like an image path and
-       swaps it for a small <img>, keeping the full path as a hover
-       tooltip. Runs on a MutationObserver since Decap re-renders the
-       form constantly (every keystroke, every collapse toggle).
-       ============================================================ */
+       shows the image as a CSS background instead, keeping the full
+       path as a hover tooltip. Runs on a MutationObserver since Decap
+       re-renders the form constantly (every keystroke, every collapse
+       toggle).
+
+       Deliberately only sets style/class/title/data- attributes here,
+       never el.textContent or append/removeChild — Decap owns this
+       element's children (it's a live React tree), and manually
+       replacing them out from under React works fine right up until
+       React itself re-renders that node (e.g. right after Publish,
+       when the entry list refreshes) and finds child nodes it didn't
+       create. That's what was throwing "Minified React error #130"
+       on publish. Attribute changes don't have that problem — React
+       just overwrites them on its own next pass. */
     var IMAGE_PATH_RE = /\.(jpe?g|png|gif|webp|avif)$/i;
 
     function upgradePhotoSummaries() {
@@ -330,19 +342,17 @@
         if (el.dataset.thumbSrc === text) return;
         if (!IMAGE_PATH_RE.test(text)) {
           if (el.dataset.thumbSrc) {
-            el.textContent = text;
+            el.style.backgroundImage = "";
+            el.classList.remove("admin-photo-thumb-bg");
+            el.removeAttribute("title");
             delete el.dataset.thumbSrc;
           }
           return;
         }
         el.dataset.thumbSrc = text;
-        el.textContent = "";
-        var img = document.createElement("img");
-        img.src = text;
-        img.alt = "";
-        img.title = text;
-        img.className = "admin-photo-thumb";
-        el.appendChild(img);
+        el.title = text;
+        el.style.backgroundImage = 'url("' + text + '")';
+        el.classList.add("admin-photo-thumb-bg");
       });
     }
 
