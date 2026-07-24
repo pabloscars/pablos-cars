@@ -139,6 +139,75 @@ const REPAIRS_COMPLETED_ITEMS = [
   ["fuelFilter", "Fuel Filter"],
 ];
 
+/* Buckets the flat "What Was Repaired" list into rough categories by
+   keyword-matching each label, so Pablo doesn't have to organize repair
+   entries by hand. Rules are checked in order and the first match wins —
+   more specific phrases (e.g. "brake light") are listed ahead of broader
+   ones (e.g. "brake") so a taillight repair doesn't land under Brakes. */
+const REPAIR_CATEGORY_RULES = [
+  ["tpms", "Tires & Wheels"],
+  ["tire", "Tires & Wheels"],
+  ["wheel balance", "Tires & Wheels"],
+  ["headlight", "Lights & Electrical"],
+  ["taillight", "Lights & Electrical"],
+  ["tail light", "Lights & Electrical"],
+  ["brake light", "Lights & Electrical"],
+  ["fog light", "Lights & Electrical"],
+  ["turn signal", "Lights & Electrical"],
+  ["bulb", "Lights & Electrical"],
+  ["blower motor", "Lights & Electrical"],
+  ["resistor", "Lights & Electrical"],
+  ["alternator", "Lights & Electrical"],
+  ["starter", "Lights & Electrical"],
+  ["battery", "Lights & Electrical"],
+  ["wiring", "Lights & Electrical"],
+  ["relay", "Lights & Electrical"],
+  ["module", "Lights & Electrical"],
+  ["sensor", "Lights & Electrical"],
+  ["rotor", "Brakes"],
+  ["brake pad", "Brakes"],
+  ["pads", "Brakes"],
+  ["caliper", "Brakes"],
+  ["brake fluid", "Brakes"],
+  ["brake line", "Brakes"],
+  ["alignment", "Suspension & Steering"],
+  ["shock", "Suspension & Steering"],
+  ["strut", "Suspension & Steering"],
+  ["control arm", "Suspension & Steering"],
+  ["ball joint", "Suspension & Steering"],
+  ["sway bar", "Suspension & Steering"],
+  ["bushing", "Suspension & Steering"],
+  ["tie rod", "Suspension & Steering"],
+  ["cv axle", "Suspension & Steering"],
+  ["cv joint", "Suspension & Steering"],
+  ["wheel bearing", "Suspension & Steering"],
+  ["leaf spring", "Suspension & Steering"],
+  ["coil spring", "Suspension & Steering"],
+  ["suspension", "Suspension & Steering"],
+  ["oil change", "Engine & Maintenance"],
+  ["oil filter", "Engine & Maintenance"],
+  ["air filter", "Engine & Maintenance"],
+  ["spark plug", "Engine & Maintenance"],
+  ["serpentine", "Engine & Maintenance"],
+  ["belt", "Engine & Maintenance"],
+  ["gasket", "Engine & Maintenance"],
+  ["coolant", "Engine & Maintenance"],
+  ["thermostat", "Engine & Maintenance"],
+  ["water pump", "Engine & Maintenance"],
+  ["fuel filter", "Engine & Maintenance"],
+  ["fuel cap", "Engine & Maintenance"],
+  ["fuel pump", "Engine & Maintenance"],
+  ["timing", "Engine & Maintenance"],
+  ["wiper", "Engine & Maintenance"],
+  ["inspection", "Engine & Maintenance"],
+];
+const REPAIR_CATEGORY_ORDER = ["Engine & Maintenance", "Brakes", "Suspension & Steering", "Tires & Wheels", "Lights & Electrical", "Other Repairs"];
+function categorizeRepair(label) {
+  const lower = label.toLowerCase();
+  const hit = REPAIR_CATEGORY_RULES.find(([kw]) => lower.includes(kw));
+  return hit ? hit[1] : "Other Repairs";
+}
+
 /* Reassurance badges shown on the vehicle detail page — each is now
    its own standalone top-level field (not nested in Condition &
    Ownership), with an icon matching what it's actually about instead
@@ -518,7 +587,15 @@ function renderVehicleDetail() {
             ${repairedItems.length ? `
             <div class="feature-card feature-card--wide">
               <h3>What Was Repaired</h3>
-              <ul class="highlights-list highlights-list--repaired">${repairedItems.map(item => `<li>${item}</li>`).join("")}</ul>
+              ${REPAIR_CATEGORY_ORDER.map(cat => {
+                const items = repairedItems.filter(item => categorizeRepair(item) === cat);
+                if (!items.length) return "";
+                return `
+                <div class="feature-category">
+                  <h4>${cat}</h4>
+                  <ul class="highlights-list highlights-list--repaired">${items.map(item => `<li>${item}</li>`).join("")}</ul>
+                </div>`;
+              }).join("")}
             </div>` : ""}
             ${allHighlights.length ? `
             <div class="feature-card feature-card--wide">

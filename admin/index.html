@@ -157,6 +157,70 @@
       ["fuelFilter", "Fuel Filter"]
     ];
 
+    var REPAIR_CATEGORY_RULES = [
+      ["tpms", "Tires & Wheels"],
+      ["tire", "Tires & Wheels"],
+      ["wheel balance", "Tires & Wheels"],
+      ["headlight", "Lights & Electrical"],
+      ["taillight", "Lights & Electrical"],
+      ["tail light", "Lights & Electrical"],
+      ["brake light", "Lights & Electrical"],
+      ["fog light", "Lights & Electrical"],
+      ["turn signal", "Lights & Electrical"],
+      ["bulb", "Lights & Electrical"],
+      ["blower motor", "Lights & Electrical"],
+      ["resistor", "Lights & Electrical"],
+      ["alternator", "Lights & Electrical"],
+      ["starter", "Lights & Electrical"],
+      ["battery", "Lights & Electrical"],
+      ["wiring", "Lights & Electrical"],
+      ["relay", "Lights & Electrical"],
+      ["module", "Lights & Electrical"],
+      ["sensor", "Lights & Electrical"],
+      ["rotor", "Brakes"],
+      ["brake pad", "Brakes"],
+      ["pads", "Brakes"],
+      ["caliper", "Brakes"],
+      ["brake fluid", "Brakes"],
+      ["brake line", "Brakes"],
+      ["alignment", "Suspension & Steering"],
+      ["shock", "Suspension & Steering"],
+      ["strut", "Suspension & Steering"],
+      ["control arm", "Suspension & Steering"],
+      ["ball joint", "Suspension & Steering"],
+      ["sway bar", "Suspension & Steering"],
+      ["bushing", "Suspension & Steering"],
+      ["tie rod", "Suspension & Steering"],
+      ["cv axle", "Suspension & Steering"],
+      ["cv joint", "Suspension & Steering"],
+      ["wheel bearing", "Suspension & Steering"],
+      ["leaf spring", "Suspension & Steering"],
+      ["coil spring", "Suspension & Steering"],
+      ["suspension", "Suspension & Steering"],
+      ["oil change", "Engine & Maintenance"],
+      ["oil filter", "Engine & Maintenance"],
+      ["air filter", "Engine & Maintenance"],
+      ["spark plug", "Engine & Maintenance"],
+      ["serpentine", "Engine & Maintenance"],
+      ["belt", "Engine & Maintenance"],
+      ["gasket", "Engine & Maintenance"],
+      ["coolant", "Engine & Maintenance"],
+      ["thermostat", "Engine & Maintenance"],
+      ["water pump", "Engine & Maintenance"],
+      ["fuel filter", "Engine & Maintenance"],
+      ["fuel cap", "Engine & Maintenance"],
+      ["fuel pump", "Engine & Maintenance"],
+      ["timing", "Engine & Maintenance"],
+      ["wiper", "Engine & Maintenance"],
+      ["inspection", "Engine & Maintenance"]
+    ];
+    var REPAIR_CATEGORY_ORDER = ["Engine & Maintenance", "Brakes", "Suspension & Steering", "Tires & Wheels", "Lights & Electrical", "Other Repairs"];
+    function categorizeRepair(label) {
+      var lower = label.toLowerCase();
+      var hit = REPAIR_CATEGORY_RULES.filter(function (r) { return lower.indexOf(r[0]) !== -1; })[0];
+      return hit ? hit[1] : "Other Repairs";
+    }
+
     var TRUST_BADGES = [
       ["noAirbagsDeployed", "No Airbags Deployed", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5V4M9 13.5l-4.3 2.5M15 13.5l4.3 2.5"/></svg>'],
       ["noFrameDamage", "No Frame Damage", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15.5 L2 12.7 Q2 11.7 3 11.4 L5.7 10.6 L8.3 7.7 Q8.9 7.2 9.7 7.2 L14.5 7.2 Q15.3 7.2 15.9 7.7 L18.5 10.6 L20.8 11.2 Q21.8 11.5 21.8 12.5 L21.8 15.5"/><path d="M2 15.5L6 15.5"/><path d="M9 15.5L15 15.5"/><path d="M18 15.5L21.8 15.5"/><circle cx="7.5" cy="16.3" r="2"/><circle cx="16.5" cy="16.3" r="2"/></svg>'],
@@ -321,14 +385,24 @@
               : null,
             knownIssues ? h("p", { key: "known" }, [h("strong", { key: "s" }, "Known Issues: "), knownIssues]) : null,
             repairedItems.length
-              ? h("div", { className: "feature-card feature-card--wide", key: "repaired", style: { margin: "16px 0" } }, [
-                  h("h3", { key: "h" }, "What Was Repaired"),
-                  h(
-                    "ul",
-                    { className: "highlights-list highlights-list--repaired", key: "ul" },
-                    repairedItems.map(function (item, i) { return h("li", { key: i }, item); })
+              ? h(
+                  "div",
+                  { className: "feature-card feature-card--wide", key: "repaired", style: { margin: "16px 0" } },
+                  [h("h3", { key: "h" }, "What Was Repaired")].concat(
+                    REPAIR_CATEGORY_ORDER.map(function (cat) {
+                      var items = repairedItems.filter(function (item) { return categorizeRepair(item) === cat; });
+                      if (!items.length) return null;
+                      return h("div", { className: "feature-category", key: cat }, [
+                        h("h4", { key: "h4" }, cat),
+                        h(
+                          "ul",
+                          { className: "highlights-list highlights-list--repaired", key: "ul" },
+                          items.map(function (item, i) { return h("li", { key: i }, item); })
+                        )
+                      ]);
+                    })
                   )
-                ])
+                )
               : null,
             whySalvage ? h("p", { key: "why" }, [h("strong", { key: "s" }, "Why This Title Status: "), whySalvage]) : null,
             videoUrl ? h("p", { key: "video" }, [h("strong", { key: "s" }, "Video: "), h("a", { key: "a", href: videoUrl, target: "_blank", rel: "noopener" }, videoUrl)]) : null,
