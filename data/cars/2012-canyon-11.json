@@ -106,6 +106,7 @@
     "blindSpotMonitoring": false
   },
   "make": "GMC",
+  "sortOrder": 5,
   "noGlassBroken": true,
   "keyCount": "1 Key",
   "fuelType": "Gasoline",
