@@ -157,6 +157,7 @@
   "noGlassBroken": true,
   "keyCount": "1 Key",
   "fuelType": "Gasoline",
+  "whatWasRepaired": "front end suspension, refreshed all light assemblies, ",
   "status": "sold",
   "techFeatures": {
     "satelliteRadio": false,
@@ -207,6 +208,8 @@
   "description": "Drives & handles smoothly!! Daily driving it at the moment and loving it to be honest. There are a few cosmetic imperfections on the paint.",
   "bodyType": "truck",
   "year": 2012,
+  "knownIssues": "scratches in the paint on multiple sides of truck",
   "drivetrain": "RWD",
-  "showVin": false
+  "showVin": false,
+  "whySalvage": "front and rear damage (likely caused by driving into bushes)"
 }
