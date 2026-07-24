@@ -1,10 +1,39 @@
 {
   "cars": [
     {
+      "photoSections": {
+        "auctionPhotos": [
+          "/images/uploads/85d1393b-7c49-4060-b2ab-cd7a5861c44a.jpg",
+          "/images/uploads/59299ab9-cd4a-4678-8c24-ecc09ee3c499.jpg",
+          "/images/uploads/58dbac8b-a4b0-4e71-b658-54d4707a98c7.jpg",
+          "/images/uploads/87503d0d-2016-41ef-b728-d4ccff143f28.jpg",
+          "/images/uploads/ecd46b04-ec4f-42d0-9d36-87281d63df5f.jpg",
+          "/images/uploads/2c6b1501-8334-44e3-8e54-4cf321b5b00f.jpg"
+        ]
+      },
       "photos": [
-        "/images/uploads/483789525_669019079110429_6752254479939084582_n.jpg"
+        "/images/uploads/483789525_669019079110429_6752254479939084582_n.jpg",
+        "/images/uploads/483553562_669019322443738_6285780827626829274_n.jpg",
+        "/images/uploads/484066374_669019325777071_6638590648748225716_n.jpg",
+        "/images/uploads/483596237_669019222443748_3973659387307346961_n.jpg",
+        "/images/uploads/483920657_669019075777096_5390582211272075537_n.jpg",
+        "/images/uploads/484133255_669019242443746_1027362130057048036_n.jpg",
+        "/images/uploads/484020455_669019225777081_2446549439731095083_n.jpg",
+        "/images/uploads/484263361_669019395777064_6335302818721879841_n.jpg",
+        "/images/uploads/484103560_669019219110415_1731701621910538770_n.jpg",
+        "/images/uploads/483533125_669019389110398_8010115443506797914_n.jpg",
+        "/images/uploads/484075305_669019419110395_669216179729028361_n.jpg",
+        "/images/uploads/483491679_669019202443750_5778285829738527126_n.jpg",
+        "/images/uploads/483952564_669019359110401_5882012354791144243_n.jpg",
+        "/images/uploads/484094940_669019299110407_3534282785399397635_n.jpg",
+        "/images/uploads/483549326_669019045777099_7802759066326932296_n.jpg",
+        "/images/uploads/483542648_669019355777068_1519264492044063323_n.jpg",
+        "/images/uploads/484302394_669019365777067_551274500930660266_n.jpg",
+        "/images/uploads/483853270_669019015777102_5020977161909818138_n.jpg",
+        "/images/uploads/483538008_669019429110394_1361435337312474332_n.jpg"
       ],
       "trim": "SLE",
+      "dateSold": "2024-12-13",
       "engine": "5.3L V8 Engine",
       "transmission": "4 Speed Automatic",
       "salvageFeatures": {
@@ -20,24 +49,38 @@
       },
       "mpg": "14mpg city / 20mpg hwy",
       "repairsCompleted": {
-        "engineAirFilter": false,
+        "engineAirFilter": true,
         "wheelBalance": false,
-        "oilChange": false,
-        "frontRotorsPads": false,
+        "oilChange": true,
+        "frontRotorsPads": true,
         "alignment": false,
         "brakeFluidFlush": false,
         "coolantFlush": false,
         "rearWiper": false,
-        "sparkPlugs": false,
+        "sparkPlugs": true,
         "valveCoverGasket": false,
         "newTires": false,
         "newBattery": false,
         "fuelFilter": false,
         "serpentineBelt": false,
-        "frontWipers": false,
-        "tpmsSensors": false,
-        "ncStateInspected": false,
-        "cabinAirFilter": false,
+        "other": [
+          "New Fuel Cap",
+          "Sway Bar Bushings",
+          "Front Shocks",
+          "Driver Side Upper Control Arm",
+          "Sway Bar Links",
+          "Front Wheel Bearings",
+          "New Taillights",
+          "New Headlights",
+          "New Third Brake Light",
+          "Lower Ball Joints",
+          "Upper Ball Joints",
+          "Blower Motor Resistor"
+        ],
+        "frontWipers": true,
+        "tpmsSensors": true,
+        "ncStateInspected": true,
+        "cabinAirFilter": true,
         "rearRotorsPads": false
       },
       "exteriorColor": "Onyx Black ",
@@ -80,13 +123,17 @@
         "driveModes": false,
         "airSuspension": false,
         "launchControl": false,
-        "towPackage": false,
+        "towPackage": true,
         "bremboBrakes": false,
         "paddleShifters": false,
+        "other": [
+          "V8 5.3L Engine",
+          "Z71 Off Road Suspension Package"
+        ],
         "turbocharged": false,
         "supercharged": false,
         "limitedSlipDifferential": false,
-        "offRoadPackage": false,
+        "offRoadPackage": true,
         "sportMode": false,
         "performanceExhaust": false
       },
@@ -108,6 +155,7 @@
         "blindSpotMonitoring": false
       },
       "make": "GMC",
+      "sortOrder": 5,
       "noGlassBroken": true,
       "keyCount": "1 Key",
       "fuelType": "Gasoline",
@@ -144,14 +192,17 @@
         "heatedMirrors": false,
         "ledHeadlights": false,
         "tintedWindows": false,
-        "runningBoards": false,
+        "runningBoards": true,
         "roofRails": false,
+        "other": [
+          "18\" Chrome Wheels"
+        ],
         "daytimeRunningLights": false,
         "privacyGlass": false,
         "powerFoldingMirrors": false,
-        "fogLights": false,
-        "towHitch": false,
-        "bedLiner": false
+        "fogLights": true,
+        "towHitch": true,
+        "bedLiner": true
       },
       "image": "/images/uploads/483767893_669019345777069_1711515520073841515_n.jpg",
       "noFrameDamage": true,

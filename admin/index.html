@@ -135,6 +135,28 @@
        you're about to publish — same fonts/colors as the real site
        (loaded via registerPreviewStyle below), updating as you type.
        ============================================================ */
+    var REPAIRS_COMPLETED_ITEMS = [
+      ["oilChange", "Oil Change"],
+      ["newBattery", "New Battery"],
+      ["newTires", "New Tires"],
+      ["alignment", "Alignment"],
+      ["ncStateInspected", "NC State Inspection"],
+      ["cabinAirFilter", "Cabin Air Filter"],
+      ["engineAirFilter", "Engine Air Filter"],
+      ["frontWipers", "Front Wipers"],
+      ["rearWiper", "Rear Wiper"],
+      ["sparkPlugs", "Spark Plugs"],
+      ["frontRotorsPads", "Front Rotors & Pads"],
+      ["rearRotorsPads", "Rear Rotors & Pads"],
+      ["wheelBalance", "Wheel Balance"],
+      ["tpmsSensors", "TPMS Sensors"],
+      ["valveCoverGasket", "Valve Cover Gasket"],
+      ["serpentineBelt", "Serpentine Belt"],
+      ["coolantFlush", "Coolant Flush"],
+      ["brakeFluidFlush", "Brake Fluid Flush"],
+      ["fuelFilter", "Fuel Filter"]
+    ];
+
     var TRUST_BADGES = [
       ["noAirbagsDeployed", "No Airbags Deployed", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5V4M9 13.5l-4.3 2.5M15 13.5l4.3 2.5"/></svg>'],
       ["noFrameDamage", "No Frame Damage", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15.5 L2 12.7 Q2 11.7 3 11.4 L5.7 10.6 L8.3 7.7 Q8.9 7.2 9.7 7.2 L14.5 7.2 Q15.3 7.2 15.9 7.7 L18.5 10.6 L20.8 11.2 Q21.8 11.5 21.8 12.5 L21.8 15.5"/><path d="M2 15.5L6 15.5"/><path d="M9 15.5L15 15.5"/><path d="M18 15.5L21.8 15.5"/><circle cx="7.5" cy="16.3" r="2"/><circle cx="16.5" cy="16.3" r="2"/></svg>'],
@@ -191,6 +213,23 @@
         var whatWasRepaired = field("whatWasRepaired");
         var whySalvage = field("whySalvage");
         var videoUrl = field("videoUrl");
+
+        function customItemLabels(path) {
+          var list = entry.getIn(["data"].concat(path).concat(["other"]));
+          return list
+            ? list.toJS().map(function (o) { return o && o.item; }).filter(Boolean)
+            : [];
+        }
+
+        var repairsCompletedLabels = REPAIRS_COMPLETED_ITEMS
+          .filter(function (r) { return entry.getIn(["data", "repairsCompleted", r[0]]) === true; })
+          .map(function (r) { return r[1]; })
+          .concat(customItemLabels(["repairsCompleted"]));
+        var repairedNotes = (whatWasRepaired || "")
+          .split("\n")
+          .map(function (line) { return line.replace(/^[\s.\-•]+/, "").trim(); })
+          .filter(Boolean);
+        var repairedItems = repairsCompletedLabels.concat(repairedNotes);
 
         var highlightsList = entry.getIn(["data", "highlights"]);
         var highlights = highlightsList
@@ -283,7 +322,16 @@
                 )
               : null,
             knownIssues ? h("p", { key: "known" }, [h("strong", { key: "s" }, "Known Issues: "), knownIssues]) : null,
-            whatWasRepaired ? h("p", { key: "repaired" }, [h("strong", { key: "s" }, "What Was Repaired: "), whatWasRepaired]) : null,
+            repairedItems.length
+              ? h("div", { className: "feature-card feature-card--wide", key: "repaired", style: { margin: "16px 0" } }, [
+                  h("h3", { key: "h" }, "What Was Repaired"),
+                  h(
+                    "ul",
+                    { className: "highlights-list highlights-list--repaired", key: "ul" },
+                    repairedItems.map(function (item, i) { return h("li", { key: i }, item); })
+                  )
+                ])
+              : null,
             whySalvage ? h("p", { key: "why" }, [h("strong", { key: "s" }, "Why This Title Status: "), whySalvage]) : null,
             videoUrl ? h("p", { key: "video" }, [h("strong", { key: "s" }, "Video: "), h("a", { key: "a", href: videoUrl, target: "_blank", rel: "noopener" }, videoUrl)]) : null,
             photoGrid("additional photos", photoUrls),
