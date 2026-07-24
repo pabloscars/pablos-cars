@@ -421,6 +421,19 @@ function renderVehicleDetail() {
     .filter(Boolean);
   const repairedItems = [...repairsCompletedLabels, ...repairedNotes];
 
+  // Why It Has A [Title] and Known Issues sit side by side and should
+  // match heights regardless of which has more text — nested grid with
+  // align-items:stretch (the outer .feature-grid overrides that to
+  // "start" so cards don't stretch to match wide full-row cards below
+  // them). Either card is dropped entirely if its field is empty, and
+  // if only one remains it gets the full row instead of sitting alone
+  // in a half-width column.
+  const whySalvageCard = car.whySalvage ? `<div class="feature-card"><h3>Why It Has A ${car.titleStatus}</h3><p>${car.whySalvage}</p></div>` : "";
+  const knownIssuesCard = car.knownIssues ? `<div class="feature-card"><h3>Known Issues</h3><p>${car.knownIssues}</p></div>` : "";
+  const titleIssuesPairHTML = (whySalvageCard || knownIssuesCard)
+    ? `<div class="feature-card--wide" style="display:grid; gap:18px; grid-template-columns:${car.whySalvage && car.knownIssues ? "1fr 1fr" : "1fr"}; align-items:stretch;">${whySalvageCard}${knownIssuesCard}</div>`
+    : "";
+
   const messageHref = car.facebookUrl || BUSINESS.facebookUrl;
 
   root.innerHTML = `
@@ -496,8 +509,7 @@ function renderVehicleDetail() {
           <p class="lede">${car.description}</p>
 
           <div class="feature-grid" style="margin-top:16px;">
-            <div class="feature-card"><h3>Why It Has A ${car.titleStatus}</h3><p>${car.whySalvage || ""}</p></div>
-            <div class="feature-card"><h3>Known Issues</h3><p>${car.knownIssues || ""}</p></div>
+            ${titleIssuesPairHTML}
             ${repairedItems.length ? `
             <div class="feature-card feature-card--wide">
               <h3>What Was Repaired</h3>
