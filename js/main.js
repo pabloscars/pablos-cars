@@ -366,7 +366,7 @@ function renderVehicleDetail() {
   // Each category's "Other" list lets Pablo add a one-off item specific
   // to that car (e.g. a Tech feature the standard toggles don't cover)
   // without needing a new checkbox added to the schema for it.
-  const customItemLabels = group => ((group && group.other) || []).map(o => o && o.item).filter(Boolean);
+  const customItemLabels = group => ((group && group.other) || []).filter(Boolean);
 
   const featureCategoriesHTML = FEATURE_CATEGORIES
     .map(cat => {

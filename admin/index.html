@@ -216,9 +216,7 @@
 
         function customItemLabels(path) {
           var list = entry.getIn(["data"].concat(path).concat(["other"]));
-          return list
-            ? list.toJS().map(function (o) { return o && o.item; }).filter(Boolean)
-            : [];
+          return list ? list.toJS().filter(Boolean) : [];
         }
 
         var repairsCompletedLabels = REPAIRS_COMPLETED_ITEMS
