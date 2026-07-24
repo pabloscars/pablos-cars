@@ -307,12 +307,17 @@ function renderHomeFeed() {
 
   if (!availableOnly && sold.length) {
     const SOLD_PREVIEW_COUNT = 3;
+    const soldTeaser = sold.slice(SOLD_PREVIEW_COUNT, SOLD_PREVIEW_COUNT + 3);
     html += `
       <div class="feed-heading" style="margin-top:52px;"><h2>Recently Sold</h2></div>
       ${cardsOrEmptyState(sold.slice(0, SOLD_PREVIEW_COUNT))}
-      ${sold.length > SOLD_PREVIEW_COUNT ? `
-        <div class="text-center" style="margin-top:24px;">
-          <a href="sold.html" class="btn btn--glass">View All Sold Vehicles</a>
+      ${soldTeaser.length ? `
+        <div class="sold-teaser">
+          <div class="sold-teaser__row">${cardsOrEmptyState(soldTeaser)}</div>
+          <div class="sold-teaser__fade"></div>
+          <div class="sold-teaser__cta">
+            <a href="sold.html" class="btn btn--glass">View All Sold Vehicles</a>
+          </div>
         </div>` : ""}
     `;
   }

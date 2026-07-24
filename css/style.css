@@ -109,6 +109,15 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .result-count{font-family:var(--font-m); font-size:0.78rem; color:var(--text-faint); margin-bottom:14px;}
 .empty-state{text-align:center; padding:60px 20px; color:var(--text-faint); font-family:var(--font-m);}
 
+/* ---- "Recently Sold" teaser row — a faded peek at the next batch of
+   sold cars sitting right below the visible three, with the "View
+   All" button overlaid on top, so it reads as "there's more, click
+   to unlock" instead of just a plain link. ---- */
+.sold-teaser{position:relative; margin-top:14px; border-radius:var(--radius); overflow:hidden;}
+.sold-teaser__row{opacity:0.32; filter:blur(1.5px) saturate(0.6); pointer-events:none; user-select:none;}
+.sold-teaser__fade{position:absolute; inset:0; background:linear-gradient(180deg, transparent 0%, var(--bg) 82%); pointer-events:none;}
+.sold-teaser__cta{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;}
+
 /* ---- Vehicle detail ---- */
 .vdp{display:grid; gap:28px; grid-template-columns:1fr;}
 @media(min-width:960px){
