@@ -1,4 +1,14 @@
 {
+  "photoSections": {
+    "auctionPhotos": [
+      "/images/uploads/85d1393b-7c49-4060-b2ab-cd7a5861c44a.jpg",
+      "/images/uploads/59299ab9-cd4a-4678-8c24-ecc09ee3c499.jpg",
+      "/images/uploads/58dbac8b-a4b0-4e71-b658-54d4707a98c7.jpg",
+      "/images/uploads/87503d0d-2016-41ef-b728-d4ccff143f28.jpg",
+      "/images/uploads/ecd46b04-ec4f-42d0-9d36-87281d63df5f.jpg",
+      "/images/uploads/2c6b1501-8334-44e3-8e54-4cf321b5b00f.jpg"
+    ]
+  },
   "photos": [
     "/images/uploads/483789525_669019079110429_6752254479939084582_n.jpg",
     "/images/uploads/483553562_669019322443738_6285780827626829274_n.jpg",
@@ -21,6 +31,7 @@
     "/images/uploads/483538008_669019429110394_1361435337312474332_n.jpg"
   ],
   "trim": "SLE",
+  "dateSold": "2024-12-13",
   "engine": "5.3L V8 Engine",
   "transmission": "4 Speed Automatic",
   "salvageFeatures": {
