@@ -307,6 +307,56 @@ function enableEdgeAutoScroll(el) {
   });
 }
 
+/* Reveal cards as they scroll into view, staggered per grid. Uses a
+   CSS animation (see .card.reveal) and removes the classes once it's
+   done so the card's normal hover behavior takes back over. */
+function setupReveals() {
+  const els = document.querySelectorAll(".card.reveal:not(.is-in)");
+  if (!els.length) return;
+  const reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+  if (reduce || !("IntersectionObserver" in window)) {
+    els.forEach(el => el.classList.remove("reveal"));
+    return;
+  }
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const siblings = [...el.parentElement.children].filter(c => c.classList.contains("reveal"));
+      el.style.animationDelay = Math.min(siblings.indexOf(el), 7) * 55 + "ms";
+      el.classList.add("is-in");
+      el.addEventListener("animationend", () => {
+        el.classList.remove("reveal", "is-in");
+        el.style.animationDelay = "";
+      }, { once: true });
+      obs.unobserve(el);
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+  els.forEach(el => io.observe(el));
+}
+
+/* Subtle magnetic pull on buttons — they lean toward the cursor while
+   hovered. Desktop pointers only, and off under reduced-motion. */
+function setupMagneticButtons() {
+  if (!window.matchMedia("(pointer:fine)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  let lastBtn = null;
+  document.addEventListener("pointermove", e => {
+    const btn = e.target.closest && e.target.closest(".btn");
+    if (btn) {
+      const r = btn.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width / 2);
+      const dy = e.clientY - (r.top + r.height / 2);
+      btn.style.transform = `translate(${dx * 0.18}px, ${dy * 0.32}px)`;
+      lastBtn = btn;
+    } else if (lastBtn) {
+      lastBtn.style.transform = "";
+      lastBtn = null;
+    }
+  });
+}
+setupMagneticButtons();
+
 function carCardHTML(car) {
   const soldClass = car.status === "sold" ? "is-sold" : "";
   const cover = car.image || (car.photos && car.photos[0]) || "";
@@ -316,7 +366,7 @@ function carCardHTML(car) {
   const tagsHTML = (car.tags || []).map(t => `<span class="chip">${t}</span>`).join("");
 
   return `
-  <a href="vehicle.html?id=${encodeURIComponent(car.id)}" class="card ${soldClass}" data-id="${car.id}">
+  <a href="vehicle.html?id=${encodeURIComponent(car.id)}" class="card reveal ${soldClass}" data-id="${car.id}">
     <div class="card__photo">
       <img src="${cover}" alt="${car.year} ${car.make} ${car.model}" loading="lazy">
       <div class="card__scrim"></div>
@@ -392,6 +442,7 @@ function renderHomeFeed() {
   }
 
   root.innerHTML = html;
+  setupReveals();
 }
 
 /* Full list of every sold car, for sold.html */
@@ -403,6 +454,7 @@ function renderSoldFeed() {
     <div class="feed-heading"><h2>All Sold Vehicles</h2></div>
     ${cardsOrEmptyState(sold, "grid--wide")}
   `;
+  setupReveals();
 }
 
 /* ---------------- Vehicle detail page ---------------- */

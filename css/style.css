@@ -41,35 +41,24 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 @media (prefers-reduced-motion:reduce){.blob{animation:none;}}
 
 /* ---- Faint background map (homepage decoration only) ---- */
-.home-bg-map{position:fixed; inset:0; z-index:0; opacity:0.14; pointer-events:none; filter:saturate(0.7);}
+/* Dim only the tiles, not the whole map — a container-wide opacity would
+   cap the location dots to the same faintness, but the pinging dots are
+   meant to read brighter than the map behind them. */
+.home-bg-map{position:fixed; inset:0; z-index:0; pointer-events:none; filter:saturate(0.7);}
+.home-bg-map .leaflet-tile-pane{opacity:0.15;}
+.home-bg-map .leaflet-control-attribution{opacity:0.4;}
 
-/* Ambient tech grid: a very faint blueprint grid that drifts slowly and
-   fades out toward the bottom so it frames the top of the page without
-   competing with the car cards. Sits above the map, below content. */
-.tech-grid{
-  position:fixed; inset:0; z-index:0; pointer-events:none;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-  background-size:46px 46px, 46px 46px;
-  -webkit-mask-image:radial-gradient(135% 95% at 50% 0%, #000 42%, transparent 82%);
-  mask-image:radial-gradient(135% 95% at 50% 0%, #000 42%, transparent 82%);
-  animation:gridDrift 38s linear infinite;
-}
-@keyframes gridDrift{to{background-position:46px 46px, 46px 46px;}}
-
-/* Homepage map location dots gently pulse like live pings. Staggered in
-   three phases so they don't all breathe in unison. */
+/* Homepage map location dots pulse like live pings. Staggered in three
+   phases so they don't all breathe in unison. */
 .leaflet-overlay-pane path.home-map-ping{animation:mapPing 3.6s ease-in-out infinite;}
 .leaflet-overlay-pane path.home-map-ping:nth-of-type(3n){animation-delay:-1.2s;}
 .leaflet-overlay-pane path.home-map-ping:nth-of-type(3n+1){animation-delay:-2.4s;}
 @keyframes mapPing{
-  0%,100%{opacity:0.5; filter:drop-shadow(0 0 1px rgba(255,143,77,0.45));}
-  50%{opacity:1; filter:drop-shadow(0 0 5px rgba(255,143,77,0.85));}
+  0%,100%{opacity:0.65; filter:drop-shadow(0 0 2px rgba(255,143,77,0.7));}
+  50%{opacity:1; filter:drop-shadow(0 0 8px rgba(255,143,77,1));}
 }
 
 @media (prefers-reduced-motion:reduce){
-  .tech-grid{animation:none;}
   .leaflet-overlay-pane path.home-map-ping{animation:none;}
 }
 
@@ -128,6 +117,16 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 
 .card{position:relative; background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--radius); backdrop-filter:blur(14px); overflow:hidden; transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;}
 .card:hover{transform:translateY(-5px); border-color:rgba(255,143,77,0.4); box-shadow:0 16px 36px rgba(0,0,0,0.35);}
+
+/* Scroll-reveal: cards start hidden and fade/slide up as they enter the
+   viewport (staggered per grid in JS). Done with an animation rather than
+   a transition so it never fights the card's hover transform — and JS
+   strips the classes once it finishes, handing the card back to its
+   normal hover behavior. */
+.card.reveal{opacity:0;}
+.card.reveal.is-in{animation:cardReveal .6s cubic-bezier(.22,.61,.36,1) both;}
+@keyframes cardReveal{from{opacity:0; transform:translateY(22px);} to{opacity:1; transform:translateY(0);}}
+@media (prefers-reduced-motion:reduce){.card.reveal{opacity:1;} .card.reveal.is-in{animation:none;}}
 
 .card__photo{position:relative; aspect-ratio:4/3; background:var(--bg-3); overflow:hidden;}
 .card__photo img{width:100%; height:100%; object-fit:cover; transition:transform .35s ease;}
