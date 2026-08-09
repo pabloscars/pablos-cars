@@ -204,6 +204,12 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 /* TikTok (and other portrait clips) are 9:16 — give them a centered,
    phone-shaped frame instead of stretching them into the 16:9 box. */
 .video-wrap--vertical{aspect-ratio:9/16; max-width:330px; margin-left:auto; margin-right:auto;}
+/* A car can have up to two videos (e.g. a quick sell clip + a longer
+   walkaround). Lay them side by side on desktop; they wrap to stacked
+   on narrow screens. */
+.video-row{display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start; justify-content:center;}
+.video-col{flex:1 1 300px; min-width:0; max-width:360px;}
+.video-col__label{font-family:var(--font-m); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-faint); margin:0 0 8px; text-align:center;}
 .video-placeholder{color:var(--text-faint); font-family:var(--font-m); font-size:0.85rem; text-align:center; padding:22px 20px;}
 
 /* ---- Feature blocks (titles/sourcing/about) ---- */

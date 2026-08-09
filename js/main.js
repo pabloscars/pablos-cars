@@ -476,31 +476,41 @@ function renderVehicleDetail() {
         : `<div class="photo-section__grid">${car.photoSections[key].map(src => `<img src="${src}" loading="lazy">`).join("")}</div>`}
     </div>`).join("");
 
-  let videoHTML = `<div class="video-placeholder">Walkaround video coming soon — message ${BUSINESS.ownerName} to request one.</div>`;
-  let videoWrapClass = "video-wrap--placeholder";
-  if (car.videoUrl) {
-    const url = car.videoUrl;
+  // Build one embedded player from a video URL. Returns null for a blank
+  // URL so callers can just filter out the empty slots. TikTok clips come
+  // back with the vertical (9:16) wrap class; everything else fills the
+  // normal 16:9 frame.
+  const videoEmbed = url => {
+    if (!url) return null;
     if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("facebook.com")) {
-      videoHTML = `<iframe src="${url}" allowfullscreen loading="lazy"></iframe>`;
-      videoWrapClass = "";
-    } else if (url.includes("tiktok.com")) {
+      return { html: `<iframe src="${url}" allowfullscreen loading="lazy"></iframe>`, cls: "" };
+    }
+    if (url.includes("tiktok.com")) {
       // A full TikTok URL (…/video/1234567890) carries the numeric id we
       // can drop straight into TikTok's embed player. Short share links
       // (vm.tiktok.com/…) don't contain the id and can't be resolved in
       // the browser, so those fall back to a "watch on TikTok" button.
       const idMatch = url.match(/\/video\/(\d+)/) || url.match(/[?&]item_id=(\d+)/);
       if (idMatch) {
-        videoHTML = `<iframe src="https://www.tiktok.com/player/v1/${idMatch[1]}" allow="encrypted-media; fullscreen" allowfullscreen loading="lazy"></iframe>`;
-        videoWrapClass = "video-wrap--vertical";
-      } else {
-        videoHTML = `<a href="${url}" target="_blank" rel="noopener" class="btn btn--glass">Watch walkaround on TikTok</a>`;
-        videoWrapClass = "video-wrap--placeholder";
+        return { html: `<iframe src="https://www.tiktok.com/player/v1/${idMatch[1]}" allow="encrypted-media; fullscreen" allowfullscreen loading="lazy"></iframe>`, cls: "video-wrap--vertical" };
       }
-    } else {
-      videoHTML = `<video controls preload="metadata" src="${url}"></video>`;
-      videoWrapClass = "";
+      return { html: `<a href="${url}" target="_blank" rel="noopener" class="btn btn--glass">Watch walkaround on TikTok</a>`, cls: "video-wrap--placeholder" };
     }
-  }
+    return { html: `<video controls preload="metadata" src="${url}"></video>`, cls: "" };
+  };
+
+  const videos = [
+    { embed: videoEmbed(car.videoUrl), caption: car.videoCaption },
+    { embed: videoEmbed(car.videoUrl2), caption: car.videoCaption2 },
+  ].filter(v => v.embed);
+
+  const videosHTML = videos.length
+    ? `<div class="video-row" style="margin-top:20px;">${videos.map(v => `
+        <div class="video-col">
+          ${v.caption ? `<div class="video-col__label">${v.caption}</div>` : ""}
+          <div class="video-wrap ${v.embed.cls}">${v.embed.html}</div>
+        </div>`).join("")}</div>`
+    : `<div class="video-wrap video-wrap--placeholder" style="margin-top:20px;"><div class="video-placeholder">Walkaround video coming soon — message ${BUSINESS.ownerName} to request one.</div></div>`;
 
   const repairsCompletedLabels = [
     ...REPAIRS_COMPLETED_ITEMS.filter(([key]) => car.repairsCompleted && car.repairsCompleted[key]).map(([, label]) => label),
@@ -545,7 +555,7 @@ function renderVehicleDetail() {
             </div>` : ""}
           </div>
 
-          <div class="video-wrap ${videoWrapClass}" style="margin-top:20px;">${videoHTML}</div>
+          ${videosHTML}
         </div>
 
         <div class="vdp-sidebar-col">

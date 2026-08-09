@@ -279,7 +279,10 @@ collections:
             collapsed: true
             summary: "{{fields.photo}}"
             field: { label: "Photo", name: "photo", widget: "image" }
-      - { label: "Video URL (YouTube/Facebook link, or leave blank)", name: "videoUrl", widget: "string", required: false }
+      - { label: "Video 1 URL (TikTok / YouTube link — e.g. your quick sell video)", name: "videoUrl", widget: "string", required: false }
+      - { label: "Video 1 Label (optional — e.g. Quick Look)", name: "videoCaption", widget: "string", required: false }
+      - { label: "Video 2 URL (optional — e.g. your full walkaround)", name: "videoUrl2", widget: "string", required: false }
+      - { label: "Video 2 Label (optional — e.g. Full Walkaround)", name: "videoCaption2", widget: "string", required: false }
       - { label: "Facebook Listing Link (optional, leave blank to use your profile)", name: "facebookUrl", widget: "string", required: false }
       - { label: "Date Added", name: "dateAdded", widget: "datetime", format: "YYYY-MM-DD", required: false }
       - { label: "Date Sold (only if sold)", name: "dateSold", widget: "datetime", format: "YYYY-MM-DD", required: false }
