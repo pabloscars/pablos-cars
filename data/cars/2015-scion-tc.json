@@ -125,6 +125,7 @@
     "blindSpotMonitoring": false
   },
   "make": "Scion",
+  "sortOrder": 6,
   "noGlassBroken": false,
   "fuelType": "Gasoline",
   "whatWasRepaired": "Windshield Replaced\n",
