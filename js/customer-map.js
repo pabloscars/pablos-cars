@@ -145,7 +145,8 @@ function renderHomeBackgroundMap() {
           color: "#FF8F4D",
           fillColor: "#FF6B1F",
           fillOpacity: 0.7,
-          interactive: false
+          interactive: false,
+          className: "home-map-ping"
         }).addTo(map);
       });
 
