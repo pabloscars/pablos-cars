@@ -45,6 +45,11 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
    cap the location dots to the same faintness, but the pinging dots are
    meant to read brighter than the map behind them. */
 .home-bg-map{position:fixed; inset:0; z-index:0; pointer-events:none; filter:saturate(0.7);}
+/* Leaflet adds its .leaflet-container class (with a default #ddd
+   background) to this same element; without the old container-wide
+   opacity to hide it, that washes the page light. Compound selector so
+   it beats Leaflet's own rule and the dark theme shows through. */
+.home-bg-map.leaflet-container{background:transparent;}
 .home-bg-map .leaflet-tile-pane{opacity:0.15;}
 .home-bg-map .leaflet-control-attribution{opacity:0.4;}
 
