@@ -53,11 +53,11 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .nav::after{
   content:""; position:absolute; left:0; right:0; bottom:0; height:1px; pointer-events:none;
   background:
-    linear-gradient(90deg, transparent 42%, rgba(255,255,255,0.85) 50%, transparent 58%) no-repeat,
+    linear-gradient(90deg, transparent 42%, rgba(255,255,255,0.45) 50%, transparent 58%) no-repeat,
     linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 18%, rgba(255,143,77,0.55) 50%, rgba(255,255,255,0.12) 82%, transparent 100%) no-repeat;
   background-size:40% 100%, 100% 100%;
   background-position:-40% 0, 0 0;
-  animation:navSheen 7s linear infinite;
+  animation:navSheen 11s linear infinite;
 }
 @keyframes navSheen{to{background-position:140% 0, 0 0;}}
 @media (prefers-reduced-motion:reduce){.nav::after{animation:none;}}
