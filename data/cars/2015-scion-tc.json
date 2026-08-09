@@ -141,6 +141,7 @@
   "make": "Scion",
   "sortOrder": 6,
   "noGlassBroken": false,
+  "keyCount": "1 Key",
   "fuelType": "Gasoline",
   "whatWasRepaired": "Windshield Replaced\n",
   "status": "sold",
