@@ -307,15 +307,17 @@ function enableEdgeAutoScroll(el) {
   });
 }
 
-/* Reveal cards as they scroll into view, staggered per grid. Uses a
-   CSS animation (see .card.reveal) and removes the classes once it's
-   done so the card's normal hover behavior takes back over. */
+/* Reveal cards as they scroll into view, staggered per grid. The reveal
+   rides on the CSS `translate` + `opacity` properties (see .card.reveal),
+   which are independent of `transform`, so it never interferes with the
+   card's hover lift. Staggering is done by delaying when `is-in` is added
+   rather than via transition-delay, so no lingering delay slows down a
+   later hover. */
 function setupReveals() {
   const els = document.querySelectorAll(".card.reveal:not(.is-in)");
   if (!els.length) return;
-  const reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
-  if (reduce || !("IntersectionObserver" in window)) {
-    els.forEach(el => el.classList.remove("reveal"));
+  if (window.matchMedia("(prefers-reduced-motion:reduce)").matches || !("IntersectionObserver" in window)) {
+    els.forEach(el => el.classList.add("is-in"));
     return;
   }
   const io = new IntersectionObserver((entries, obs) => {
@@ -323,12 +325,8 @@ function setupReveals() {
       if (!entry.isIntersecting) return;
       const el = entry.target;
       const siblings = [...el.parentElement.children].filter(c => c.classList.contains("reveal"));
-      el.style.animationDelay = Math.min(siblings.indexOf(el), 7) * 55 + "ms";
-      el.classList.add("is-in");
-      el.addEventListener("animationend", () => {
-        el.classList.remove("reveal", "is-in");
-        el.style.animationDelay = "";
-      }, { once: true });
+      const idx = Math.min(siblings.indexOf(el), 7);
+      setTimeout(() => el.classList.add("is-in"), idx * 55);
       obs.unobserve(el);
     });
   }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
