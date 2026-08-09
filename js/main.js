@@ -477,11 +477,28 @@ function renderVehicleDetail() {
     </div>`).join("");
 
   let videoHTML = `<div class="video-placeholder">Walkaround video coming soon — message ${BUSINESS.ownerName} to request one.</div>`;
+  let videoWrapClass = "video-wrap--placeholder";
   if (car.videoUrl) {
-    if (car.videoUrl.includes("youtube.com") || car.videoUrl.includes("youtu.be") || car.videoUrl.includes("facebook.com")) {
-      videoHTML = `<iframe src="${car.videoUrl}" allowfullscreen loading="lazy"></iframe>`;
+    const url = car.videoUrl;
+    if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("facebook.com")) {
+      videoHTML = `<iframe src="${url}" allowfullscreen loading="lazy"></iframe>`;
+      videoWrapClass = "";
+    } else if (url.includes("tiktok.com")) {
+      // A full TikTok URL (…/video/1234567890) carries the numeric id we
+      // can drop straight into TikTok's embed player. Short share links
+      // (vm.tiktok.com/…) don't contain the id and can't be resolved in
+      // the browser, so those fall back to a "watch on TikTok" button.
+      const idMatch = url.match(/\/video\/(\d+)/) || url.match(/[?&]item_id=(\d+)/);
+      if (idMatch) {
+        videoHTML = `<iframe src="https://www.tiktok.com/player/v1/${idMatch[1]}" allow="encrypted-media; fullscreen" allowfullscreen loading="lazy"></iframe>`;
+        videoWrapClass = "video-wrap--vertical";
+      } else {
+        videoHTML = `<a href="${url}" target="_blank" rel="noopener" class="btn btn--glass">Watch walkaround on TikTok</a>`;
+        videoWrapClass = "video-wrap--placeholder";
+      }
     } else {
-      videoHTML = `<video controls preload="metadata" src="${car.videoUrl}"></video>`;
+      videoHTML = `<video controls preload="metadata" src="${url}"></video>`;
+      videoWrapClass = "";
     }
   }
 
@@ -528,7 +545,7 @@ function renderVehicleDetail() {
             </div>` : ""}
           </div>
 
-          <div class="video-wrap ${car.videoUrl ? "" : "video-wrap--placeholder"}" style="margin-top:20px;">${videoHTML}</div>
+          <div class="video-wrap ${videoWrapClass}" style="margin-top:20px;">${videoHTML}</div>
         </div>
 
         <div class="vdp-sidebar-col">
