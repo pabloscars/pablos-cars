@@ -499,9 +499,12 @@ function renderVehicleDetail() {
     return { html: `<video controls preload="metadata" src="${url}"></video>`, cls: "" };
   };
 
+  // Slot titles are fixed — video 1 is the short sell clip, video 2 the
+  // longer walkaround. Whichever slots are filled render (and the row
+  // centers a single video), so a car with only one still looks right.
   const videos = [
-    { embed: videoEmbed(car.videoUrl), caption: car.videoCaption },
-    { embed: videoEmbed(car.videoUrl2), caption: car.videoCaption2 },
+    { embed: videoEmbed(car.videoUrl), caption: "Quick Look" },
+    { embed: videoEmbed(car.videoUrl2), caption: "Full Walkaround" },
   ].filter(v => v.embed);
 
   const videosHTML = videos.length

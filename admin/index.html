@@ -406,8 +406,8 @@
                 )
               : null,
             whySalvage ? h("p", { key: "why" }, [h("strong", { key: "s" }, "Why This Title Status: "), whySalvage]) : null,
-            videoUrl ? h("p", { key: "video" }, [h("strong", { key: "s" }, "Video 1: "), h("a", { key: "a", href: videoUrl, target: "_blank", rel: "noopener" }, videoUrl)]) : null,
-            videoUrl2 ? h("p", { key: "video2" }, [h("strong", { key: "s" }, "Video 2: "), h("a", { key: "a", href: videoUrl2, target: "_blank", rel: "noopener" }, videoUrl2)]) : null,
+            videoUrl ? h("p", { key: "video" }, [h("strong", { key: "s" }, "Quick Look: "), h("a", { key: "a", href: videoUrl, target: "_blank", rel: "noopener" }, videoUrl)]) : null,
+            videoUrl2 ? h("p", { key: "video2" }, [h("strong", { key: "s" }, "Full Walkaround: "), h("a", { key: "a", href: videoUrl2, target: "_blank", rel: "noopener" }, videoUrl2)]) : null,
             photoGrid("additional photos", photoUrls),
             photoGrid("auction photos", auctionPhotoUrls),
             photoGrid("deep cleaning", deepCleaningUrls)
