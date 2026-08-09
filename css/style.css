@@ -44,10 +44,26 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .home-bg-map{position:fixed; inset:0; z-index:0; opacity:0.14; pointer-events:none; filter:saturate(0.7);}
 
 /* ---- Nav ---- */
-.nav{position:sticky; top:0; z-index:500; backdrop-filter:blur(16px); background:rgba(20,19,16,0.78); border-bottom:1px solid var(--glass-border);}
+.nav{position:sticky; top:0; z-index:500; backdrop-filter:blur(16px); background:rgba(20,19,16,0.78);}
+/* Techno HUD divider under the nav instead of a flat 1px border: a
+   gradient hairline that fades to nothing at the edges with a warm
+   orange core, plus a slow highlight that sweeps across it. The base
+   line stays put; only the top highlight layer animates, so nothing
+   overflows the header (keeps the mobile dropdown un-clipped). */
+.nav::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:1px; pointer-events:none;
+  background:
+    linear-gradient(90deg, transparent 42%, rgba(255,255,255,0.85) 50%, transparent 58%) no-repeat,
+    linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 18%, rgba(255,143,77,0.55) 50%, rgba(255,255,255,0.12) 82%, transparent 100%) no-repeat;
+  background-size:40% 100%, 100% 100%;
+  background-position:-40% 0, 0 0;
+  animation:navSheen 7s linear infinite;
+}
+@keyframes navSheen{to{background-position:140% 0, 0 0;}}
+@media (prefers-reduced-motion:reduce){.nav::after{animation:none;}}
 .nav__row{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
 .brand{display:flex; align-items:center; gap:9px; font-family:var(--font-d); font-size:clamp(1.3rem,2.6vw,1.8rem); font-weight:600; letter-spacing:-0.03em; color:var(--text);}
-.nav__links{display:none; gap:24px; font-size:1.05rem; font-weight:500; max-width:1180px; width:100%; margin:0 auto; padding:0 24px; box-sizing:border-box; justify-content:space-between; text-transform:lowercase;}
+.nav__links{display:none; gap:24px; font-size:1.05rem; font-weight:500; max-width:1180px; width:100%; margin:0 auto; padding:0 24px 16px; box-sizing:border-box; justify-content:space-between; text-transform:lowercase;}
 .nav__links a{background-image:linear-gradient(120deg, var(--chrome-a) 0%, var(--chrome-b) 55%, var(--chrome-c) 100%); -webkit-background-clip:text; background-clip:text; color:transparent; transition:background-image .25s ease;}
 .nav__links a:hover, .nav__links a.is-active{background-image:linear-gradient(120deg, var(--orange-bright) 0%, var(--orange) 60%, var(--orange-deep) 100%); -webkit-background-clip:text; background-clip:text; color:transparent;}
 .nav-toggle{display:inline-flex; background:none; border:1px solid var(--glass-border); color:var(--text); border-radius:8px; padding:8px 12px; font-family:var(--font-m); font-size:0.78rem; cursor:pointer;}
