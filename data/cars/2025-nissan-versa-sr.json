@@ -25,16 +25,22 @@
   "mileage": 17200,
   "make": "Nissan",
   "sortOrder": 2,
+  "noGlassBroken": true,
+  "keyCount": "2 Keys",
   "whatWasRepaired": "Cosmetic hail repair. Recent maintenance: oil change at 16k miles, front wipers, air & cabin air filters, NC state inspection completed.",
   "dateAdded": "2026-07-05",
   "status": "available",
   "videoUrl": "",
   "location": "Asheville, NC",
+  "noWarningLights": true,
   "tags": [
     "Rebuilt Title",
     "Hail Damage"
   ],
+  "noAirbagsDeployed": true,
   "id": "2025-nissan-versa-sr",
+  "image": "images/cars/2025-nissan-versa-sr/cover.jpg",
+  "noFrameDamage": true,
   "description": "Genuinely save thousands on this highest-trim Versa SR, simply due to minor hail damage. Fresh maintenance just completed and a professional deep clean performed. Runs and drives excellent.",
   "bodyType": "sedan",
   "year": 2025,
@@ -52,6 +58,5 @@
     "17\" aluminum wheels",
     "Wireless charging",
     "Rear seats fold down for trunk access"
-  ],
-  "image": "images/cars/2025-nissan-versa-sr/cover.jpg"
+  ]
 }
