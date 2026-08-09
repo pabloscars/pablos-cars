@@ -1,4 +1,14 @@
 {
+  "photoSections": {
+    "auctionPhotos": [
+      "/images/uploads/52e141ef-5944-4a28-bd99-9ed901254f70.jpg",
+      "/images/uploads/105b27bb-9ec0-4b50-b95e-9dcf0284b4ce.jpg",
+      "/images/uploads/519579c8-f68a-45e2-af63-d311a751f7dc.jpg",
+      "/images/uploads/5249d523-63e4-41db-8926-9aa749f03c43.jpg",
+      "/images/uploads/3ca2a52f-a5a6-47f7-a92e-cff74b248b30.jpg",
+      "/images/uploads/b8c58d90-663c-4f2f-aa24-91dcebb7f2d7.jpg"
+    ]
+  },
   "photos": [
     "/images/uploads/468611512_857702856322545_2797343154222272268_n.jpg",
     "/images/uploads/468760102_1266324401079429_9196044822772825972_n.jpg",
