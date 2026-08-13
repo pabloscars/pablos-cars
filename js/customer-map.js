@@ -83,12 +83,28 @@ function renderCustomerMapStats(locations) {
     </div>`;
   };
 
+  const maxN = ranked.length ? ranked[0][1] : 1;
+  const bars = ranked
+    .map(([abbr, n]) => `
+      <div class="map-bar">
+        <span class="map-bar__name">${STATE_NAMES[abbr] || abbr}</span>
+        <div class="map-bar__track"><div class="map-bar__fill" style="width:${Math.max(6, Math.round(n / maxN * 100))}%"></div></div>
+        <span class="map-bar__num">${n}</span>
+      </div>`)
+    .join("");
+
   el.innerHTML = `
     <div class="map-stats__head">
       <span class="map-stats__num">${locations.length}</span>
       <span class="map-stats__sub">cars sold across ${ranked.length} ${ranked.length === 1 ? "state" : "states"}</span>
     </div>
-    <div class="map-stats__tally">${ranked.map(([abbr, n]) => stateCard(abbr, n)).join("")}</div>`;
+    <div class="map-stats__body">
+      <div class="map-stats__tally">${ranked.map(([abbr, n]) => stateCard(abbr, n)).join("")}</div>
+      <div class="map-stats__bars">
+        <div class="map-bars__title">Sold by state</div>
+        ${bars}
+      </div>
+    </div>`;
 
   // Add the real state silhouettes once the boundaries load (browser-cached
   // from the map layer's own fetch, so this is effectively instant).
@@ -104,6 +120,37 @@ function renderCustomerMapStats(locations) {
       }).join("");
     })
     .catch(() => { /* leave the plain cards already rendered above */ });
+}
+
+/* Compact readout pinned to the map's top-right: each reached state's
+   silhouette with its count sitting inside it (the "number in shape"
+   treatment). Purely informational — pointer-events off so it never
+   blocks panning the map underneath. */
+function renderMapHud(mapEl, locations, statesGeoJson) {
+  if (!mapEl || !locations.length) return;
+  if (mapEl.querySelector(".map-hud")) return; // don't double-add
+
+  const byState = {};
+  locations.forEach(l => { if (l.state) byState[l.state] = (byState[l.state] || 0) + 1; });
+  const ranked = Object.entries(byState).sort((a, b) => b[1] - a[1]);
+
+  const byName = {};
+  statesGeoJson.features.forEach(f => { byName[f.properties.name] = f; });
+
+  const hud = document.createElement("div");
+  hud.className = "map-hud";
+  hud.innerHTML = `
+    <div class="map-hud__total">${locations.length}<span>sold</span></div>
+    <div class="map-hud__states">
+      ${ranked.map(([abbr, n]) => {
+        const feat = byName[STATE_NAMES[abbr]];
+        return `<div class="hud-state">
+          <div class="hud-state__shape">${feat ? stateShapeSVG(feat) : ""}<span class="hud-state__num">${n}</span></div>
+          <span class="hud-state__abbr">${abbr}</span>
+        </div>`;
+      }).join("")}
+    </div>`;
+  mapEl.appendChild(hud);
 }
 
 function renderCustomerMap() {
@@ -148,6 +195,8 @@ function renderCustomerMap() {
             },
             interactive: false
           }).addTo(map);
+
+          renderMapHud(mapEl, locations, statesGeoJson);
         })
         .catch(err => console.error("Failed to load state outlines:", err));
 
