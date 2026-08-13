@@ -382,6 +382,42 @@ function sortByDisplayOrder(cars, dateField) {
    archive — unless ?view=available is set (from the "View Available
    Cars" link on a sold car's page), in which case sold cars are omitted
    entirely. */
+/* Split-editorial hero: a headline column beside the newest available
+   car shown large. The car image links straight to its listing. */
+function renderHomeHero() {
+  const root = document.getElementById("homeHero");
+  if (!root) return;
+
+  const available = sortByDisplayOrder(CARS.filter(c => c.status === "available"), "dateAdded");
+  const soldCount = CARS.filter(c => c.status === "sold").length;
+  const feat = available[0];
+
+  const mediaHTML = feat
+    ? `<a class="home-hero__media" href="vehicle.html?id=${encodeURIComponent(feat.id)}" aria-label="${feat.year} ${feat.make} ${feat.model}">
+         <img src="${feat.image || (feat.photos && feat.photos[0]) || ""}" alt="${feat.year} ${feat.make} ${feat.model}">
+         <div class="home-hero__cap">
+           <span class="home-hero__cap-k">Featured · Available</span>
+           <span class="home-hero__cap-n">${feat.year} ${feat.make} ${feat.model}${feat.trim ? " " + feat.trim : ""} · ${money(feat.price)}</span>
+         </div>
+       </a>`
+    : `<div class="home-hero__media home-hero__media--empty">New arrivals soon</div>`;
+
+  root.innerHTML = `
+    <div class="home-hero">
+      <div class="home-hero__text">
+        <div class="home-hero__eyebrow">Salvage &amp; rebuilt title · Asheville, N.C.</div>
+        <h1 class="home-hero__title"><span>Shown</span><span class="home-hero__title-o">in full.</span></h1>
+        <p class="home-hero__sub">Every scar photographed, every repair listed, every title explained. What you see is what you get.</p>
+        <div class="home-hero__meta">
+          <span><b>${available.length}</b> available</span>
+          <span><b>${soldCount}</b> sold</span>
+          <span>Asheville, N.C.</span>
+        </div>
+      </div>
+      ${mediaHTML}
+    </div>`;
+}
+
 function renderHomeFeed() {
   const root = document.getElementById("carFeedRoot");
   if (!root) return;

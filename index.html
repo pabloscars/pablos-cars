@@ -29,7 +29,9 @@
 <div class="blob blob--chrome" style="width:440px; height:440px; top:-140px; right:-100px; position:fixed;"></div>
 <div class="blob blob--orange" style="width:320px; height:320px; top:40%; left:-140px; opacity:0.14; position:fixed;"></div>
 
-<section class="section" style="padding-top:28px;">
+<section id="homeHero" class="home-hero-wrap"></section>
+
+<section class="section" style="padding-top:40px;">
   <div class="container">
     <div id="carFeedRoot"></div>
   </div>
@@ -38,7 +40,7 @@
 <section class="section text-center">
   <div class="container max-w-prose" style="margin:0 auto;">
     <div class="label" style="margin-bottom:10px; color:var(--orange-bright);">Asheville, North Carolina</div>
-    <h1>Salvage-title vehicles, shown in full.</h1>
+    <h2>Salvage-title vehicles, shown in full.</h2>
     <div class="btn-row" style="justify-content:center; margin-top:14px;">
       <a href="contact.html" class="btn btn--orange">
         <svg class="msg-icon" viewBox="0 0 24 24" fill="none" stroke="#241000" stroke-width="2"><path d="M4 4h16v12H8l-4 4V4z"/></svg>
@@ -64,6 +66,7 @@
   loadSiteData().then(() => {
     renderHeader();
     renderFooter();
+    renderHomeHero();
     renderHomeFeed();
     renderHomeBackgroundMap();
     document.getElementById("emailCta").href = "mailto:" + BUSINESS.email;
