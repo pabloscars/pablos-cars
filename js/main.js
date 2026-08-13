@@ -576,7 +576,7 @@ function renderVehicleDetail() {
           ${v.caption ? `<div class="video-col__label">${v.caption}</div>` : ""}
           <div class="video-wrap ${v.embed.cls}">${v.embed.html}</div>
         </div>`).join("")}</div>`
-    : `<div class="video-wrap video-wrap--placeholder" style="margin-top:20px;"><div class="video-placeholder">Walkaround video coming soon — message ${BUSINESS.ownerName} to request one.</div></div>`;
+    : `<div class="video-wrap video-wrap--placeholder" style="margin-top:20px;"><div class="video-placeholder">Walkaround video coming soon.</div></div>`;
 
   const repairsCompletedLabels = [
     ...REPAIRS_COMPLETED_ITEMS.filter(([key]) => car.repairsCompleted && car.repairsCompleted[key]).map(([, label]) => label),
