@@ -9,6 +9,42 @@
 const CUSTOMER_MAP_CENTER = [35.5951, -82.5515]; // Asheville, NC
 const CUSTOMER_MAP_ZOOM = 7;
 
+const STATE_NAMES = {
+  AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",CO:"Colorado",
+  CT:"Connecticut",DE:"Delaware",DC:"District of Columbia",FL:"Florida",GA:"Georgia",
+  HI:"Hawaii",ID:"Idaho",IL:"Illinois",IN:"Indiana",IA:"Iowa",KS:"Kansas",KY:"Kentucky",
+  LA:"Louisiana",ME:"Maine",MD:"Maryland",MA:"Massachusetts",MI:"Michigan",MN:"Minnesota",
+  MS:"Mississippi",MO:"Missouri",MT:"Montana",NE:"Nebraska",NV:"Nevada",NH:"New Hampshire",
+  NJ:"New Jersey",NM:"New Mexico",NY:"New York",NC:"North Carolina",ND:"North Dakota",
+  OH:"Ohio",OK:"Oklahoma",OR:"Oregon",PA:"Pennsylvania",RI:"Rhode Island",SC:"South Carolina",
+  SD:"South Dakota",TN:"Tennessee",TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",
+  WA:"Washington",WV:"West Virginia",WI:"Wisconsin",WY:"Wyoming"
+};
+
+/* Summary stats + a per-state tally of every state reached (ranked),
+   shown above the map. Only states with deliveries appear, so it reads
+   as intentional now and fills out on its own as the map grows. */
+function renderCustomerMapStats(locations) {
+  const el = document.getElementById("customerMapStats");
+  if (!el) return;
+  if (!locations.length) { el.innerHTML = ""; return; }
+
+  const byState = {};
+  locations.forEach(l => { if (l.state) byState[l.state] = (byState[l.state] || 0) + 1; });
+  const ranked = Object.entries(byState).sort((a, b) => b[1] - a[1]);
+
+  const tally = ranked
+    .map(([abbr, n]) => `<span class="map-chip"><b>${n}</b> ${STATE_NAMES[abbr] || abbr}</span>`)
+    .join("");
+
+  el.innerHTML = `
+    <div class="map-stats__nums">
+      <div class="map-stat"><span class="map-stat__num">${locations.length}</span><span class="map-stat__lab">Delivered</span></div>
+      <div class="map-stat"><span class="map-stat__num">${ranked.length}</span><span class="map-stat__lab">${ranked.length === 1 ? "State" : "States"} reached</span></div>
+    </div>
+    <div class="map-stats__tally">${tally}</div>`;
+}
+
 function renderCustomerMap() {
   const mapEl = document.getElementById("customerMap");
   if (!mapEl) return;
@@ -17,6 +53,8 @@ function renderCustomerMap() {
     .then(r => r.json())
     .then(data => {
       const locations = (data && data.locations) || [];
+
+      renderCustomerMapStats(locations);
 
       const map = L.map(mapEl, {
         center: CUSTOMER_MAP_CENTER,
