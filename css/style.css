@@ -321,7 +321,8 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 
 /* ---- Customer map ---- */
 .map-caption{font-size:1.05rem; color:var(--text-dim); margin:0 0 14px;}
-.map-footnote{font-size:0.72rem; color:var(--text-faint); margin:12px 0 0; font-style:italic;}
+.map-footnote{font-size:0.72rem; color:var(--text-faint); margin:12px 0 0; font-style:italic; line-height:1.7;}
+.map-footnote__fine{display:inline-block; margin-top:2px; font-size:0.66rem; opacity:0.85;}
 
 /* Sales stats + per-state tally above the customer map — a glass panel
    matching the site's card language, with a headline number over a row
