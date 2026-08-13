@@ -69,28 +69,28 @@ function renderCustomerMapStats(locations) {
   });
   const ranked = Object.entries(byState).sort((a, b) => b[1] - a[1]);
 
-  const stateCard = (abbr, n, shape) => {
-    const cities = Object.entries(cityTally[abbr] || {}).sort((a, b) => b[1] - a[1]);
-    const cityRows = cities
-      .map(([city, cn]) => `<div class="state-card__city"><span>${city}</span><b>${cn}</b></div>`)
-      .join("");
-    return `
-    <div class="state-card" tabindex="0">
+  const stateCard = (abbr, n, shape) => `
+    <div class="state-card">
       <div class="state-card__shape">${shape || ""}</div>
       <span class="state-card__n">${n}</span>
       <span class="state-card__name">${STATE_NAMES[abbr] || abbr}</span>
-      ${cityRows ? `<div class="state-card__cities" role="tooltip"><div class="state-card__cities-h">By city</div>${cityRows}</div>` : ""}
     </div>`;
-  };
 
   const maxN = ranked.length ? ranked[0][1] : 1;
   const bars = ranked
-    .map(([abbr, n]) => `
-      <div class="map-bar">
+    .map(([abbr, n]) => {
+      const cities = Object.entries(cityTally[abbr] || {}).sort((a, b) => b[1] - a[1]);
+      const cityRows = cities
+        .map(([city, cn]) => `<div class="bar-city"><span>${city}</span><b>${cn}</b></div>`)
+        .join("");
+      return `
+      <div class="map-bar" tabindex="0">
         <span class="map-bar__name">${STATE_NAMES[abbr] || abbr}</span>
         <div class="map-bar__track"><div class="map-bar__fill" style="width:${Math.max(6, Math.round(n / maxN * 100))}%"></div></div>
         <span class="map-bar__num">${n}</span>
-      </div>`)
+        ${cityRows ? `<div class="map-bar__cities" role="tooltip"><div class="map-bar__cities-h">${STATE_NAMES[abbr] || abbr} · by city</div>${cityRows}</div>` : ""}
+      </div>`;
+    })
     .join("");
 
   el.innerHTML = `

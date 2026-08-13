@@ -331,7 +331,20 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 /* Ranked bars beside the state cards */
 .map-stats__bars{flex:1; min-width:230px; max-width:340px; text-align:left;}
 .map-bars__title{font-family:var(--font-m); font-size:0.66rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-faint); margin-bottom:12px;}
-.map-bar{display:grid; grid-template-columns:1fr 30px; align-items:center; column-gap:12px; padding:7px 0;}
+.map-bar{position:relative; display:grid; grid-template-columns:1fr 30px; align-items:center; column-gap:12px; padding:7px 0;}
+/* Per-city breakdown popover — opens below on narrow screens, and to the
+   right of the bar on desktop so it doesn't push the layout down. */
+.map-bar__cities{position:absolute; left:0; top:calc(100% + 8px); transform:translateY(6px); width:100%; background:var(--bg-2); border:1px solid var(--glass-border); border-radius:12px; padding:11px 14px; box-shadow:0 16px 40px rgba(0,0,0,0.55); opacity:0; visibility:hidden; transition:opacity .18s ease, transform .18s ease; z-index:40; text-align:left;}
+.map-bar:hover .map-bar__cities, .map-bar:focus-visible .map-bar__cities, .map-bar:focus-within .map-bar__cities{opacity:1; visibility:visible; transform:translateY(0);}
+.map-bar__cities::before{content:""; position:absolute; border:6px solid transparent; left:22px; bottom:100%; border-bottom-color:var(--bg-2);}
+.map-bar__cities-h{font-family:var(--font-m); font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-faint); margin-bottom:9px; white-space:nowrap;}
+.bar-city{display:flex; justify-content:space-between; gap:18px; font-family:var(--font-m); font-size:0.76rem; color:var(--text-dim); padding:3px 0;}
+.bar-city b{color:var(--text); font-weight:600; font-variant-numeric:tabular-nums;}
+@media(min-width:900px){
+  .map-bar__cities{left:calc(100% + 16px); top:-8px; width:auto; min-width:172px; max-width:220px; transform:translateX(6px);}
+  .map-bar:hover .map-bar__cities, .map-bar:focus-visible .map-bar__cities, .map-bar:focus-within .map-bar__cities{transform:translateX(0);}
+  .map-bar__cities::before{left:auto; right:100%; bottom:auto; top:18px; transform:none; border-bottom-color:transparent; border-right-color:var(--bg-2);}
+}
 .map-bar__name{font-family:var(--font-b); font-size:0.9rem; color:var(--text); grid-column:1;}
 .map-bar__num{font-family:var(--font-d); font-size:1.05rem; font-weight:700; text-align:right; color:var(--text); font-variant-numeric:tabular-nums; grid-row:1 / span 2; grid-column:2;}
 .map-bar__track{grid-column:1; height:8px; border-radius:100px; background:rgba(255,255,255,0.07); overflow:hidden; margin-top:4px;}
@@ -341,14 +354,7 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .map-stats__num{font-family:var(--font-d); font-size:clamp(2.6rem,6vw,3.6rem); font-weight:700; line-height:1; letter-spacing:-0.03em; color:var(--text); font-variant-numeric:tabular-nums;}
 .map-stats__sub{font-family:var(--font-m); font-size:0.74rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-dim);}
 .map-stats__tally{display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(22px,5vw,52px);}
-.state-card{position:relative; display:flex; flex-direction:column; align-items:center; gap:8px; cursor:default;}
-/* Hover/focus a state to see its per-city breakdown */
-.state-card__cities{position:absolute; top:calc(100% + 12px); left:50%; transform:translateX(-50%) translateY(5px); min-width:180px; max-width:240px; background:var(--bg-2); border:1px solid var(--glass-border); border-radius:12px; padding:11px 14px; box-shadow:0 18px 44px rgba(0,0,0,0.55); opacity:0; visibility:hidden; transition:opacity .18s ease, transform .18s ease; z-index:30; text-align:left;}
-.state-card:hover .state-card__cities, .state-card:focus-visible .state-card__cities, .state-card:focus-within .state-card__cities{opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);}
-.state-card__cities::before{content:""; position:absolute; bottom:100%; left:50%; transform:translateX(-50%); border:6px solid transparent; border-bottom-color:var(--bg-2);}
-.state-card__cities-h{font-family:var(--font-m); font-size:0.58rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-faint); margin-bottom:9px;}
-.state-card__city{display:flex; justify-content:space-between; gap:18px; font-family:var(--font-m); font-size:0.76rem; color:var(--text-dim); padding:3px 0;}
-.state-card__city b{color:var(--text); font-weight:600; font-variant-numeric:tabular-nums;}
+.state-card{display:flex; flex-direction:column; align-items:center; gap:8px;}
 .state-card__shape{width:62px; height:40px; display:flex; align-items:center; justify-content:center;}
 .state-shape{display:block; width:100%; height:100%;}
 .state-shape path{fill:var(--chrome-b); fill-opacity:0.85; stroke:var(--chrome-a); stroke-width:1; vector-effect:non-scaling-stroke; stroke-linejoin:round;}
