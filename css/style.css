@@ -98,11 +98,14 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .nav__links.is-open{display:flex; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:var(--bg-2); padding:16px 24px; border-bottom:1px solid var(--glass-border); gap:14px;}
 
 /* ---- Split-editorial hero (homepage) ---- */
-.home-hero-wrap{position:relative; z-index:1;}
-.home-hero{display:grid; grid-template-columns:1.12fr 0.88fr; min-height:clamp(400px,50vh,480px); border-bottom:1px solid var(--glass-border);}
-.home-hero__text{background:var(--bg); padding:clamp(32px,5vw,64px) clamp(24px,5vw,60px); display:flex; flex-direction:column; justify-content:center;}
+/* Sits inside the same container as the feed and takes the rounded,
+   glass card language so it reads as part of the site, not a full-bleed
+   band bolted on top. */
+.home-hero-wrap{position:relative; z-index:1; padding-top:24px;}
+.home-hero{display:grid; grid-template-columns:1.12fr 0.88fr; min-height:clamp(400px,50vh,480px); border:1px solid var(--glass-border); border-radius:var(--radius); overflow:hidden;}
+.home-hero__text{background:var(--glass); backdrop-filter:blur(14px); padding:clamp(32px,5vw,60px) clamp(24px,4vw,52px); display:flex; flex-direction:column; justify-content:center;}
 .home-hero__eyebrow{font-family:var(--font-m); font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange-bright); margin-bottom:22px;}
-.home-hero__title{font-family:var(--font-d); font-weight:700; font-size:clamp(3rem,7.5vw,6.2rem); line-height:0.9; letter-spacing:-0.04em; text-transform:uppercase; margin:0;}
+.home-hero__title{font-family:var(--font-d); font-weight:700; font-size:clamp(2.8rem,6.6vw,5.4rem); line-height:0.92; letter-spacing:-0.04em; text-transform:lowercase; margin:0;}
 .home-hero__title span{display:block;}
 .home-hero__title-o{color:transparent; -webkit-text-stroke:1.4px rgba(245,243,238,0.5);}
 .home-hero__sub{margin:24px 0 0; color:var(--text-dim); font-size:1rem; line-height:1.6; max-width:36ch;}

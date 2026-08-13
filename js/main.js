@@ -403,6 +403,7 @@ function renderHomeHero() {
     : `<div class="home-hero__media home-hero__media--empty">New arrivals soon</div>`;
 
   root.innerHTML = `
+    <div class="container">
     <div class="home-hero">
       <div class="home-hero__text">
         <div class="home-hero__eyebrow">Salvage &amp; rebuilt title · Asheville, N.C.</div>
@@ -415,6 +416,7 @@ function renderHomeHero() {
         </div>
       </div>
       ${mediaHTML}
+    </div>
     </div>`;
 }
 
