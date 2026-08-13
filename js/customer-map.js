@@ -21,9 +21,38 @@ const STATE_NAMES = {
   WA:"Washington",WV:"West Virginia",WI:"Wisconsin",WY:"Wyoming"
 };
 
+/* Turns a state's GeoJSON geometry into a tiny SVG silhouette of that
+   state, normalized to a small square and corrected for longitude
+   compression at the state's latitude so the shape isn't stretched. */
+function stateShapeSVG(feature, size) {
+  size = size || 26;
+  const geom = feature.geometry;
+  const polys = geom.type === "MultiPolygon" ? geom.coordinates : [geom.coordinates];
+  const rings = [];
+  polys.forEach(poly => poly.forEach(ring => rings.push(ring)));
+
+  let minLng = Infinity, maxLng = -Infinity, minLat = Infinity, maxLat = -Infinity;
+  rings.forEach(r => r.forEach(([lng, lat]) => {
+    if (lng < minLng) minLng = lng; if (lng > maxLng) maxLng = lng;
+    if (lat < minLat) minLat = lat; if (lat > maxLat) maxLat = lat;
+  }));
+
+  const k = Math.cos(((minLat + maxLat) / 2) * Math.PI / 180); // lng->distance correction
+  const gW = (maxLng - minLng) * k, gH = (maxLat - minLat);
+  const pad = 1.2;
+  const scale = (size - pad * 2) / Math.max(gW, gH);
+  const w = gW * scale + pad * 2, h = gH * scale + pad * 2;
+  const X = lng => (pad + (lng - minLng) * k * scale).toFixed(1);
+  const Y = lat => (pad + (maxLat - lat) * scale).toFixed(1);
+  const d = rings.map(r => "M" + r.map(([lng, lat]) => X(lng) + " " + Y(lat)).join("L") + "Z").join("");
+
+  return `<svg class="map-chip__shape" viewBox="0 0 ${w.toFixed(1)} ${h.toFixed(1)}" aria-hidden="true"><path d="${d}"/></svg>`;
+}
+
 /* Summary stats + a per-state tally of every state reached (ranked),
-   shown above the map. Only states with deliveries appear, so it reads
-   as intentional now and fills out on its own as the map grows. */
+   shown above the map. Only states with sales appear, so it reads as
+   intentional now and fills out on its own as the map grows. Each chip
+   carries a little silhouette of the actual state. */
 function renderCustomerMapStats(locations) {
   const el = document.getElementById("customerMapStats");
   if (!el) return;
@@ -33,16 +62,29 @@ function renderCustomerMapStats(locations) {
   locations.forEach(l => { if (l.state) byState[l.state] = (byState[l.state] || 0) + 1; });
   const ranked = Object.entries(byState).sort((a, b) => b[1] - a[1]);
 
-  const tally = ranked
-    .map(([abbr, n]) => `<span class="map-chip"><b>${n}</b> ${STATE_NAMES[abbr] || abbr}</span>`)
-    .join("");
+  const chip = (abbr, n, shape) => `<span class="map-chip">${shape || ""}<b>${n}</b> ${STATE_NAMES[abbr] || abbr}</span>`;
 
   el.innerHTML = `
     <div class="map-stats__nums">
-      <div class="map-stat"><span class="map-stat__num">${locations.length}</span><span class="map-stat__lab">Delivered</span></div>
+      <div class="map-stat"><span class="map-stat__num">${locations.length}</span><span class="map-stat__lab">Sold</span></div>
       <div class="map-stat"><span class="map-stat__num">${ranked.length}</span><span class="map-stat__lab">${ranked.length === 1 ? "State" : "States"} reached</span></div>
     </div>
-    <div class="map-stats__tally">${tally}</div>`;
+    <div class="map-stats__tally">${ranked.map(([abbr, n]) => chip(abbr, n)).join("")}</div>`;
+
+  // Add the real state silhouettes once the boundaries load (browser-cached
+  // from the map layer's own fetch, so this is effectively instant).
+  fetch("data/us-states.geojson")
+    .then(r => r.json())
+    .then(gj => {
+      const byName = {};
+      gj.features.forEach(f => { byName[f.properties.name] = f; });
+      const tallyEl = el.querySelector(".map-stats__tally");
+      tallyEl.innerHTML = ranked.map(([abbr, n]) => {
+        const feat = byName[STATE_NAMES[abbr]];
+        return chip(abbr, n, feat ? stateShapeSVG(feat) : "");
+      }).join("");
+    })
+    .catch(() => { /* leave the plain chips already rendered above */ });
 }
 
 function renderCustomerMap() {
