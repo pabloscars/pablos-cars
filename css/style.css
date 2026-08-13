@@ -120,7 +120,11 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 @media(min-width:1000px){.grid{grid-template-columns:repeat(3,1fr);}}
 @media(min-width:1000px){.grid.grid--wide{grid-template-columns:repeat(4,1fr);}}
 
-.card{position:relative; background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--radius); backdrop-filter:blur(14px); overflow:hidden; transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;}
+/* backdrop-filter lives on .card__body, not here: on the whole card it
+   re-samples across the opaque photo edge as the card transforms on
+   hover, leaving a thin bright seam at the photo/body boundary. The body
+   is the only translucent part that actually needs the frosted effect. */
+.card{position:relative; background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--radius); overflow:hidden; transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;}
 .card:hover{transform:translateY(-5px); border-color:rgba(255,143,77,0.4); box-shadow:0 16px 36px rgba(0,0,0,0.35);}
 
 .card__photo{position:relative; aspect-ratio:4/3; background:var(--bg-3); overflow:hidden;}
@@ -141,7 +145,7 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .card.is-sold .overlay-price{color:var(--text-dim); text-decoration:line-through; text-decoration-color:var(--sold);}
 .overlay-mileage{font-family:var(--font-m); font-size:0.92rem; font-weight:600; color:var(--chrome-b); text-align:right;}
 
-.card__body{padding:14px 14px 16px; display:flex; flex-direction:column; gap:6px;}
+.card__body{padding:14px 14px 16px; display:flex; flex-direction:column; gap:6px; backdrop-filter:blur(14px);}
 .card__title{font-family:var(--font-d); font-size:1.18rem; font-weight:600; letter-spacing:-0.01em;}
 .chip-row{display:flex; flex-wrap:wrap; gap:5px; margin-top:2px;}
 .chip{font-family:var(--font-m); font-size:0.63rem; padding:3px 8px; border-radius:100px; border:1px solid var(--glass-border); color:var(--text-dim); text-transform:uppercase; letter-spacing:0.03em;}
