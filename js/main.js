@@ -438,19 +438,21 @@ function renderHomeFeed() {
   `;
 
   if (!availableOnly && sold.length) {
-    const SOLD_PREVIEW_COUNT = 3;
-    const soldTeaser = sold.slice(SOLD_PREVIEW_COUNT, SOLD_PREVIEW_COUNT + 3);
+    // One grid of up to 6 sold cars; CSS keeps the first row clear and
+    // fades the trailing cards (bottom row on desktop, the 3rd/4th cards
+    // on mobile) under the "View All" button.
+    const soldPreview = sold.slice(0, 6);
+    const showFade = sold.length > 2;
     html += `
       <div class="feed-heading" style="margin-top:52px;"><h2>Recently Sold</h2></div>
-      ${cardsOrEmptyState(sold.slice(0, SOLD_PREVIEW_COUNT))}
-      ${soldTeaser.length ? `
-        <div class="sold-teaser">
-          <div class="sold-teaser__row">${cardsOrEmptyState(soldTeaser)}</div>
-          <div class="sold-teaser__fade"></div>
-          <div class="sold-teaser__cta">
+      <div class="sold-preview${showFade ? " sold-preview--faded" : ""}">
+        <div class="grid sold-preview__grid">${soldPreview.map(carCardHTML).join("")}</div>
+        ${showFade ? `
+          <div class="sold-preview__fade" aria-hidden="true"></div>
+          <div class="sold-preview__cta">
             <a href="sold.html" class="btn btn--glass">View All Sold Vehicles</a>
-          </div>
-        </div>` : ""}
+          </div>` : ""}
+      </div>
     `;
   }
 
