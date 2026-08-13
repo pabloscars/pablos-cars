@@ -83,12 +83,13 @@ function renderCustomerMapStats(locations) {
       const cityRows = cities
         .map(([city, cn]) => `<div class="bar-city"><span>${city}</span><b>${cn}</b></div>`)
         .join("");
+      const wide = cities.length > 7 ? " map-bar__cities--wide" : "";
       return `
       <div class="map-bar" tabindex="0">
         <span class="map-bar__name">${STATE_NAMES[abbr] || abbr}</span>
         <div class="map-bar__track"><div class="map-bar__fill" style="width:${Math.max(6, Math.round(n / maxN * 100))}%"></div></div>
         <span class="map-bar__num">${n}</span>
-        ${cityRows ? `<div class="map-bar__cities" role="tooltip"><div class="map-bar__cities-h">${STATE_NAMES[abbr] || abbr} · by city</div>${cityRows}</div>` : ""}
+        ${cityRows ? `<div class="map-bar__cities${wide}" role="tooltip"><div class="map-bar__cities-h">${STATE_NAMES[abbr] || abbr} · by city</div><div class="bar-cities">${cityRows}</div></div>` : ""}
       </div>`;
     })
     .join("");

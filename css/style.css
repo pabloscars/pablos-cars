@@ -338,12 +338,17 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .map-bar:hover .map-bar__cities, .map-bar:focus-visible .map-bar__cities, .map-bar:focus-within .map-bar__cities{opacity:1; visibility:visible; transform:translateY(0);}
 .map-bar__cities::before{content:""; position:absolute; border:6px solid transparent; left:22px; bottom:100%; border-bottom-color:var(--bg-2);}
 .map-bar__cities-h{font-family:var(--font-m); font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-faint); margin-bottom:9px; white-space:nowrap;}
-.bar-city{display:flex; justify-content:space-between; gap:18px; font-family:var(--font-m); font-size:0.76rem; color:var(--text-dim); padding:3px 0;}
+/* Long lists (e.g. NC) flow into two columns so the popover stays short
+   and doesn't run off the bottom of the screen. */
+.bar-cities{display:grid; grid-template-columns:1fr; gap:0 24px;}
+.map-bar__cities--wide .bar-cities{grid-template-columns:1fr 1fr;}
+.bar-city{display:flex; justify-content:space-between; gap:16px; font-family:var(--font-m); font-size:0.76rem; color:var(--text-dim); padding:3px 0;}
 .bar-city b{color:var(--text); font-weight:600; font-variant-numeric:tabular-nums;}
 @media(min-width:900px){
-  .map-bar__cities{left:calc(100% + 16px); top:-8px; width:auto; min-width:172px; max-width:220px; transform:translateX(6px);}
-  .map-bar:hover .map-bar__cities, .map-bar:focus-visible .map-bar__cities, .map-bar:focus-within .map-bar__cities{transform:translateX(0);}
-  .map-bar__cities::before{left:auto; right:100%; bottom:auto; top:18px; transform:none; border-bottom-color:transparent; border-right-color:var(--bg-2);}
+  .map-bar__cities{left:calc(100% + 16px); top:50%; width:auto; min-width:172px; max-width:220px; transform:translate(6px,-50%);}
+  .map-bar__cities--wide{min-width:296px; max-width:340px;}
+  .map-bar:hover .map-bar__cities, .map-bar:focus-visible .map-bar__cities, .map-bar:focus-within .map-bar__cities{transform:translate(0,-50%);}
+  .map-bar__cities::before{left:auto; right:100%; bottom:auto; top:50%; transform:translateY(-50%); border-bottom-color:transparent; border-right-color:var(--bg-2);}
 }
 .map-bar__name{font-family:var(--font-b); font-size:0.9rem; color:var(--text); grid-column:1;}
 .map-bar__num{font-family:var(--font-d); font-size:1.05rem; font-weight:700; text-align:right; color:var(--text); font-variant-numeric:tabular-nums; grid-row:1 / span 2; grid-column:2;}
