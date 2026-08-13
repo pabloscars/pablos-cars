@@ -307,32 +307,6 @@ function enableEdgeAutoScroll(el) {
   });
 }
 
-/* Reveal cards as they scroll into view, staggered per grid. The reveal
-   rides on the CSS `translate` + `opacity` properties (see .card.reveal),
-   which are independent of `transform`, so it never interferes with the
-   card's hover lift. Staggering is done by delaying when `is-in` is added
-   rather than via transition-delay, so no lingering delay slows down a
-   later hover. */
-function setupReveals() {
-  const els = document.querySelectorAll(".card.reveal:not(.is-in)");
-  if (!els.length) return;
-  if (window.matchMedia("(prefers-reduced-motion:reduce)").matches || !("IntersectionObserver" in window)) {
-    els.forEach(el => el.classList.add("is-in"));
-    return;
-  }
-  const io = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const siblings = [...el.parentElement.children].filter(c => c.classList.contains("reveal"));
-      const idx = Math.min(siblings.indexOf(el), 7);
-      setTimeout(() => el.classList.add("is-in"), idx * 55);
-      obs.unobserve(el);
-    });
-  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
-  els.forEach(el => io.observe(el));
-}
-
 /* Subtle magnetic pull on buttons — they lean toward the cursor while
    hovered. Desktop pointers only, and off under reduced-motion. */
 function setupMagneticButtons() {
@@ -364,7 +338,7 @@ function carCardHTML(car) {
   const tagsHTML = (car.tags || []).map(t => `<span class="chip">${t}</span>`).join("");
 
   return `
-  <a href="vehicle.html?id=${encodeURIComponent(car.id)}" class="card reveal ${soldClass}" data-id="${car.id}">
+  <a href="vehicle.html?id=${encodeURIComponent(car.id)}" class="card ${soldClass}" data-id="${car.id}">
     <div class="card__photo">
       <img src="${cover}" alt="${car.year} ${car.make} ${car.model}" loading="lazy">
       <div class="card__scrim"></div>
@@ -440,7 +414,6 @@ function renderHomeFeed() {
   }
 
   root.innerHTML = html;
-  setupReveals();
 }
 
 /* Full list of every sold car, for sold.html */
@@ -452,7 +425,6 @@ function renderSoldFeed() {
     <div class="feed-heading"><h2>All Sold Vehicles</h2></div>
     ${cardsOrEmptyState(sold, "grid--wide")}
   `;
-  setupReveals();
 }
 
 /* ---------------- Vehicle detail page ---------------- */
