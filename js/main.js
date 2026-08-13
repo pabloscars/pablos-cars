@@ -804,6 +804,21 @@ function initPhotoSlider(slider) {
 
 let lightboxImages = [];
 let lightboxIndex = 0;
+let lbScale = 1, lbTx = 0, lbTy = 0;
+
+function lbApplyTransform() {
+  const img = document.getElementById("lightboxImg");
+  if (img) img.style.transform = `translate(${lbTx}px, ${lbTy}px) scale(${lbScale})`;
+}
+function lbResetZoom() { lbScale = 1; lbTx = 0; lbTy = 0; lbApplyTransform(); }
+function lbClampPan() {
+  const img = document.getElementById("lightboxImg");
+  if (!img) return;
+  const maxX = Math.max(0, (img.clientWidth * lbScale - img.clientWidth) / 2);
+  const maxY = Math.max(0, (img.clientHeight * lbScale - img.clientHeight) / 2);
+  lbTx = Math.min(maxX, Math.max(-maxX, lbTx));
+  lbTy = Math.min(maxY, Math.max(-maxY, lbTy));
+}
 
 function openLightbox(images, index) {
   lightboxImages = images;
@@ -820,21 +835,59 @@ function openLightbox(images, index) {
       <button class="lightbox__nav lightbox__nav--next" aria-label="Next photo">&#8250;</button>
       <div class="lightbox__counter" id="lightboxCounter"></div>`;
 
-    // A tap on the dark backdrop closes; taps on the image/controls don't.
-    // A swipe sets `swiped` so its trailing click never closes the box.
-    let sx = 0, sy = 0, swiped = false;
+    // A tap on the dark backdrop closes (only when not zoomed); taps on
+    // the image/controls don't. A swipe sets `swiped` so its trailing
+    // click never closes the box.
+    let swiped = false;
+    let mode = null; // "pinch" | "pan" | "swipe"
+    let pinchDist0 = 0, pinchScale0 = 1, panX0 = 0, panY0 = 0, tx0 = 0, ty0 = 0, swX0 = 0, swY0 = 0;
+    const dist2 = (a, b) => Math.hypot(b.clientX - a.clientX, b.clientY - a.clientY);
+
     overlay.addEventListener("click", e => {
       if (swiped) { swiped = false; return; }
-      if (e.target === overlay) closeLightbox();
+      if (e.target === overlay && lbScale === 1) closeLightbox();
     });
     overlay.querySelector(".lightbox__close").addEventListener("click", e => { e.stopPropagation(); closeLightbox(); });
     overlay.querySelector(".lightbox__nav--prev").addEventListener("click", e => { e.stopPropagation(); lightboxStep(-1); });
     overlay.querySelector(".lightbox__nav--next").addEventListener("click", e => { e.stopPropagation(); lightboxStep(1); });
-    overlay.addEventListener("touchstart", e => { const t = e.changedTouches[0]; sx = t.clientX; sy = t.clientY; }, { passive: true });
+
+    overlay.addEventListener("touchstart", e => {
+      if (e.touches.length === 2) {
+        mode = "pinch";
+        pinchDist0 = dist2(e.touches[0], e.touches[1]);
+        pinchScale0 = lbScale;
+      } else if (e.touches.length === 1) {
+        const t = e.touches[0];
+        if (lbScale > 1) { mode = "pan"; panX0 = t.clientX; panY0 = t.clientY; tx0 = lbTx; ty0 = lbTy; }
+        else { mode = "swipe"; swX0 = t.clientX; swY0 = t.clientY; }
+      }
+    }, { passive: true });
+
+    overlay.addEventListener("touchmove", e => {
+      if (mode === "pinch" && e.touches.length >= 2) {
+        lbScale = Math.min(4, Math.max(1, pinchScale0 * (dist2(e.touches[0], e.touches[1]) / pinchDist0)));
+        lbClampPan();
+        lbApplyTransform();
+        e.preventDefault();
+      } else if (mode === "pan" && e.touches.length === 1) {
+        const t = e.touches[0];
+        lbTx = tx0 + (t.clientX - panX0);
+        lbTy = ty0 + (t.clientY - panY0);
+        lbClampPan();
+        lbApplyTransform();
+        e.preventDefault();
+      }
+    }, { passive: false });
+
     overlay.addEventListener("touchend", e => {
-      const t = e.changedTouches[0];
-      const dx = t.clientX - sx, dy = t.clientY - sy;
-      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.4) { lightboxStep(dx < 0 ? 1 : -1); swiped = true; }
+      if (mode === "pinch" && lbScale <= 1.03) {
+        lbResetZoom();
+      } else if (mode === "swipe") {
+        const t = e.changedTouches[0];
+        const dx = t.clientX - swX0, dy = t.clientY - swY0;
+        if (lbScale === 1 && Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.4) { lightboxStep(dx < 0 ? 1 : -1); swiped = true; }
+      }
+      if (e.touches.length === 0) mode = null;
     }, { passive: true });
 
     document.addEventListener("keydown", handleLightboxKeydown);
@@ -852,6 +905,7 @@ function lightboxStep(dir) {
 
 function showLightboxImage() {
   document.getElementById("lightboxImg").src = lightboxImages[lightboxIndex];
+  lbResetZoom();
   const counter = document.getElementById("lightboxCounter");
   if (counter) counter.textContent = `${lightboxIndex + 1} / ${lightboxImages.length}`;
 }
