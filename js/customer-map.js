@@ -59,15 +59,29 @@ function renderCustomerMapStats(locations) {
   if (!locations.length) { el.innerHTML = ""; return; }
 
   const byState = {};
-  locations.forEach(l => { if (l.state) byState[l.state] = (byState[l.state] || 0) + 1; });
+  const cityTally = {}; // { STATE: { City: count } }
+  locations.forEach(l => {
+    if (!l.state) return;
+    byState[l.state] = (byState[l.state] || 0) + 1;
+    cityTally[l.state] = cityTally[l.state] || {};
+    const city = l.city || "—";
+    cityTally[l.state][city] = (cityTally[l.state][city] || 0) + 1;
+  });
   const ranked = Object.entries(byState).sort((a, b) => b[1] - a[1]);
 
-  const stateCard = (abbr, n, shape) => `
-    <div class="state-card">
+  const stateCard = (abbr, n, shape) => {
+    const cities = Object.entries(cityTally[abbr] || {}).sort((a, b) => b[1] - a[1]);
+    const cityRows = cities
+      .map(([city, cn]) => `<div class="state-card__city"><span>${city}</span><b>${cn}</b></div>`)
+      .join("");
+    return `
+    <div class="state-card" tabindex="0">
       <div class="state-card__shape">${shape || ""}</div>
       <span class="state-card__n">${n}</span>
       <span class="state-card__name">${STATE_NAMES[abbr] || abbr}</span>
+      ${cityRows ? `<div class="state-card__cities" role="tooltip"><div class="state-card__cities-h">By city</div>${cityRows}</div>` : ""}
     </div>`;
+  };
 
   el.innerHTML = `
     <div class="map-stats__head">
