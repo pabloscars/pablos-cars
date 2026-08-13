@@ -46,7 +46,7 @@ function stateShapeSVG(feature, size) {
   const Y = lat => (pad + (maxLat - lat) * scale).toFixed(1);
   const d = rings.map(r => "M" + r.map(([lng, lat]) => X(lng) + " " + Y(lat)).join("L") + "Z").join("");
 
-  return `<svg class="map-chip__shape" viewBox="0 0 ${w.toFixed(1)} ${h.toFixed(1)}" aria-hidden="true"><path d="${d}"/></svg>`;
+  return `<svg class="state-shape" viewBox="0 0 ${w.toFixed(1)} ${h.toFixed(1)}" aria-hidden="true"><path d="${d}"/></svg>`;
 }
 
 /* Summary stats + a per-state tally of every state reached (ranked),
@@ -62,14 +62,19 @@ function renderCustomerMapStats(locations) {
   locations.forEach(l => { if (l.state) byState[l.state] = (byState[l.state] || 0) + 1; });
   const ranked = Object.entries(byState).sort((a, b) => b[1] - a[1]);
 
-  const chip = (abbr, n, shape) => `<span class="map-chip">${shape || ""}<b>${n}</b> ${STATE_NAMES[abbr] || abbr}</span>`;
+  const stateCard = (abbr, n, shape) => `
+    <div class="state-card">
+      <div class="state-card__shape">${shape || ""}</div>
+      <span class="state-card__n">${n}</span>
+      <span class="state-card__name">${STATE_NAMES[abbr] || abbr}</span>
+    </div>`;
 
   el.innerHTML = `
-    <div class="map-stats__nums">
-      <div class="map-stat"><span class="map-stat__num">${locations.length}</span><span class="map-stat__lab">Sold</span></div>
-      <div class="map-stat"><span class="map-stat__num">${ranked.length}</span><span class="map-stat__lab">${ranked.length === 1 ? "State" : "States"} reached</span></div>
+    <div class="map-stats__head">
+      <span class="map-stats__num">${locations.length}</span>
+      <span class="map-stats__sub">cars sold across ${ranked.length} ${ranked.length === 1 ? "state" : "states"}</span>
     </div>
-    <div class="map-stats__tally">${ranked.map(([abbr, n]) => chip(abbr, n)).join("")}</div>`;
+    <div class="map-stats__tally">${ranked.map(([abbr, n]) => stateCard(abbr, n)).join("")}</div>`;
 
   // Add the real state silhouettes once the boundaries load (browser-cached
   // from the map layer's own fetch, so this is effectively instant).
@@ -81,10 +86,10 @@ function renderCustomerMapStats(locations) {
       const tallyEl = el.querySelector(".map-stats__tally");
       tallyEl.innerHTML = ranked.map(([abbr, n]) => {
         const feat = byName[STATE_NAMES[abbr]];
-        return chip(abbr, n, feat ? stateShapeSVG(feat) : "");
+        return stateCard(abbr, n, feat ? stateShapeSVG(feat) : "");
       }).join("");
     })
-    .catch(() => { /* leave the plain chips already rendered above */ });
+    .catch(() => { /* leave the plain cards already rendered above */ });
 }
 
 function renderCustomerMap() {

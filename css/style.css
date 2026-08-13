@@ -323,17 +323,20 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .map-caption{font-size:1.05rem; color:var(--text-dim); margin:0 0 14px;}
 .map-footnote{font-size:0.72rem; color:var(--text-faint); margin:12px 0 0; font-style:italic;}
 
-/* Sales stats + per-state tally above the customer map (centered) */
-.map-stats{margin:0 0 22px;}
-.map-stats__nums{display:flex; justify-content:center; gap:44px; margin-bottom:18px;}
-.map-stat{display:flex; flex-direction:column; gap:4px;}
-.map-stat__num{font-family:var(--font-d); font-size:clamp(2rem,4vw,2.8rem); font-weight:600; line-height:1; color:var(--text); font-variant-numeric:tabular-nums;}
-.map-stat__lab{font-family:var(--font-m); font-size:0.74rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-dim);}
-.map-stats__tally{display:flex; flex-wrap:wrap; justify-content:center; gap:9px;}
-.map-chip{display:inline-flex; align-items:center; gap:8px; font-family:var(--font-m); font-size:0.74rem; padding:6px 13px 6px 9px; border-radius:100px; border:1px solid var(--glass-border); color:var(--text-dim); letter-spacing:0.02em;}
-.map-chip b{color:var(--orange-bright); font-weight:700; margin-right:1px;}
-.map-chip__shape{width:22px; height:22px; flex-shrink:0;}
-.map-chip__shape path{fill:rgba(184,182,174,0.14); stroke:var(--chrome-b); stroke-width:1; vector-effect:non-scaling-stroke; stroke-linejoin:round;}
+/* Sales stats + per-state tally above the customer map — a glass panel
+   matching the site's card language, with a headline number over a row
+   of state cards, each carrying a legible silhouette of the state. */
+.map-stats{background:var(--glass); backdrop-filter:blur(14px); border:1px solid var(--glass-border); border-radius:var(--radius); padding:clamp(24px,4vw,34px) clamp(20px,4vw,40px); margin:0 auto 20px; max-width:720px;}
+.map-stats__head{display:flex; flex-direction:column; align-items:center; gap:7px; padding-bottom:22px; margin-bottom:22px; border-bottom:1px solid var(--glass-border);}
+.map-stats__num{font-family:var(--font-d); font-size:clamp(2.6rem,6vw,3.6rem); font-weight:700; line-height:1; letter-spacing:-0.03em; color:var(--text); font-variant-numeric:tabular-nums;}
+.map-stats__sub{font-family:var(--font-m); font-size:0.74rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-dim);}
+.map-stats__tally{display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(22px,5vw,52px);}
+.state-card{display:flex; flex-direction:column; align-items:center; gap:8px;}
+.state-card__shape{width:62px; height:40px; display:flex; align-items:center; justify-content:center;}
+.state-shape{display:block; width:100%; height:100%;}
+.state-shape path{fill:var(--chrome-b); fill-opacity:0.85; stroke:var(--chrome-a); stroke-width:1; vector-effect:non-scaling-stroke; stroke-linejoin:round;}
+.state-card__n{font-family:var(--font-d); font-size:1.7rem; font-weight:700; line-height:1; color:var(--orange-bright); font-variant-numeric:tabular-nums;}
+.state-card__name{font-family:var(--font-m); font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-dim);}
 .customer-map{height:560px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--glass-border); background:var(--bg-3); position:relative; isolation:isolate; z-index:0;}
 .leaflet-control-attribution{background:rgba(20,19,16,0.7) !important; color:var(--text-faint) !important;}
 .leaflet-control-attribution a{color:var(--text-dim) !important;}
