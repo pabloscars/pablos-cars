@@ -708,8 +708,12 @@ function renderVehicleDetail() {
 
   const mainPhoto = document.getElementById("mainPhoto");
   let currentMainIndex = 0;
+  let mainSwiped = false;
   if (mainPhoto) {
-    mainPhoto.addEventListener("click", () => openLightbox(allPhotos, currentMainIndex));
+    mainPhoto.addEventListener("click", () => {
+      if (mainSwiped) { mainSwiped = false; return; }
+      openLightbox(allPhotos, currentMainIndex);
+    });
   }
 
   if (allPhotos.length > 1) {
@@ -722,6 +726,21 @@ function renderVehicleDetail() {
       currentMainIndex = ((i % allPhotos.length) + allPhotos.length) % allPhotos.length;
       mainPhoto.src = allPhotos[currentMainIndex];
       document.querySelectorAll("#thumbRow img").forEach((t, idx) => t.classList.toggle("is-active", idx === currentMainIndex));
+    }
+
+    // Swipe the main photo left/right to move between photos. A plain tap
+    // still opens the full-screen viewer — mainSwiped suppresses that tap.
+    if (mainPhoto) {
+      let sx = 0, sy = 0;
+      mainPhoto.addEventListener("touchstart", e => { const t = e.changedTouches[0]; sx = t.clientX; sy = t.clientY; }, { passive: true });
+      mainPhoto.addEventListener("touchend", e => {
+        const t = e.changedTouches[0];
+        const dx = t.clientX - sx, dy = t.clientY - sy;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+          goToMainPhoto(currentMainIndex + (dx < 0 ? 1 : -1));
+          mainSwiped = true;
+        }
+      }, { passive: true });
     }
 
     enableDragScroll(document.getElementById("thumbRow"));
