@@ -224,6 +224,13 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
 .gallery__arrow.is-disabled{opacity:0.3; pointer-events:none;}
 .gallery__arrow--prev{left:12px;}
 .gallery__arrow--next{right:12px;}
+/* On mobile the gallery is swipeable, so keep the arrows small and
+   nearly transparent — just a faint hint, out of the photo's way. */
+@media(max-width:600px){
+  .gallery__arrow{width:30px; height:30px; font-size:1rem; background:rgba(10,9,7,0.22); border-color:rgba(255,255,255,0.08); backdrop-filter:blur(3px); color:rgba(255,255,255,0.7); text-shadow:0 1px 3px rgba(0,0,0,0.55);}
+  .gallery__arrow--prev{left:6px;}
+  .gallery__arrow--next{right:6px;}
+}
 
 .vdp-sidebar-col{display:flex; flex-direction:column; gap:28px;}
 .vdp-sidebar{background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--radius); backdrop-filter:blur(16px); padding:22px;}
