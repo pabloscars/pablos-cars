@@ -413,8 +413,8 @@ function renderHomeHero() {
           <div class="home-hero__stat"><span class="home-hero__num">${available.length}</span><span class="home-hero__lab">Available</span></div>
           <div class="home-hero__stat"><span class="home-hero__num">${soldCount}</span><span class="home-hero__lab">Sold</span></div>
           <div class="home-hero__place">
-            <svg class="home-hero__mtn" viewBox="0 0 26 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 15 L8 3.5 L12.5 9.5 L16 5 L25 15"/></svg>
             Asheville, N.C.
+            <svg class="home-hero__mtn" viewBox="0 0 26 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 15 L8 3.5 L12.5 9.5 L16 5 L25 15"/></svg>
           </div>
         </div>
       </div>

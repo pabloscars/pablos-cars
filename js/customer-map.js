@@ -37,7 +37,7 @@ function renderCustomerMap() {
         maxZoom: 20
       }).addTo(map);
 
-      fetch("data/us-states-southeast.geojson")
+      fetch("data/us-states.geojson")
         .then(r => r.json())
         .then(statesGeoJson => {
           L.geoJSON(statesGeoJson, {
