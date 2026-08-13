@@ -813,8 +813,30 @@ function openLightbox(images, index) {
     overlay = document.createElement("div");
     overlay.id = "lightboxOverlay";
     overlay.className = "lightbox-overlay";
-    overlay.innerHTML = `<img id="lightboxImg" alt="">`;
-    overlay.addEventListener("click", closeLightbox);
+    overlay.innerHTML = `
+      <button class="lightbox__close" aria-label="Close">&times;</button>
+      <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous photo">&#8249;</button>
+      <img id="lightboxImg" alt="">
+      <button class="lightbox__nav lightbox__nav--next" aria-label="Next photo">&#8250;</button>
+      <div class="lightbox__counter" id="lightboxCounter"></div>`;
+
+    // A tap on the dark backdrop closes; taps on the image/controls don't.
+    // A swipe sets `swiped` so its trailing click never closes the box.
+    let sx = 0, sy = 0, swiped = false;
+    overlay.addEventListener("click", e => {
+      if (swiped) { swiped = false; return; }
+      if (e.target === overlay) closeLightbox();
+    });
+    overlay.querySelector(".lightbox__close").addEventListener("click", e => { e.stopPropagation(); closeLightbox(); });
+    overlay.querySelector(".lightbox__nav--prev").addEventListener("click", e => { e.stopPropagation(); lightboxStep(-1); });
+    overlay.querySelector(".lightbox__nav--next").addEventListener("click", e => { e.stopPropagation(); lightboxStep(1); });
+    overlay.addEventListener("touchstart", e => { const t = e.changedTouches[0]; sx = t.clientX; sy = t.clientY; }, { passive: true });
+    overlay.addEventListener("touchend", e => {
+      const t = e.changedTouches[0];
+      const dx = t.clientX - sx, dy = t.clientY - sy;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.4) { lightboxStep(dx < 0 ? 1 : -1); swiped = true; }
+    }, { passive: true });
+
     document.addEventListener("keydown", handleLightboxKeydown);
     document.body.appendChild(overlay);
   }
@@ -822,17 +844,24 @@ function openLightbox(images, index) {
   overlay.classList.add("is-open");
 }
 
+function lightboxStep(dir) {
+  if (!lightboxImages.length) return;
+  lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+  showLightboxImage();
+}
+
 function showLightboxImage() {
   document.getElementById("lightboxImg").src = lightboxImages[lightboxIndex];
+  const counter = document.getElementById("lightboxCounter");
+  if (counter) counter.textContent = `${lightboxIndex + 1} / ${lightboxImages.length}`;
 }
 
 function handleLightboxKeydown(e) {
   const overlay = document.getElementById("lightboxOverlay");
   if (!overlay || !overlay.classList.contains("is-open")) return;
   if (e.key === "Escape") { closeLightbox(); return; }
-  if (!lightboxImages.length) return;
-  if (e.key === "ArrowRight") { lightboxIndex = (lightboxIndex + 1) % lightboxImages.length; showLightboxImage(); }
-  if (e.key === "ArrowLeft") { lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length; showLightboxImage(); }
+  if (e.key === "ArrowRight") lightboxStep(1);
+  if (e.key === "ArrowLeft") lightboxStep(-1);
 }
 
 function closeLightbox() {
