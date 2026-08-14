@@ -311,6 +311,9 @@
         var photoUrls = photoGroup(["photos"]);
         var auctionPhotoUrls = photoGroup(["photoSections", "auctionPhotos"]);
         var deepCleaningUrls = photoGroup(["photoSections", "deepCleaning"]);
+        var wheelUrls = photoGroup(["photoSections", "wheels"]);
+        var doorPanelUrls = photoGroup(["photoSections", "doorPanels"]);
+        var defectUrls = photoGroup(["photoSections", "defects"]);
 
         function photoGrid(label, urls) {
           return urls.length
@@ -410,7 +413,10 @@
             videoUrl2 ? h("p", { key: "video2" }, [h("strong", { key: "s" }, "Full Walkaround: "), h("a", { key: "a", href: videoUrl2, target: "_blank", rel: "noopener" }, videoUrl2)]) : null,
             photoGrid("additional photos", photoUrls),
             photoGrid("auction photos", auctionPhotoUrls),
-            photoGrid("deep cleaning", deepCleaningUrls)
+            photoGrid("deep cleaning", deepCleaningUrls),
+            photoGrid("wheels", wheelUrls),
+            photoGrid("door panels", doorPanelUrls),
+            photoGrid("defects & known issues", defectUrls)
           )
         );
       }

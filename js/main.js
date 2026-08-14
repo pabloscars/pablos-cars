@@ -528,7 +528,10 @@ function renderVehicleDetail() {
   const sections = [
     ["auctionPhotos", "Auction Photos"],
     ["deepCleaning", "Deep Cleaning"],
-    ["exterior", "Exterior"], ["interior", "Interior"], ["engineBay", "Engine Bay"],
+    ["exterior", "Exterior"], ["interior", "Interior"],
+    ["wheels", "Wheels"], ["doorPanels", "Door Panels"],
+    ["engineBay", "Engine Bay"],
+    ["defects", "Defects & Known Issues"],
     ["damageBefore", "Damage Before Repair"], ["repairDocs", "Repair Documentation"],
     ["tires", "Tires"], ["undercarriage", "Undercarriage"], ["titleDocs", "Title Documents"]
   ].filter(([key]) => car.photoSections && car.photoSections[key] && car.photoSections[key].length);

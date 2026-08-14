@@ -279,6 +279,27 @@ collections:
             collapsed: true
             summary: "{{fields.photo}}"
             field: { label: "Photo", name: "photo", widget: "image" }
+          - label: "Wheels (all four — one photo per wheel)"
+            name: "wheels"
+            widget: "list"
+            required: false
+            collapsed: true
+            summary: "{{fields.photo}}"
+            field: { label: "Photo", name: "photo", widget: "image" }
+          - label: "Door Panels (one photo per door)"
+            name: "doorPanels"
+            widget: "list"
+            required: false
+            collapsed: true
+            summary: "{{fields.photo}}"
+            field: { label: "Photo", name: "photo", widget: "image" }
+          - label: "Defects & Known Issues (photos of any flaws)"
+            name: "defects"
+            widget: "list"
+            required: false
+            collapsed: true
+            summary: "{{fields.photo}}"
+            field: { label: "Photo", name: "photo", widget: "image" }
       - { label: "Quick Look video — TikTok / YouTube link (the short sell clip)", name: "videoUrl", widget: "string", required: false }
       - { label: "Full Walkaround video — TikTok / YouTube link (the longer one, optional)", name: "videoUrl2", widget: "string", required: false }
       - { label: "Facebook Listing Link (optional, leave blank to use your profile)", name: "facebookUrl", widget: "string", required: false }
