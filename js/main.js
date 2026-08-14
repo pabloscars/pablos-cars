@@ -222,6 +222,19 @@ const TRUST_BADGES = [
 function money(n) { return "$" + Number(n).toLocaleString("en-US"); }
 function miles(n) { return Number(n).toLocaleString("en-US") + " mi"; }
 
+/* Route local images through Netlify's Image CDN so visitors download a
+   small, right-sized, auto-format (webp/avif) version instead of the
+   multi-MB original — car pages load fast and hover/scroll stay smooth.
+   Only kicks in on the deployed site; local dev and non-local sources
+   pass through untouched. The lightbox still requests a large size for
+   crisp zoom. */
+function optimizedImg(src, width) {
+  if (!src || src.charAt(0) !== "/") return src;
+  const host = location.hostname;
+  if (host === "localhost" || host === "127.0.0.1" || host === "") return src;
+  return `/.netlify/images?url=${encodeURIComponent(src)}&w=${width}&q=72`;
+}
+
 /* Click-and-drag to scroll a horizontal thumbnail strip with a mouse —
    touch/pen already scroll it natively, so this only kicks in for
    pointerType "mouse". A real drag (moved past a few px) suppresses
@@ -340,7 +353,7 @@ function carCardHTML(car) {
   return `
   <a href="vehicle.html?id=${encodeURIComponent(car.id)}" class="card ${soldClass}" data-id="${car.id}">
     <div class="card__photo">
-      <img src="${cover}" alt="${car.year} ${car.make} ${car.model}" loading="lazy">
+      <img src="${optimizedImg(cover, 800)}" alt="${car.year} ${car.make} ${car.model}" loading="lazy">
       <div class="card__scrim"></div>
       <div class="tag-top ${car.status === "sold" ? "tag-top--sold" : "tag-top--available"}">
         <span class="tag-top__dot"></span>${car.status === "sold" ? "sold" : "available"}
@@ -394,7 +407,7 @@ function renderHomeHero() {
 
   const mediaHTML = feat
     ? `<a class="home-hero__media" href="vehicle.html?id=${encodeURIComponent(feat.id)}" aria-label="${feat.year} ${feat.make} ${feat.model}">
-         <img src="${feat.image || (feat.photos && feat.photos[0]) || ""}" alt="${feat.year} ${feat.make} ${feat.model}">
+         <img src="${optimizedImg(feat.image || (feat.photos && feat.photos[0]) || "", 1100)}" alt="${feat.year} ${feat.make} ${feat.model}">
          <div class="home-hero__cap">
            <span class="home-hero__cap-k">Featured · Available</span>
            <span class="home-hero__cap-n">${feat.year} ${feat.make} ${feat.model}${feat.trim ? " " + feat.trim : ""} · ${money(feat.price)}</span>
@@ -541,7 +554,7 @@ function renderVehicleDetail() {
       <h3>${label}</h3>
       ${SLIDER_SECTIONS.has(key)
         ? photoSliderHTML(car.photoSections[key])
-        : `<div class="photo-section__grid">${car.photoSections[key].map(src => `<img src="${src}" loading="lazy">`).join("")}</div>`}
+        : `<div class="photo-section__grid">${car.photoSections[key].map(src => `<img src="${optimizedImg(src, 900)}" data-full="${src}" loading="lazy">`).join("")}</div>`}
     </div>`).join("");
 
   // Build one embedded player from a video URL. Returns null for a blank
@@ -615,14 +628,14 @@ function renderVehicleDetail() {
         <div class="vdp-photos-col">
           <div class="gallery">
             <div class="gallery__main">
-              <img id="mainPhoto" src="${allPhotos[0] || ""}" alt="${car.year} ${car.make} ${car.model}">
+              <img id="mainPhoto" src="${optimizedImg(allPhotos[0] || "", 1400)}" alt="${car.year} ${car.make} ${car.model}">
               ${allPhotos.length > 1 ? `
                 <button class="gallery__arrow gallery__arrow--prev" id="mainPrevBtn" aria-label="Previous photo">&#8249;</button>
                 <button class="gallery__arrow gallery__arrow--next" id="mainNextBtn" aria-label="Next photo">&#8250;</button>
               ` : ""}
             </div>
             ${allPhotos.length > 1 ? `<div class="gallery__thumbs" id="thumbRow">
-              ${allPhotos.map((src, i) => `<img src="${src}" data-i="${i}" class="${i === 0 ? "is-active" : ""}">`).join("")}
+              ${allPhotos.map((src, i) => `<img src="${optimizedImg(src, 220)}" data-i="${i}" class="${i === 0 ? "is-active" : ""}">`).join("")}
             </div>` : ""}
           </div>
 
@@ -729,7 +742,7 @@ function renderVehicleDetail() {
       // Wraps around in both directions — past the last photo goes back
       // to the first, and back past the first goes to the last.
       currentMainIndex = ((i % allPhotos.length) + allPhotos.length) % allPhotos.length;
-      mainPhoto.src = allPhotos[currentMainIndex];
+      mainPhoto.src = optimizedImg(allPhotos[currentMainIndex], 1400);
       document.querySelectorAll("#thumbRow img").forEach((t, idx) => t.classList.toggle("is-active", idx === currentMainIndex));
     }
 
@@ -763,7 +776,7 @@ function renderVehicleDetail() {
 
   root.querySelectorAll(".photo-section__grid").forEach(grid => {
     const imgs = [...grid.querySelectorAll("img")];
-    const srcs = imgs.map(i => i.src);
+    const srcs = imgs.map(i => i.dataset.full || i.src);
     imgs.forEach((img, i) => img.addEventListener("click", () => openLightbox(srcs, i)));
   });
 
@@ -779,10 +792,10 @@ function photoSliderHTML(images) {
   for (let i = 0; i < images.length; i += SLIDER_PAGE_SIZE) pages.push(images.slice(i, i + SLIDER_PAGE_SIZE));
 
   const pagesHTML = pages.map(page => `
-    <div class="photo-slider__page" style="grid-template-columns:repeat(${SLIDER_PAGE_SIZE}, 1fr);">${page.map(src => `<div class="photo-slider__frame"><img src="${src}" loading="lazy"></div>`).join("")}</div>`
+    <div class="photo-slider__page" style="grid-template-columns:repeat(${SLIDER_PAGE_SIZE}, 1fr);">${page.map(src => `<div class="photo-slider__frame"><img src="${optimizedImg(src, 800)}" data-full="${src}" loading="lazy"></div>`).join("")}</div>`
   ).join("");
 
-  const thumbsHTML = images.map((src, i) => `<img src="${src}" data-i="${i}" class="${i < SLIDER_PAGE_SIZE ? "is-active" : ""}" loading="lazy">`).join("");
+  const thumbsHTML = images.map((src, i) => `<img src="${optimizedImg(src, 220)}" data-i="${i}" class="${i < SLIDER_PAGE_SIZE ? "is-active" : ""}" loading="lazy">`).join("");
 
   return `
     <div class="photo-slider" data-page-count="${pages.length}">
@@ -804,7 +817,7 @@ function initPhotoSlider(slider) {
   const nextBtn = slider.querySelector(".photo-slider__arrow--next");
   const thumbs = [...slider.querySelectorAll(".photo-slider__thumbs img")];
   const frameImgs = [...slider.querySelectorAll(".photo-slider__frame img")];
-  const allSrcs = frameImgs.map(img => img.src);
+  const allSrcs = frameImgs.map(img => img.dataset.full || img.src);
   let page = 0;
 
   function goToPage(p) {
@@ -963,7 +976,7 @@ function lightboxStep(dir) {
 }
 
 function showLightboxImage() {
-  document.getElementById("lightboxImg").src = lightboxImages[lightboxIndex];
+  document.getElementById("lightboxImg").src = optimizedImg(lightboxImages[lightboxIndex], 2400);
   lbResetZoom();
   const counter = document.getElementById("lightboxCounter");
   if (counter) counter.textContent = `${lightboxIndex + 1} / ${lightboxImages.length}`;
