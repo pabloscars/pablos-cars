@@ -833,6 +833,8 @@ let lbScale = 1, lbTx = 0, lbTy = 0;
 function lbApplyTransform() {
   const img = document.getElementById("lightboxImg");
   if (img) img.style.transform = `translate(${lbTx}px, ${lbTy}px) scale(${lbScale})`;
+  const overlay = document.getElementById("lightboxOverlay");
+  if (overlay) overlay.classList.toggle("is-zoomed", lbScale > 1);
 }
 function lbResetZoom() { lbScale = 1; lbTx = 0; lbTy = 0; lbApplyTransform(); }
 function lbClampPan() {
@@ -913,6 +915,39 @@ function openLightbox(images, index) {
       }
       if (e.touches.length === 0) mode = null;
     }, { passive: true });
+
+    // Mouse wheel zooms toward the cursor (desktop).
+    overlay.addEventListener("wheel", e => {
+      e.preventDefault();
+      const rect = overlay.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2, cy = rect.top + rect.height / 2;
+      const s = lbScale;
+      const s2 = Math.min(4, Math.max(1, s * (e.deltaY < 0 ? 1.18 : 1 / 1.18)));
+      if (s2 === s) return;
+      const r = s2 / s;
+      lbTx = (e.clientX - cx) * (1 - r) + r * lbTx;
+      lbTy = (e.clientY - cy) * (1 - r) + r * lbTy;
+      lbScale = s2;
+      if (lbScale === 1) { lbTx = 0; lbTy = 0; }
+      lbClampPan();
+      lbApplyTransform();
+    }, { passive: false });
+
+    // Click-drag to pan when zoomed in (desktop).
+    let dragging = false, dgX0 = 0, dgY0 = 0, dgTx0 = 0, dgTy0 = 0;
+    overlay.addEventListener("mousedown", e => {
+      if (lbScale <= 1 || e.target.closest(".lightbox__nav, .lightbox__close")) return;
+      dragging = true; dgX0 = e.clientX; dgY0 = e.clientY; dgTx0 = lbTx; dgTy0 = lbTy;
+      e.preventDefault();
+    });
+    window.addEventListener("mousemove", e => {
+      if (!dragging) return;
+      lbTx = dgTx0 + (e.clientX - dgX0);
+      lbTy = dgTy0 + (e.clientY - dgY0);
+      lbClampPan();
+      lbApplyTransform();
+    });
+    window.addEventListener("mouseup", () => { dragging = false; });
 
     document.addEventListener("keydown", handleLightboxKeydown);
     document.body.appendChild(overlay);
