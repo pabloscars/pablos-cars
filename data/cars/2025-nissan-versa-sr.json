@@ -1,5 +1,6 @@
 {
   "photoSections": {
+    "defects": [],
     "auctionPhotos": [
       "/images/uploads/8f465300-1aa0-4ebc-b285-f632feace061.jpg",
       "/images/uploads/d2c79282-60e1-4f30-b888-bff9bfe7afd6.jpg",
@@ -18,7 +19,17 @@
     "damageBefore": [],
     "interior": [],
     "titleDocs": [],
+    "wheels": [
+      "/images/uploads/20260617_185716.jpg",
+      "/images/uploads/20260617_185721.jpg",
+      "/images/uploads/20260617_185730.jpg",
+      "/images/uploads/20260617_185735.jpg"
+    ],
     "engineBay": [],
+    "doorPanels": [
+      "/images/uploads/20260617_184646.jpg",
+      "/images/uploads/20260617_184659.jpg"
+    ],
     "exterior": []
   },
   "photos": [
@@ -57,7 +68,7 @@
     "engineAirFilter": true
   },
   "exteriorColor": "Gun Metallic Grey",
-  "facebookUrl": "",
+  "facebookUrl": "https://www.facebook.com/share/1C5QgnNTfo/",
   "price": 13800,
   "comfortFeatures": {
     "ambientLighting": false,
