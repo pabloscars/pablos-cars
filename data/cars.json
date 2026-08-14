@@ -1338,65 +1338,152 @@
     },
     {
       "photoSections": {
-        "exterior": [],
-        "interior": [],
-        "engineBay": [],
-        "damageBefore": [],
+        "defects": [],
+        "auctionPhotos": [
+          "/images/uploads/8f465300-1aa0-4ebc-b285-f632feace061.jpg",
+          "/images/uploads/d2c79282-60e1-4f30-b888-bff9bfe7afd6.jpg",
+          "/images/uploads/d187ff8e-741d-4c0a-8546-01b406e67a5b.jpg",
+          "/images/uploads/eaba8768-78dd-4e71-bd9c-13309b54fa57.jpg",
+          "/images/uploads/683c6741-ab83-4656-a1de-df624ee57964.jpg",
+          "/images/uploads/fed805ce-fc9f-42bd-8daf-f6e2661c19c1.jpg"
+        ],
+        "deepCleaning": [
+          "/images/uploads/20260616_170023.jpg",
+          "/images/uploads/20260616_184710.jpg"
+        ],
         "repairDocs": [],
         "tires": [],
         "undercarriage": [],
-        "titleDocs": []
+        "damageBefore": [],
+        "interior": [],
+        "titleDocs": [],
+        "wheels": [
+          "/images/uploads/20260617_185716.jpg",
+          "/images/uploads/20260617_185721.jpg",
+          "/images/uploads/20260617_185730.jpg",
+          "/images/uploads/20260617_185735.jpg"
+        ],
+        "engineBay": [],
+        "doorPanels": [
+          "/images/uploads/20260617_184646.jpg",
+          "/images/uploads/20260617_184659.jpg"
+        ],
+        "exterior": []
       },
       "photos": [
-        "images/cars/2025-nissan-versa-sr/cover.jpg",
-        "images/cars/2025-nissan-versa-sr/gallery-2.jpg"
+        "/images/uploads/20260617_184319.jpg",
+        "/images/uploads/20260617_184308.jpg",
+        "/images/uploads/20260617_184222.jpg",
+        "/images/uploads/20260617_184235.jpg",
+        "/images/uploads/20260617_184259.jpg",
+        "/images/uploads/20260617_184021.jpg",
+        "/images/uploads/20260617_184027.jpg",
+        "/images/uploads/20260617_184251.jpg",
+        "/images/uploads/20260617_184429.jpg",
+        "/images/uploads/20260617_184440.jpg",
+        "/images/uploads/20260617_184443.jpg",
+        "/images/uploads/20260617_185340.jpg",
+        "/images/uploads/20260617_184615.jpg",
+        "/images/uploads/20260617_185023.jpg",
+        "/images/uploads/inshot_20260619_142222627.jpg",
+        "/images/uploads/inshot_20260619_135642482.jpg",
+        "/images/uploads/inshot_20260619_140254778.jpg",
+        "/images/uploads/inshot_20260619_135852773.jpg"
       ],
       "trim": "SR",
       "engine": "1.6L 4-Cylinder, DOHC, VVT",
       "transmission": "Xtronic CVT, FWD",
+      "salvageFeatures": {
+        "hailDamage": true,
+        "rebuiltTitle": true
+      },
       "mpg": "32 city / 40 hwy",
-      "exteriorColor": "Gun Metallic Grey / Black cloth w/ red stitching",
-      "facebookUrl": "",
+      "repairsCompleted": {
+        "oilChange": true,
+        "frontWipers": true,
+        "cabinAirFilter": true,
+        "ncStateInspected": true,
+        "engineAirFilter": true
+      },
+      "exteriorColor": "Gun Metallic Grey",
+      "facebookUrl": "https://www.facebook.com/share/1C5QgnNTfo/",
       "price": 13800,
+      "comfortFeatures": {
+        "ambientLighting": false,
+        "foldingRearSeats": true,
+        "powerSeats": false,
+        "wirelessPhoneCharger": true,
+        "pushButtonStart": true,
+        "remoteTrunkRelease": true,
+        "keylessEntry": true,
+        "remoteStart": true,
+        "heatedSeats": true,
+        "rainSensingWipers": true
+      },
       "model": "Versa",
       "titleStatus": "Rebuilt Title",
       "mileage": 17200,
+      "driverAssistFeatures": {
+        "parkingAssist": true,
+        "automaticEmergencyBraking": false,
+        "forwardCollisionAlert": true,
+        "adaptiveCruiseControl": true,
+        "laneDepartureWarning": true,
+        "tirePressureMonitoring": true,
+        "automaticHighBeams": true,
+        "laneKeepAssist": false,
+        "absBrakes": true,
+        "blindSpotMonitoring": true
+      },
       "make": "Nissan",
       "sortOrder": 2,
       "noGlassBroken": true,
       "keyCount": "2 Keys",
-      "whatWasRepaired": "Cosmetic hail repair. Recent maintenance: oil change at 16k miles, front wipers, air & cabin air filters, NC state inspection completed.",
+      "fuelType": "Gasoline",
+      "whatWasRepaired": "Recent maintenance: oil change at 16k miles, front wipers, air & cabin air filters, NC state inspection completed.",
       "dateAdded": "2026-07-05",
       "status": "available",
+      "techFeatures": {
+        "appleCarPlay": true,
+        "androidAuto": true,
+        "bluetooth": true,
+        "backupCamera": true,
+        "rearParkingSensors": true,
+        "digitalGaugeCluster": true,
+        "usbCPorts": true,
+        "rearUsbPorts": true
+      },
+      "interiorColor": "Black Sport w/ Red Stitching (Black)",
       "videoUrl": "https://www.tiktok.com/@ashevillecars/video/7657662621906177294?is_from_webapp=1&sender_device=pc&web_id=7632555146174072334",
       "location": "Asheville, NC",
+      "interiorMaterial": "Cloth",
       "noWarningLights": true,
       "tags": [
         "Rebuilt Title",
         "Hail Damage"
       ],
       "noAirbagsDeployed": true,
+      "vin": "3N1CN8FV5SL843376",
       "id": "2025-nissan-versa-sr",
-      "image": "images/cars/2025-nissan-versa-sr/cover.jpg",
+      "exteriorFeatures": {
+        "ledHeadlights": true,
+        "daytimeRunningLights": true
+      },
+      "image": "/images/uploads/20260617_184206.jpg",
       "noFrameDamage": true,
-      "description": "Genuinely save thousands on this highest-trim Versa SR, simply due to minor hail damage. Fresh maintenance just completed and a professional deep clean performed. Runs and drives excellent.",
+      "description": "Genuinely save thousands on this highest trim available Nissan Versa SR, simply due to minor hail damage! Comparable clean title Versa models are over $17k and many are not even the SR trim! Fresh maintenance just completed & professional DEEP cleaning performed",
       "bodyType": "sedan",
       "year": 2025,
-      "knownIssues": "Cosmetic hail damage only — see photos and video. No frame or structural damage, no airbags deployed, no glass broken.",
+      "knownIssues": "Cosmetic hail damage dings only ",
+      "drivetrain": "FWD",
       "videoUrl2": "https://www.tiktok.com/@ashevillecars/video/7657666903388867853?is_from_webapp=1&sender_device=pc&web_id=7632555146174072334",
       "showVin": false,
-      "whySalvage": "Hail damage. Comparable clean-title Versa SR models run $17k+ — this one is priced well below that purely because of cosmetic hail damage, not mechanical condition.",
+      "whySalvage": "Hail damage",
       "highlights": [
-        "Remote start, keyless entry, push-button start",
-        "Heated front seats",
         "Leather steering wheel",
         "Intelligent cruise control",
-        "Rear parking sensors, lane departure & blind spot warning",
-        "Apple CarPlay & Bluetooth",
         "Backup camera",
-        "17\" aluminum wheels",
-        "Wireless charging",
-        "Rear seats fold down for trunk access"
+        "17\" aluminum wheels"
       ]
     }
   ]
