@@ -524,7 +524,7 @@ function renderVehicleDetail() {
       </div>`)
     .join("");
 
-  const SLIDER_SECTIONS = new Set(["auctionPhotos", "deepCleaning"]);
+  const SLIDER_SECTIONS = new Set(["auctionPhotos", "deepCleaning", "wheels", "doorPanels", "defects"]);
   const sections = [
     ["auctionPhotos", "Auction Photos"],
     ["deepCleaning", "Deep Cleaning"],
