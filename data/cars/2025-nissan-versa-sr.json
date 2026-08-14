@@ -1,13 +1,25 @@
 {
   "photoSections": {
-    "exterior": [],
-    "interior": [],
-    "engineBay": [],
-    "damageBefore": [],
+    "auctionPhotos": [
+      "/images/uploads/8f465300-1aa0-4ebc-b285-f632feace061.jpg",
+      "/images/uploads/d2c79282-60e1-4f30-b888-bff9bfe7afd6.jpg",
+      "/images/uploads/d187ff8e-741d-4c0a-8546-01b406e67a5b.jpg",
+      "/images/uploads/eaba8768-78dd-4e71-bd9c-13309b54fa57.jpg",
+      "/images/uploads/683c6741-ab83-4656-a1de-df624ee57964.jpg",
+      "/images/uploads/fed805ce-fc9f-42bd-8daf-f6e2661c19c1.jpg"
+    ],
+    "deepCleaning": [
+      "/images/uploads/20260616_170023.jpg",
+      "/images/uploads/20260616_184710.jpg"
+    ],
     "repairDocs": [],
     "tires": [],
     "undercarriage": [],
-    "titleDocs": []
+    "damageBefore": [],
+    "interior": [],
+    "titleDocs": [],
+    "engineBay": [],
+    "exterior": []
   },
   "photos": [
     "images/cars/2025-nissan-versa-sr/cover.jpg",
