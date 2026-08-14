@@ -190,20 +190,20 @@ p{margin:0 0 0.9em; color:var(--text-dim); font-size:0.95rem;}
    the bottom row (cards 4-6) fades; on mobile it's a stack of 4 where
    the 3rd starts to blur and the 4th is fully dimmed. ---- */
 .sold-preview{position:relative; margin-top:14px;}
-/* base (mobile + tablet): up to 4 cards, the bottom pair faded */
+/* base (mobile + tablet): up to 4 cards, the bottom pair dimmed + blurred */
 .sold-preview--faded .sold-preview__grid > .card:nth-child(n+5){display:none;}
-.sold-preview--faded .sold-preview__grid > .card:nth-child(n+3){pointer-events:none; user-select:none; filter:blur(2px) saturate(0.6);}
+.sold-preview--faded .sold-preview__grid > .card:nth-child(n+3){pointer-events:none; user-select:none; opacity:0.34; filter:blur(2px) saturate(0.6);}
 @media(max-width:679px){
-  .sold-preview--faded .sold-preview__grid > .card:nth-child(3){filter:blur(1.4px) saturate(0.7);}
-  .sold-preview--faded .sold-preview__grid > .card:nth-child(4){filter:blur(3px) saturate(0.5);}
+  .sold-preview--faded .sold-preview__grid > .card:nth-child(3){opacity:0.55; filter:blur(1.4px) saturate(0.7);}
+  .sold-preview--faded .sold-preview__grid > .card:nth-child(4){opacity:0.26; filter:blur(3px) saturate(0.5);}
 }
 /* desktop (3-col): show all 6, only the second row (cards 4-6) fades */
 @media(min-width:1000px){
   .sold-preview--faded .sold-preview__grid > .card:nth-child(n+5){display:block;}
-  .sold-preview--faded .sold-preview__grid > .card:nth-child(3){filter:none; pointer-events:auto; user-select:auto;}
-  .sold-preview--faded .sold-preview__grid > .card:nth-child(n+4){pointer-events:none; user-select:none; filter:blur(1.6px) saturate(0.6);}
+  .sold-preview--faded .sold-preview__grid > .card:nth-child(3){opacity:1; filter:none; pointer-events:auto; user-select:auto;}
+  .sold-preview--faded .sold-preview__grid > .card:nth-child(n+4){pointer-events:none; user-select:none; opacity:0.32; filter:blur(1.6px) saturate(0.6);}
 }
-.sold-preview__fade{position:absolute; left:0; right:0; top:47%; bottom:0; background:linear-gradient(180deg, transparent 0%, var(--bg) 62%); pointer-events:none; border-radius:0 0 var(--radius) var(--radius);}
+.sold-preview__fade{position:absolute; left:0; right:0; top:42%; bottom:0; background:linear-gradient(180deg, transparent 0%, var(--bg) 58%); pointer-events:none; border-radius:0 0 var(--radius) var(--radius);}
 .sold-preview__cta{position:absolute; left:0; right:0; top:50%; bottom:0; display:flex; align-items:center; justify-content:center;}
 
 /* ---- Vehicle detail ---- */
