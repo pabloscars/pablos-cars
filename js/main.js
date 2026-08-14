@@ -976,10 +976,26 @@ function lightboxStep(dir) {
 }
 
 function showLightboxImage() {
-  document.getElementById("lightboxImg").src = optimizedImg(lightboxImages[lightboxIndex], 2400);
+  const img = document.getElementById("lightboxImg");
+  const orig = lightboxImages[lightboxIndex];
+  const large = optimizedImg(orig, 2400);
+  // Show a smaller (fast, often already-cached) version immediately so the
+  // previous photo never lingers, then swap to the crisp large one once
+  // it's decoded in the background (no flicker — it's cached by then).
+  img.src = optimizedImg(orig, 800);
+  if (large !== img.src) {
+    const hi = new Image();
+    hi.onload = () => { if (lightboxImages[lightboxIndex] === orig) img.src = large; };
+    hi.src = large;
+  }
   lbResetZoom();
   const counter = document.getElementById("lightboxCounter");
   if (counter) counter.textContent = `${lightboxIndex + 1} / ${lightboxImages.length}`;
+  // Warm up the neighbours so swiping/arrowing feels instant.
+  [lightboxIndex + 1, lightboxIndex - 1].forEach(j => {
+    const n = lightboxImages[(j + lightboxImages.length) % lightboxImages.length];
+    if (n) { const pre = new Image(); pre.src = optimizedImg(n, 2400); }
+  });
 }
 
 function handleLightboxKeydown(e) {
